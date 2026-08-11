@@ -1,13 +1,15 @@
 type ContextTrailProps = {
   className?: string
+  motionTarget: 'care' | 'hero'
 }
 
-export function ContextTrail({ className }: ContextTrailProps) {
+export function ContextTrail({ className, motionTarget }: ContextTrailProps) {
   return (
     <svg
       aria-hidden="true"
       className={className}
-      data-testid="context-trail"
+      data-motion-target={motionTarget}
+      data-testid={`${motionTarget}-context-trail`}
       fill="none"
       viewBox="0 0 500 180"
     >

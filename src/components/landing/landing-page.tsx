@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { ContextTrail } from './context-trail'
+import { LandingMotion } from './landing-motion'
 import styles from './landing-page.module.css'
 
 const genericWhatsAppMessage = 'Olá, Iasmin. Gostaria de conversar sobre psicoterapia.'
@@ -86,7 +87,7 @@ function HeroSection() {
           sizes="(max-width: 899px) 100vw, 46vw"
           src="/images/iasmin/hero-terracotta.jpg"
         />
-        <ContextTrail className={styles.heroTrail} />
+        <ContextTrail className={styles.heroTrail} motionTarget="hero" />
         <figcaption>Psicóloga clínica · Análise do Comportamento</figcaption>
       </figure>
     </section>
@@ -204,10 +205,10 @@ function CarePillarsSection() {
         </p>
       </div>
       <div className={styles.carePath}>
-        <ContextTrail className={styles.careTrail} />
+        <ContextTrail className={styles.careTrail} motionTarget="care" />
         <ol className={styles.carePillars}>
           {carePillars.map((pillar) => (
-            <li key={pillar.number} className={styles.carePillar}>
+            <li key={pillar.number} className={styles.carePillar} data-care-pillar>
               <span className={styles.pillarNumber}>{pillar.number}</span>
               <div>
                 <h3>{pillar.title}</h3>
@@ -335,15 +336,17 @@ export default function LandingPage() {
   return (
     <div className={styles.page}>
       <SiteHeader />
-      <main>
-        <HeroSection />
-        <RecognitionSection />
-        <AboutIasminSection />
-        <CarePillarsSection />
-        <JourneyTeaserSection />
-        <FaqSection />
-        <ClosingSection />
-      </main>
+      <LandingMotion>
+        <main>
+          <HeroSection />
+          <RecognitionSection />
+          <AboutIasminSection />
+          <CarePillarsSection />
+          <JourneyTeaserSection />
+          <FaqSection />
+          <ClosingSection />
+        </main>
+      </LandingMotion>
       <SiteFooter />
     </div>
   )

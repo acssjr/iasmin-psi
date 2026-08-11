@@ -103,6 +103,7 @@
 
 .heroCopy {
   max-width: 39rem;
+  will-change: transform, opacity;
 }
 
 .eyebrow,
@@ -242,6 +243,7 @@
   border-radius: 11rem 11rem 2rem 2rem;
   background: var(--terracotta);
   box-shadow: 1.4rem 1.4rem 0 var(--sand);
+  will-change: transform, opacity;
 }
 
 .heroPortrait img {
@@ -275,6 +277,12 @@
   color: var(--sand);
   opacity: 0.9;
   transform: rotate(-18deg);
+}
+
+.heroTrail :global(.contextTrailPath),
+.careTrail :global(.contextTrailPath),
+.carePillar h3 {
+  will-change: transform, opacity;
 }
 
 .recognition,

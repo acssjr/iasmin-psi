@@ -30,3 +30,17 @@ for (const viewport of [
     ).toBe(true)
   })
 }
+
+test('keeps the landing in final readable states when motion is reduced', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await page.goto('/')
+
+  const hero = page.getByRole('region', {
+    name: 'O cuidado que faz sentido começa no seu contexto.',
+  })
+  await expect(hero.getByRole('heading')).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Compreender seus contextos' })).toBeVisible()
+  expect(
+    await hero.getByRole('heading').evaluate((element) => getComputedStyle(element).opacity),
+  ).toBe('1')
+})

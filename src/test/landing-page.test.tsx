@@ -34,4 +34,7 @@ it('shows both first-step actions in the hero', () => {
     screen.getByText(/O percurso não é uma avaliação psicológica/i),
   ).toBeVisible()
   expect(screen.queryByText(/depoimento/i)).not.toBeInTheDocument()
+  expect(screen.getByTestId('landing-motion')).toBeInTheDocument()
+  expect(screen.getByTestId('hero-context-trail')).toBeInTheDocument()
+  expect(screen.getByTestId('care-context-trail')).toBeInTheDocument()
 })
