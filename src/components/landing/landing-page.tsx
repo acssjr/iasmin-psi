@@ -1,41 +1,350 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
+import { ContextTrail } from './context-trail'
 import styles from './landing-page.module.css'
+
+const genericWhatsAppMessage = 'Olá, Iasmin. Gostaria de conversar sobre psicoterapia.'
+
+function getWhatsAppHref() {
+  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, '')
+
+  if (!number) {
+    return '#agendar'
+  }
+
+  return `https://wa.me/${number}?text=${encodeURIComponent(genericWhatsAppMessage)}`
+}
+
+function BrandMark() {
+  return (
+    <span className={styles.brandMark} aria-label="Iasmin Portugal Psicologia Clínica">
+      <span>iasmin</span>
+      <span>portugal</span>
+      <small>psicologia clínica</small>
+    </span>
+  )
+}
+
+function SiteHeader() {
+  const scheduleHref = getWhatsAppHref()
+
+  return (
+    <header className={styles.siteHeader}>
+      <a className={styles.brandLink} href="#top" aria-label="Voltar ao início">
+        <BrandMark />
+      </a>
+      <nav className={styles.navigation} aria-label="Navegação principal">
+        <a href="#conheca-iasmin">Conheça Iasmin</a>
+        <a href="#como-funciona">Como funciona</a>
+        <Link href="/percurso">Percurso</Link>
+      </nav>
+      <a className={styles.headerAction} href={scheduleHref}>
+        Agendar sessão
+      </a>
+    </header>
+  )
+}
+
+function HeroSection() {
+  const scheduleHref = getWhatsAppHref()
+
+  return (
+    <section className={styles.hero} id="top" aria-labelledby="hero-title">
+      <div className={styles.heroCopy}>
+        <BrandMark />
+        <p className={styles.eyebrow} data-hero-eyebrow>
+          Psicologia clínica on-line
+        </p>
+        <h1 id="hero-title" data-hero-title>
+          O cuidado que faz sentido começa no seu contexto.
+        </h1>
+        <p className={styles.intro} data-hero-copy>
+          Um espaço de escuta para adolescentes e adultos que desejam olhar
+          para a ansiedade, a autoestima e a aceitação com mais presença.
+        </p>
+        <div className={styles.actions} data-hero-actions>
+          <a className={styles.primaryAction} href={scheduleHref}>
+            Agendar uma sessão
+          </a>
+          <Link className={styles.secondaryAction} href="/percurso">
+            Iniciar meu percurso de autoconhecimento
+          </Link>
+        </div>
+        <ol className={styles.trailLabels} aria-label="Uma trilha de cuidado">
+          <li>Contexto</li>
+          <li>Escolhas</li>
+          <li>Cuidado</li>
+        </ol>
+      </div>
+
+      <figure className={styles.heroPortrait} data-hero-portrait>
+        <Image
+          alt="Iasmin Portugal em atendimento"
+          fill
+          priority
+          sizes="(max-width: 899px) 100vw, 46vw"
+          src="/images/iasmin/hero-terracotta.jpg"
+        />
+        <ContextTrail className={styles.heroTrail} />
+        <figcaption>Psicóloga clínica · Análise do Comportamento</figcaption>
+      </figure>
+    </section>
+  )
+}
+
+function RecognitionSection() {
+  return (
+    <section className={styles.recognition} aria-labelledby="recognition-title">
+      <div>
+        <p className={styles.sectionKicker}>Pode ser que você se reconheça aqui</p>
+        <h2 id="recognition-title">
+          Nem tudo o que pesa precisa ser carregado em silêncio.
+        </h2>
+      </div>
+      <ul className={styles.recognitionList}>
+        <li>
+          <span>01</span>
+          <p>Você parece estar sempre resolvendo algo, mesmo quando já está cansada.</p>
+        </li>
+        <li>
+          <span>02</span>
+          <p>A ansiedade ocupa espaço e torna as pequenas escolhas mais difíceis.</p>
+        </li>
+        <li>
+          <span>03</span>
+          <p>Você se cobra tanto que às vezes perde de vista o que também precisa.</p>
+        </li>
+      </ul>
+    </section>
+  )
+}
+
+function AboutIasminSection() {
+  return (
+    <section className={styles.about} id="conheca-iasmin" aria-labelledby="about-title">
+      <div className={styles.aboutPhotos}>
+        <figure className={styles.aboutPrimaryPhoto}>
+          <Image
+            alt="Iasmin Portugal sentada ao ar livre com um livro sobre behaviorismo"
+            fill
+            sizes="(max-width: 899px) 88vw, 40vw"
+            src="/images/iasmin/garden-reading.jpg"
+          />
+        </figure>
+        <figure className={styles.aboutSecondaryPhoto}>
+          <Image
+            alt="Retrato de Iasmin Portugal com um livro sobre behaviorismo"
+            fill
+            sizes="(max-width: 899px) 35vw, 16vw"
+            src="/images/iasmin/garden-portrait.jpg"
+          />
+        </figure>
+      </div>
+      <div className={styles.aboutCopy}>
+        <p className={styles.sectionKicker}>Conheça Iasmin</p>
+        <h2 id="about-title">Um cuidado que olha para a sua história inteira.</h2>
+        <p>
+          Sou Iasmin Portugal, psicóloga clínica. No atendimento on-line,
+          trabalho com adolescentes e adultos a partir da Análise do
+          Comportamento.
+        </p>
+        <p>
+          Meu olhar parte da sua realidade, das relações que você vive e dos
+          caminhos que já encontrou. A psicoterapia pode ser um lugar para
+          construir escolhas possíveis, respeitando o seu tempo.
+        </p>
+        <dl className={styles.credentials}>
+          <div>
+            <dt>Atendimento</dt>
+            <dd>On-line para todo o Brasil</dd>
+          </div>
+          <div>
+            <dt>Temas de escuta</dt>
+            <dd>Ansiedade, autoestima e aceitação</dd>
+          </div>
+          <div>
+            <dt>Formação em andamento</dt>
+            <dd>Pós-graduação em Neuropsicologia</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+  )
+}
+
+const carePillars = [
+  {
+    number: '01',
+    title: 'Compreender seus contextos',
+    copy: 'Olhar para o que acontece ao redor, para as relações e para os aprendizados que fazem parte da sua experiência.',
+  },
+  {
+    number: '02',
+    title: 'Construir caminhos possíveis',
+    copy: 'Explorar alternativas que façam sentido para a vida real, sem fórmulas prontas e sem promessas vazias.',
+  },
+  {
+    number: '03',
+    title: 'Respeitar o seu ritmo',
+    copy: 'Criar um espaço em que você possa se aproximar de si com mais cuidado e autonomia.',
+  },
+]
+
+function CarePillarsSection() {
+  return (
+    <section className={styles.care} id="como-funciona" data-care-section aria-labelledby="care-title">
+      <div className={styles.careIntro}>
+        <p className={styles.sectionKicker}>Uma escuta situada</p>
+        <h2 id="care-title">Cuidar também é entender o que acontece antes, durante e depois.</h2>
+        <p>
+          A Análise do Comportamento parte da ideia de que cada pessoa tem uma
+          trajetória e um contexto. Na terapia, isso ajuda a criar caminhos
+          mais possíveis para a sua vida.
+        </p>
+      </div>
+      <div className={styles.carePath}>
+        <ContextTrail className={styles.careTrail} />
+        <ol className={styles.carePillars}>
+          {carePillars.map((pillar) => (
+            <li key={pillar.number} className={styles.carePillar}>
+              <span className={styles.pillarNumber}>{pillar.number}</span>
+              <div>
+                <h3>{pillar.title}</h3>
+                <p>{pillar.copy}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  )
+}
+
+function JourneyTeaserSection() {
+  return (
+    <section className={styles.journeyTeaser} aria-labelledby="journey-title">
+      <div>
+        <p className={styles.sectionKicker}>Um primeiro passo possível</p>
+        <h2 id="journey-title">Uma pausa guiada para olhar para você.</h2>
+      </div>
+      <div className={styles.journeySurface}>
+        <span className={styles.journeyCount}>10 perguntas</span>
+        <p>
+          O percurso convida você a observar algumas situações do cotidiano e
+          recebe uma devolutiva de reflexão ao final.
+        </p>
+        <p className={styles.boundaryCopy}>
+          O percurso não é uma avaliação psicológica e não substitui a
+          psicoterapia.
+        </p>
+        <Link className={styles.primaryAction} href="/percurso">
+          Iniciar meu percurso de autoconhecimento
+        </Link>
+      </div>
+    </section>
+  )
+}
+
+const faqItems = [
+  {
+    question: 'Como funciona a psicoterapia on-line?',
+    answer: 'As sessões acontecem por videochamada, em um ambiente reservado. No primeiro contato, você pode tirar dúvidas sobre disponibilidade, frequência e como começar.',
+  },
+  {
+    question: 'Iasmin atende adolescentes e adultos?',
+    answer: 'Sim. Iasmin realiza atendimento psicológico on-line para adolescentes e adultos em todo o Brasil.',
+  },
+  {
+    question: 'O que é o percurso de autoconhecimento?',
+    answer: 'É uma experiência breve de reflexão com dez perguntas. Ele não faz diagnóstico e não substitui um atendimento psicológico.',
+  },
+  {
+    question: 'E se eu estiver em uma situação de urgência?',
+    answer: 'Este site não oferece atendimento de urgência. Em risco imediato, procure o SAMU pelo 192 ou o CVV pelo 188.',
+  },
+]
+
+function FaqSection() {
+  return (
+    <section className={styles.faq} aria-labelledby="faq-title">
+      <div>
+        <p className={styles.sectionKicker}>Perguntas frequentes</p>
+        <h2 id="faq-title">Talvez você queira saber.</h2>
+      </div>
+      <div className={styles.faqList}>
+        {faqItems.map((item) => (
+          <details key={item.question}>
+            <summary>{item.question}</summary>
+            <p>{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function ClosingSection() {
+  const scheduleHref = getWhatsAppHref()
+
+  return (
+    <section className={styles.closing} id="agendar" aria-labelledby="closing-title">
+      <p className={styles.sectionKicker}>Quando fizer sentido</p>
+      <h2 id="closing-title">Você não precisa ter tudo resolvido para começar.</h2>
+      <p>
+        Podemos conversar sobre o que você está vivendo e entender, com calma,
+        se este é um bom momento para iniciar a psicoterapia.
+      </p>
+      <div className={styles.actions}>
+        <a className={styles.primaryAction} href={scheduleHref}>
+          Agendar uma sessão
+        </a>
+        <Link className={styles.secondaryAction} href="/percurso">
+          Iniciar meu percurso de autoconhecimento
+        </Link>
+      </div>
+    </section>
+  )
+}
+
+function SiteFooter() {
+  return (
+    <footer className={styles.footer}>
+      <div className={styles.footerTop}>
+        <BrandMark />
+        <p>
+          Iasmin Portugal de Souza Costa · Psicóloga Clínica · CRP 03/33160
+        </p>
+      </div>
+      <div className={styles.footerLinks}>
+        <a href="#conheca-iasmin">Conheça Iasmin</a>
+        <a href="#como-funciona">Como funciona</a>
+        <Link href="/percurso">Percurso</Link>
+        <Link href="/privacidade">Privacidade</Link>
+      </div>
+      <p className={styles.emergencyNotice}>
+        Este site não é um canal de emergência. Em risco imediato, ligue 192
+        para o SAMU ou 188 para o CVV.
+      </p>
+      <p className={styles.copyright}>© {new Date().getFullYear()} Iasmin Portugal. Todos os direitos reservados.</p>
+    </footer>
+  )
+}
 
 export default function LandingPage() {
   return (
-    <main className={styles.page}>
-      <section className={styles.hero} aria-labelledby="hero-title">
-        <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>Psicologia clínica on-line</p>
-          <h1 id="hero-title">
-            O cuidado que faz sentido começa no seu contexto.
-          </h1>
-          <p className={styles.intro}>
-            Um espaço de escuta para adolescentes e adultos que desejam olhar
-            para a ansiedade, a autoestima e a aceitação com mais presença.
-          </p>
-          <div className={styles.actions}>
-            <a className={styles.primaryAction} href="#agendar">
-              Agendar uma sessão
-            </a>
-            <a className={styles.secondaryAction} href="/percurso">
-              Iniciar meu percurso de autoconhecimento
-            </a>
-          </div>
-        </div>
-
-        <figure className={styles.heroPortrait}>
-          <Image
-            alt="Iasmin Portugal em atendimento"
-            fill
-            priority
-            sizes="(max-width: 899px) 100vw, 46vw"
-            src="/images/iasmin/hero-terracotta.jpg"
-          />
-          <figcaption>Psicóloga clínica · Análise do Comportamento</figcaption>
-        </figure>
-      </section>
-    </main>
+    <div className={styles.page}>
+      <SiteHeader />
+      <main>
+        <HeroSection />
+        <RecognitionSection />
+        <AboutIasminSection />
+        <CarePillarsSection />
+        <JourneyTeaserSection />
+        <FaqSection />
+        <ClosingSection />
+      </main>
+      <SiteFooter />
+    </div>
   )
 }

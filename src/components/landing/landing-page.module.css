@@ -3,6 +3,94 @@
   overflow: clip;
 }
 
+.siteHeader {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  width: min(100% - 2.5rem, 77.5rem);
+  margin: 0 auto;
+  padding: 1.5rem 0;
+}
+
+.brandLink {
+  display: inline-flex;
+  width: fit-content;
+}
+
+.brandMark {
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 0.25rem;
+  color: var(--espresso);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: -0.065em;
+  line-height: 0.8;
+}
+
+.brandMark small {
+  grid-column: 1 / -1;
+  margin-top: 0.5rem;
+  color: var(--terracotta);
+  font-size: 0.47rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.heroCopy > .brandMark {
+  display: none;
+}
+
+.navigation,
+.footerLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.navigation a,
+.headerAction,
+.footerLinks a {
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.navigation a {
+  color: color-mix(in srgb, var(--espresso) 74%, transparent);
+}
+
+.navigation a:hover,
+.navigation a:focus-visible,
+.footerLinks a:hover,
+.footerLinks a:focus-visible {
+  color: var(--terracotta);
+}
+
+.headerAction {
+  justify-self: end;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--espresso) 30%, transparent);
+  border-radius: 100vmax;
+}
+
+.headerAction:hover,
+.headerAction:focus-visible {
+  border-color: var(--terracotta);
+  background: var(--terracotta);
+  color: var(--cream);
+}
+
 .hero {
   display: grid;
   align-items: center;
@@ -10,46 +98,56 @@
   width: min(100% - 2.5rem, 77.5rem);
   min-height: 100svh;
   margin: 0 auto;
-  padding: clamp(2rem, 4vw, 4rem) 0;
+  padding: clamp(7.5rem, 12vw, 10rem) 0 clamp(3rem, 5vw, 5rem);
 }
 
 .heroCopy {
   max-width: 39rem;
 }
 
-.eyebrow {
+.eyebrow,
+.sectionKicker {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   margin: 0 0 1.5rem;
   color: var(--terracotta);
-  font-size: 0.72rem;
+  font-size: 0.69rem;
   font-weight: 800;
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
-.eyebrow::before {
+.eyebrow::before,
+.sectionKicker::before {
   width: 2.75rem;
   height: 1px;
   background: currentColor;
   content: '';
 }
 
-.hero h1 {
-  max-width: 12ch;
+.hero h1,
+.recognition h2,
+.about h2,
+.care h2,
+.journeyTeaser h2,
+.faq h2,
+.closing h2 {
   margin: 0;
-  color: var(--espresso);
-  font-size: clamp(2.75rem, 7vw, 6.1rem);
   font-weight: 800;
   letter-spacing: -0.075em;
-  line-height: 0.95;
+  line-height: 0.96;
+}
+
+.hero h1 {
+  max-width: 11ch;
+  font-size: clamp(2.75rem, 7vw, 6.1rem);
 }
 
 .intro {
   max-width: 34rem;
   margin: 2rem 0 0;
-  color: color-mix(in srgb, var(--espresso) 75%, transparent);
+  color: color-mix(in srgb, var(--espresso) 72%, transparent);
   font-size: clamp(1rem, 1.6vw, 1.16rem);
   line-height: 1.7;
 }
@@ -69,12 +167,12 @@
   padding: 0.95rem 1.35rem;
   border: 1px solid var(--terracotta);
   border-radius: 0.35rem 1.25rem 0.35rem 1.25rem;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-align: center;
   text-transform: uppercase;
-  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
 }
 
 .primaryAction {
@@ -88,8 +186,8 @@
 
 .primaryAction:hover,
 .primaryAction:focus-visible {
-  background: var(--espresso);
   border-color: var(--espresso);
+  background: var(--espresso);
   transform: translateY(-2px);
 }
 
@@ -100,9 +198,37 @@
 }
 
 .primaryAction:focus-visible,
-.secondaryAction:focus-visible {
+.secondaryAction:focus-visible,
+.headerAction:focus-visible,
+.brandLink:focus-visible {
   outline: 3px solid var(--olive);
   outline-offset: 4px;
+}
+
+.trailLabels {
+  display: flex;
+  gap: 1.25rem;
+  padding: 0;
+  margin: 2rem 0 0;
+  color: var(--olive);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  list-style: none;
+  text-transform: uppercase;
+}
+
+.trailLabels li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.trailLabels li:not(:last-child)::after {
+  width: 1.3rem;
+  height: 1px;
+  background: currentColor;
+  content: '';
 }
 
 .heroPortrait {
@@ -125,6 +251,7 @@
 
 .heroPortrait figcaption {
   position: absolute;
+  z-index: 1;
   right: 0.75rem;
   bottom: 0.75rem;
   left: 0.75rem;
@@ -132,11 +259,466 @@
   border-radius: 0.35rem;
   background: color-mix(in srgb, var(--espresso) 76%, transparent);
   color: var(--cream);
-  font-size: 0.66rem;
+  font-size: 0.61rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-align: center;
   text-transform: uppercase;
+}
+
+.heroTrail {
+  position: absolute;
+  z-index: 1;
+  right: -30%;
+  bottom: 11%;
+  width: 110%;
+  color: var(--sand);
+  opacity: 0.9;
+  transform: rotate(-18deg);
+}
+
+.recognition,
+.about,
+.care,
+.journeyTeaser,
+.faq,
+.closing,
+.footer {
+  padding-right: max(1.25rem, calc((100vw - 77.5rem) / 2));
+  padding-left: max(1.25rem, calc((100vw - 77.5rem) / 2));
+}
+
+.recognition {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(2.5rem, 7vw, 9rem);
+  padding-top: clamp(5rem, 10vw, 9rem);
+  padding-bottom: clamp(5rem, 10vw, 9rem);
+  background: var(--terracotta);
+  color: var(--cream);
+}
+
+.recognition .sectionKicker {
+  color: var(--sand);
+}
+
+.recognition h2 {
+  max-width: 10ch;
+  font-size: clamp(2.3rem, 4.3vw, 4.35rem);
+}
+
+.recognitionList {
+  display: grid;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid color-mix(in srgb, var(--cream) 46%, transparent);
+  list-style: none;
+}
+
+.recognitionList li {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: 1.25rem;
+  padding: 1.35rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--cream) 46%, transparent);
+}
+
+.recognitionList span,
+.pillarNumber,
+.journeyCount {
+  color: var(--sand);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.recognitionList p {
+  max-width: 32rem;
+  margin: 0;
+  font-size: clamp(1.05rem, 1.65vw, 1.35rem);
+  line-height: 1.55;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(3rem, 9vw, 10rem);
+  padding-top: clamp(5.5rem, 12vw, 11rem);
+  padding-bottom: clamp(5.5rem, 12vw, 11rem);
+}
+
+.aboutPhotos {
+  position: relative;
+  min-height: 36rem;
+}
+
+.aboutPrimaryPhoto,
+.aboutSecondaryPhoto {
+  position: absolute;
+  margin: 0;
+  overflow: hidden;
+}
+
+.aboutPrimaryPhoto {
+  inset: 0 10% 0 0;
+  border-radius: 1.5rem 1.5rem 8rem 1.5rem;
+  background: var(--sand);
+}
+
+.aboutSecondaryPhoto {
+  right: 0;
+  bottom: 8%;
+  width: 45%;
+  aspect-ratio: 0.8;
+  border: 0.75rem solid var(--ivory);
+  border-radius: 7rem 7rem 1rem 1rem;
+  background: var(--olive);
+}
+
+.aboutPrimaryPhoto img,
+.aboutSecondaryPhoto img {
+  object-fit: cover;
+}
+
+.aboutPrimaryPhoto img {
+  object-position: 49% center;
+}
+
+.aboutSecondaryPhoto img {
+  object-position: 54% center;
+}
+
+.aboutCopy {
+  max-width: 36rem;
+}
+
+.about h2,
+.care h2,
+.journeyTeaser h2,
+.faq h2,
+.closing h2 {
+  font-size: clamp(2.3rem, 4.7vw, 4.85rem);
+}
+
+.aboutCopy > p:not(.sectionKicker),
+.careIntro > p:not(.sectionKicker),
+.journeySurface > p,
+.closing > p:not(.sectionKicker) {
+  color: color-mix(in srgb, var(--espresso) 74%, transparent);
+  font-size: 1rem;
+  line-height: 1.78;
+}
+
+.aboutCopy > p:not(.sectionKicker):first-of-type {
+  margin-top: 2rem;
+}
+
+.credentials {
+  display: grid;
+  gap: 1rem;
+  margin: 2.25rem 0 0;
+}
+
+.credentials div {
+  padding: 0.95rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--espresso) 17%, transparent);
+}
+
+.credentials dt {
+  margin-bottom: 0.35rem;
+  color: var(--terracotta);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.credentials dd {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.care {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  gap: clamp(3rem, 11vw, 13rem);
+  min-height: 47rem;
+  padding-top: clamp(5.5rem, 10vw, 9rem);
+  padding-bottom: clamp(5.5rem, 10vw, 9rem);
+  background: var(--espresso);
+  color: var(--cream);
+}
+
+.care .sectionKicker {
+  color: var(--sand);
+}
+
+.careIntro {
+  align-self: start;
+}
+
+.careIntro > p:not(.sectionKicker) {
+  color: color-mix(in srgb, var(--cream) 70%, transparent);
+}
+
+.carePath {
+  position: relative;
+  align-self: center;
+  min-height: 26rem;
+}
+
+.careTrail {
+  position: absolute;
+  top: 7%;
+  left: -8%;
+  width: 115%;
+  color: var(--terracotta);
+  opacity: 0.86;
+}
+
+.carePillars {
+  position: relative;
+  display: grid;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.carePillar {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  gap: 1.25rem;
+  padding: 0 0 0 18%;
+}
+
+.carePillar:nth-child(2) {
+  padding-left: 4%;
+}
+
+.carePillar h3 {
+  margin: 0;
+  color: var(--sand);
+  font-size: clamp(1.45rem, 2.4vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 1.05;
+}
+
+.carePillar p {
+  max-width: 31rem;
+  margin: 0.8rem 0 0;
+  color: color-mix(in srgb, var(--cream) 68%, transparent);
+  font-size: 0.96rem;
+  line-height: 1.72;
+}
+
+.journeyTeaser {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+  align-items: end;
+  gap: clamp(3rem, 10vw, 11rem);
+  padding-top: clamp(5.5rem, 11vw, 10rem);
+  padding-bottom: clamp(5.5rem, 11vw, 10rem);
+}
+
+.journeyTeaser h2 {
+  max-width: 9ch;
+}
+
+.journeySurface {
+  padding: clamp(2rem, 5vw, 4.5rem);
+  border: 1px solid color-mix(in srgb, var(--espresso) 18%, transparent);
+  border-radius: 1.5rem 1.5rem 6rem 1.5rem;
+  background: var(--cream);
+}
+
+.journeyCount {
+  display: block;
+  width: fit-content;
+  margin-bottom: 2rem;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid color-mix(in srgb, var(--terracotta) 42%, transparent);
+  border-radius: 100vmax;
+  color: var(--terracotta);
+  text-transform: uppercase;
+}
+
+.journeySurface p {
+  max-width: 35rem;
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.journeySurface .boundaryCopy {
+  margin-top: 1rem;
+  color: var(--olive);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.journeySurface .primaryAction {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.faq {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  gap: clamp(3rem, 10vw, 11rem);
+  padding-top: clamp(5.5rem, 10vw, 9rem);
+  padding-bottom: clamp(5.5rem, 10vw, 9rem);
+  background: var(--sand);
+}
+
+.faq h2 {
+  max-width: 7ch;
+}
+
+.faqList {
+  border-top: 1px solid color-mix(in srgb, var(--espresso) 21%, transparent);
+}
+
+.faqList details {
+  border-bottom: 1px solid color-mix(in srgb, var(--espresso) 21%, transparent);
+}
+
+.faqList summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.4rem 0;
+  color: var(--espresso);
+  cursor: pointer;
+  font-size: clamp(1rem, 1.7vw, 1.25rem);
+  font-weight: 700;
+  list-style: none;
+}
+
+.faqList summary::-webkit-details-marker {
+  display: none;
+}
+
+.faqList summary::after {
+  flex: 0 0 auto;
+  color: var(--terracotta);
+  content: '+';
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.faqList details[open] summary::after {
+  content: '−';
+}
+
+.faqList p {
+  max-width: 45rem;
+  margin: 0;
+  padding: 0 2.5rem 1.5rem 0;
+  color: color-mix(in srgb, var(--espresso) 75%, transparent);
+  line-height: 1.7;
+}
+
+.closing {
+  display: grid;
+  justify-items: center;
+  padding-top: clamp(6rem, 13vw, 12rem);
+  padding-bottom: clamp(6rem, 13vw, 12rem);
+  background: var(--olive);
+  color: var(--cream);
+  text-align: center;
+}
+
+.closing .sectionKicker {
+  color: var(--sand);
+}
+
+.closing h2 {
+  max-width: 14ch;
+}
+
+.closing > p:not(.sectionKicker) {
+  max-width: 42rem;
+  color: color-mix(in srgb, var(--cream) 84%, transparent);
+}
+
+.closing .actions {
+  width: min(100%, 44rem);
+}
+
+.closing .primaryAction {
+  border-color: var(--sand);
+  background: var(--sand);
+  color: var(--espresso);
+}
+
+.closing .primaryAction:hover,
+.closing .primaryAction:focus-visible {
+  border-color: var(--cream);
+  background: var(--cream);
+}
+
+.closing .secondaryAction {
+  border-color: color-mix(in srgb, var(--cream) 50%, transparent);
+  color: var(--cream);
+}
+
+.closing .secondaryAction:hover,
+.closing .secondaryAction:focus-visible {
+  background: color-mix(in srgb, var(--cream) 15%, transparent);
+}
+
+.footer {
+  padding-top: 3.5rem;
+  padding-bottom: 2rem;
+  background: var(--espresso);
+  color: var(--cream);
+}
+
+.footer .brandMark {
+  color: var(--cream);
+}
+
+.footerTop {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: end;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--cream) 18%, transparent);
+}
+
+.footerTop p,
+.emergencyNotice,
+.copyright {
+  max-width: 35rem;
+  margin: 0;
+  color: color-mix(in srgb, var(--cream) 68%, transparent);
+  font-size: 0.76rem;
+  line-height: 1.65;
+}
+
+.footerLinks {
+  justify-content: flex-start;
+  margin: 1.5rem 0;
+}
+
+.footerLinks a {
+  color: color-mix(in srgb, var(--cream) 78%, transparent);
+}
+
+.emergencyNotice {
+  max-width: 46rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--cream) 18%, transparent);
+}
+
+.copyright {
+  margin-top: 1.5rem;
+  font-size: 0.66rem;
 }
 
 @media (min-width: 56.25rem) {
@@ -146,16 +728,118 @@
 
   .actions {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    max-width: 39rem;
+    max-width: 40rem;
+  }
+}
+
+@media (max-width: 56.1875rem) {
+  .siteHeader {
+    grid-template-columns: 1fr auto;
+  }
+
+  .navigation {
+    display: none;
+  }
+
+  .hero,
+  .recognition,
+  .about,
+  .care,
+  .journeyTeaser,
+  .faq {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .heroPortrait {
+    order: 2;
+  }
+
+  .recognition h2,
+  .journeyTeaser h2,
+  .faq h2 {
+    max-width: 13ch;
+  }
+
+  .aboutPhotos {
+    min-height: min(125vw, 40rem);
+  }
+
+  .carePillar {
+    padding-left: 15%;
+  }
+
+  .carePillar:nth-child(2) {
+    padding-left: 0;
   }
 }
 
 @media (max-width: 35rem) {
+  .siteHeader,
   .hero {
     width: min(100% - 1.5rem, 77.5rem);
   }
 
+  .siteHeader {
+    padding-top: 1.2rem;
+  }
+
+  .headerAction {
+    padding: 0.55rem 0.65rem;
+    font-size: 0.58rem;
+  }
+
+  .hero {
+    padding-top: 7rem;
+  }
+
+  .heroCopy > .brandMark {
+    display: grid;
+    margin-bottom: 2.5rem;
+  }
+
+  .siteHeader .brandLink {
+    display: none;
+  }
+
   .heroPortrait {
     box-shadow: 0.85rem 0.85rem 0 var(--sand);
+  }
+
+  .trailLabels {
+    gap: 0.75rem;
+    font-size: 0.58rem;
+  }
+
+  .trailLabels li:not(:last-child)::after {
+    width: 0.6rem;
+  }
+
+  .recognitionList li,
+  .carePillar {
+    grid-template-columns: 2.3rem 1fr;
+  }
+
+  .aboutPhotos {
+    min-height: 28rem;
+  }
+
+  .aboutPrimaryPhoto {
+    inset-right: 7%;
+  }
+
+  .aboutSecondaryPhoto {
+    width: 48%;
+  }
+
+  .journeySurface {
+    border-radius: 1rem 1rem 4.2rem 1rem;
+  }
+
+  .footerTop {
+    align-items: start;
   }
 }

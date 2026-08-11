@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, within } from '@testing-library/react'
 import { expect, it } from 'vitest'
 
 import LandingPage from '@/components/landing/landing-page'
@@ -6,12 +6,32 @@ import LandingPage from '@/components/landing/landing-page'
 it('shows both first-step actions in the hero', () => {
   render(<LandingPage />)
 
-  expect(screen.getByRole('link', { name: 'Agendar uma sessão' })).toBeVisible()
+  const hero = screen.getByRole('region', {
+    name: 'O cuidado que faz sentido começa no seu contexto.',
+  })
+
+  expect(within(hero).getByRole('link', { name: 'Agendar uma sessão' })).toBeVisible()
   expect(
-    screen.getByRole('link', { name: 'Iniciar meu percurso de autoconhecimento' }),
+    within(hero).getByRole('link', {
+      name: 'Iniciar meu percurso de autoconhecimento',
+    }),
   ).toBeVisible()
-  expect(screen.getByAltText('Iasmin Portugal em atendimento')).toHaveAttribute(
+  expect(within(hero).getByAltText('Iasmin Portugal em atendimento')).toHaveAttribute(
     'src',
     expect.stringContaining('hero-terracotta.jpg'),
   )
+  expect(
+    within(screen.getByRole('navigation')).getByRole('link', {
+      name: 'Conheça Iasmin',
+    }),
+  ).toBeVisible()
+  expect(
+    screen.getByText(
+      'Iasmin Portugal de Souza Costa · Psicóloga Clínica · CRP 03/33160',
+    ),
+  ).toBeVisible()
+  expect(
+    screen.getByText(/O percurso não é uma avaliação psicológica/i),
+  ).toBeVisible()
+  expect(screen.queryByText(/depoimento/i)).not.toBeInTheDocument()
 })
