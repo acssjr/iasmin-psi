@@ -1,0 +1,37 @@
+import Link from 'next/link'
+
+import { reflectionContent } from '@/lib/content'
+import type { ReflectionTheme } from '@/lib/types'
+
+import styles from './journey.module.css'
+
+export function JourneyResult({
+  scheduleHref,
+  theme,
+}: {
+  scheduleHref: string
+  theme: ReflectionTheme
+}) {
+  const reflection = reflectionContent[theme]
+
+  return (
+    <section className={styles.result} aria-labelledby="result-title">
+      <p className={styles.eyebrow}>O que este percurso pode te mostrar</p>
+      <h1 id="result-title">{reflection.title}</h1>
+      <p>{reflection.body}</p>
+      <p>{reflection.invitation}</p>
+      <p className={styles.boundaryNote}>
+        Esta é uma devolutiva de reflexão. Ela não é diagnóstico nem avaliação
+        profissional.
+      </p>
+      <div className={styles.resultActions}>
+        <a className={styles.primaryButton} href={scheduleHref}>
+          Conversar com Iasmin pelo WhatsApp
+        </a>
+        <Link className={styles.secondaryButton} href="/">
+          Voltar para a página
+        </Link>
+      </div>
+    </section>
+  )
+}

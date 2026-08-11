@@ -1,0 +1,211 @@
+'use client'
+
+import type { ChangeEvent } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
+import { useGSAP } from '@gsap/react'
+import { gsap } from 'gsap'
+
+import { journeyQuestions } from '@/lib/content'
+import { getReflectionTheme } from '@/lib/journey'
+import type { ReflectionTheme } from '@/lib/types'
+
+import { AgeGate, ContactForm, MinorRoute, type ContactDetails } from './journey-intro'
+import { JourneyQuestion } from './journey-question'
+import { JourneyResult } from './journey-result'
+import styles from './journey.module.css'
+
+if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
+  gsap.registerPlugin(useGSAP)
+}
+
+type JourneyView =
+  | { kind: 'age-gate' }
+  | { kind: 'contact-form' }
+  | { kind: 'question'; index: number; answers: ReflectionTheme[] }
+  | { kind: 'submitting'; answers: ReflectionTheme[] }
+  | { kind: 'result'; theme: ReflectionTheme }
+  | { kind: 'minor-route' }
+  | { kind: 'submission-error'; answers: ReflectionTheme[] }
+
+const initialContact: ContactDetails = {
+  contactPermission: false,
+  email: '',
+  name: '',
+  purposeConsent: false,
+  whatsapp: '',
+}
+
+const genericWhatsAppMessage = 'Olá, Iasmin. Gostaria de conversar sobre psicoterapia.'
+
+function getWhatsAppHref() {
+  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, '')
+
+  return number
+    ? `https://wa.me/${number}?text=${encodeURIComponent(genericWhatsAppMessage)}`
+    : '#'
+}
+
+export function JourneyShell() {
+  const [contact, setContact] = useState<ContactDetails>(initialContact)
+  const [selectedOptionIds, setSelectedOptionIds] = useState<string[]>([])
+  const [view, setView] = useState<JourneyView>({ kind: 'age-gate' })
+  const scope = useRef<HTMLElement>(null)
+  const questionIndex = view.kind === 'question' ? view.index : -1
+  const scheduleHref = getWhatsAppHref()
+
+  useGSAP(
+    () => {
+      if (
+        !scope.current ||
+        typeof window === 'undefined' ||
+        !window.matchMedia ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ) {
+        return
+      }
+
+      gsap.fromTo(
+        '[data-journey-step]',
+        { autoAlpha: 0, x: 16 },
+        { autoAlpha: 1, duration: 0.36, ease: 'power2.out', x: 0 },
+      )
+    },
+    {
+      dependencies: [view.kind, questionIndex],
+      revertOnUpdate: true,
+      scope,
+    },
+  )
+
+  useEffect(() => {
+    if (view.kind === 'submitting') {
+      setView({ kind: 'result', theme: getReflectionTheme(view.answers) })
+    }
+  }, [view])
+
+  const handleContactChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { checked, name, type, value } = event.currentTarget
+    setContact((current) => ({
+      ...current,
+      [name]: type === 'checkbox' ? checked : value,
+    }))
+  }
+
+  const selectTheme = (theme: ReflectionTheme, optionId: string) => {
+    setView((current) => {
+      if (current.kind !== 'question') {
+        return current
+      }
+
+      const answers = [...current.answers]
+      answers[current.index] = theme
+
+      return { ...current, answers }
+    })
+
+    setSelectedOptionIds((current) => {
+      const optionIds = [...current]
+      optionIds[view.kind === 'question' ? view.index : 0] = optionId
+      return optionIds
+    })
+  }
+
+  const continueQuestion = () => {
+    if (view.kind !== 'question' || view.answers[view.index] === undefined) {
+      return
+    }
+
+    if (view.index === journeyQuestions.length - 1) {
+      setView({ kind: 'submitting', answers: view.answers })
+      return
+    }
+
+    setView({ ...view, index: view.index + 1 })
+  }
+
+  const goBack = () => {
+    if (view.kind !== 'question') {
+      return
+    }
+
+    if (view.index === 0) {
+      setSelectedOptionIds([])
+      setView({ kind: 'contact-form' })
+      return
+    }
+
+    setView({ ...view, index: view.index - 1 })
+  }
+
+  let content: React.ReactNode
+
+  if (view.kind === 'age-gate') {
+    content = (
+      <AgeGate
+        onAdult={() => setView({ kind: 'contact-form' })}
+        onMinor={() => setView({ kind: 'minor-route' })}
+      />
+    )
+  } else if (view.kind === 'contact-form') {
+    content = (
+      <ContactForm
+        contact={contact}
+        onChange={handleContactChange}
+        onContinue={() => {
+          setSelectedOptionIds([])
+          setView({ kind: 'question', index: 0, answers: [] })
+        }}
+      />
+    )
+  } else if (view.kind === 'minor-route') {
+    content = <MinorRoute scheduleHref={scheduleHref} />
+  } else if (view.kind === 'question') {
+    content = (
+      <JourneyQuestion
+        answers={view.answers}
+        onBack={goBack}
+        onSelect={selectTheme}
+        onSubmit={continueQuestion}
+        question={journeyQuestions[view.index]}
+        selectedOptionId={selectedOptionIds[view.index]}
+        total={journeyQuestions.length}
+      />
+    )
+  } else if (view.kind === 'result') {
+    content = <JourneyResult scheduleHref={scheduleHref} theme={view.theme} />
+  } else if (view.kind === 'submission-error') {
+    content = (
+      <div className={styles.intro}>
+        <p className={styles.eyebrow}>Não foi possível concluir agora</p>
+        <h1>Suas respostas continuam neste dispositivo enquanto esta página estiver aberta.</h1>
+        <p>Tente novamente em alguns instantes ou converse com Iasmin pelo WhatsApp.</p>
+        <button
+          className={styles.primaryButton}
+          type="button"
+          onClick={() => setView({ kind: 'submitting', answers: view.answers })}
+        >
+          Tentar novamente
+        </button>
+      </div>
+    )
+  } else {
+    content = (
+      <div className={styles.intro}>
+        <p>Preparando sua devolutiva.</p>
+      </div>
+    )
+  }
+
+  return (
+    <main className={styles.page} ref={scope}>
+      <header className={styles.header}>
+        <Link href="/">Iasmin Portugal</Link>
+        <span>Psicologia clínica</span>
+      </header>
+      <section className={styles.shell} data-journey-step>
+        {content}
+      </section>
+    </main>
+  )
+}

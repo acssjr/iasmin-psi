@@ -1,0 +1,369 @@
+.page {
+  min-height: 100svh;
+  padding: 1.25rem;
+  background: var(--ivory);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: min(100%, 76rem);
+  margin: 0 auto;
+  color: var(--espresso);
+}
+
+.header a,
+.header span {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.header a {
+  letter-spacing: -0.045em;
+  text-transform: none;
+}
+
+.header span {
+  color: var(--terracotta);
+}
+
+.shell {
+  display: grid;
+  align-items: center;
+  width: min(100%, 48rem);
+  min-height: calc(100svh - 4rem);
+  margin: 0 auto;
+  padding: clamp(2.5rem, 7vw, 5.5rem) 0;
+}
+
+.intro,
+.contactForm,
+.question,
+.result {
+  width: 100%;
+  padding: clamp(1.5rem, 5vw, 3.5rem);
+  border: 1px solid color-mix(in srgb, var(--espresso) 18%, transparent);
+  border-radius: 1.5rem 1.5rem 6rem 1.5rem;
+  background: var(--cream);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0 0 1.5rem;
+  color: var(--terracotta);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+  content: '';
+}
+
+.intro h1,
+.contactForm h1,
+.question h1,
+.result h1 {
+  max-width: 15ch;
+  margin: 0;
+  color: var(--espresso);
+  font-size: clamp(2rem, 5.4vw, 4.25rem);
+  font-weight: 800;
+  letter-spacing: -0.075em;
+  line-height: 0.98;
+}
+
+.intro > p:not(.eyebrow),
+.contactForm > div > p:not(.eyebrow),
+.result > p:not(.eyebrow) {
+  max-width: 42rem;
+  color: color-mix(in srgb, var(--espresso) 74%, transparent);
+  line-height: 1.72;
+}
+
+.ageActions,
+.resultActions {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.primaryButton,
+.secondaryButton,
+.backButton {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 3.5rem;
+  padding: 0.9rem 1.2rem;
+  border: 1px solid var(--terracotta);
+  border-radius: 0.4rem 1.2rem 0.4rem 1.2rem;
+  cursor: pointer;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.primaryButton {
+  background: var(--terracotta);
+  color: var(--cream);
+}
+
+.secondaryButton,
+.backButton {
+  background: transparent;
+  color: var(--terracotta);
+}
+
+.primaryButton:hover,
+.primaryButton:focus-visible {
+  background: var(--espresso);
+  border-color: var(--espresso);
+  transform: translateY(-2px);
+}
+
+.secondaryButton:hover,
+.secondaryButton:focus-visible,
+.backButton:hover,
+.backButton:focus-visible {
+  background: var(--sand);
+  transform: translateY(-2px);
+}
+
+.primaryButton:focus-visible,
+.secondaryButton:focus-visible,
+.backButton:focus-visible,
+.option:focus-within {
+  outline: 3px solid var(--olive);
+  outline-offset: 4px;
+}
+
+.primaryButton:disabled {
+  border-color: color-mix(in srgb, var(--espresso) 17%, transparent);
+  background: color-mix(in srgb, var(--espresso) 17%, transparent);
+  color: color-mix(in srgb, var(--cream) 75%, transparent);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.contactForm {
+  display: grid;
+  gap: 1rem;
+}
+
+.contactForm > div {
+  margin-bottom: 1rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.field > span {
+  color: var(--terracotta);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.field input {
+  min-height: 3.6rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--espresso) 18%, transparent);
+  border-radius: 0.55rem;
+  background: var(--ivory);
+  color: var(--espresso);
+}
+
+.field input:focus {
+  outline: 3px solid color-mix(in srgb, var(--olive) 60%, transparent);
+  outline-offset: 2px;
+}
+
+.consent {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  color: color-mix(in srgb, var(--espresso) 78%, transparent);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.consent input {
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-top: 0.15rem;
+  accent-color: var(--terracotta);
+}
+
+.honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.progressHeader {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.progressHeader p {
+  margin: 0;
+  color: var(--terracotta);
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.progressHeader progress {
+  width: 100%;
+  height: 0.25rem;
+  overflow: hidden;
+  border: 0;
+  border-radius: 100vmax;
+  background: var(--sand);
+}
+
+.progressHeader progress::-webkit-progress-bar {
+  background: var(--sand);
+}
+
+.progressHeader progress::-webkit-progress-value {
+  background: var(--terracotta);
+}
+
+.progressHeader progress::-moz-progress-bar {
+  background: var(--terracotta);
+}
+
+.questionHelp {
+  margin: 1.35rem 0 2rem;
+  color: color-mix(in srgb, var(--espresso) 70%, transparent);
+}
+
+.question fieldset {
+  display: grid;
+  gap: 0.7rem;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.option {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--espresso) 18%, transparent);
+  border-radius: 0.7rem;
+  background: var(--ivory);
+  cursor: pointer;
+  transition: border-color 160ms ease, background-color 160ms ease;
+}
+
+.option:has(input:checked) {
+  border-color: var(--terracotta);
+  background: color-mix(in srgb, var(--sand) 58%, var(--cream));
+}
+
+.option input {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0;
+  accent-color: var(--terracotta);
+}
+
+.option span {
+  line-height: 1.45;
+}
+
+.questionActions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.questionActions .primaryButton {
+  min-width: 12rem;
+}
+
+.backButton {
+  min-width: 6.5rem;
+}
+
+.boundaryNote {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid color-mix(in srgb, var(--espresso) 18%, transparent);
+  color: var(--olive) !important;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (min-width: 42rem) {
+  .ageActions,
+  .resultActions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 35rem) {
+  .page {
+    padding: 0.75rem;
+  }
+
+  .header span {
+    font-size: 0.58rem;
+  }
+
+  .intro,
+  .contactForm,
+  .question,
+  .result {
+    padding: 1.35rem;
+    border-radius: 1rem 1rem 3.75rem 1rem;
+  }
+
+  .questionActions {
+    align-items: stretch;
+    flex-direction: column-reverse;
+  }
+
+  .questionActions .primaryButton,
+  .backButton {
+    width: 100%;
+  }
+}
