@@ -21,6 +21,11 @@ export function JourneyResult({
     <section className={styles.result} aria-labelledby="result-title">
       <p className={styles.eyebrow}>O que este percurso pode te mostrar</p>
       <h1 id="result-title">{reflection.title}</h1>
+      <p>
+        Obrigada por se permitir essa pausa. Suas respostas não definem você,
+        mas podem ser um convite para olhar com mais cuidado para o que está
+        vivendo.
+      </p>
       <p>{reflection.body}</p>
       <p>{reflection.invitation}</p>
       <p className={styles.boundaryNote}>

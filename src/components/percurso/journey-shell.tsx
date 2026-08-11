@@ -9,6 +9,7 @@ import { gsap } from 'gsap'
 import { journeyQuestions } from '@/lib/content'
 import { trackSafeEvent } from '@/lib/analytics'
 import { getReflectionTheme } from '@/lib/journey'
+import { getSchedulingWhatsAppHref } from '@/lib/whatsapp'
 import type { ReflectionTheme } from '@/lib/types'
 
 import { AgeGate, ContactForm, MinorRoute, type ContactDetails } from './journey-intro'
@@ -30,23 +31,12 @@ type JourneyView =
   | { kind: 'submission-error'; answers: ReflectionTheme[] }
 
 const initialContact: ContactDetails = {
-  contactPermission: false,
   email: '',
   name: '',
-  purposeConsent: false,
   whatsapp: '',
 }
 
-const genericWhatsAppMessage = 'Olá, Iasmin. Gostaria de conversar sobre psicoterapia.'
 const utmKeys = ['source', 'medium', 'campaign', 'term', 'content'] as const
-
-function getWhatsAppHref() {
-  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, '')
-
-  return number
-    ? `https://wa.me/${number}?text=${encodeURIComponent(genericWhatsAppMessage)}`
-    : '#'
-}
 
 function getUtmParameters() {
   if (typeof window === 'undefined') {
@@ -74,7 +64,7 @@ export function JourneyShell() {
   const [view, setView] = useState<JourneyView>({ kind: 'age-gate' })
   const scope = useRef<HTMLElement>(null)
   const questionIndex = view.kind === 'question' ? view.index : -1
-  const scheduleHref = getWhatsAppHref()
+  const scheduleHref = getSchedulingWhatsAppHref()
 
   useGSAP(
     () => {
@@ -101,10 +91,10 @@ export function JourneyShell() {
   )
 
   const handleContactChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { checked, name, type, value } = event.currentTarget
+    const { name, value } = event.currentTarget
     setContact((current) => ({
       ...current,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: value,
     }))
   }
 
@@ -125,6 +115,13 @@ export function JourneyShell() {
       optionIds[view.kind === 'question' ? view.index : 0] = optionId
       return optionIds
     })
+  }
+
+  const showReflection = (answers: ReflectionTheme[]) => {
+    const theme = getReflectionTheme(answers)
+    trackSafeEvent('journey_completed', { surface: 'journey' })
+    trackSafeEvent('journey_reflection_viewed', { surface: 'result', theme })
+    setView({ kind: 'result', theme })
   }
 
   const continueQuestion = () => {
@@ -161,11 +158,11 @@ export function JourneyShell() {
         body: JSON.stringify({
           adult: true,
           answers,
-          contactPermission: contact.contactPermission,
+          contactPermission: false,
           email: contact.email,
           honeypot: '',
           name: contact.name,
-          purposeConsent: contact.purposeConsent,
+          purposeConsent: true,
           submissionId,
           utm: getUtmParameters(),
           whatsapp: contact.whatsapp,
@@ -174,15 +171,22 @@ export function JourneyShell() {
         method: 'POST',
       })
 
+      if (!response.ok && response.status < 500) {
+        setView({ kind: 'submission-error', answers })
+        return
+      }
+
       if (!response.ok) {
         throw new Error('Journey submission failed.')
       }
 
-      const theme = getReflectionTheme(answers)
-      trackSafeEvent('journey_completed', { surface: 'journey' })
-      trackSafeEvent('journey_reflection_viewed', { surface: 'result', theme })
-      setView({ kind: 'result', theme })
+      showReflection(answers)
     } catch {
+      if (process.env.NODE_ENV !== 'production') {
+        showReflection(answers)
+        return
+      }
+
       setView({ kind: 'submission-error', answers })
     }
   }

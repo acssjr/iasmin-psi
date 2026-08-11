@@ -10,11 +10,6 @@ const validBody = {
     'reconexao',
     'sobrecarrega',
     'autocritica',
-    'reconexao',
-    'sobrecarrega',
-    'autocritica',
-    'reconexao',
-    'sobrecarrega',
   ],
   contactPermission: false,
   email: 'ANA@EXAMPLE.COM',
@@ -31,7 +26,7 @@ it('normalizes the contact fields from a valid adult submission', () => {
 
   expect(parsed.email).toBe('ana@example.com')
   expect(parsed.whatsapp).toBe('71999999999')
-  expect(parsed.answers).toHaveLength(10)
+  expect(parsed.answers).toHaveLength(5)
 })
 
 it('rejects a submission without required purpose consent', () => {
@@ -42,7 +37,7 @@ it('rejects a submission without required purpose consent', () => {
 
 it('rejects malformed answers, minor submissions, and populated honeypots', () => {
   expect(() =>
-    journeySubmissionSchema.parse({ ...validBody, answers: validBody.answers.slice(0, 9) }),
+    journeySubmissionSchema.parse({ ...validBody, answers: validBody.answers.slice(0, 4) }),
   ).toThrow()
   expect(() => journeySubmissionSchema.parse({ ...validBody, adult: false })).toThrow()
   expect(() => journeySubmissionSchema.parse({ ...validBody, honeypot: 'bot' })).toThrow()

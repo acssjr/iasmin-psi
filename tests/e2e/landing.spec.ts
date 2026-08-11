@@ -19,6 +19,13 @@ for (const viewport of [
     await expect(
       hero.getByRole('link', { name: 'Iniciar meu percurso de autoconhecimento' }),
     ).toBeVisible()
+
+    if (viewport.name === 'mobile') {
+      const headerAction = page.getByRole('link', { name: 'Agendar sessão' })
+      const bounds = await headerAction.boundingBox()
+      expect(bounds?.height).toBeGreaterThanOrEqual(44)
+    }
+
     await expect(
       page.getByText(
         'Iasmin Portugal de Souza Costa · Psicóloga Clínica · CRP 03/33160',

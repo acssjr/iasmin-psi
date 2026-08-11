@@ -796,17 +796,20 @@
   }
 
   .headerAction {
-    padding: 0.55rem 0.65rem;
-    font-size: 0.58rem;
+    min-height: 2.75rem;
+    padding: 0.55rem 0.8rem;
+    font-size: 0.62rem;
   }
 
   .hero {
-    padding-top: 7rem;
+    gap: 1.75rem;
+    padding-top: 5.75rem;
+    padding-bottom: 2rem;
   }
 
   .heroCopy > .brandMark {
     display: grid;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.4rem;
   }
 
   .siteHeader .brandLink {
@@ -814,7 +817,45 @@
   }
 
   .heroPortrait {
+    width: min(100%, 25rem);
+    aspect-ratio: 1.08;
+    max-height: 18rem;
+    border-radius: 7rem 7rem 1.5rem 1.5rem;
     box-shadow: 0.85rem 0.85rem 0 var(--sand);
+  }
+
+  .heroPortrait img {
+    object-position: 59% 33%;
+  }
+
+  .heroPortrait figcaption {
+    display: none;
+  }
+
+  .hero h1 {
+    max-width: 11.5ch;
+    font-size: clamp(2.3rem, 11vw, 3rem);
+  }
+
+  .intro {
+    margin-top: 1.25rem;
+    font-size: 0.9rem;
+    line-height: 1.58;
+  }
+
+  .actions {
+    gap: 0.55rem;
+    margin-top: 1.5rem;
+  }
+
+  .primaryAction,
+  .secondaryAction {
+    min-height: 3.25rem;
+    font-size: 0.62rem;
+  }
+
+  .trailLabels {
+    margin-top: 1.4rem;
   }
 
   .trailLabels {

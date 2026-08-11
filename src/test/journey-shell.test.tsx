@@ -1,17 +1,23 @@
-import { render, screen } from '@testing-library/react'
+import { cleanup, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { expect, it } from 'vitest'
+import { afterEach, expect, it, vi } from 'vitest'
 
 import { JourneyShell } from '@/components/percurso/journey-shell'
+
+afterEach(() => {
+  cleanup()
+  vi.unstubAllGlobals()
+})
 
 it('does not collect answers from a minor', async () => {
   const user = userEvent.setup()
   render(<JourneyShell />)
 
+  expect(screen.getByText(/Em cerca de cinco minutos, você percorre cinco perguntas/i)).toBeVisible()
   await user.click(screen.getByRole('button', { name: 'Sou menor de 18 anos' }))
 
   expect(screen.getByRole('heading', { name: /responsável/i })).toBeVisible()
-  expect(screen.queryByText('Pergunta 1 de 10')).not.toBeInTheDocument()
+  expect(screen.queryByText('Pergunta 1 de 5')).not.toBeInTheDocument()
 })
 
 it('marks the exact option chosen when two options share a reflection theme', async () => {
@@ -19,12 +25,17 @@ it('marks the exact option chosen when two options share a reflection theme', as
   render(<JourneyShell />)
 
   await user.click(screen.getByRole('button', { name: 'Sou maior de 18 anos' }))
+  expect(
+    screen.getByRole('heading', { name: 'Vamos preparar sua devolutiva?' }),
+  ).toBeVisible()
+  expect(
+    screen.getByText(/Seus dados são usados para gerar esta devolutiva/i),
+  ).toBeVisible()
   await user.type(screen.getByLabelText('Seu nome'), 'Ana Silva')
   await user.type(screen.getByLabelText('E-mail'), 'ana@example.com')
   await user.type(screen.getByLabelText('WhatsApp'), '71999999999')
-  await user.click(
-    screen.getByRole('checkbox', { name: /concordo com o uso destes dados/i }),
-  )
+  expect(screen.queryByRole('checkbox')).not.toBeInTheDocument()
+  expect(screen.getByText(/Ao continuar, você concorda com o uso dos seus dados/i)).toBeVisible()
   await user.click(screen.getByRole('button', { name: 'Começar o percurso' }))
 
   const options = screen.getAllByRole('radio')
@@ -32,4 +43,56 @@ it('marks the exact option chosen when two options share a reflection theme', as
 
   expect(options[0]).toBeChecked()
   expect(options[3]).not.toBeChecked()
+})
+
+it('shows the reflection locally when the persistence service is unavailable outside production', async () => {
+  const user = userEvent.setup()
+  const fetchMock = vi.fn().mockRejectedValue(new Error('Database unavailable'))
+  vi.stubGlobal('fetch', fetchMock)
+  render(<JourneyShell />)
+
+  await user.click(screen.getByRole('button', { name: 'Sou maior de 18 anos' }))
+  await user.type(screen.getByLabelText('Seu nome'), 'Ana Silva')
+  await user.type(screen.getByLabelText('E-mail'), 'ana@example.com')
+  await user.type(screen.getByLabelText('WhatsApp'), '71999999999')
+  await user.click(screen.getByRole('button', { name: 'Começar o percurso' }))
+
+  for (let question = 1; question <= 5; question += 1) {
+    await user.click(screen.getAllByRole('radio')[0])
+    await user.click(
+      screen.getByRole('button', {
+        name: question === 5 ? 'Ver minha devolutiva' : 'Continuar',
+      }),
+    )
+  }
+
+  expect(fetchMock).toHaveBeenCalledTimes(1)
+  expect(
+    await screen.findByText(/Obrigada por se permitir essa pausa/i),
+  ).toBeVisible()
+})
+
+it('keeps client-side submission failures visible outside production', async () => {
+  const user = userEvent.setup()
+  vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ ok: false, status: 400 }))
+  render(<JourneyShell />)
+
+  await user.click(screen.getByRole('button', { name: 'Sou maior de 18 anos' }))
+  await user.type(screen.getByLabelText('Seu nome'), 'Ana Silva')
+  await user.type(screen.getByLabelText('E-mail'), 'ana@example.com')
+  await user.type(screen.getByLabelText('WhatsApp'), '71999999999')
+  await user.click(screen.getByRole('button', { name: 'Começar o percurso' }))
+
+  for (let question = 1; question <= 5; question += 1) {
+    await user.click(screen.getAllByRole('radio')[0])
+    await user.click(
+      screen.getByRole('button', {
+        name: question === 5 ? 'Ver minha devolutiva' : 'Continuar',
+      }),
+    )
+  }
+
+  expect(
+    await screen.findByText(/Não foi possível concluir agora/i),
+  ).toBeVisible()
 })

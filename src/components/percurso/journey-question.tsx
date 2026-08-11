@@ -36,13 +36,15 @@ export function JourneyQuestion({
         {question.options.map((option) => (
           <label className={styles.option} key={option.id}>
             <input
+              className={styles.optionInput}
               checked={selectedOptionId === option.id}
               name={`question-${question.id}`}
               onChange={() => onSelect(option.theme, option.id)}
               type="radio"
               value={option.id}
             />
-            <span>{option.label}</span>
+            <span aria-hidden="true" className={styles.optionIndicator} />
+            <span className={styles.optionLabel}>{option.label}</span>
           </label>
         ))}
       </fieldset>

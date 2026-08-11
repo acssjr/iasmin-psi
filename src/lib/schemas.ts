@@ -24,8 +24,8 @@ const normalizedWhatsApp = z
 
 export const journeySubmissionSchema = z.object({
   adult: z.literal(true),
-  answers: z.array(z.enum(reflectionThemes)).length(10),
-  contactPermission: z.boolean(),
+  answers: z.array(z.enum(reflectionThemes)).length(5),
+  contactPermission: z.literal(false).default(false),
   email: z.string().trim().email().max(254).transform((value) => value.toLowerCase()),
   honeypot: z.literal(''),
   name: z.string().trim().min(2).max(120),

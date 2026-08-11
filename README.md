@@ -2,7 +2,7 @@
 
 Landing page em Next.js para Iasmin Portugal, psicóloga clínica. O projeto
 apresenta a abordagem de Análise do Comportamento, atendimento on-line para
-adolescentes e adultos e um percurso de autoconhecimento com dez perguntas de
+adolescentes e adultos e um percurso de autoconhecimento com cinco perguntas de
 reflexão.
 
 ## Desenvolvimento local
@@ -40,11 +40,10 @@ retenção e redução de movimento.
 
 ## Dados e privacidade
 
-O percurso coleta nome, e-mail, WhatsApp, respostas de reflexão, consentimentos
-e parâmetros UTM quando existirem. Respostas brutas ficam guardadas por 180 dias
-e depois são anonimizadas. Sem a permissão opcional de contato, os dados de
-contato são excluídos nesse mesmo prazo. Com a permissão, o contato é mantido
-até a pessoa solicitar exclusão.
+O percurso coleta nome, e-mail, WhatsApp, respostas de reflexão, o registro de
+consentimento e parâmetros UTM quando existirem. Respostas brutas ficam guardadas
+por 180 dias e depois são anonimizadas. Os dados de contato são excluídos nesse
+mesmo prazo ou antes, mediante solicitação de exclusão.
 
 O Web Analytics recebe somente eventos com `surface`, `step` ou `theme`. Ele não
 recebe nome, e-mail, WhatsApp ou respostas. A explicação destinada ao público

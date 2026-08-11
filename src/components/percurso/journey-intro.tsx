@@ -5,10 +5,8 @@ import type { ChangeEvent, FormEvent } from 'react'
 import styles from './journey.module.css'
 
 export type ContactDetails = {
-  contactPermission: boolean
   email: string
   name: string
-  purposeConsent: boolean
   whatsapp: string
 }
 
@@ -30,7 +28,7 @@ export function AgeGate({
       <p className={styles.eyebrow}>Antes de começar</p>
       <h1>Este espaço foi pensado para você se escutar com calma.</h1>
       <p>
-        Em cerca de cinco minutos, você percorre dez perguntas de reflexão.
+        Em cerca de cinco minutos, você percorre cinco perguntas de reflexão.
         Não há resposta certa e isso não substitui um atendimento psicológico.
       </p>
       <div className={styles.ageActions}>
@@ -55,10 +53,10 @@ export function ContactForm({ contact, onChange, onContinue }: ContactFormProps)
     <form className={styles.contactForm} onSubmit={handleSubmit}>
       <div>
         <p className={styles.eyebrow}>Antes das perguntas</p>
-        <h1>Para quem enviamos sua devolutiva?</h1>
+        <h1>Vamos preparar sua devolutiva?</h1>
         <p>
-          Seus dados são usados somente para entregar o percurso e viabilizar o
-          contato que você solicitar.
+          Seus dados são usados para gerar esta devolutiva e, se você decidir
+          conversar com Iasmin, facilitar o contato que solicitar.
         </p>
       </div>
 
@@ -103,33 +101,11 @@ export function ContactForm({ contact, onChange, onContinue }: ContactFormProps)
         />
       </label>
       <input className={styles.honeypot} name="website" tabIndex={-1} type="text" />
-      <label className={styles.consent} htmlFor="journey-purpose-consent">
-        <input
-          checked={contact.purposeConsent}
-          id="journey-purpose-consent"
-          name="purposeConsent"
-          onChange={onChange}
-          required
-          type="checkbox"
-        />
-        <span>
-          Concordo com o uso destes dados para receber esta devolutiva,
-          viabilizar o contato solicitado e registrar meu consentimento.
-        </span>
-      </label>
-      <label className={styles.consent} htmlFor="journey-contact-permission">
-        <input
-          checked={contact.contactPermission}
-          id="journey-contact-permission"
-          name="contactPermission"
-          onChange={onChange}
-          type="checkbox"
-        />
-        <span>
-          Quero permitir que Iasmin mantenha meu contato para comunicações
-          futuras relacionadas ao serviço. Esta escolha é opcional.
-        </span>
-      </label>
+      <p className={styles.consentNotice}>
+        Ao continuar, você concorda com o uso dos seus dados para gerar esta
+        devolutiva e viabilizar o contato que solicitar.{' '}
+        <a href="/privacidade">Saiba como seus dados são tratados.</a>
+      </p>
       <button className={styles.primaryButton} type="submit">
         Começar o percurso
       </button>

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
+import { getPrivacyWhatsAppHref } from '@/lib/whatsapp'
+
 import styles from './privacy.module.css'
 
 export const metadata: Metadata = {
@@ -27,21 +29,20 @@ export default function PrivacyPage() {
         <section>
           <h2>O que é coletado</h2>
           <p>
-            No percurso, são solicitados nome, e-mail, WhatsApp, as dez
-            respostas de reflexão, as escolhas de consentimento e parâmetros
+            No percurso, são solicitados nome, e-mail, WhatsApp, as cinco
+            respostas de reflexão, o registro de consentimento e parâmetros
             de origem de campanha quando existirem. Esses dados são usados
-            para entregar a devolutiva e organizar o contato que você pedir.
+            para gerar a devolutiva e organizar o contato que você pedir.
           </p>
         </section>
 
         <section>
-          <h2>Como funcionam os consentimentos</h2>
+          <h2>Como funciona o consentimento</h2>
           <p>
-            O consentimento obrigatório permite usar os dados para entregar a
-            devolutiva, viabilizar o contato solicitado e registrar essa
-            escolha. A permissão para comunicações futuras é opcional. Sem
-            ela, Iasmin não mantém seus dados de contato após o prazo do
-            percurso.
+            Ao iniciar o percurso, você concorda com o uso dos dados para
+            gerar a devolutiva, viabilizar o contato solicitado e registrar
+            essa manifestação. O site não solicita autorização para comunicações
+            futuras.
           </p>
         </section>
 
@@ -49,9 +50,8 @@ export default function PrivacyPage() {
           <h2>Por quanto tempo os dados ficam guardados</h2>
           <p>
             As respostas brutas do percurso ficam disponíveis por 180 dias.
-            Depois desse período, elas são anonimizadas. Se você não autorizar
-            comunicações futuras, nome, e-mail e WhatsApp também são excluídos
-            ao fim dos 180 dias. Se autorizar, o contato pode ser mantido até
+            Depois desse período, elas são anonimizadas. Nome, e-mail e
+            WhatsApp também são excluídos ao fim dos 180 dias, ou antes, se
             você pedir a exclusão.
           </p>
         </section>
@@ -69,8 +69,11 @@ export default function PrivacyPage() {
           <h2>Como pedir exclusão</h2>
           <p>
             Para pedir acesso, correção ou exclusão dos seus dados, entre em
-            contato pelo WhatsApp informado nos canais de Iasmin Portugal.
-            A solicitação será tratada com cuidado e confirmação de identidade.
+            contato diretamente pelo WhatsApp. A solicitação será tratada com
+            cuidado e confirmação de identidade.{' '}
+            <a className={styles.privacyLink} href={getPrivacyWhatsAppHref()}>
+              Falar sobre privacidade pelo WhatsApp
+            </a>
           </p>
         </section>
 

@@ -1,6 +1,6 @@
 import type { JourneyQuestion, ReflectionContent, ReflectionTheme } from './types'
 
-export const journeyQuestions = [
+const sourceJourneyQuestions = [
   {
     id: 1,
     prompt: 'Quando algo importante pede sua atenção, o que costuma acontecer?',
@@ -102,6 +102,15 @@ export const journeyQuestions = [
     ],
   },
 ] as const satisfies readonly JourneyQuestion[]
+
+const selectedQuestionIndexes = [0, 2, 4, 7, 9] as const
+
+export const journeyQuestions: readonly JourneyQuestion[] = selectedQuestionIndexes.map(
+  (sourceIndex, index) => ({
+    ...sourceJourneyQuestions[sourceIndex],
+    id: index + 1,
+  }),
+)
 
 export const reflectionContent: Record<ReflectionTheme, ReflectionContent> = {
   sobrecarrega: {

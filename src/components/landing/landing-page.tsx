@@ -2,22 +2,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { TrackedLink } from '@/components/tracked-link'
+import { getSchedulingWhatsAppHref } from '@/lib/whatsapp'
 
 import { ContextTrail } from './context-trail'
 import { LandingMotion } from './landing-motion'
 import styles from './landing-page.module.css'
-
-const genericWhatsAppMessage = 'Olá, Iasmin. Gostaria de conversar sobre psicoterapia.'
-
-function getWhatsAppHref() {
-  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, '')
-
-  if (!number) {
-    return '#agendar'
-  }
-
-  return `https://wa.me/${number}?text=${encodeURIComponent(genericWhatsAppMessage)}`
-}
 
 function BrandMark() {
   return (
@@ -30,7 +19,7 @@ function BrandMark() {
 }
 
 function SiteHeader() {
-  const scheduleHref = getWhatsAppHref()
+  const scheduleHref = getSchedulingWhatsAppHref()
 
   return (
     <header className={styles.siteHeader}>
@@ -55,7 +44,7 @@ function SiteHeader() {
 }
 
 function HeroSection() {
-  const scheduleHref = getWhatsAppHref()
+  const scheduleHref = getSchedulingWhatsAppHref()
 
   return (
     <section className={styles.hero} id="top" aria-labelledby="hero-title">
@@ -163,7 +152,7 @@ function AboutIasminSection() {
         <p className={styles.sectionKicker}>Conheça Iasmin</p>
         <h2 id="about-title">Um cuidado que olha para a sua história inteira.</h2>
         <p>
-          Sou Iasmin Portugal, psicóloga clínica. No atendimento on-line,
+          Sou <strong>Iasmin Portugal</strong>, psicóloga clínica. No atendimento on-line,
           trabalho com adolescentes e adultos a partir da Análise do
           Comportamento.
         </p>
@@ -247,7 +236,7 @@ function JourneyTeaserSection() {
         <h2 id="journey-title">Uma pausa guiada para olhar para você.</h2>
       </div>
       <div className={styles.journeySurface}>
-        <span className={styles.journeyCount}>10 perguntas</span>
+        <span className={styles.journeyCount}>5 perguntas</span>
         <p>
           O percurso convida você a observar algumas situações do cotidiano e
           recebe uma devolutiva de reflexão ao final.
@@ -275,16 +264,16 @@ const faqItems = [
     answer: 'As sessões acontecem por videochamada, em um ambiente reservado. No primeiro contato, você pode tirar dúvidas sobre disponibilidade, frequência e como começar.',
   },
   {
-    question: 'Iasmin atende adolescentes e adultos?',
-    answer: 'Sim. Iasmin realiza atendimento psicológico on-line para adolescentes e adultos em todo o Brasil.',
+    question: 'Iasmin atende quais públicos?',
+    answer: 'Realizo atendimentos para adolescentes e adultos em todo o Brasil.',
   },
   {
     question: 'O que é o percurso de autoconhecimento?',
-    answer: 'É uma experiência breve de reflexão com dez perguntas. Ele não faz diagnóstico e não substitui um atendimento psicológico.',
+    answer: 'É uma experiência breve de reflexão com cinco perguntas. Ele não faz diagnóstico e não substitui um atendimento psicológico.',
   },
   {
-    question: 'E se eu estiver em uma situação de urgência?',
-    answer: 'Este site não oferece atendimento de urgência. Em risco imediato, procure o SAMU pelo 192 ou o CVV pelo 188.',
+    question: 'Como posso agendar uma sessão?',
+    answer: 'Você pode clicar em “Agendar uma sessão” para falar comigo pelo WhatsApp e entender os próximos passos.',
   },
 ]
 
@@ -308,7 +297,7 @@ function FaqSection() {
 }
 
 function ClosingSection() {
-  const scheduleHref = getWhatsAppHref()
+  const scheduleHref = getSchedulingWhatsAppHref()
 
   return (
     <section className={styles.closing} id="agendar" aria-labelledby="closing-title">
