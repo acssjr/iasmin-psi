@@ -10,4 +10,8 @@ it('shows both first-step actions in the hero', () => {
   expect(
     screen.getByRole('link', { name: 'Iniciar meu percurso de autoconhecimento' }),
   ).toBeVisible()
+  expect(screen.getByAltText('Iasmin Portugal em atendimento')).toHaveAttribute(
+    'src',
+    expect.stringContaining('hero-terracotta.jpg'),
+  )
 })

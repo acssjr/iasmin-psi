@@ -1,0 +1,161 @@
+.page {
+  min-height: 100svh;
+  overflow: clip;
+}
+
+.hero {
+  display: grid;
+  align-items: center;
+  gap: clamp(2.5rem, 7vw, 7.5rem);
+  width: min(100% - 2.5rem, 77.5rem);
+  min-height: 100svh;
+  margin: 0 auto;
+  padding: clamp(2rem, 4vw, 4rem) 0;
+}
+
+.heroCopy {
+  max-width: 39rem;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.5rem;
+  color: var(--terracotta);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  width: 2.75rem;
+  height: 1px;
+  background: currentColor;
+  content: '';
+}
+
+.hero h1 {
+  max-width: 12ch;
+  margin: 0;
+  color: var(--espresso);
+  font-size: clamp(2.75rem, 7vw, 6.1rem);
+  font-weight: 800;
+  letter-spacing: -0.075em;
+  line-height: 0.95;
+}
+
+.intro {
+  max-width: 34rem;
+  margin: 2rem 0 0;
+  color: color-mix(in srgb, var(--espresso) 75%, transparent);
+  font-size: clamp(1rem, 1.6vw, 1.16rem);
+  line-height: 1.7;
+}
+
+.actions {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+.primaryAction,
+.secondaryAction {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 3.6rem;
+  padding: 0.95rem 1.35rem;
+  border: 1px solid var(--terracotta);
+  border-radius: 0.35rem 1.25rem 0.35rem 1.25rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.primaryAction {
+  background: var(--terracotta);
+  color: var(--cream);
+}
+
+.secondaryAction {
+  color: var(--terracotta);
+}
+
+.primaryAction:hover,
+.primaryAction:focus-visible {
+  background: var(--espresso);
+  border-color: var(--espresso);
+  transform: translateY(-2px);
+}
+
+.secondaryAction:hover,
+.secondaryAction:focus-visible {
+  background: var(--sand);
+  transform: translateY(-2px);
+}
+
+.primaryAction:focus-visible,
+.secondaryAction:focus-visible {
+  outline: 3px solid var(--olive);
+  outline-offset: 4px;
+}
+
+.heroPortrait {
+  position: relative;
+  width: min(100%, 34rem);
+  aspect-ratio: 0.76;
+  margin: 0;
+  overflow: hidden;
+  justify-self: center;
+  border: 1px solid color-mix(in srgb, var(--espresso) 22%, transparent);
+  border-radius: 11rem 11rem 2rem 2rem;
+  background: var(--terracotta);
+  box-shadow: 1.4rem 1.4rem 0 var(--sand);
+}
+
+.heroPortrait img {
+  object-fit: cover;
+  object-position: 59% 45%;
+}
+
+.heroPortrait figcaption {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.35rem;
+  background: color-mix(in srgb, var(--espresso) 76%, transparent);
+  color: var(--cream);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media (min-width: 56.25rem) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.9fr);
+  }
+
+  .actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 39rem;
+  }
+}
+
+@media (max-width: 35rem) {
+  .hero {
+    width: min(100% - 1.5rem, 77.5rem);
+  }
+
+  .heroPortrait {
+    box-shadow: 0.85rem 0.85rem 0 var(--sand);
+  }
+}
