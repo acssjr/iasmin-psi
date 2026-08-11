@@ -13,6 +13,12 @@ test('routes a minor to a responsible adult without collecting answers', async (
 test('requires consent, supports back navigation, and keeps answers out of the URL', async ({
   page,
 }) => {
+  let submittedBody: Record<string, unknown> | undefined
+  await page.route('**/api/percursos', async (route) => {
+    submittedBody = route.request().postDataJSON() as Record<string, unknown>
+    await route.fulfill({ body: JSON.stringify({ ok: true }), status: 201 })
+  })
+
   await page.goto('/percurso')
   await page.getByRole('button', { name: 'Sou maior de 18 anos' }).click()
 
@@ -51,6 +57,13 @@ test('requires consent, supports back navigation, and keeps answers out of the U
   }
 
   await expect(page.getByText(/Esta é uma devolutiva de reflexão/i)).toBeVisible()
+  expect(submittedBody).toMatchObject({
+    adult: true,
+    contactPermission: false,
+    email: 'ana@example.com',
+    purposeConsent: true,
+  })
+  expect(submittedBody?.answers).toHaveLength(10)
   expect(page.url()).not.toContain('sobrecarrega')
   expect(page.url()).not.toContain('ana@example.com')
 })

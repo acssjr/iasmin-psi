@@ -1,7 +1,7 @@
 'use client'
 
 import type { ChangeEvent } from 'react'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import Link from 'next/link'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
@@ -37,6 +37,7 @@ const initialContact: ContactDetails = {
 }
 
 const genericWhatsAppMessage = 'Olá, Iasmin. Gostaria de conversar sobre psicoterapia.'
+const utmKeys = ['source', 'medium', 'campaign', 'term', 'content'] as const
 
 function getWhatsAppHref() {
   const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, '')
@@ -46,9 +47,29 @@ function getWhatsAppHref() {
     : '#'
 }
 
+function getUtmParameters() {
+  if (typeof window === 'undefined') {
+    return {}
+  }
+
+  const searchParameters = new URLSearchParams(window.location.search)
+
+  return Object.fromEntries(
+    utmKeys.flatMap((key) => {
+      const value = searchParameters.get(`utm_${key}`)?.trim()
+      return value ? [[key, value.slice(0, 128)]] : []
+    }),
+  )
+}
+
+function createSubmissionId() {
+  return window.crypto.randomUUID()
+}
+
 export function JourneyShell() {
   const [contact, setContact] = useState<ContactDetails>(initialContact)
   const [selectedOptionIds, setSelectedOptionIds] = useState<string[]>([])
+  const [submissionId, setSubmissionId] = useState<string | null>(null)
   const [view, setView] = useState<JourneyView>({ kind: 'age-gate' })
   const scope = useRef<HTMLElement>(null)
   const questionIndex = view.kind === 'question' ? view.index : -1
@@ -77,12 +98,6 @@ export function JourneyShell() {
       scope,
     },
   )
-
-  useEffect(() => {
-    if (view.kind === 'submitting') {
-      setView({ kind: 'result', theme: getReflectionTheme(view.answers) })
-    }
-  }, [view])
 
   const handleContactChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { checked, name, type, value } = event.currentTarget
@@ -117,11 +132,47 @@ export function JourneyShell() {
     }
 
     if (view.index === journeyQuestions.length - 1) {
-      setView({ kind: 'submitting', answers: view.answers })
+      void submitJourney(view.answers)
       return
     }
 
     setView({ ...view, index: view.index + 1 })
+  }
+
+  const submitJourney = async (answers: ReflectionTheme[]) => {
+    if (!submissionId) {
+      setView({ kind: 'submission-error', answers })
+      return
+    }
+
+    setView({ kind: 'submitting', answers })
+
+    try {
+      const response = await fetch('/api/percursos', {
+        body: JSON.stringify({
+          adult: true,
+          answers,
+          contactPermission: contact.contactPermission,
+          email: contact.email,
+          honeypot: '',
+          name: contact.name,
+          purposeConsent: contact.purposeConsent,
+          submissionId,
+          utm: getUtmParameters(),
+          whatsapp: contact.whatsapp,
+        }),
+        headers: { 'content-type': 'application/json' },
+        method: 'POST',
+      })
+
+      if (!response.ok) {
+        throw new Error('Journey submission failed.')
+      }
+
+      setView({ kind: 'result', theme: getReflectionTheme(answers) })
+    } catch {
+      setView({ kind: 'submission-error', answers })
+    }
   }
 
   const goBack = () => {
@@ -154,6 +205,7 @@ export function JourneyShell() {
         onChange={handleContactChange}
         onContinue={() => {
           setSelectedOptionIds([])
+          setSubmissionId(createSubmissionId())
           setView({ kind: 'question', index: 0, answers: [] })
         }}
       />
@@ -183,7 +235,7 @@ export function JourneyShell() {
         <button
           className={styles.primaryButton}
           type="button"
-          onClick={() => setView({ kind: 'submitting', answers: view.answers })}
+          onClick={() => void submitJourney(view.answers)}
         >
           Tentar novamente
         </button>
