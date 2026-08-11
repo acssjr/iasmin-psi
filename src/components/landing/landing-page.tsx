@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { TrackedLink } from '@/components/tracked-link'
+
 import { ContextTrail } from './context-trail'
 import { LandingMotion } from './landing-motion'
 import styles from './landing-page.module.css'
@@ -40,9 +42,14 @@ function SiteHeader() {
         <a href="#como-funciona">Como funciona</a>
         <Link href="/percurso">Percurso</Link>
       </nav>
-      <a className={styles.headerAction} href={scheduleHref}>
+      <TrackedLink
+        className={styles.headerAction}
+        eventName="cta_schedule_clicked"
+        href={scheduleHref}
+        properties={{ surface: 'header' }}
+      >
         Agendar sessão
-      </a>
+      </TrackedLink>
     </header>
   )
 }
@@ -65,12 +72,22 @@ function HeroSection() {
           para a ansiedade, a autoestima e a aceitação com mais presença.
         </p>
         <div className={styles.actions} data-hero-actions>
-          <a className={styles.primaryAction} href={scheduleHref}>
+          <TrackedLink
+            className={styles.primaryAction}
+            eventName="cta_schedule_clicked"
+            href={scheduleHref}
+            properties={{ surface: 'hero' }}
+          >
             Agendar uma sessão
-          </a>
-          <Link className={styles.secondaryAction} href="/percurso">
+          </TrackedLink>
+          <TrackedLink
+            className={styles.secondaryAction}
+            eventName="journey_started"
+            href="/percurso"
+            properties={{ surface: 'hero' }}
+          >
             Iniciar meu percurso de autoconhecimento
-          </Link>
+          </TrackedLink>
         </div>
         <ol className={styles.trailLabels} aria-label="Uma trilha de cuidado">
           <li>Contexto</li>
@@ -239,9 +256,14 @@ function JourneyTeaserSection() {
           O percurso não é uma avaliação psicológica e não substitui a
           psicoterapia.
         </p>
-        <Link className={styles.primaryAction} href="/percurso">
+        <TrackedLink
+          className={styles.primaryAction}
+          eventName="journey_started"
+          href="/percurso"
+          properties={{ surface: 'journey-teaser' }}
+        >
           Iniciar meu percurso de autoconhecimento
-        </Link>
+        </TrackedLink>
       </div>
     </section>
   )
@@ -297,12 +319,22 @@ function ClosingSection() {
         se este é um bom momento para iniciar a psicoterapia.
       </p>
       <div className={styles.actions}>
-        <a className={styles.primaryAction} href={scheduleHref}>
+        <TrackedLink
+          className={styles.primaryAction}
+          eventName="cta_schedule_clicked"
+          href={scheduleHref}
+          properties={{ surface: 'closing' }}
+        >
           Agendar uma sessão
-        </a>
-        <Link className={styles.secondaryAction} href="/percurso">
+        </TrackedLink>
+        <TrackedLink
+          className={styles.secondaryAction}
+          eventName="journey_started"
+          href="/percurso"
+          properties={{ surface: 'closing' }}
+        >
           Iniciar meu percurso de autoconhecimento
-        </Link>
+        </TrackedLink>
       </div>
     </section>
   )

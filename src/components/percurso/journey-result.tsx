@@ -1,5 +1,8 @@
+'use client'
+
 import Link from 'next/link'
 
+import { trackSafeEvent } from '@/lib/analytics'
 import { reflectionContent } from '@/lib/content'
 import type { ReflectionTheme } from '@/lib/types'
 
@@ -25,7 +28,11 @@ export function JourneyResult({
         profissional.
       </p>
       <div className={styles.resultActions}>
-        <a className={styles.primaryButton} href={scheduleHref}>
+        <a
+          className={styles.primaryButton}
+          href={scheduleHref}
+          onClick={() => trackSafeEvent('whatsapp_opened', { surface: 'result', theme })}
+        >
           Conversar com Iasmin pelo WhatsApp
         </a>
         <Link className={styles.secondaryButton} href="/">

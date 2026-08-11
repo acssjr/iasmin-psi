@@ -1,9 +1,9 @@
 CREATE TABLE journey_submissions (
   id UUID PRIMARY KEY,
-  name TEXT NOT NULL,
-  email TEXT NOT NULL,
-  whatsapp TEXT NOT NULL,
-  answers JSONB NOT NULL,
+  name TEXT,
+  email TEXT,
+  whatsapp TEXT,
+  answers JSONB,
   reflection_theme TEXT NOT NULL CHECK (reflection_theme IN ('sobrecarrega', 'autocritica', 'reconexao')),
   purpose_consent_version TEXT NOT NULL,
   purpose_consented_at TIMESTAMPTZ NOT NULL,

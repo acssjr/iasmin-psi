@@ -137,7 +137,13 @@ export function ContactForm({ contact, onChange, onContinue }: ContactFormProps)
   )
 }
 
-export function MinorRoute({ scheduleHref }: { scheduleHref: string }) {
+export function MinorRoute({
+  onSchedule,
+  scheduleHref,
+}: {
+  onSchedule: () => void
+  scheduleHref: string
+}) {
   return (
     <div className={styles.intro}>
       <p className={styles.eyebrow}>Um cuidado com responsabilidade</p>
@@ -147,7 +153,7 @@ export function MinorRoute({ scheduleHref }: { scheduleHref: string }) {
         responsável pode conversar com Iasmin pelo WhatsApp para entender como
         seguir.
       </p>
-      <a className={styles.primaryButton} href={scheduleHref}>
+      <a className={styles.primaryButton} href={scheduleHref} onClick={onSchedule}>
         Conversar com Iasmin pelo WhatsApp
       </a>
     </div>

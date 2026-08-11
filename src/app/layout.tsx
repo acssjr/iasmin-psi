@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 
+import { SafeAnalytics } from '@/components/safe-analytics'
+
 import './globals.css'
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -19,7 +21,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="pt-BR">
-      <body className={plusJakarta.variable}>{children}</body>
+      <body className={plusJakarta.variable}>
+        {children}
+        <SafeAnalytics />
+      </body>
     </html>
   )
 }

@@ -7,6 +7,7 @@ import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 
 import { journeyQuestions } from '@/lib/content'
+import { trackSafeEvent } from '@/lib/analytics'
 import { getReflectionTheme } from '@/lib/journey'
 import type { ReflectionTheme } from '@/lib/types'
 
@@ -132,10 +133,18 @@ export function JourneyShell() {
     }
 
     if (view.index === journeyQuestions.length - 1) {
+      trackSafeEvent('journey_step_completed', {
+        step: view.index + 1,
+        surface: 'journey',
+      })
       void submitJourney(view.answers)
       return
     }
 
+    trackSafeEvent('journey_step_completed', {
+      step: view.index + 1,
+      surface: 'journey',
+    })
     setView({ ...view, index: view.index + 1 })
   }
 
@@ -169,7 +178,10 @@ export function JourneyShell() {
         throw new Error('Journey submission failed.')
       }
 
-      setView({ kind: 'result', theme: getReflectionTheme(answers) })
+      const theme = getReflectionTheme(answers)
+      trackSafeEvent('journey_completed', { surface: 'journey' })
+      trackSafeEvent('journey_reflection_viewed', { surface: 'result', theme })
+      setView({ kind: 'result', theme })
     } catch {
       setView({ kind: 'submission-error', answers })
     }
@@ -194,7 +206,10 @@ export function JourneyShell() {
   if (view.kind === 'age-gate') {
     content = (
       <AgeGate
-        onAdult={() => setView({ kind: 'contact-form' })}
+        onAdult={() => {
+          trackSafeEvent('journey_started', { surface: 'journey' })
+          setView({ kind: 'contact-form' })
+        }}
         onMinor={() => setView({ kind: 'minor-route' })}
       />
     )
@@ -206,12 +221,18 @@ export function JourneyShell() {
         onContinue={() => {
           setSelectedOptionIds([])
           setSubmissionId(createSubmissionId())
+          trackSafeEvent('journey_contact_submitted', { surface: 'journey' })
           setView({ kind: 'question', index: 0, answers: [] })
         }}
       />
     )
   } else if (view.kind === 'minor-route') {
-    content = <MinorRoute scheduleHref={scheduleHref} />
+    content = (
+      <MinorRoute
+        onSchedule={() => trackSafeEvent('whatsapp_opened', { surface: 'minor-route' })}
+        scheduleHref={scheduleHref}
+      />
+    )
   } else if (view.kind === 'question') {
     content = (
       <JourneyQuestion
