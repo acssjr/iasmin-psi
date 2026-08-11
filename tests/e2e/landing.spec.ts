@@ -2,6 +2,7 @@ import { expect, test } from '@playwright/test'
 
 for (const viewport of [
   { name: 'desktop', width: 1440, height: 900 },
+  { name: 'tablet', width: 768, height: 1024 },
   { name: 'mobile', width: 390, height: 844 },
 ]) {
   test(`keeps the landing accessible without horizontal overflow on ${viewport.name}`, async ({
