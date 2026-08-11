@@ -287,8 +287,13 @@ function FaqSection() {
       <div className={styles.faqList}>
         {faqItems.map((item) => (
           <details key={item.question}>
-            <summary>{item.question}</summary>
-            <p>{item.answer}</p>
+            <summary>
+              <span>{item.question}</span>
+              <span aria-hidden="true" className={styles.faqToggle} />
+            </summary>
+            <div className={styles.faqAnswer}>
+              <p>{item.answer}</p>
+            </div>
           </details>
         ))}
       </div>

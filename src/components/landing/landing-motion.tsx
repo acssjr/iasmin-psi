@@ -51,13 +51,20 @@ export function LandingMotion({ children }: LandingMotionProps) {
           const heroTrailPaths = root.querySelectorAll(
             '[data-motion-target="hero"] .contextTrailPath',
           )
-          const careTrailPaths = root.querySelectorAll(
-            '[data-motion-target="care"] .contextTrailPath',
+          const careTrailSegments = root.querySelectorAll<SVGPathElement>(
+            '[data-care-trail-segment]',
+          )
+          const careTrailNodes = root.querySelectorAll<SVGCircleElement>(
+            '[data-care-trail-node]',
           )
 
-          gsap.set([heroTrailPaths, careTrailPaths], {
+          gsap.set(heroTrailPaths, {
             strokeDasharray: 1,
             strokeDashoffset: 1,
+          })
+          careTrailSegments.forEach((segment) => {
+            const length = segment.getTotalLength()
+            gsap.set(segment, { strokeDasharray: length, strokeDashoffset: length })
           })
 
           gsap
@@ -76,47 +83,45 @@ export function LandingMotion({ children }: LandingMotionProps) {
           const careSection = root.querySelector<HTMLElement>('[data-care-section]')
           const carePillars = root.querySelectorAll<HTMLElement>('[data-care-pillar]')
 
-          if (desktop && careSection && carePillars.length > 0) {
-            gsap.set(carePillars, { autoAlpha: 0, x: 30 })
+          if (careSection && carePillars.length === 3) {
+            const horizontalOffset = desktop ? 30 : 0
+            const verticalOffset = mobile ? 24 : 0
 
-            gsap
+            gsap.set(carePillars, {
+              autoAlpha: 0,
+              x: horizontalOffset,
+              y: verticalOffset,
+            })
+            gsap.set(careTrailNodes, {
+              autoAlpha: 0,
+              scale: 0.35,
+              transformOrigin: '50% 50%',
+            })
+
+            const careTimeline = gsap
               .timeline({
                 scrollTrigger: {
                   trigger: careSection,
-                  start: 'top top',
-                  end: '+=105%',
-                  pin: true,
-                  scrub: 0.6,
-                  anticipatePin: 1,
+                  start: desktop ? 'top top' : 'top 72%',
+                  end: desktop ? '+=105%' : 'bottom 84%',
+                  pin: desktop,
+                  scrub: desktop ? 0.6 : 0.45,
+                  anticipatePin: desktop ? 1 : 0,
                   invalidateOnRefresh: true,
                 },
               })
-              .to(carePillars, { autoAlpha: 1, x: 0, stagger: 0.18 }, 0)
-              .to(careTrailPaths, { strokeDashoffset: 0, duration: 0.75 }, 0.16)
-          }
+              .to(carePillars[0], { autoAlpha: 1, duration: 0.42, x: 0, y: 0 })
+              .to(careTrailNodes[0], { autoAlpha: 1, duration: 0.16, scale: 1 }, '<0.08')
+              .to(careTrailSegments[0], { duration: 0.72, strokeDashoffset: 0 }, '+=0.06')
+              .to(careTrailNodes[1], { autoAlpha: 1, duration: 0.16, scale: 1 }, '<0.62')
+              .to(carePillars[1], { autoAlpha: 1, duration: 0.42, x: 0, y: 0 }, '<0.02')
+              .to(careTrailSegments[1], { duration: 0.72, strokeDashoffset: 0 }, '+=0.08')
+              .to(careTrailNodes[2], { autoAlpha: 1, duration: 0.16, scale: 1 }, '<0.62')
+              .to(carePillars[2], { autoAlpha: 1, duration: 0.42, x: 0, y: 0 }, '<0.02')
 
-          if (mobile && carePillars.length > 0) {
-            gsap.set(carePillars, { autoAlpha: 0, y: 24 })
-            let hasDrawnCareTrail = false
-
-            ScrollTrigger.batch(carePillars, {
-              start: 'top 86%',
-              once: true,
-              onEnter: (batch) => {
-                const timeline = gsap.timeline().to(batch, {
-                  autoAlpha: 1,
-                  duration: 0.52,
-                  ease: 'power2.out',
-                  stagger: 0.1,
-                  y: 0,
-                })
-
-                if (!hasDrawnCareTrail) {
-                  timeline.to(careTrailPaths, { duration: 0.72, strokeDashoffset: 0 }, 0)
-                  hasDrawnCareTrail = true
-                }
-              },
-            })
+            if (mobile) {
+              careTimeline.scrollTrigger?.refresh()
+            }
           }
 
           const refreshAfterAssets = async () => {

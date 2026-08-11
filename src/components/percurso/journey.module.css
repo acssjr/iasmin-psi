@@ -50,23 +50,18 @@
   background: var(--cream);
 }
 
-.eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  margin: 0 0 1.5rem;
-  color: var(--terracotta);
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+.result {
+  display: grid;
+  gap: clamp(1.75rem, 5vw, 3.5rem);
 }
 
-.eyebrow::before {
-  width: 2rem;
-  height: 1px;
-  background: currentColor;
-  content: '';
+.eyebrow {
+  margin: 0 0 1.5rem;
+  color: color-mix(in srgb, var(--terracotta) 78%, var(--espresso));
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .intro h1,
@@ -380,6 +375,21 @@
   font-weight: 700;
 }
 
+.resultArtwork {
+  position: relative;
+  width: min(100%, 20rem);
+  aspect-ratio: 1;
+  margin: 0;
+  overflow: hidden;
+  justify-self: center;
+  border-radius: 1.25rem 1.25rem 4.75rem 1.25rem;
+  background: var(--sand);
+}
+
+.resultArtwork img {
+  object-fit: cover;
+}
+
 .visuallyHidden {
   position: absolute;
   width: 1px;
@@ -393,6 +403,11 @@
   .ageActions,
   .resultActions {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .result {
+    grid-template-columns: minmax(0, 1fr) minmax(11rem, 18rem);
+    align-items: center;
   }
 }
 

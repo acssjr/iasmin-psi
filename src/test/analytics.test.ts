@@ -15,6 +15,20 @@ it('sends allowlisted analytics properties only', () => {
   })
 })
 
+it('tracks the non-clinical reflection variation without personal data', () => {
+  trackSafeEvent('journey_reflection_viewed', {
+    reflection: 'sobrecarrega-autocritica',
+    surface: 'result',
+    theme: 'sobrecarrega',
+  })
+
+  expect(mocks.track).toHaveBeenCalledWith('journey_reflection_viewed', {
+    reflection: 'sobrecarrega-autocritica',
+    surface: 'result',
+    theme: 'sobrecarrega',
+  })
+})
+
 it('rejects analytics properties outside the allowlist', () => {
   expect(() =>
     trackSafeEvent('journey_completed', { email: 'iasmin@example.com' } as never),

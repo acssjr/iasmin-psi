@@ -2,7 +2,7 @@
 
 import { track } from '@vercel/analytics/react'
 
-import type { ReflectionTheme } from './types'
+import type { ReflectionKey, ReflectionTheme } from './types'
 
 const eventNames = [
   'cta_schedule_clicked',
@@ -30,11 +30,22 @@ const themes: readonly ReflectionTheme[] = [
   'reconexao',
 ]
 
+const reflections: readonly ReflectionKey[] = [
+  'sobrecarrega',
+  'autocritica',
+  'reconexao',
+  'sobrecarrega-autocritica',
+  'sobrecarrega-reconexao',
+  'autocritica-reconexao',
+  'olhar-ampliado',
+]
+
 export type SafeEventName = (typeof eventNames)[number]
 export type SafeAnalyticsProperties = {
   surface?: (typeof surfaces)[number]
   step?: number
   theme?: ReflectionTheme
+  reflection?: ReflectionKey
 }
 
 export function trackSafeEvent(
@@ -46,7 +57,12 @@ export function trackSafeEvent(
   }
 
   for (const property of Object.keys(properties)) {
-    if (property !== 'surface' && property !== 'step' && property !== 'theme') {
+    if (
+      property !== 'surface' &&
+      property !== 'step' &&
+      property !== 'theme' &&
+      property !== 'reflection'
+    ) {
       throw new Error(`Unsupported analytics property: ${property}`)
     }
   }
@@ -64,6 +80,10 @@ export function trackSafeEvent(
 
   if (properties.theme && !themes.includes(properties.theme)) {
     throw new Error('Invalid analytics theme')
+  }
+
+  if (properties.reflection && !reflections.includes(properties.reflection)) {
+    throw new Error('Invalid analytics reflection')
   }
 
   track(eventName, properties)

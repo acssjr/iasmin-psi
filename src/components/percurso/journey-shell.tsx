@@ -8,9 +8,9 @@ import { gsap } from 'gsap'
 
 import { journeyQuestions } from '@/lib/content'
 import { trackSafeEvent } from '@/lib/analytics'
-import { getReflectionTheme } from '@/lib/journey'
+import { getReflectionKey, getReflectionTheme } from '@/lib/journey'
 import { getSchedulingWhatsAppHref } from '@/lib/whatsapp'
-import type { ReflectionTheme } from '@/lib/types'
+import type { ReflectionKey, ReflectionTheme } from '@/lib/types'
 
 import { AgeGate, ContactForm, MinorRoute, type ContactDetails } from './journey-intro'
 import { JourneyQuestion } from './journey-question'
@@ -26,7 +26,7 @@ type JourneyView =
   | { kind: 'contact-form' }
   | { kind: 'question'; index: number; answers: ReflectionTheme[] }
   | { kind: 'submitting'; answers: ReflectionTheme[] }
-  | { kind: 'result'; theme: ReflectionTheme }
+  | { kind: 'result'; reflectionKey: ReflectionKey; theme: ReflectionTheme }
   | { kind: 'minor-route' }
   | { kind: 'submission-error'; answers: ReflectionTheme[] }
 
@@ -119,9 +119,14 @@ export function JourneyShell() {
 
   const showReflection = (answers: ReflectionTheme[]) => {
     const theme = getReflectionTheme(answers)
+    const reflectionKey = getReflectionKey(answers)
     trackSafeEvent('journey_completed', { surface: 'journey' })
-    trackSafeEvent('journey_reflection_viewed', { surface: 'result', theme })
-    setView({ kind: 'result', theme })
+    trackSafeEvent('journey_reflection_viewed', {
+      reflection: reflectionKey,
+      surface: 'result',
+      theme,
+    })
+    setView({ kind: 'result', reflectionKey, theme })
   }
 
   const continueQuestion = () => {
@@ -250,7 +255,13 @@ export function JourneyShell() {
       />
     )
   } else if (view.kind === 'result') {
-    content = <JourneyResult scheduleHref={scheduleHref} theme={view.theme} />
+    content = (
+      <JourneyResult
+        reflectionKey={view.reflectionKey}
+        scheduleHref={scheduleHref}
+        theme={view.theme}
+      />
+    )
   } else if (view.kind === 'submission-error') {
     content = (
       <div className={styles.intro}>

@@ -1,4 +1,4 @@
-import type { JourneyQuestion, ReflectionContent, ReflectionTheme } from './types'
+import type { JourneyQuestion, ReflectionContent, ReflectionKey } from './types'
 
 const sourceJourneyQuestions = [
   {
@@ -112,20 +112,68 @@ export const journeyQuestions: readonly JourneyQuestion[] = selectedQuestionInde
   }),
 )
 
-export const reflectionContent: Record<ReflectionTheme, ReflectionContent> = {
+export const reflectionContent: Record<ReflectionKey, ReflectionContent> = {
   sobrecarrega: {
     title: 'Você não precisa carregar tudo sozinha.',
     body: 'Talvez você venha sustentando mais do que cabe no seu momento. Perceber isso pode ser um primeiro gesto de cuidado.',
     invitation: 'Há espaço para olhar seus limites sem diminuir a sua história.',
+    illustration: {
+      alt: 'Ilustração abstrata de uma pausa e um ramo de oliveira.',
+      src: '/images/reflections/sobrecarrega.png',
+    },
   },
   autocritica: {
     title: 'Sua voz também merece gentileza.',
     body: 'A exigência pode ter ocupado um lugar grande na forma como você se olha. Acolher essa voz com curiosidade pode abrir outros caminhos.',
     invitation: 'Você não precisa provar seu valor o tempo todo.',
+    illustration: {
+      alt: 'Ilustração abstrata de uma semente acolhida por formas orgânicas.',
+      src: '/images/reflections/autocritica.png',
+    },
   },
   reconexao: {
     title: 'Voltar a si também é um caminho.',
     body: 'Talvez exista um desejo de se aproximar do que você sente, precisa e escolhe. Pequenas pausas podem ajudar a tornar isso mais visível.',
     invitation: 'Sua experiência merece espaço e escuta.',
+    illustration: {
+      alt: 'Ilustração abstrata de passos em um caminho de cuidado.',
+      src: '/images/reflections/reconexao.png',
+    },
+  },
+  'sobrecarrega-autocritica': {
+    title: 'Nem toda cobrança precisa virar mais peso.',
+    body: 'Suas respostas sugerem que a pressa de dar conta pode se encontrar com uma fala interna exigente. Perceber essa combinação ajuda a abrir espaço para escolhas menos duras.',
+    invitation: 'Há um caminho entre se responsabilizar e se tratar com mais cuidado.',
+    illustration: {
+      alt: 'Ilustração abstrata de uma semente acolhida por formas orgânicas.',
+      src: '/images/reflections/autocritica.png',
+    },
+  },
+  'sobrecarrega-reconexao': {
+    title: 'Fazer uma pausa pode ajudar você a se escutar.',
+    body: 'Talvez o excesso de coisas para sustentar esteja deixando pouco espaço para perceber o que você precisa. Uma pausa pode ser um jeito de recuperar contato com seus limites.',
+    invitation: 'Você pode construir um ritmo que leve sua experiência em conta.',
+    illustration: {
+      alt: 'Ilustração abstrata de passos em um caminho de cuidado.',
+      src: '/images/reflections/reconexao.png',
+    },
+  },
+  'autocritica-reconexao': {
+    title: 'Se aproximar de si pode deixar a exigência menos sozinha.',
+    body: 'Suas respostas apontam para uma vontade de se compreender melhor ao mesmo tempo em que a autocrítica aparece. Olhar para isso com curiosidade pode criar outras possibilidades.',
+    invitation: 'Sua voz pode ser firme sem deixar de ser gentil com você.',
+    illustration: {
+      alt: 'Ilustração abstrata de uma semente acolhida por formas orgânicas.',
+      src: '/images/reflections/autocritica.png',
+    },
+  },
+  'olhar-ampliado': {
+    title: 'Seu momento pode pedir mais de um tipo de cuidado.',
+    body: 'Suas respostas mostram aspectos diferentes da sua experiência. Em vez de resumir isso em uma só direção, talvez valha perceber o que ganha mais espaço em cada contexto.',
+    invitation: 'O autoconhecimento pode começar pela curiosidade sobre o que você vive.',
+    illustration: {
+      alt: 'Ilustração abstrata de passos em um caminho de cuidado.',
+      src: '/images/reflections/reconexao.png',
+    },
   },
 }
