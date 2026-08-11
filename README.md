@@ -1,11 +1,34 @@
-# Iasmin Portugal · Psicologia Clínica
+# Iasmin Portugal | Psicologia Clínica
 
-Landing page em Next.js para Iasmin Portugal, psicóloga clínica. O projeto
-apresenta a abordagem de Análise do Comportamento, atendimento on-line para
-adolescentes e adultos e um percurso de autoconhecimento com cinco perguntas de
-reflexão.
+Landing page comercial de Iasmin Portugal, psicóloga clínica. O projeto apresenta
+o atendimento on-line, a abordagem de Análise do Comportamento e um percurso de
+autoconhecimento breve para adolescentes e adultos.
+
+## Escopo
+
+Esta aplicação foi construída para a operação de Iasmin Portugal. Ela inclui:
+
+- página institucional responsiva, com agendamento pelo WhatsApp;
+- percurso de autoconhecimento com cinco perguntas de reflexão;
+- registro de submissões no Neon e rotina de retenção de dados;
+- eventos de conversão sem envio de dados pessoais ao Web Analytics;
+- política pública de privacidade e canal direto para pedidos de exclusão.
+
+O percurso é informativo. Não realiza diagnóstico e não substitui psicoterapia
+ou atendimento de urgência.
+
+## Stack
+
+- Next.js App Router e React
+- TypeScript e CSS Modules
+- GSAP para movimentos com suporte a redução de movimento
+- Neon Postgres para dados do percurso
+- Vercel Web Analytics, Vitest e Playwright
+- Vercel para hospedagem e cron de retenção
 
 ## Desenvolvimento local
+
+Pré-requisito: Node.js LTS e npm.
 
 ```powershell
 npm install
@@ -13,64 +36,75 @@ Copy-Item .env.example .env.local
 npm run dev
 ```
 
-Use estes valores em `.env.local`:
+Abra `http://localhost:3000`.
 
-```dotenv
-DATABASE_URL=postgresql://...
-NEXT_PUBLIC_WHATSAPP_NUMBER=5571XXXXXXXXX
-CRON_SECRET=um-segredo-longo-e-unico
-```
+### Variáveis de ambiente
 
-`DATABASE_URL` e `CRON_SECRET` são privados. `NEXT_PUBLIC_WHATSAPP_NUMBER` é
-o único valor exposto ao navegador e deve conter o número completo, com DDI e
-apenas dígitos.
+| Variável | Uso | Exposição |
+| --- | --- | --- |
+| `DATABASE_URL` | Conexão com o banco Neon para registrar o percurso | Privada |
+| `CRON_SECRET` | Autentica a execução de `/api/retencao` | Privada |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Sobrescreve o WhatsApp de agendamento | Pública no navegador |
+
+Use somente dígitos, incluindo DDI, em `NEXT_PUBLIC_WHATSAPP_NUMBER`. Se ela
+não for configurada, a aplicação usa o número comercial padrão definido no
+código. Nunca versione `.env.local`, chaves, tokens ou dados reais de pacientes.
 
 ## Qualidade
 
+Antes de abrir uma revisão ou fazer deploy, execute:
+
 ```powershell
+npm run lint
 npm run test
 npm run test:e2e
-npm run lint
 npm run build
 ```
 
-Os testes cobrem a landing, a jornada para maiores de idade, o bloqueio para
-menores, consentimento obrigatório, validação de submissões, idempotência,
-retenção e redução de movimento.
+Os testes cobrem a landing, a responsividade, o percurso para maiores de idade,
+o bloqueio para menores, a retenção, o WhatsApp, a acessibilidade dos seletores
+e a proteção contra dados pessoais em URLs e analytics.
 
-## Dados e privacidade
+## Dados e operação
 
-O percurso coleta nome, e-mail, WhatsApp, respostas de reflexão, o registro de
-consentimento e parâmetros UTM quando existirem. Respostas brutas ficam guardadas
-por 180 dias e depois são anonimizadas. Os dados de contato são excluídos nesse
-mesmo prazo ou antes, mediante solicitação de exclusão.
+O percurso coleta nome, e-mail, WhatsApp, cinco respostas de reflexão, o
+registro de consentimento e parâmetros UTM quando existirem. As respostas são
+anonimizadas após 180 dias. Os dados de contato são excluídos no mesmo prazo ou
+antes, mediante pedido de exclusão.
 
-O Web Analytics recebe somente eventos com `surface`, `step` ou `theme`. Ele não
-recebe nome, e-mail, WhatsApp ou respostas. A explicação destinada ao público
-está em [/privacidade](/privacidade).
+O Web Analytics recebe somente eventos técnicos de navegação, com propriedades
+seguras como `surface`, `step` e `theme`. Nome, e-mail, WhatsApp e respostas não
+são enviados ao analytics.
 
-## Preparação para produção na Vercel
+Revise periodicamente os eventos de conversão, os logs do cron e os pedidos de
+exclusão recebidos pelo WhatsApp. A explicação destinada ao público está em
+[`/privacidade`](src/app/privacidade/page.tsx).
 
-1. Crie um banco Neon e aplique [sql/001_create_journey_submissions.sql](sql/001_create_journey_submissions.sql).
-2. No projeto Vercel, use o plano Pro e ative Vercel Web Analytics com eventos personalizados.
-3. Configure `DATABASE_URL`, `NEXT_PUBLIC_WHATSAPP_NUMBER` e `CRON_SECRET` nos ambientes Preview e Production.
-4. Confirme o cron diário definido em [vercel.json](vercel.json) para `/api/retencao` e confira os primeiros logs.
-5. Crie uma regra de WAF para limitar `POST /api/percursos` a 10 requisições por minuto por IP.
-6. Revise a página de privacidade e os textos de consentimento com a profissional antes de publicar.
-7. Faça uma submissão real de teste somente após essa aprovação, confira a devolutiva e valide o WhatsApp.
+## Deploy na Vercel
 
-Depois dos passos acima:
+1. Crie o banco Neon e aplique [sql/001_create_journey_submissions.sql](sql/001_create_journey_submissions.sql).
+2. Importe este repositório em um projeto Vercel.
+3. Configure `DATABASE_URL`, `CRON_SECRET` e, se necessário, `NEXT_PUBLIC_WHATSAPP_NUMBER` em Preview e Production.
+4. Confirme o cron de [vercel.json](vercel.json), que executa `/api/retencao` diariamente.
+5. Faça um deploy de Preview, valide a jornada e execute a suíte de qualidade.
+6. Publique em Production somente após revisar textos, privacidade, WhatsApp e variáveis de ambiente.
 
-```powershell
-vercel link
-vercel env add DATABASE_URL production
-vercel env add NEXT_PUBLIC_WHATSAPP_NUMBER production
-vercel env add CRON_SECRET production --sensitive
-vercel --prod
-```
+Alterações em variáveis da Vercel exigem um novo deploy para entrarem em vigor.
 
-## Operação recorrente
+## Propriedade intelectual e uso
 
-Revise semanalmente os eventos de conversão, os logs do cron de retenção e as
-solicitações de exclusão recebidas pelo WhatsApp. Em cada alteração de texto ou
-formulário, rode a suíte de qualidade antes do deploy.
+Este é um ativo comercial proprietário, não um template ou boilerplate. Código,
+identidade visual, textos, imagens, estrutura de conversão e materiais de marca
+pertencem aos seus respectivos titulares.
+
+Nenhuma permissão de cópia, redistribuição, adaptação, revenda ou uso comercial é
+concedida por este repositório sem autorização prévia e expressa por escrito. O
+acesso ao código não concede licença sobre a marca nem sobre os materiais
+publicados. Se a política for restringir o acesso ao código, mantenha o
+repositório privado no GitHub.
+
+## Manutenção
+
+Mudanças de conteúdo, dados ou integrações devem ser revisadas pela pessoa
+responsável pelo projeto antes da publicação. Para dúvidas técnicas, utilize os
+canais definidos pelo responsável pelo repositório.
