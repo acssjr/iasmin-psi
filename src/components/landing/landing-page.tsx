@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { BrandLogo } from '@/components/brand-logo'
 import { TrackedLink } from '@/components/tracked-link'
 import { getSchedulingWhatsAppHref } from '@/lib/whatsapp'
 
@@ -27,23 +28,13 @@ const socialLinks = [
   },
 ] as const
 
-function BrandMark() {
-  return (
-    <span className={styles.brandMark} aria-label="Iasmin Portugal Psicologia Clínica">
-      <span>iasmin</span>
-      <span>portugal</span>
-      <small>psicologia clínica</small>
-    </span>
-  )
-}
-
 function SiteHeader() {
   const scheduleHref = getSchedulingWhatsAppHref()
 
   return (
     <header className={styles.siteHeader}>
       <SmoothSectionLink className={styles.brandLink} target="top">
-        <BrandMark />
+        <BrandLogo className={styles.headerLogo} variant="horizontal" />
       </SmoothSectionLink>
       <SiteNavigation />
       <TrackedLink
@@ -64,7 +55,12 @@ function HeroSection() {
   return (
     <section className={styles.hero} id="top" aria-labelledby="hero-title">
       <div className={styles.heroCopy}>
-        <BrandMark />
+        <BrandLogo
+          className={styles.heroSignature}
+          decorative
+          tone="terracotta"
+          variant="signature"
+        />
         <p className={styles.eyebrow} data-hero-eyebrow>
           Psicologia clínica on-line
         </p>
@@ -328,7 +324,7 @@ function SiteFooter() {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerTop}>
-        <BrandMark />
+        <BrandLogo className={styles.footerLogo} tone="cream" variant="full" />
         <p>
           Iasmin Portugal de Souza Costa · Psicóloga Clínica · CRP 03/33160
         </p>

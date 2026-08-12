@@ -64,3 +64,16 @@ it('lets hero action boxes adapt before their labels overflow', () => {
     '.hero .actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }',
   )
 })
+
+it('sizes the official brand marks for header, hero and footer contexts', () => {
+  const css = readFileSync(
+    join(process.cwd(), 'src/components/landing/landing-page.module.css'),
+    'utf8',
+  )
+
+  expect(css).toContain('.headerLogo')
+  expect(css).toContain('.heroSignature')
+  expect(css).toContain('.footerLogo')
+  expect(css).toContain('width: clamp(6.9rem, 10vw, 8.75rem);')
+  expect(css).toContain('width: clamp(7.5rem, 13vw, 10.5rem);')
+})

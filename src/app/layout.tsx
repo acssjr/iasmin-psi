@@ -16,6 +16,10 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: 'Iasmin Portugal | Psicóloga Clínica',
   description: 'Psicologia clínica on-line para adolescentes e adultos.',
+  icons: {
+    icon: '/brand/iasmin-portugal-monogram.svg',
+    shortcut: '/brand/iasmin-portugal-monogram.svg',
+  },
 }
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {

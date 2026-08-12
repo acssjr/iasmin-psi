@@ -9,6 +9,18 @@ afterEach(cleanup)
 it('shows both first-step actions in the hero', () => {
   render(<LandingPage />)
 
+  const brandMarks = screen.getAllByRole('img', {
+    name: 'Iasmin Portugal, Psicóloga Clínica',
+  })
+
+  expect(brandMarks).toHaveLength(2)
+  expect(brandMarks[0]).toHaveAttribute('data-brand-variant', 'horizontal')
+  expect(brandMarks[1]).toHaveAttribute('data-brand-variant', 'full')
+  expect(document.querySelector('[data-brand-variant="signature"]')).toHaveAttribute(
+    'aria-hidden',
+    'true',
+  )
+
   const hero = screen.getByRole('region', {
     name: 'O cuidado que faz sentido começa no seu contexto.',
   })

@@ -1,0 +1,45 @@
+.logo {
+  display: inline-block;
+  flex: none;
+  width: 100%;
+  background: currentColor;
+  mask-image: var(--brand-logo-source);
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
+.horizontal {
+  --brand-logo-source: url('/brand/iasmin-portugal-horizontal.svg');
+  aspect-ratio: 5 / 2;
+}
+
+.full,
+.signature {
+  aspect-ratio: 2 / 1;
+}
+
+.full {
+  --brand-logo-source: url('/brand/iasmin-portugal-full.svg');
+}
+
+.signature {
+  --brand-logo-source: url('/brand/iasmin-psi-signature.svg');
+}
+
+.monogram {
+  --brand-logo-source: url('/brand/iasmin-portugal-monogram.svg');
+  aspect-ratio: 1;
+}
+
+.espresso {
+  color: var(--espresso);
+}
+
+.cream {
+  color: var(--cream);
+}
+
+.terracotta {
+  color: var(--terracotta);
+}

@@ -35,6 +35,9 @@ it('opens and closes the mobile navigation accessibly', async () => {
   expect(trigger).toHaveAttribute('aria-expanded', 'true')
   const dialog = screen.getByRole('dialog', { name: 'Navegação principal' })
   expect(dialog).toBeVisible()
+  expect(
+    within(dialog).getByRole('img', { name: 'Iasmin Portugal' }),
+  ).toHaveAttribute('data-brand-variant', 'monogram')
   const instagram = screen.getByRole('link', { name: 'Instagram de Iasmin Portugal' })
   const linkedin = screen.getByRole('link', { name: 'LinkedIn de Iasmin Portugal' })
   await waitFor(() => expect(instagram).toBeVisible())

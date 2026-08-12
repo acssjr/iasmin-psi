@@ -5,6 +5,8 @@ import { createPortal } from 'react-dom'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 
+import { BrandLogo } from '@/components/brand-logo'
+
 import styles from './landing-page.module.css'
 
 const navigationItems = [
@@ -216,6 +218,12 @@ export function SiteNavigation() {
           <div aria-label="Navegação principal" className={styles.mobileMenu} ref={menu} role="dialog">
             <div className={styles.mobileMenuHeader} data-mobile-menu-item>
               <span>Navegue pela página</span>
+              <BrandLogo
+                className={styles.mobileMenuMonogram}
+                label="Iasmin Portugal"
+                tone="terracotta"
+                variant="monogram"
+              />
             </div>
             <div className={styles.mobileMenuLinks}>
               {navigationItems.map((item) => (
