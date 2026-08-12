@@ -11,6 +11,21 @@ import { LandingMotion } from './landing-motion'
 import { RecognitionCarousel } from './recognition-carousel'
 import styles from './landing-page.module.css'
 
+const socialLinks = [
+  {
+    href: 'https://www.instagram.com/iasminportugalpsi/',
+    label: 'Instagram de Iasmin Portugal',
+    name: 'Instagram',
+    path: 'M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8Zm9.45 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z',
+  },
+  {
+    href: 'https://www.linkedin.com/',
+    label: 'LinkedIn de Iasmin Portugal',
+    name: 'LinkedIn',
+    path: 'M5.5 3.5A2.5 2.5 0 1 1 5.5 8a2.5 2.5 0 0 1 0-4.5ZM3.5 9.5h4V21h-4V9.5Zm6.5 0h3.8v1.58h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.2c0-1.24-.02-2.84-1.73-2.84-1.73 0-2 1.35-2 2.75V21h-4V9.5Z',
+  },
+] as const
+
 function BrandMark() {
   return (
     <span className={styles.brandMark} aria-label="Iasmin Portugal Psicologia Clínica">
@@ -313,21 +328,6 @@ function ClosingSection() {
 }
 
 function SiteFooter() {
-  const socialLinks = [
-    {
-      href: 'https://www.instagram.com/iasminportugalpsi/',
-      label: 'Instagram de Iasmin Portugal',
-      name: 'Instagram',
-      path: 'M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8Zm9.45 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z',
-    },
-    {
-      href: 'https://www.linkedin.com/',
-      label: 'LinkedIn de Iasmin Portugal',
-      name: 'LinkedIn',
-      path: 'M5.5 3.5A2.5 2.5 0 1 1 5.5 8a2.5 2.5 0 0 1 0-4.5ZM3.5 9.5h4V21h-4V9.5Zm6.5 0h3.8v1.58h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.2c0-1.24-.02-2.84-1.73-2.84-1.73 0-2 1.35-2 2.75V21h-4V9.5Z',
-    },
-  ] as const
-
   return (
     <footer className={styles.footer}>
       <div className={styles.footerTop}>

@@ -559,7 +559,7 @@
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
-  align-items: end;
+  align-items: center;
   gap: clamp(3rem, 10vw, 11rem);
   padding-top: clamp(5.5rem, 11vw, 10rem);
   padding-bottom: clamp(5.5rem, 11vw, 10rem);
