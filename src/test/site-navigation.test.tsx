@@ -1,4 +1,4 @@
-import { cleanup, render, screen, within } from '@testing-library/react'
+import { cleanup, render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, expect, it, vi } from 'vitest'
 
@@ -35,10 +35,31 @@ it('opens and closes the mobile navigation accessibly', async () => {
   expect(trigger).toHaveAttribute('aria-expanded', 'true')
   const dialog = screen.getByRole('dialog', { name: 'Navegação principal' })
   expect(dialog).toBeVisible()
-  expect(screen.getByRole('link', { name: 'Instagram de Iasmin Portugal' })).toBeVisible()
-  expect(screen.getByRole('link', { name: 'LinkedIn de Iasmin Portugal' })).toBeVisible()
+  const instagram = screen.getByRole('link', { name: 'Instagram de Iasmin Portugal' })
+  const linkedin = screen.getByRole('link', { name: 'LinkedIn de Iasmin Portugal' })
+  await waitFor(() => expect(instagram).toBeVisible())
+  await waitFor(() => expect(linkedin).toBeVisible())
+  expect(instagram).toHaveTextContent(/^$/)
+  expect(linkedin).toHaveTextContent(/^$/)
+  expect(instagram.querySelector('svg')).toBeInTheDocument()
+  expect(linkedin.querySelector('svg')).toBeInTheDocument()
   await user.click(screen.getByRole('button', { name: 'Fechar menu' }))
   expect(trigger).toHaveAttribute('aria-expanded', 'false')
+  await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument())
+})
+
+it('closes the compact menu when the backdrop is selected', async () => {
+  const user = userEvent.setup()
+  render(<SiteNavigation />)
+
+  await user.click(screen.getByRole('button', { name: 'Abrir menu' }))
+  await user.click(screen.getByRole('button', { name: 'Fechar menu ao tocar fora' }))
+
+  expect(screen.getByRole('button', { name: 'Abrir menu' })).toHaveAttribute(
+    'aria-expanded',
+    'false',
+  )
+  await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument())
 })
 
 it('collapses the compact menu after selecting a destination', async () => {
@@ -54,7 +75,7 @@ it('collapses the compact menu after selecting a destination', async () => {
   await user.click(within(screen.getByRole('dialog')).getByRole('button', { name: 'Conheça Iasmin' }))
 
   expect(trigger).toHaveAttribute('aria-expanded', 'false')
-  expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+  await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument())
 })
 
 it('treats percurso as an in-page destination without decorative numbering', () => {

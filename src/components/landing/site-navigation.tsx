@@ -17,14 +17,32 @@ const socialItems = [
   {
     href: 'https://www.instagram.com/iasminportugalpsi/',
     label: 'Instagram de Iasmin Portugal',
-    name: 'Instagram',
+    name: 'instagram',
   },
   {
     href: 'https://www.linkedin.com/',
     label: 'LinkedIn de Iasmin Portugal',
-    name: 'LinkedIn',
+    name: 'linkedin',
   },
 ] as const
+
+function SocialIcon({ name }: { name: (typeof socialItems)[number]['name'] }) {
+  if (name === 'instagram') {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 24 24">
+        <rect height="17" rx="5" width="17" x="3.5" y="3.5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle className={styles.socialIconDot} cx="17.4" cy="6.7" r="1" />
+      </svg>
+    )
+  }
+
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24">
+      <path d="M6.7 8.6v9.2M6.7 5.6v.1M11 17.8v-5.2c0-2.1 4.7-2.4 4.7.5v4.7M11 8.6v9.2" />
+    </svg>
+  )
+}
 
 function scrollToSection(targetId: string) {
   const target = document.getElementById(targetId)
@@ -64,25 +82,95 @@ export function SmoothSectionLink({
 
 export function SiteNavigation() {
   const [open, setOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const menu = useRef<HTMLDivElement>(null)
+  const backdrop = useRef<HTMLButtonElement>(null)
 
   useGSAP(
     () => {
-      if (!menu.current) return
+      if (!mounted || !menu.current || !backdrop.current) return
       const reduceMotion =
         typeof window.matchMedia === 'function' &&
         window.matchMedia('(prefers-reduced-motion: reduce)').matches
-      gsap.fromTo(
-        menu.current,
-        { autoAlpha: 0, y: reduceMotion ? 0 : -12 },
-        { autoAlpha: 1, duration: reduceMotion ? 0 : 0.35, ease: 'power3.out', y: 0 },
-      )
+
+      const duration = reduceMotion ? 0 : 0.42
+      gsap.timeline()
+        .fromTo(
+          backdrop.current,
+          { autoAlpha: 0 },
+          { autoAlpha: 1, duration: reduceMotion ? 0 : 0.24, ease: 'power2.out' },
+          0,
+        )
+        .fromTo(
+          menu.current,
+          {
+            autoAlpha: 0,
+            scale: reduceMotion ? 1 : 0.965,
+            transformOrigin: 'top right',
+            y: reduceMotion ? 0 : -10,
+          },
+          {
+            autoAlpha: 1,
+            duration,
+            ease: 'power3.out',
+            scale: 1,
+            y: 0,
+          },
+          0,
+        )
+        .fromTo(
+          '[data-mobile-menu-item]',
+          { opacity: 0, y: reduceMotion ? 0 : -5 },
+          {
+            duration: reduceMotion ? 0 : 0.3,
+            ease: 'power2.out',
+            opacity: 1,
+            stagger: reduceMotion ? 0 : 0.035,
+            y: 0,
+          },
+          reduceMotion ? 0 : 0.1,
+        )
     },
-    { dependencies: [open], scope: menu, revertOnUpdate: true },
+    { dependencies: [mounted], scope: menu, revertOnUpdate: true },
   )
 
-  const navigate = (target: string) => {
+  const closeMenu = () => {
     setOpen(false)
+    if (!menu.current || !backdrop.current) {
+      setMounted(false)
+      return
+    }
+
+    const reduceMotion =
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    gsap.timeline({ onComplete: () => setMounted(false) })
+      .to(menu.current, {
+        autoAlpha: 0,
+        duration: reduceMotion ? 0 : 0.26,
+        ease: 'power2.in',
+        scale: reduceMotion ? 1 : 0.98,
+        transformOrigin: 'top right',
+        y: reduceMotion ? 0 : -7,
+      })
+      .to(
+        backdrop.current,
+        { autoAlpha: 0, duration: reduceMotion ? 0 : 0.2, ease: 'power2.in' },
+        0,
+      )
+  }
+
+  const toggleMenu = () => {
+    if (open) {
+      closeMenu()
+      return
+    }
+    setMounted(true)
+    setOpen(true)
+  }
+
+  const navigate = (target: string) => {
+    closeMenu()
     scrollToSection(target)
   }
 
@@ -109,28 +197,29 @@ export function SiteNavigation() {
         aria-expanded={open}
         aria-label={open ? 'Fechar menu' : 'Abrir menu'}
         className={styles.menuTrigger}
-        onClick={() => setOpen((current) => !current)}
+        onClick={toggleMenu}
         type="button"
       >
         <span />
         <span />
       </button>
 
-      {open && typeof document !== 'undefined' ? createPortal(
+      {mounted && typeof document !== 'undefined' ? createPortal(
         <>
           <button
             aria-label="Fechar menu ao tocar fora"
             className={styles.mobileMenuBackdrop}
-            onClick={() => setOpen(false)}
+            onClick={closeMenu}
+            ref={backdrop}
             type="button"
           />
           <div aria-label="Navegação principal" className={styles.mobileMenu} ref={menu} role="dialog">
-            <div className={styles.mobileMenuHeader}>
+            <div className={styles.mobileMenuHeader} data-mobile-menu-item>
               <span>Navegue pela página</span>
             </div>
             <div className={styles.mobileMenuLinks}>
               {navigationItems.map((item) => (
-                <button key={item.target} onClick={() => navigate(item.target)} type="button">
+                <button data-mobile-menu-item key={item.target} onClick={() => navigate(item.target)} type="button">
                   <span>{item.label}</span>
                 </button>
               ))}
@@ -139,13 +228,14 @@ export function SiteNavigation() {
               {socialItems.map((item) => (
                 <a
                   aria-label={item.label}
+                  data-mobile-menu-item
                   href={item.href}
                   key={item.name}
-                  onClick={() => setOpen(false)}
+                  onClick={closeMenu}
                   rel="noreferrer"
                   target="_blank"
                 >
-                  {item.name}
+                  <SocialIcon name={item.name} />
                 </a>
               ))}
             </div>
