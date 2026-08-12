@@ -113,3 +113,13 @@ it('slightly relaxes the mobile recognition headline and tightens hero branding'
   expect(css).toContain('letter-spacing: -0.06em;')
   expect(css).toContain('margin-bottom: 0.35rem;')
 })
+
+it('anchors the mobile navigation panel to the left edge', () => {
+  const css = readFileSync(
+    join(process.cwd(), 'src/components/landing/landing-page.module.css'),
+    'utf8',
+  )
+
+  expect(css).toContain('left: max(1rem, calc((100vw - 62rem) / 2));')
+  expect(css).toContain('right: auto;\n    left: 1rem;')
+})

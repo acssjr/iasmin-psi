@@ -9,5 +9,5 @@ it('keeps the GSAP dependency signature stable during Fast Refresh', () => {
     'utf8',
   )
 
-  expect(source).toContain('dependencies: [mounted, open]')
+  expect(source).toContain('dependencies: [mounted]')
 })

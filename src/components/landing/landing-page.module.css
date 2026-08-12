@@ -918,7 +918,8 @@
     position: fixed;
     z-index: 9999;
     top: 5.35rem;
-    right: max(1rem, calc((100vw - 62rem) / 2));
+    right: auto;
+    left: max(1rem, calc((100vw - 62rem) / 2));
     display: grid;
     align-content: start;
     width: min(22rem, calc(100vw - 2rem));
@@ -1152,7 +1153,8 @@
 
   .mobileMenu {
     top: 5.15rem;
-    right: 1rem;
+    right: auto;
+    left: 1rem;
     width: min(20rem, calc(100vw - 2rem));
   }
 

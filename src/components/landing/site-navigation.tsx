@@ -95,8 +95,8 @@ export function SiteNavigation() {
         typeof window.matchMedia === 'function' &&
         window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-      const duration = reduceMotion ? 0 : 0.42
-      gsap.timeline()
+      const duration = reduceMotion ? 0 : 0.64
+      gsap.timeline({ defaults: { overwrite: 'auto' } })
         .fromTo(
           backdrop.current,
           { autoAlpha: 0 },
@@ -107,33 +107,38 @@ export function SiteNavigation() {
           menu.current,
           {
             autoAlpha: 0,
-            scale: reduceMotion ? 1 : 0.965,
-            transformOrigin: 'top right',
-            y: reduceMotion ? 0 : -10,
+            scaleX: reduceMotion ? 1 : 0.72,
+            scaleY: reduceMotion ? 1 : 0.58,
+            transformOrigin: 'top left',
+            x: reduceMotion ? 0 : -8,
+            y: reduceMotion ? 0 : -8,
           },
           {
             autoAlpha: 1,
             duration,
-            ease: 'power3.out',
-            scale: 1,
+            ease: 'power4.out',
+            scaleX: 1,
+            scaleY: 1,
+            x: 0,
             y: 0,
           },
           0,
         )
         .fromTo(
           '[data-mobile-menu-item]',
-          { opacity: 0, y: reduceMotion ? 0 : -5 },
+          { opacity: 0, x: reduceMotion ? 0 : -8, y: reduceMotion ? 0 : -4 },
           {
-            duration: reduceMotion ? 0 : 0.3,
-            ease: 'power2.out',
+            duration: reduceMotion ? 0 : 0.36,
+            ease: 'power3.out',
             opacity: 1,
-            stagger: reduceMotion ? 0 : 0.035,
+            stagger: reduceMotion ? 0 : 0.045,
+            x: 0,
             y: 0,
           },
-          reduceMotion ? 0 : 0.1,
+          reduceMotion ? 0 : 0.16,
         )
     },
-    { dependencies: [mounted, open], scope: menu, revertOnUpdate: false },
+    { dependencies: [mounted], scope: menu, revertOnUpdate: false },
   )
 
   const closeMenu = () => {
@@ -146,14 +151,20 @@ export function SiteNavigation() {
     const reduceMotion =
       typeof window.matchMedia === 'function' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    gsap.timeline({ onComplete: () => setMounted(false) })
+    gsap.timeline({
+      onComplete: () => {
+        setMounted(false)
+      },
+    })
       .to(menu.current, {
         autoAlpha: 0,
-        duration: reduceMotion ? 0 : 0.26,
-        ease: 'power2.in',
-        scale: reduceMotion ? 1 : 0.98,
-        transformOrigin: 'top right',
-        y: reduceMotion ? 0 : -7,
+        duration: reduceMotion ? 0 : 0.3,
+        ease: 'power3.in',
+        scaleX: reduceMotion ? 1 : 0.9,
+        scaleY: reduceMotion ? 1 : 0.86,
+        transformOrigin: 'top left',
+        x: reduceMotion ? 0 : -5,
+        y: reduceMotion ? 0 : -5,
       })
       .to(
         backdrop.current,
