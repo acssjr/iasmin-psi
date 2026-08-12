@@ -36,6 +36,8 @@ it('shows both first-step actions in the hero', () => {
     'aria-expanded',
     'false',
   )
+  expect(screen.getByRole('link', { name: 'Agendar' })).toBeVisible()
+  expect(screen.queryByRole('link', { name: 'Agendar sessão' })).not.toBeInTheDocument()
   expect(
     screen.getByText(
       'Iasmin Portugal de Souza Costa · Psicóloga Clínica · CRP 03/33160',

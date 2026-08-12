@@ -13,6 +13,19 @@ const navigationItems = [
   { href: '#percurso', label: 'Percurso', target: 'percurso' },
 ] as const
 
+const socialItems = [
+  {
+    href: 'https://www.instagram.com/iasminportugalpsi/',
+    label: 'Instagram de Iasmin Portugal',
+    name: 'Instagram',
+  },
+  {
+    href: 'https://www.linkedin.com/',
+    label: 'LinkedIn de Iasmin Portugal',
+    name: 'LinkedIn',
+  },
+] as const
+
 function scrollToSection(targetId: string) {
   const target = document.getElementById(targetId)
   if (!target) return
@@ -94,9 +107,9 @@ export function SiteNavigation() {
 
       <button
         aria-expanded={open}
-        aria-label="Abrir menu"
+        aria-label={open ? 'Fechar menu' : 'Abrir menu'}
         className={styles.menuTrigger}
-        onClick={() => setOpen(true)}
+        onClick={() => setOpen((current) => !current)}
         type="button"
       >
         <span />
@@ -104,21 +117,40 @@ export function SiteNavigation() {
       </button>
 
       {open && typeof document !== 'undefined' ? createPortal(
-        <div aria-label="Navegação principal" className={styles.mobileMenu} ref={menu} role="dialog">
-          <div className={styles.mobileMenuHeader}>
-            <span>Para onde você quer ir?</span>
-            <button aria-label="Fechar menu" onClick={() => setOpen(false)} type="button">
-              Fechar
-            </button>
+        <>
+          <button
+            aria-label="Fechar menu ao tocar fora"
+            className={styles.mobileMenuBackdrop}
+            onClick={() => setOpen(false)}
+            type="button"
+          />
+          <div aria-label="Navegação principal" className={styles.mobileMenu} ref={menu} role="dialog">
+            <div className={styles.mobileMenuHeader}>
+              <span>Navegue pela página</span>
+            </div>
+            <div className={styles.mobileMenuLinks}>
+              {navigationItems.map((item) => (
+                <button key={item.target} onClick={() => navigate(item.target)} type="button">
+                  <span>{item.label}</span>
+                </button>
+              ))}
+            </div>
+            <div aria-label="Redes sociais" className={styles.mobileMenuSocials}>
+              {socialItems.map((item) => (
+                <a
+                  aria-label={item.label}
+                  href={item.href}
+                  key={item.name}
+                  onClick={() => setOpen(false)}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  {item.name}
+                </a>
+              ))}
+            </div>
           </div>
-          <div className={styles.mobileMenuLinks}>
-            {navigationItems.map((item) => (
-              <button key={item.target} onClick={() => navigate(item.target)} type="button">
-                <span>{item.label}</span>
-              </button>
-            ))}
-          </div>
-        </div>
+        </>
       , document.body) : null}
     </>
   )

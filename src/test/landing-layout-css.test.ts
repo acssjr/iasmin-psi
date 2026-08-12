@@ -38,3 +38,15 @@ it('uses higher contrast and a more compact mobile hero', () => {
   expect(css).toContain('.carouselIndicators')
   expect(css).toContain('touch-action: pan-y;')
 })
+
+it('keeps the mobile header controls separated and uses a compact cream menu', () => {
+  const css = readFileSync(
+    join(process.cwd(), 'src/components/landing/landing-page.module.css'),
+    'utf8',
+  )
+
+  expect(css).toContain('grid-template-columns: minmax(0, 1fr) auto auto;')
+  expect(css).toContain('background: var(--cream);')
+  expect(css).toContain('max-height: calc(100svh - 6rem);')
+  expect(css).not.toContain('inset: 0;\n    display: grid;\n    align-content: start;\n    padding: 1.25rem;\n    background: var(--espresso);')
+})

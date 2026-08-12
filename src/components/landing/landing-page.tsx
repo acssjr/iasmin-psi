@@ -52,7 +52,7 @@ function SiteHeader() {
         href={scheduleHref}
         properties={{ surface: 'header' }}
       >
-        Agendar sessão
+        Agendar
       </TrackedLink>
     </header>
   )

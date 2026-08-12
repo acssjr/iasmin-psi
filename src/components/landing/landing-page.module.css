@@ -141,6 +141,7 @@
 }
 
 .menuTrigger,
+.mobileMenuBackdrop,
 .mobileMenu { display: none; }
 
 .headerAction:hover,
@@ -889,7 +890,7 @@
 
 @media (max-width: 56.1875rem) {
   .siteHeader {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto auto;
   }
 
   .navigation {
@@ -897,8 +898,7 @@
   }
 
   .menuTrigger {
-    position: absolute;
-    left: 50%;
+    position: static;
     display: grid;
     align-content: center;
     gap: 0.32rem;
@@ -909,7 +909,6 @@
     border-radius: 50%;
     background: var(--ivory);
     cursor: pointer;
-    transform: translateX(-50%);
   }
 
   .menuTrigger span {
@@ -918,55 +917,84 @@
     background: var(--espresso);
   }
 
+  .mobileMenuBackdrop {
+    position: fixed;
+    z-index: 9998;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: color-mix(in srgb, var(--espresso) 12%, transparent);
+  }
+
   .mobileMenu {
     position: fixed;
-    z-index: 10000;
-    inset: 0;
+    z-index: 9999;
+    top: 5.35rem;
+    right: max(1rem, calc((100vw - 62rem) / 2));
     display: grid;
     align-content: start;
-    padding: 1.25rem;
-    background: var(--espresso);
-    color: var(--cream);
+    width: min(22rem, calc(100vw - 2rem));
+    max-height: calc(100svh - 6rem);
+    padding: 1.15rem;
+    overflow-y: auto;
+    border: 1px solid color-mix(in srgb, var(--espresso) 16%, transparent);
+    border-radius: 1.25rem 1.25rem 3rem 1.25rem;
+    background: var(--cream);
+    box-shadow: 0 1.25rem 3rem color-mix(in srgb, var(--espresso) 18%, transparent);
+    color: var(--espresso);
   }
 
   .mobileMenuHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 1.25rem;
-    border-bottom: 1px solid color-mix(in srgb, var(--cream) 22%, transparent);
-    color: var(--sand);
+    padding: 0 0 0.85rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--espresso) 16%, transparent);
+    color: var(--terracotta);
     font-size: 0.7rem;
     font-weight: 800;
     letter-spacing: 0.12em;
     text-transform: uppercase;
   }
 
-  .mobileMenuHeader button {
-    border: 0;
-    background: transparent;
-    color: var(--cream);
-    font: inherit;
-    cursor: pointer;
-  }
-
-  .mobileMenuLinks { display: grid; margin-top: 2.5rem; }
+  .mobileMenuLinks { display: grid; margin-top: 0.35rem; }
 
   .mobileMenuLinks > * {
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 1.3rem 0;
+    padding: 0.95rem 0;
     border: 0;
-    border-bottom: 1px solid color-mix(in srgb, var(--cream) 18%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--espresso) 12%, transparent);
     background: transparent;
-    color: var(--cream);
+    color: var(--espresso);
     cursor: pointer;
     font: inherit;
     text-align: left;
   }
 
-  .mobileMenuLinks span { font-size: clamp(1.8rem, 8vw, 3.25rem); font-weight: 800; letter-spacing: -0.055em; }
+  .mobileMenuLinks span { font-size: clamp(1.1rem, 4.5vw, 1.35rem); font-weight: 800; letter-spacing: -0.035em; }
+
+  .mobileMenuSocials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 1rem;
+  }
+
+  .mobileMenuSocials a {
+    padding: 0.62rem 0.8rem;
+    border: 1px solid color-mix(in srgb, var(--terracotta) 44%, transparent);
+    border-radius: 100vmax;
+    color: var(--terracotta);
+    font-size: 0.64rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
 
   .hero,
   .recognition,
@@ -1075,16 +1103,29 @@
     align-items: center;
     width: 100%;
     min-height: 4.9rem;
-    padding: 0.9rem 1rem;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: 0.5rem;
+    padding: 0.9rem 0.85rem;
     background: var(--ivory);
   }
 
   .headerAction {
     height: 2.55rem;
     min-height: 0;
-    padding: 0 0.85rem;
+    padding: 0 0.75rem;
     font-size: 0.62rem;
     line-height: 1;
+  }
+
+  .menuTrigger {
+    width: 2.55rem;
+    height: 2.55rem;
+  }
+
+  .mobileMenu {
+    top: 5.15rem;
+    right: 1rem;
+    width: min(20rem, calc(100vw - 2rem));
   }
 
   .hero {
