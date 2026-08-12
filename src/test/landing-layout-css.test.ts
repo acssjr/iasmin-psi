@@ -50,3 +50,17 @@ it('keeps the mobile header controls separated and uses a compact cream menu', (
   expect(css).toContain('max-height: calc(100svh - 6rem);')
   expect(css).not.toContain('inset: 0;\n    display: grid;\n    align-content: start;\n    padding: 1.25rem;\n    background: var(--espresso);')
 })
+
+it('lets hero action boxes adapt before their labels overflow', () => {
+  const css = readFileSync(
+    join(process.cwd(), 'src/components/landing/landing-page.module.css'),
+    'utf8',
+  )
+
+  expect(css).toContain(
+    'grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));',
+  )
+  expect(css).not.toContain(
+    '.hero .actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }',
+  )
+})
