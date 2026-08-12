@@ -10,6 +10,30 @@ import { FaqAccordion } from './faq-accordion'
 import { LandingMotion } from './landing-motion'
 import styles from './landing-page.module.css'
 
+const motifImages = {
+  path: '/images/reflections/reconexao.png',
+  pause: '/images/reflections/sobrecarrega.png',
+  restore: '/images/reflections/autocritica.png',
+} as const
+
+function SectionMotif({
+  className,
+  image = 'path',
+}: {
+  className?: string
+  image?: keyof typeof motifImages
+}) {
+  return (
+    <figure
+      aria-hidden="true"
+      className={`${styles.sectionMotif} ${className ?? ''}`}
+      data-testid="section-motif"
+    >
+      <Image alt="" fill sizes="12rem" src={motifImages[image]} />
+    </figure>
+  )
+}
+
 function BrandMark() {
   return (
     <span className={styles.brandMark} aria-label="Iasmin Portugal Psicologia Clínica">
@@ -105,13 +129,17 @@ function HeroSection() {
 function RecognitionSection() {
   return (
     <section className={styles.recognition} aria-labelledby="recognition-title">
+      <SectionMotif className={styles.recognitionMotif} image="pause" />
       <div>
         <p className={styles.sectionKicker}>Pode ser que você se reconheça aqui</p>
         <h2 id="recognition-title">
           Nem tudo o que pesa precisa ser carregado em silêncio.
         </h2>
       </div>
-      <ul className={styles.recognitionList}>
+      <ul
+        aria-label="Sinais que podem fazer sentido para você"
+        className={styles.recognitionList}
+      >
         <li>
           <span>01</span>
           <p>Você parece estar sempre resolvendo algo, mesmo quando já está cansada.</p>
@@ -132,6 +160,7 @@ function RecognitionSection() {
 function AboutIasminSection() {
   return (
     <section className={styles.about} id="conheca-iasmin" aria-labelledby="about-title">
+      <SectionMotif className={styles.aboutMotif} image="restore" />
       <div className={styles.aboutPhotos}>
         <figure className={styles.aboutPrimaryPhoto}>
           <Image
@@ -203,6 +232,7 @@ const carePillars = [
 function CarePillarsSection() {
   return (
     <section className={styles.care} id="como-funciona" data-care-section aria-labelledby="care-title">
+      <SectionMotif className={styles.careMotif} image="path" />
       <div className={styles.careIntro}>
         <p className={styles.sectionKicker}>Uma escuta situada</p>
         <h2 id="care-title">Cuidar também é entender o que acontece antes, durante e depois.</h2>
@@ -233,6 +263,7 @@ function CarePillarsSection() {
 function JourneyTeaserSection() {
   return (
     <section className={styles.journeyTeaser} aria-labelledby="journey-title">
+      <SectionMotif className={styles.journeyMotif} image="path" />
       <div>
         <p className={styles.sectionKicker}>Um primeiro passo possível</p>
         <h2 id="journey-title">Uma pausa guiada para olhar para você.</h2>
@@ -282,6 +313,7 @@ const faqItems = [
 function FaqSection() {
   return (
     <section className={styles.faq} aria-labelledby="faq-title">
+      <SectionMotif className={styles.faqMotif} image="restore" />
       <div>
         <p className={styles.sectionKicker}>Perguntas frequentes</p>
         <h2 id="faq-title">Talvez você queira saber.</h2>
@@ -296,6 +328,7 @@ function ClosingSection() {
 
   return (
     <section className={styles.closing} id="agendar" aria-labelledby="closing-title">
+      <SectionMotif className={styles.closingMotif} image="pause" />
       <p className={styles.sectionKicker}>Quando fizer sentido</p>
       <h2 id="closing-title">Você não precisa ter tudo resolvido para começar.</h2>
       <p>

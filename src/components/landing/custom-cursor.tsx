@@ -28,14 +28,21 @@ export function CustomCursor() {
       const halo = scope.current.querySelector<HTMLElement>('[data-cursor-halo]')
       if (!dot || !halo) return
 
-      gsap.set(scope.current, { autoAlpha: 1 })
+      gsap.set([dot, halo], { xPercent: -50, yPercent: -50 })
 
-      const dotX = gsap.quickTo(dot, 'x', { duration: 0.12, ease: 'power3.out' })
-      const dotY = gsap.quickTo(dot, 'y', { duration: 0.12, ease: 'power3.out' })
-      const haloX = gsap.quickTo(halo, 'x', { duration: 0.42, ease: 'power3.out' })
-      const haloY = gsap.quickTo(halo, 'y', { duration: 0.42, ease: 'power3.out' })
+      const dotX = gsap.quickTo(dot, 'x', { duration: 0.08, ease: 'power2.out' })
+      const dotY = gsap.quickTo(dot, 'y', { duration: 0.08, ease: 'power2.out' })
+      const haloX = gsap.quickTo(halo, 'x', { duration: 0.16, ease: 'power2.out' })
+      const haloY = gsap.quickTo(halo, 'y', { duration: 0.16, ease: 'power2.out' })
+      let visible = false
 
       const onPointerMove = (event: PointerEvent) => {
+        if (!visible) {
+          gsap.set([dot, halo], { x: event.clientX, y: event.clientY })
+          gsap.set(scope.current, { autoAlpha: 1 })
+          visible = true
+          return
+        }
         dotX(event.clientX)
         dotY(event.clientY)
         haloX(event.clientX)
@@ -52,12 +59,20 @@ export function CustomCursor() {
         })
         gsap.to(dot, { duration: 0.22, scale: interactive ? 0.65 : 1 })
       }
+      const onPointerLeave = () => gsap.to(scope.current, { autoAlpha: 0, duration: 0.2 })
+      const onPointerEnter = () => {
+        if (visible) gsap.to(scope.current, { autoAlpha: 1, duration: 0.2 })
+      }
 
       window.addEventListener('pointermove', onPointerMove, { passive: true })
+      document.documentElement.addEventListener('pointerleave', onPointerLeave)
+      document.documentElement.addEventListener('pointerenter', onPointerEnter)
       document.addEventListener('pointerover', onPointerOver, { passive: true })
 
       return () => {
         window.removeEventListener('pointermove', onPointerMove)
+        document.documentElement.removeEventListener('pointerleave', onPointerLeave)
+        document.documentElement.removeEventListener('pointerenter', onPointerEnter)
         document.removeEventListener('pointerover', onPointerOver)
       }
     },

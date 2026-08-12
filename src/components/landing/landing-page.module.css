@@ -19,24 +19,36 @@
   left: 0;
   border-radius: 50%;
   pointer-events: none;
-  transform: translate(-50%, -50%);
   will-change: transform;
 }
 
 .cursorDot {
   width: 0.42rem;
   height: 0.42rem;
-  margin: -0.21rem 0 0 -0.21rem;
   background: var(--terracotta);
 }
 
 .cursorHalo {
   width: 2.25rem;
   height: 2.25rem;
-  margin: -1.125rem 0 0 -1.125rem;
   border: 1px solid color-mix(in srgb, var(--terracotta) 50%, transparent);
   background: color-mix(in srgb, var(--sand) 12%, transparent);
 }
+
+.sectionMotif {
+  position: absolute;
+  z-index: 0;
+  width: clamp(5.25rem, 9vw, 8rem);
+  aspect-ratio: 1;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  border-radius: 50% 50% 1.4rem 50%;
+  opacity: 0.24;
+  pointer-events: none;
+}
+
+.sectionMotif img { object-fit: cover; }
 
 .siteHeader {
   position: absolute;
@@ -172,7 +184,7 @@
 .intro {
   max-width: 34rem;
   margin: 2rem 0 0;
-  color: color-mix(in srgb, var(--espresso) 72%, transparent);
+  color: var(--espresso);
   font-size: clamp(1rem, 1.6vw, 1.16rem);
   line-height: 1.7;
 }
@@ -351,6 +363,8 @@
   color: var(--cream);
 }
 
+.recognitionMotif { right: 3.5%; bottom: 7%; color: var(--cream); opacity: 0.2; transform: rotate(8deg); }
+
 .recognition .sectionKicker {
   color: var(--sand);
 }
@@ -394,6 +408,7 @@
 }
 
 .about {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(0, 1fr);
   align-items: center;
@@ -401,6 +416,8 @@
   padding-top: clamp(5.5rem, 12vw, 11rem);
   padding-bottom: clamp(5.5rem, 12vw, 11rem);
 }
+
+.aboutMotif { top: 8%; right: 3%; color: var(--terracotta); transform: rotate(-8deg); }
 
 .aboutPhotos {
   position: relative;
@@ -459,7 +476,7 @@
 .careIntro > p:not(.sectionKicker),
 .journeySurface > p,
 .closing > p:not(.sectionKicker) {
-  color: color-mix(in srgb, var(--espresso) 74%, transparent);
+  color: var(--espresso);
   font-size: 1rem;
   line-height: 1.78;
 }
@@ -494,6 +511,7 @@
 }
 
 .care {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
   gap: clamp(3rem, 11vw, 13rem);
@@ -504,6 +522,8 @@
   color: var(--cream);
 }
 
+.careMotif { right: 2.5%; bottom: 5%; color: var(--cream); opacity: 0.18; transform: rotate(12deg); }
+
 .care .sectionKicker {
   color: var(--sand);
 }
@@ -513,7 +533,7 @@
 }
 
 .careIntro > p:not(.sectionKicker) {
-  color: color-mix(in srgb, var(--cream) 70%, transparent);
+  color: var(--cream);
 }
 
 .carePath {
@@ -567,10 +587,12 @@
 .carePillar p {
   max-width: 31rem;
   margin: 0.8rem 0 0;
-  color: color-mix(in srgb, var(--cream) 68%, transparent);
+  color: var(--cream);
   font-size: 0.96rem;
   line-height: 1.72;
 }
+
+.journeyMotif { top: 6%; left: 2.5%; color: var(--terracotta); transform: rotate(-10deg); }
 
 .journeyTeaser {
   position: relative;
@@ -613,15 +635,18 @@
 .journeySurface p {
   max-width: 35rem;
   margin: 0;
-  font-size: 1.05rem;
+  font-size: clamp(1.12rem, 1.45vw, 1.28rem);
+  line-height: 1.72;
 }
 
 .journeySurface .boundaryCopy {
   margin-top: 1rem;
   color: var(--olive);
-  font-size: 0.84rem;
+  font-size: clamp(0.94rem, 1.1vw, 1.02rem);
   font-weight: 700;
 }
+
+.faqMotif { bottom: 5%; left: 2.5%; color: var(--terracotta); transform: rotate(16deg); }
 
 .journeySurface .primaryAction {
   width: 100%;
@@ -776,6 +801,7 @@
 }
 
 .closing {
+  position: relative;
   display: grid;
   justify-items: center;
   padding-top: clamp(6rem, 13vw, 12rem);
@@ -784,6 +810,8 @@
   color: var(--cream);
   text-align: center;
 }
+
+.closingMotif { right: 4%; bottom: 8%; color: var(--cream); opacity: 0.18; transform: rotate(-12deg); }
 
 .closing .sectionKicker {
   color: var(--sand);
@@ -795,7 +823,7 @@
 
 .closing > p:not(.sectionKicker) {
   max-width: 42rem;
-  color: color-mix(in srgb, var(--cream) 84%, transparent);
+  color: var(--cream);
 }
 
 .closing .actions {
@@ -964,14 +992,17 @@
   }
 
   .hero {
-    gap: 1.75rem;
-    padding-top: 5.75rem;
-    padding-bottom: 2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    padding: 4.9rem 0 0;
   }
 
   .heroCopy > .brandMark {
     display: grid;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.15rem;
   }
 
   .siteHeader .brandLink {
@@ -979,30 +1010,44 @@
   }
 
   .heroPortrait {
-    width: min(100%, 25rem);
-    aspect-ratio: 1.08;
-    max-height: 18rem;
-    border-radius: 7rem 7rem 1.5rem 1.5rem;
-    box-shadow: 0.85rem 0.85rem 0 var(--sand);
+    order: -1;
+    width: 100%;
+    aspect-ratio: 0.92;
+    max-height: 31rem;
+    border: 0;
+    border-radius: 0 0 5rem 0;
+    box-shadow: none;
   }
 
   .heroPortrait img {
-    object-position: 59% 33%;
+    object-position: 59% 36%;
   }
 
   .heroPortrait figcaption {
     display: none;
   }
 
+  .heroCopy {
+    position: relative;
+    z-index: 2;
+    width: calc(100% - 1.5rem);
+    margin: -3.25rem auto 0;
+    padding: 1.5rem 1.25rem 2rem;
+    border: 1px solid color-mix(in srgb, var(--espresso) 16%, transparent);
+    border-radius: 1.25rem 1.25rem 4.2rem 1.25rem;
+    background: var(--ivory);
+  }
+
   .hero h1 {
     max-width: 11.5ch;
-    font-size: clamp(2.3rem, 11vw, 3rem);
+    font-size: clamp(2.35rem, 11.4vw, 3.1rem);
   }
 
   .intro {
     margin-top: 1.25rem;
-    font-size: 0.9rem;
-    line-height: 1.58;
+    color: var(--espresso);
+    font-size: 0.96rem;
+    line-height: 1.62;
   }
 
   .actions {
@@ -1033,6 +1078,42 @@
   .carePillar {
     grid-template-columns: 2.3rem 1fr;
   }
+
+  .recognition { gap: 2.25rem; padding-top: 4.5rem; padding-bottom: 4.5rem; }
+
+  .recognitionList {
+    grid-auto-columns: minmax(82vw, 1fr);
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    gap: 0.75rem;
+    margin-right: -1.25rem;
+    overflow-x: auto;
+    border-top: 0;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .recognitionList::-webkit-scrollbar { display: none; }
+
+  .recognitionList li {
+    align-content: center;
+    min-height: 15rem;
+    padding: 1.5rem;
+    border: 1px solid color-mix(in srgb, var(--cream) 48%, transparent);
+    border-radius: 1rem 1rem 3.5rem 1rem;
+    scroll-snap-align: start;
+  }
+
+  .recognitionList p { font-size: 1.17rem; }
+
+  .careIntro,
+  .careIntro .sectionKicker,
+  .careIntro h2,
+  .careIntro > p { margin-left: 0; text-align: left; }
+
+  .careIntro { width: 100%; }
+  .care h2 { max-width: 9.2ch; font-size: clamp(2.55rem, 13vw, 3.7rem); }
+  .sectionMotif { width: 5rem; opacity: 0.18; }
 
   .aboutPhotos {
     min-height: 28rem;

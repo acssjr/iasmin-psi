@@ -81,3 +81,12 @@ it('provides external social links in the footer', () => {
     '_blank',
   )
 })
+
+it('adds calm visual motifs throughout the landing journey', () => {
+  render(<LandingPage />)
+
+  expect(screen.getAllByTestId('section-motif')).toHaveLength(6)
+  expect(
+    screen.getByLabelText('Sinais que podem fazer sentido para você'),
+  ).toBeInTheDocument()
+})
