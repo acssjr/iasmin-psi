@@ -88,7 +88,7 @@ export function SiteNavigation() {
 
   useGSAP(
     () => {
-      if (!mounted || !menu.current || !backdrop.current) return
+      if (!mounted || !open || !menu.current || !backdrop.current) return
       const reduceMotion =
         typeof window.matchMedia === 'function' &&
         window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -131,7 +131,7 @@ export function SiteNavigation() {
           reduceMotion ? 0 : 0.1,
         )
     },
-    { dependencies: [mounted], scope: menu, revertOnUpdate: true },
+    { dependencies: [mounted, open], scope: menu, revertOnUpdate: false },
   )
 
   const closeMenu = () => {
