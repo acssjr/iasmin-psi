@@ -36,4 +36,5 @@ it('uses higher contrast and a more compact mobile hero', () => {
   expect(css).toContain('max-height: 29.5rem;')
   expect(css).toContain('margin: -3.65rem auto 0;')
   expect(css).toContain('.carouselIndicators')
+  expect(css).toContain('touch-action: pan-y;')
 })

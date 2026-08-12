@@ -1180,6 +1180,7 @@
   .recognitionViewport {
     margin-right: -1.25rem;
     overflow: hidden;
+    touch-action: pan-y;
   }
 
   .recognitionList {
@@ -1201,6 +1202,7 @@
     padding: 1.5rem;
     border: 1px solid color-mix(in srgb, var(--cream) 48%, transparent);
     border-radius: 1rem 1rem 3.5rem 1rem;
+    cursor: pointer;
   }
 
   .recognitionList li:last-child { display: grid; }

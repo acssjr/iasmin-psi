@@ -107,4 +107,10 @@ it('keeps landing sections clean and exposes the recognition carousel', () => {
   expect(within(situations).getAllByRole('listitem')).toHaveLength(3)
   expect(indicators).toHaveLength(3)
   expect(indicators[0]).toHaveAttribute('aria-current', 'true')
+  expect(carousel).toHaveAttribute('data-carousel-interval', '5000')
+  expect(within(situations).getAllByRole('listitem')[0]).toHaveAttribute('tabindex', '0')
+  expect(within(situations).getAllByRole('listitem')[0]).toHaveAttribute(
+    'aria-label',
+    'Sinal 1 de 3. Toque para avançar.',
+  )
 })
