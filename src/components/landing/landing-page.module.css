@@ -356,7 +356,7 @@
 }
 
 .recognition .sectionKicker {
-  color: var(--sand);
+  color: #fff9f1;
 }
 
 .recognition h2 {
@@ -373,6 +373,8 @@
 }
 
 .recognitionViewport { min-width: 0; overflow: hidden; }
+
+.carouselIndicators { display: none; }
 
 .recognitionList li {
   display: grid;
@@ -1105,8 +1107,8 @@
   .heroPortrait {
     order: -1;
     width: 100%;
-    aspect-ratio: 0.92;
-    max-height: 31rem;
+    aspect-ratio: 0.98;
+    max-height: 29.5rem;
     border: 0;
     border-radius: 0 0 5rem 0;
     box-shadow: none;
@@ -1124,7 +1126,7 @@
     position: relative;
     z-index: 2;
     width: calc(100% - 1.5rem);
-    margin: -3.25rem auto 0;
+    margin: -3.65rem auto 0;
     padding: 1.5rem 1.25rem 2rem;
     border: 1px solid color-mix(in srgb, var(--espresso) 16%, transparent);
     border-radius: 1.25rem 1.25rem 4.2rem 1.25rem;
@@ -1199,6 +1201,32 @@
     padding: 1.5rem;
     border: 1px solid color-mix(in srgb, var(--cream) 48%, transparent);
     border-radius: 1rem 1rem 3.5rem 1rem;
+  }
+
+  .recognitionList li:last-child { display: grid; }
+
+  .carouselIndicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.55rem;
+    margin-top: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .carouselIndicators button {
+    width: 0.52rem;
+    height: 0.52rem;
+    padding: 0;
+    border: 1px solid #fff9f1;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    transition: background-color 220ms ease, transform 220ms ease;
+  }
+
+  .carouselIndicators button[aria-current='true'] {
+    background: #fff9f1;
+    transform: scale(1.18);
   }
 
   .recognitionList p { font-size: 1.17rem; }

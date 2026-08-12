@@ -99,7 +99,12 @@ it('keeps landing sections clean and exposes the recognition carousel', () => {
   render(<LandingPage />)
 
   expect(screen.queryByTestId('section-motif')).not.toBeInTheDocument()
-  expect(
-    screen.getByLabelText('Sinais que podem fazer sentido para você'),
-  ).toBeInTheDocument()
+  const carousel = screen.getByLabelText('Sinais que podem fazer sentido para você')
+  const situations = within(carousel).getByRole('list', { name: 'Situações de reconhecimento' })
+  const indicators = within(carousel).getAllByRole('button', { name: /Mostrar sinal/i })
+
+  expect(situations).toBeInTheDocument()
+  expect(within(situations).getAllByRole('listitem')).toHaveLength(3)
+  expect(indicators).toHaveLength(3)
+  expect(indicators[0]).toHaveAttribute('aria-current', 'true')
 })
