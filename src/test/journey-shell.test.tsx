@@ -70,6 +70,8 @@ it('shows the reflection locally when the persistence service is unavailable out
   expect(
     await screen.findByText(/Obrigada por se permitir essa pausa/i),
   ).toBeVisible()
+  expect(screen.getByTestId('journey-result-layout')).toBeVisible()
+  expect(screen.getByRole('img', { name: /Ilustração abstrata/i })).toBeVisible()
 })
 
 it('keeps client-side submission failures visible outside production', async () => {

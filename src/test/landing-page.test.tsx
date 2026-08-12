@@ -1,7 +1,10 @@
-import { render, screen, within } from '@testing-library/react'
-import { expect, it } from 'vitest'
+import { cleanup, render, screen, within } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { afterEach, expect, it } from 'vitest'
 
 import LandingPage from '@/components/landing/landing-page'
+
+afterEach(cleanup)
 
 it('shows both first-step actions in the hero', () => {
   render(<LandingPage />)
@@ -50,4 +53,31 @@ it('shows both first-step actions in the hero', () => {
   expect(screen.getByTestId('landing-motion')).toBeInTheDocument()
   expect(screen.getByTestId('hero-context-trail')).toBeInTheDocument()
   expect(screen.getByTestId('care-context-trail')).toBeInTheDocument()
+})
+
+it('exposes an accessible animated FAQ accordion', async () => {
+  const user = userEvent.setup()
+  render(<LandingPage />)
+
+  const question = screen.getByRole('button', {
+    name: 'Como funciona a psicoterapia on-line?',
+  })
+
+  expect(question).toHaveAttribute('aria-expanded', 'false')
+  await user.click(question)
+  expect(question).toHaveAttribute('aria-expanded', 'true')
+  expect(screen.getByText(/As sessões acontecem por videochamada/i)).toBeVisible()
+})
+
+it('provides external social links in the footer', () => {
+  render(<LandingPage />)
+
+  expect(screen.getByRole('link', { name: /Instagram de Iasmin Portugal/i })).toHaveAttribute(
+    'href',
+    'https://www.instagram.com/iasminportugalpsi/',
+  )
+  expect(screen.getByRole('link', { name: /LinkedIn de Iasmin Portugal/i })).toHaveAttribute(
+    'target',
+    '_blank',
+  )
 })

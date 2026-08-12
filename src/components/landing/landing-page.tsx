@@ -5,6 +5,8 @@ import { TrackedLink } from '@/components/tracked-link'
 import { getSchedulingWhatsAppHref } from '@/lib/whatsapp'
 
 import { ContextTrail } from './context-trail'
+import { CustomCursor } from './custom-cursor'
+import { FaqAccordion } from './faq-accordion'
 import { LandingMotion } from './landing-motion'
 import styles from './landing-page.module.css'
 
@@ -284,19 +286,7 @@ function FaqSection() {
         <p className={styles.sectionKicker}>Perguntas frequentes</p>
         <h2 id="faq-title">Talvez você queira saber.</h2>
       </div>
-      <div className={styles.faqList}>
-        {faqItems.map((item) => (
-          <details key={item.question}>
-            <summary>
-              <span>{item.question}</span>
-              <span aria-hidden="true" className={styles.faqToggle} />
-            </summary>
-            <div className={styles.faqAnswer}>
-              <p>{item.answer}</p>
-            </div>
-          </details>
-        ))}
-      </div>
+      <FaqAccordion items={faqItems} />
     </section>
   )
 }
@@ -335,6 +325,21 @@ function ClosingSection() {
 }
 
 function SiteFooter() {
+  const socialLinks = [
+    {
+      href: 'https://www.instagram.com/iasminportugalpsi/',
+      label: 'Instagram de Iasmin Portugal',
+      name: 'Instagram',
+      path: 'M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8Zm9.45 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z',
+    },
+    {
+      href: 'https://www.linkedin.com/',
+      label: 'LinkedIn de Iasmin Portugal',
+      name: 'LinkedIn',
+      path: 'M5.5 3.5A2.5 2.5 0 1 1 5.5 8a2.5 2.5 0 0 1 0-4.5ZM3.5 9.5h4V21h-4V9.5Zm6.5 0h3.8v1.58h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.2c0-1.24-.02-2.84-1.73-2.84-1.73 0-2 1.35-2 2.75V21h-4V9.5Z',
+    },
+  ] as const
+
   return (
     <footer className={styles.footer}>
       <div className={styles.footerTop}>
@@ -349,6 +354,22 @@ function SiteFooter() {
         <Link href="/percurso">Percurso</Link>
         <Link href="/privacidade">Privacidade</Link>
       </div>
+      <div className={styles.socialLinks} aria-label="Redes sociais">
+        {socialLinks.map((social) => (
+          <a
+            aria-label={social.label}
+            href={social.href}
+            key={social.name}
+            rel="noreferrer"
+            target="_blank"
+          >
+            <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+              <path d={social.path} />
+            </svg>
+            <span>{social.name}</span>
+          </a>
+        ))}
+      </div>
       <p className={styles.emergencyNotice}>
         Este site não é um canal de emergência. Em risco imediato, ligue 192
         para o SAMU ou 188 para o CVV.
@@ -361,19 +382,22 @@ function SiteFooter() {
 export default function LandingPage() {
   return (
     <div className={styles.page}>
-      <SiteHeader />
+      <CustomCursor />
       <LandingMotion>
-        <main>
-          <HeroSection />
-          <RecognitionSection />
-          <AboutIasminSection />
-          <CarePillarsSection />
-          <JourneyTeaserSection />
-          <FaqSection />
-          <ClosingSection />
-        </main>
+        <div data-smooth-content>
+          <SiteHeader />
+          <main>
+            <HeroSection />
+            <RecognitionSection />
+            <AboutIasminSection />
+            <CarePillarsSection />
+            <JourneyTeaserSection />
+            <FaqSection />
+            <ClosingSection />
+          </main>
+          <SiteFooter />
+        </div>
       </LandingMotion>
-      <SiteFooter />
     </div>
   )
 }

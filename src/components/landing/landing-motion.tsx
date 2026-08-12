@@ -5,9 +5,10 @@ import { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ScrollSmoother } from 'gsap/ScrollSmoother'
 
 if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
-  gsap.registerPlugin(useGSAP, ScrollTrigger)
+  gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother)
 }
 
 type LandingMotionProps = {
@@ -41,6 +42,22 @@ export function LandingMotion({ children }: LandingMotionProps) {
 
           if (reducedMotion) {
             return
+          }
+
+          let smoother: ScrollSmoother | undefined
+
+          if (desktop && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+            const smoothContent = root.querySelector<HTMLElement>('[data-smooth-content]')
+            if (smoothContent) {
+              smoother = ScrollSmoother.create({
+                content: smoothContent,
+                effects: false,
+                normalizeScroll: false,
+                smooth: 0.85,
+                smoothTouch: 0,
+                wrapper: root,
+              })
+            }
           }
 
           const eyebrow = root.querySelector('[data-hero-eyebrow]')
@@ -124,6 +141,24 @@ export function LandingMotion({ children }: LandingMotionProps) {
             }
           }
 
+          const revealSections = root.querySelectorAll<HTMLElement>(
+            'main > section:not(:first-child)',
+          )
+
+          revealSections.forEach((section) => {
+            gsap.from(section, {
+              autoAlpha: 0.78,
+              duration: 0.8,
+              ease: 'power2.out',
+              scrollTrigger: {
+                once: true,
+                start: 'top 88%',
+                trigger: section,
+              },
+              y: 24,
+            })
+          })
+
           const refreshAfterAssets = async () => {
             await document.fonts?.ready
             const images = Array.from(root.querySelectorAll('img'))
@@ -132,6 +167,8 @@ export function LandingMotion({ children }: LandingMotionProps) {
           }
 
           void refreshAfterAssets()
+
+          return () => smoother?.kill()
         },
       )
 

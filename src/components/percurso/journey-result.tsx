@@ -21,8 +21,12 @@ export function JourneyResult({
   const reflection = reflectionContent[reflectionKey]
 
   return (
-    <section className={styles.result} aria-labelledby="result-title">
-      <div>
+    <section
+      className={styles.result}
+      aria-labelledby="result-title"
+      data-testid="journey-result-layout"
+    >
+      <div className={styles.resultCopy}>
         <p className={styles.eyebrow}>O que este percurso pode te mostrar</p>
         <h1 id="result-title">{reflection.title}</h1>
         <p>

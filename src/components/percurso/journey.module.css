@@ -33,7 +33,7 @@
 .shell {
   display: grid;
   align-items: center;
-  width: min(100%, 48rem);
+  width: min(100%, 64rem);
   min-height: calc(100svh - 4rem);
   margin: 0 auto;
   padding: clamp(2.5rem, 7vw, 5.5rem) 0;
@@ -53,6 +53,10 @@
 .result {
   display: grid;
   gap: clamp(1.75rem, 5vw, 3.5rem);
+}
+
+.resultCopy {
+  min-width: 0;
 }
 
 .eyebrow {
@@ -406,8 +410,54 @@
   }
 
   .result {
-    grid-template-columns: minmax(0, 1fr) minmax(11rem, 18rem);
+    grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 0.65fr);
     align-items: center;
+    min-height: min(46rem, calc(100svh - 7rem));
+    padding: clamp(2rem, 4vw, 3.25rem);
+  }
+
+  .result h1 {
+    max-width: 12ch;
+    font-size: clamp(2.6rem, 4.6vw, 4.65rem);
+  }
+
+  .resultCopy > p:not(.eyebrow) {
+    max-width: 39rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.58;
+  }
+
+  .result .boundaryNote {
+    margin-top: 1rem;
+    padding-top: 0.9rem;
+  }
+
+  .resultActions {
+    margin-top: 1.25rem;
+  }
+
+  .resultArtwork {
+    width: min(100%, 19rem);
+  }
+}
+
+@media (min-width: 64rem) and (max-height: 50rem) {
+  .shell {
+    min-height: calc(100svh - 3rem);
+    padding: 1.25rem 0;
+  }
+
+  .result {
+    min-height: calc(100svh - 5rem);
+  }
+
+  .result h1 {
+    font-size: clamp(2.5rem, 4vw, 3.75rem);
+  }
+
+  .resultArtwork {
+    width: min(100%, 16rem);
   }
 }
 
