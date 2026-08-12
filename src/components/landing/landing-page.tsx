@@ -151,7 +151,7 @@ function AboutIasminSection() {
         </figure>
       </div>
       <div className={styles.aboutCopy}>
-        <p className={styles.sectionKicker}>Conheça Iasmin</p>
+        <p className={styles.sectionKicker}>Quem sou eu?</p>
         <h2 id="about-title">Um cuidado que olha para a sua história inteira.</h2>
         <p>
           Sou <strong>Iasmin Portugal</strong>, psicóloga clínica. No atendimento on-line,

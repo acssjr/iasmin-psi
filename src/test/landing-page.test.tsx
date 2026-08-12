@@ -50,6 +50,11 @@ it('shows both first-step actions in the hero', () => {
     screen.getByText('Realizo atendimentos para adolescentes e adultos em todo o Brasil.'),
   ).toBeInTheDocument()
   expect(screen.getByText('Iasmin Portugal', { selector: 'strong' })).toBeVisible()
+  expect(
+    within(
+      screen.getByRole('region', { name: 'Um cuidado que olha para a sua história inteira.' }),
+    ).getByText('Quem sou eu?'),
+  ).toBeVisible()
   expect(screen.getByText('5 perguntas')).toBeVisible()
   expect(screen.getByRole('region', { name: 'Uma pausa guiada para olhar para você.' })).toHaveAttribute(
     'id',
