@@ -232,7 +232,7 @@ function CarePillarsSection() {
 
 function JourneyTeaserSection() {
   return (
-    <section className={styles.journeyTeaser} aria-labelledby="journey-title">
+    <section className={styles.journeyTeaser} id="percurso" aria-labelledby="journey-title">
       <div>
         <p className={styles.sectionKicker}>Um primeiro passo possível</p>
         <h2 id="journey-title">Uma pausa guiada para olhar para você.</h2>
@@ -336,7 +336,7 @@ function SiteFooter() {
       <div className={styles.footerLinks}>
         <SmoothSectionLink target="conheca-iasmin">Conheça Iasmin</SmoothSectionLink>
         <SmoothSectionLink target="como-funciona">Como funciona</SmoothSectionLink>
-        <Link href="/percurso">Percurso</Link>
+        <SmoothSectionLink target="percurso">Percurso</SmoothSectionLink>
         <Link href="/privacidade">Privacidade</Link>
       </div>
       <div className={styles.socialLinks} aria-label="Redes sociais">

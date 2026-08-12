@@ -51,6 +51,10 @@ it('shows both first-step actions in the hero', () => {
   ).toBeInTheDocument()
   expect(screen.getByText('Iasmin Portugal', { selector: 'strong' })).toBeVisible()
   expect(screen.getByText('5 perguntas')).toBeVisible()
+  expect(screen.getByRole('region', { name: 'Uma pausa guiada para olhar para você.' })).toHaveAttribute(
+    'id',
+    'percurso',
+  )
   expect(
     screen.getByText(/experiência breve de reflexão com cinco perguntas/i),
   ).toBeInTheDocument()

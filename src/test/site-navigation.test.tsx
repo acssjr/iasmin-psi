@@ -37,3 +37,15 @@ it('opens and closes the mobile navigation accessibly', async () => {
   await user.click(screen.getByRole('button', { name: 'Fechar menu' }))
   expect(trigger).toHaveAttribute('aria-expanded', 'false')
 })
+
+it('treats percurso as an in-page destination without decorative numbering', () => {
+  render(<SiteNavigation />)
+
+  expect(screen.getByRole('link', { name: 'Percurso' })).toHaveAttribute(
+    'href',
+    '#percurso',
+  )
+  expect(screen.queryByText('01')).not.toBeInTheDocument()
+  expect(screen.queryByText('02')).not.toBeInTheDocument()
+  expect(screen.queryByText('03')).not.toBeInTheDocument()
+})

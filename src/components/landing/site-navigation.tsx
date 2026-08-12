@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import { useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useGSAP } from '@gsap/react'
@@ -11,6 +10,7 @@ import styles from './landing-page.module.css'
 const navigationItems = [
   { href: '#conheca-iasmin', label: 'Conheça Iasmin', target: 'conheca-iasmin' },
   { href: '#como-funciona', label: 'Como funciona', target: 'como-funciona' },
+  { href: '#percurso', label: 'Percurso', target: 'percurso' },
 ] as const
 
 function scrollToSection(targetId: string) {
@@ -76,7 +76,7 @@ export function SiteNavigation() {
   return (
     <>
       <nav className={styles.navigation} aria-label="Navegação principal">
-        {navigationItems.map((item, index) => (
+        {navigationItems.map((item) => (
           <span className={styles.navigationItem} key={item.target}>
             <a
               aria-label={item.label}
@@ -86,17 +86,10 @@ export function SiteNavigation() {
                 navigate(item.target)
               }}
             >
-              <small>{String(index + 1).padStart(2, '0')}</small>
               {item.label}
             </a>
           </span>
         ))}
-        <span className={styles.navigationItem}>
-          <Link href="/percurso">
-            <small>03</small>
-            Percurso
-          </Link>
-        </span>
       </nav>
 
       <button
@@ -119,16 +112,11 @@ export function SiteNavigation() {
             </button>
           </div>
           <div className={styles.mobileMenuLinks}>
-            {navigationItems.map((item, index) => (
+            {navigationItems.map((item) => (
               <button key={item.target} onClick={() => navigate(item.target)} type="button">
-                <small>{String(index + 1).padStart(2, '0')}</small>
                 <span>{item.label}</span>
               </button>
             ))}
-            <Link href="/percurso" onClick={() => setOpen(false)}>
-              <small>03</small>
-              <span>Percurso</span>
-            </Link>
           </div>
         </div>
       , document.body) : null}
