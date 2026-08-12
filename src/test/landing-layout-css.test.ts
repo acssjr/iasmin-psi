@@ -77,3 +77,39 @@ it('sizes the official brand marks for header, hero and footer contexts', () => 
   expect(css).toContain('width: clamp(6.9rem, 10vw, 8.75rem);')
   expect(css).toContain('width: clamp(7.5rem, 13vw, 10.5rem);')
 })
+
+it('centers the mobile brand between the menu and highlighted schedule action', () => {
+  const css = readFileSync(
+    join(process.cwd(), 'src/components/landing/landing-page.module.css'),
+    'utf8',
+  )
+
+  expect(css).toContain('grid-template-columns: minmax(0, 1fr) auto auto;')
+  expect(css).toContain('grid-column: 1;\n    grid-row: 1;')
+  expect(css).toContain('left: 50%;')
+  expect(css).toContain('justify-self: auto;')
+  expect(css).toContain('transform: translateX(-50%);')
+  expect(css).toContain('grid-column: 3;\n    grid-row: 1;')
+  expect(css).toContain('background: var(--terracotta);\n    color: var(--cream);')
+})
+
+it('centers the mobile footer and uses a balanced two-column navigation', () => {
+  const css = readFileSync(
+    join(process.cwd(), 'src/components/landing/landing-page.module.css'),
+    'utf8',
+  )
+
+  expect(css).toContain('grid-template-columns: repeat(2, minmax(0, 1fr));')
+  expect(css).toContain('text-align: center;')
+  expect(css).toContain('color: var(--cream);')
+})
+
+it('slightly relaxes the mobile recognition headline and tightens hero branding', () => {
+  const css = readFileSync(
+    join(process.cwd(), 'src/components/landing/landing-page.module.css'),
+    'utf8',
+  )
+
+  expect(css).toContain('letter-spacing: -0.06em;')
+  expect(css).toContain('margin-bottom: 0.35rem;')
+})

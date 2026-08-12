@@ -1122,21 +1122,30 @@
     align-items: center;
     width: 100%;
     min-height: 4.9rem;
-    grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-columns: 1fr 1fr;
     gap: 0.5rem;
     padding: 0.9rem 0.85rem;
     background: var(--ivory);
   }
 
   .headerAction {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
     height: 2.55rem;
     min-height: 0;
     padding: 0 0.75rem;
+    border-color: color-mix(in srgb, var(--terracotta) 72%, transparent);
+    background: var(--terracotta);
+    color: var(--cream);
     font-size: 0.62rem;
     line-height: 1;
   }
 
   .menuTrigger {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
     width: 2.55rem;
     height: 2.55rem;
   }
@@ -1157,7 +1166,11 @@
   }
 
   .siteHeader .brandLink {
+    position: absolute;
+    left: 50%;
     display: inline-flex;
+    justify-self: auto;
+    transform: translateX(-50%);
   }
 
   .headerLogo {
@@ -1166,7 +1179,7 @@
 
   .heroSignature {
     width: 7.75rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.35rem;
   }
 
   .heroPortrait {
@@ -1241,6 +1254,10 @@
   }
 
   .recognition { gap: 2.25rem; padding-top: 4.5rem; padding-bottom: 4.5rem; }
+
+  .recognition h2 {
+    letter-spacing: -0.06em;
+  }
 
   .recognitionViewport {
     margin-right: -1.25rem;
@@ -1324,11 +1341,46 @@
   }
 
   .footerTop {
-    align-items: start;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
   .footerLogo {
     width: 9.5rem;
+  }
+
+  .footerTop p,
+  .emergencyNotice,
+  .copyright {
+    color: var(--cream);
+    text-align: center;
+  }
+
+  .footerLinks {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: min(100%, 22rem);
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+  }
+
+  .footerLinks a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .socialLinks {
+    justify-content: center;
+  }
+
+  .emergencyNotice,
+  .copyright {
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 
