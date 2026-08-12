@@ -82,10 +82,10 @@ it('provides external social links in the footer', () => {
   )
 })
 
-it('adds calm visual motifs throughout the landing journey', () => {
+it('keeps landing sections clean and exposes the recognition carousel', () => {
   render(<LandingPage />)
 
-  expect(screen.getAllByTestId('section-motif')).toHaveLength(6)
+  expect(screen.queryByTestId('section-motif')).not.toBeInTheDocument()
   expect(
     screen.getByLabelText('Sinais que podem fazer sentido para você'),
   ).toBeInTheDocument()

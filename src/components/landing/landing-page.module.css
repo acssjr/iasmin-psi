@@ -35,21 +35,6 @@
   background: color-mix(in srgb, var(--sand) 12%, transparent);
 }
 
-.sectionMotif {
-  position: absolute;
-  z-index: 0;
-  width: clamp(5.25rem, 9vw, 8rem);
-  aspect-ratio: 1;
-  margin: 0;
-  overflow: hidden;
-  border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
-  border-radius: 50% 50% 1.4rem 50%;
-  opacity: 0.24;
-  pointer-events: none;
-}
-
-.sectionMotif img { object-fit: cover; }
-
 .siteHeader {
   position: absolute;
   z-index: 2;
@@ -343,28 +328,6 @@
   color: var(--cream);
 }
 
-.recognition::after,
-.journeyTeaser::after,
-.faq::after {
-  position: absolute;
-  width: clamp(4rem, 8vw, 7rem);
-  aspect-ratio: 1;
-  border: 1px solid currentColor;
-  border-radius: 47% 53% 58% 42% / 43% 41% 59% 57%;
-  content: '';
-  opacity: 0.12;
-  pointer-events: none;
-  transform: rotate(18deg);
-}
-
-.recognition::after {
-  right: 4%;
-  bottom: 6%;
-  color: var(--cream);
-}
-
-.recognitionMotif { right: 3.5%; bottom: 7%; color: var(--cream); opacity: 0.2; transform: rotate(8deg); }
-
 .recognition .sectionKicker {
   color: var(--sand);
 }
@@ -382,6 +345,8 @@
   list-style: none;
 }
 
+.recognitionViewport { min-width: 0; overflow: hidden; }
+
 .recognitionList li {
   display: grid;
   grid-template-columns: 3.5rem 1fr;
@@ -390,6 +355,8 @@
   padding: 1.35rem 0;
   border-bottom: 1px solid color-mix(in srgb, var(--cream) 46%, transparent);
 }
+
+.recognitionList li:last-child { display: none; }
 
 .recognitionList span,
 .pillarNumber,
@@ -416,8 +383,6 @@
   padding-top: clamp(5.5rem, 12vw, 11rem);
   padding-bottom: clamp(5.5rem, 12vw, 11rem);
 }
-
-.aboutMotif { top: 8%; right: 3%; color: var(--terracotta); transform: rotate(-8deg); }
 
 .aboutPhotos {
   position: relative;
@@ -522,8 +487,6 @@
   color: var(--cream);
 }
 
-.careMotif { right: 2.5%; bottom: 5%; color: var(--cream); opacity: 0.18; transform: rotate(12deg); }
-
 .care .sectionKicker {
   color: var(--sand);
 }
@@ -592,8 +555,6 @@
   line-height: 1.72;
 }
 
-.journeyMotif { top: 6%; left: 2.5%; color: var(--terracotta); transform: rotate(-10deg); }
-
 .journeyTeaser {
   position: relative;
   display: grid;
@@ -602,12 +563,6 @@
   gap: clamp(3rem, 10vw, 11rem);
   padding-top: clamp(5.5rem, 11vw, 10rem);
   padding-bottom: clamp(5.5rem, 11vw, 10rem);
-}
-
-.journeyTeaser::after {
-  top: 10%;
-  right: 3%;
-  color: var(--terracotta);
 }
 
 .journeyTeaser h2 {
@@ -646,8 +601,6 @@
   font-weight: 700;
 }
 
-.faqMotif { bottom: 5%; left: 2.5%; color: var(--terracotta); transform: rotate(16deg); }
-
 .journeySurface .primaryAction {
   width: 100%;
   margin-top: 2rem;
@@ -661,13 +614,6 @@
   padding-top: clamp(5.5rem, 10vw, 9rem);
   padding-bottom: clamp(5.5rem, 10vw, 9rem);
   background: var(--sand);
-}
-
-.faq::after {
-  bottom: 8%;
-  left: 3%;
-  color: var(--terracotta);
-  transform: rotate(-12deg);
 }
 
 .faq h2 {
@@ -810,8 +756,6 @@
   color: var(--cream);
   text-align: center;
 }
-
-.closingMotif { right: 4%; bottom: 8%; color: var(--cream); opacity: 0.18; transform: rotate(-12deg); }
 
 .closing .sectionKicker {
   color: var(--sand);
@@ -959,6 +903,49 @@
   }
 }
 
+@media (min-width: 35.0625rem) and (max-width: 68rem) {
+  .siteHeader {
+    top: 0;
+    width: min(100% - 3rem, 62rem);
+    padding: 1.35rem 0;
+  }
+
+  .navigation { gap: 0.85rem; }
+  .navigation a, .headerAction { font-size: 0.6rem; }
+
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(19rem, 0.82fr);
+    align-items: center;
+    gap: 2.5rem;
+    width: min(100% - 3rem, 62rem);
+    min-height: auto;
+    padding-top: 8.5rem;
+    padding-bottom: 5.5rem;
+  }
+
+  .hero h1 { font-size: clamp(3.2rem, 6.4vw, 4.5rem); }
+  .heroPortrait { width: 100%; max-width: 25rem; }
+  .hero .actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .trailLabels { justify-content: center; }
+
+  .recognition,
+  .about,
+  .care,
+  .journeyTeaser,
+  .faq {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 3rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .recognition h2, .journeyTeaser h2, .faq h2 { max-width: 11ch; }
+  .aboutPhotos { min-height: 32rem; }
+  .care { min-height: auto; }
+  .carePillar { padding-left: 12%; }
+  .carePillar:nth-child(2) { padding-left: 0; }
+}
+
 @media (hover: hover) and (pointer: fine) {
   .page,
   .page a,
@@ -982,13 +969,20 @@
   }
 
   .siteHeader {
-    padding-top: 1.2rem;
+    position: absolute;
+    top: 0;
+    align-items: center;
+    width: 100%;
+    min-height: 4.9rem;
+    padding: 0.9rem 1rem;
+    background: var(--ivory);
   }
 
   .headerAction {
-    min-height: 2.75rem;
-    padding: 0.55rem 0.8rem;
+    min-height: 2.55rem;
+    padding: 0.45rem 0.85rem;
     font-size: 0.62rem;
+    line-height: 1;
   }
 
   .hero {
@@ -1001,12 +995,11 @@
   }
 
   .heroCopy > .brandMark {
-    display: grid;
-    margin-bottom: 1.15rem;
+    display: none;
   }
 
   .siteHeader .brandLink {
-    display: none;
+    display: inline-flex;
   }
 
   .heroPortrait {
@@ -1067,6 +1060,7 @@
 
   .trailLabels {
     gap: 0.75rem;
+    justify-content: center;
     font-size: 0.58rem;
   }
 
@@ -1081,30 +1075,34 @@
 
   .recognition { gap: 2.25rem; padding-top: 4.5rem; padding-bottom: 4.5rem; }
 
+  .recognitionViewport {
+    margin-right: -1.25rem;
+    overflow: hidden;
+  }
+
   .recognitionList {
-    grid-auto-columns: minmax(82vw, 1fr);
+    grid-auto-columns: 82vw;
     grid-auto-flow: column;
     grid-template-columns: none;
     gap: 0.75rem;
-    margin-right: -1.25rem;
-    overflow-x: auto;
+    width: max-content;
+    overflow: visible;
     border-top: 0;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
   }
 
-  .recognitionList::-webkit-scrollbar { display: none; }
-
   .recognitionList li {
+    display: grid;
     align-content: center;
+    width: 82vw;
+    min-width: 0;
     min-height: 15rem;
     padding: 1.5rem;
     border: 1px solid color-mix(in srgb, var(--cream) 48%, transparent);
     border-radius: 1rem 1rem 3.5rem 1rem;
-    scroll-snap-align: start;
   }
 
   .recognitionList p { font-size: 1.17rem; }
+  .recognitionList p { min-width: 0; overflow-wrap: anywhere; }
 
   .careIntro,
   .careIntro .sectionKicker,
@@ -1113,7 +1111,6 @@
 
   .careIntro { width: 100%; }
   .care h2 { max-width: 9.2ch; font-size: clamp(2.55rem, 13vw, 3.7rem); }
-  .sectionMotif { width: 5rem; opacity: 0.18; }
 
   .aboutPhotos {
     min-height: 28rem;
