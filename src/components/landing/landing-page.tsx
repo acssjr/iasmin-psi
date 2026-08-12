@@ -9,6 +9,7 @@ import { CustomCursor } from './custom-cursor'
 import { FaqAccordion } from './faq-accordion'
 import { LandingMotion } from './landing-motion'
 import { RecognitionCarousel } from './recognition-carousel'
+import { SiteNavigation, SmoothSectionLink } from './site-navigation'
 import styles from './landing-page.module.css'
 
 const socialLinks = [
@@ -41,14 +42,10 @@ function SiteHeader() {
 
   return (
     <header className={styles.siteHeader}>
-      <a className={styles.brandLink} href="#top" aria-label="Voltar ao início">
+      <SmoothSectionLink className={styles.brandLink} target="top">
         <BrandMark />
-      </a>
-      <nav className={styles.navigation} aria-label="Navegação principal">
-        <a href="#conheca-iasmin">Conheça Iasmin</a>
-        <a href="#como-funciona">Como funciona</a>
-        <Link href="/percurso">Percurso</Link>
-      </nav>
+      </SmoothSectionLink>
+      <SiteNavigation />
       <TrackedLink
         className={styles.headerAction}
         eventName="cta_schedule_clicked"
@@ -337,8 +334,8 @@ function SiteFooter() {
         </p>
       </div>
       <div className={styles.footerLinks}>
-        <a href="#conheca-iasmin">Conheça Iasmin</a>
-        <a href="#como-funciona">Como funciona</a>
+        <SmoothSectionLink target="conheca-iasmin">Conheça Iasmin</SmoothSectionLink>
+        <SmoothSectionLink target="como-funciona">Como funciona</SmoothSectionLink>
         <Link href="/percurso">Percurso</Link>
         <Link href="/privacidade">Privacidade</Link>
       </div>

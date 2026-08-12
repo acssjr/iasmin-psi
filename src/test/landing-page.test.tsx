@@ -32,6 +32,10 @@ it('shows both first-step actions in the hero', () => {
       name: 'Conheça Iasmin',
     }),
   ).toBeVisible()
+  expect(screen.getByRole('button', { name: 'Abrir menu' })).toHaveAttribute(
+    'aria-expanded',
+    'false',
+  )
   expect(
     screen.getByText(
       'Iasmin Portugal de Souza Costa · Psicóloga Clínica · CRP 03/33160',

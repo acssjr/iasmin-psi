@@ -57,6 +57,7 @@ export function LandingMotion({ children }: LandingMotionProps) {
                 smoothTouch: 0,
                 wrapper: root,
               })
+              window.__iasminScrollSmoother = smoother
             }
           }
 
@@ -168,7 +169,12 @@ export function LandingMotion({ children }: LandingMotionProps) {
 
           void refreshAfterAssets()
 
-          return () => smoother?.kill()
+          return () => {
+            if (window.__iasminScrollSmoother === smoother) {
+              window.__iasminScrollSmoother = undefined
+            }
+            smoother?.kill()
+          }
         },
       )
 
