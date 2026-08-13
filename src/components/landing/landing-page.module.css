@@ -22,6 +22,49 @@
   will-change: transform;
 }
 
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.floatingWhatsApp {
+  position: fixed;
+  z-index: 9000;
+  right: max(1.25rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  display: grid;
+  place-items: center;
+  width: clamp(3.5rem, 5vw, 4.25rem);
+  height: clamp(3.5rem, 5vw, 4.25rem);
+  padding: 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--cream) 52%, transparent);
+  border-radius: 50%;
+  background: var(--terracotta);
+  box-shadow: 0 0.85rem 2.2rem color-mix(in srgb, var(--espresso) 28%, transparent);
+  color: var(--cream);
+  transition: 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-property: background-color, box-shadow, transform;
+}
+
+.floatingWhatsApp:hover,
+.floatingWhatsApp:focus-visible {
+  background: var(--espresso);
+  box-shadow: 0 1rem 2.6rem color-mix(in srgb, var(--espresso) 36%, transparent);
+  transform: translateY(-0.22rem) scale(1.04);
+}
+
+.floatingWhatsApp:focus-visible {
+  outline: 3px solid var(--sand);
+  outline-offset: 4px;
+}
+
 .cursorDot {
   width: 0.42rem;
   height: 0.42rem;
@@ -60,9 +103,20 @@
   width: clamp(6.9rem, 10vw, 8.75rem);
 }
 
-.heroSignature {
-  width: clamp(7.5rem, 13vw, 10.5rem);
-  margin: 0 0 1.35rem;
+.aboutIdentity {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.aboutIdentity .sectionKicker {
+  margin: 0;
+}
+
+.aboutSignature {
+  width: clamp(6.75rem, 10vw, 8.75rem);
+  margin-left: auto;
 }
 
 .navigation,
@@ -164,12 +218,13 @@
 .recognition h2,
 .about h2,
 .care h2,
+.editorialContent h2,
 .journeyTeaser h2,
 .faq h2,
 .closing h2 {
   margin: 0;
   font-weight: 800;
-  letter-spacing: -0.075em;
+  letter-spacing: -0.062em;
   line-height: 0.96;
 }
 
@@ -212,6 +267,13 @@
 .primaryAction {
   background: var(--terracotta);
   color: var(--cream);
+}
+
+.hero .primaryAction {
+  min-height: 4.75rem;
+  padding: 1.25rem 1.75rem;
+  font-size: clamp(0.76rem, 1vw, 0.88rem);
+  box-shadow: 0 0.8rem 1.8rem color-mix(in srgb, var(--terracotta) 20%, transparent);
 }
 
 .secondaryAction {
@@ -321,12 +383,175 @@
 .recognition,
 .about,
 .care,
+.listeningThemes,
+.editorialContent,
 .journeyTeaser,
 .faq,
 .closing,
 .footer {
   padding-right: max(1.25rem, calc((100vw - 77.5rem) / 2));
   padding-left: max(1.25rem, calc((100vw - 77.5rem) / 2));
+}
+
+.listeningThemes {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(3rem, 9vw, 10rem);
+  padding-top: clamp(5.5rem, 11vw, 10rem);
+  padding-bottom: clamp(5.5rem, 11vw, 10rem);
+  background: var(--sand);
+}
+
+.listeningThemesIntro {
+  align-self: start;
+}
+
+.listeningThemes h2 {
+  max-width: 10ch;
+  margin: 0;
+  font-size: clamp(2.3rem, 4.7vw, 4.85rem);
+  font-weight: 800;
+  letter-spacing: -0.075em;
+  line-height: 0.96;
+}
+
+.listeningThemesIntro > p:not(.sectionKicker) {
+  max-width: 31rem;
+  margin: 1.75rem 0 0;
+  color: var(--espresso);
+  line-height: 1.75;
+}
+
+.listeningThemesList {
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid color-mix(in srgb, var(--espresso) 22%, transparent);
+  list-style: none;
+}
+
+.listeningThemesList li {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: 1.25rem;
+  padding: 1.45rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--espresso) 22%, transparent);
+}
+
+.listeningThemesList li > span {
+  padding-top: 0.28rem;
+  color: var(--terracotta);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.listeningThemesList h3 {
+  margin: 0;
+  color: var(--espresso);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  letter-spacing: -0.045em;
+}
+
+.listeningThemesList p {
+  max-width: 38rem;
+  margin: 0.65rem 0 0;
+  color: var(--espresso);
+  line-height: 1.65;
+}
+
+.editorialContent {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  align-items: center;
+  gap: clamp(3rem, 8vw, 8rem);
+  padding-top: clamp(5.5rem, 11vw, 10rem);
+  padding-bottom: clamp(5.5rem, 11vw, 10rem);
+  overflow: hidden;
+  background: var(--terracotta);
+  color: var(--cream);
+}
+
+.editorialContent .sectionKicker {
+  color: #fff9f1;
+}
+
+.editorialContentIntro {
+  max-width: 32rem;
+}
+
+.editorialContent h2 {
+  max-width: 9ch;
+  font-size: clamp(2.3rem, 4.7vw, 4.85rem);
+}
+
+.editorialContentIntro > p:not(.sectionKicker) {
+  max-width: 31rem;
+  margin: 1.75rem 0 0;
+  color: var(--cream);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.editorialContentAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.8rem;
+  margin-top: 2rem;
+  padding: 1rem 1.45rem;
+  border: 1px solid color-mix(in srgb, var(--cream) 74%, transparent);
+  border-radius: 999px;
+  background: var(--cream);
+  color: var(--espresso);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: 220ms ease;
+  transition-property: background-color, color, transform;
+}
+
+.editorialContentAction:hover,
+.editorialContentAction:focus-visible {
+  background: var(--espresso);
+  color: var(--cream);
+  transform: translateY(-2px);
+}
+
+.editorialMosaic {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+
+.editorialCarouselTrack {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.editorialCarouselGroup {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 0.85rem;
+  padding-right: 0.85rem;
+}
+
+.editorialCover {
+  position: relative;
+  flex: 0 0 clamp(11rem, 15vw, 14.5rem);
+  aspect-ratio: 0.75;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--cream) 34%, transparent);
+  border-radius: 1rem 1rem 3.5rem 1rem;
+  background: color-mix(in srgb, var(--espresso) 16%, var(--terracotta));
+  will-change: transform, opacity;
+}
+
+.editorialCover img {
+  object-fit: cover;
 }
 
 .recognition {
@@ -785,13 +1010,19 @@
 }
 
 .closing .actions {
-  width: min(100%, 44rem);
+  width: fit-content;
+  max-width: 100%;
+  grid-template-columns: 1fr;
 }
 
 .closing .primaryAction {
+  min-width: min(18rem, 100%);
+  min-height: 4rem;
+  padding: 1rem 2rem;
   border-color: var(--sand);
   background: var(--sand);
   color: var(--espresso);
+  font-size: clamp(0.76rem, 1.2vw, 0.88rem);
 }
 
 .closing .primaryAction:hover,
@@ -1034,6 +1265,8 @@
   .recognition,
   .about,
   .care,
+  .listeningThemes,
+  .editorialContent,
   .journeyTeaser,
   .faq {
     grid-template-columns: 1fr;
@@ -1074,7 +1307,8 @@
   }
 
   .navigation { gap: 0.85rem; }
-  .navigation a, .headerAction { font-size: 0.6rem; }
+  .navigation a, .navigation button { font-size: clamp(0.68rem, 1vw, 0.76rem); }
+  .headerAction { font-size: 0.64rem; }
 
   .hero {
     grid-template-columns: minmax(0, 1fr) minmax(19rem, 0.82fr);
@@ -1096,6 +1330,8 @@
   .recognition,
   .about,
   .care,
+  .listeningThemes,
+  .editorialContent,
   .journeyTeaser,
   .faq {
     grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
@@ -1105,6 +1341,8 @@
   }
 
   .recognition h2, .journeyTeaser h2, .faq h2 { max-width: 11ch; }
+  .listeningThemes h2 { max-width: 12ch; }
+  .editorialCover { flex-basis: clamp(10.5rem, 23vw, 13rem); }
   .aboutPhotos { min-height: 32rem; }
   .care { min-height: auto; }
   .carePillar { padding-left: 12%; }
@@ -1128,6 +1366,13 @@
 }
 
 @media (max-width: 35rem) {
+  .floatingWhatsApp {
+    right: max(0.9rem, env(safe-area-inset-right));
+    width: 3.45rem;
+    height: 3.45rem;
+    padding: 0.82rem;
+  }
+
   .siteHeader,
   .hero {
     width: min(100% - 1.5rem, 77.5rem);
@@ -1195,11 +1440,6 @@
     width: clamp(6.4rem, 29vw, 7.6rem);
   }
 
-  .heroSignature {
-    width: 7.75rem;
-    margin-bottom: 0.35rem;
-  }
-
   .heroPortrait {
     order: -1;
     width: 100%;
@@ -1222,8 +1462,8 @@
     position: relative;
     z-index: 2;
     width: calc(100% - 1.5rem);
-    margin: -3.65rem auto 0;
-    padding: 1.5rem 1.25rem 2rem;
+    margin: -4.35rem auto 0;
+    padding: 1.2rem 1.25rem 2rem;
     border: 1px solid color-mix(in srgb, var(--espresso) 16%, transparent);
     border-radius: 1.25rem 1.25rem 4.2rem 1.25rem;
     background: var(--ivory);
@@ -1250,6 +1490,20 @@
   .secondaryAction {
     min-height: 3.25rem;
     font-size: 0.62rem;
+  }
+
+  .hero .primaryAction {
+    min-height: 4.15rem;
+    padding: 1.05rem 1.25rem;
+    font-size: 0.82rem;
+  }
+
+  .aboutIdentity {
+    margin-bottom: 1.25rem;
+  }
+
+  .aboutSignature {
+    width: 6.9rem;
   }
 
   .trailLabels {
@@ -1303,6 +1557,13 @@
     border: 1px solid color-mix(in srgb, var(--cream) 48%, transparent);
     border-radius: 1rem 1rem 3.5rem 1rem;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+
+  .recognitionList li:focus-visible {
+    outline: 2px solid var(--cream);
+    outline-offset: 0.25rem;
   }
 
   .recognitionList li:last-child { display: grid; }
@@ -1358,6 +1619,39 @@
     border-radius: 1rem 1rem 4.2rem 1rem;
   }
 
+  .listeningThemes {
+    gap: 2.5rem;
+  }
+
+  .listeningThemes h2 {
+    max-width: 11ch;
+    font-size: clamp(2.45rem, 12vw, 3.4rem);
+  }
+
+  .editorialContent {
+    gap: 2.5rem;
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .editorialContent h2 {
+    max-width: 10ch;
+    font-size: clamp(2.45rem, 12vw, 3.4rem);
+  }
+
+  .editorialContentIntro > p:not(.sectionKicker) {
+    font-size: 0.98rem;
+  }
+
+  .editorialMosaic {
+    margin-right: -1.25rem;
+    width: calc(100% + 1.25rem);
+  }
+
+  .editorialCover {
+    flex-basis: min(68vw, 17rem);
+  }
+
   .footerTop {
     flex-direction: column;
     align-items: center;
@@ -1399,11 +1693,5 @@
   .copyright {
     margin-right: auto;
     margin-left: auto;
-  }
-}
-
-@media (max-width: 23rem) {
-  .heroSignature {
-    display: none;
   }
 }

@@ -34,7 +34,7 @@ it('uses higher contrast and a more compact mobile hero', () => {
   expect(css).toContain('.recognition .sectionKicker {\n  color: #fff9f1;')
   expect(css).toContain('aspect-ratio: 0.98;')
   expect(css).toContain('max-height: 29.5rem;')
-  expect(css).toContain('margin: -3.65rem auto 0;')
+  expect(css).toContain('margin: -4.35rem auto 0;')
   expect(css).toContain('.carouselIndicators')
   expect(css).toContain('touch-action: pan-y;')
 })
@@ -65,17 +65,42 @@ it('lets hero action boxes adapt before their labels overflow', () => {
   )
 })
 
-it('sizes the official brand marks for header, hero and footer contexts', () => {
+it('gives the hero WhatsApp action stronger conversion hierarchy', () => {
+  const css = readFileSync(
+    join(process.cwd(), 'src/components/landing/landing-page.module.css'),
+    'utf8',
+  )
+
+  expect(css).toContain('.hero .primaryAction {')
+  expect(css).toContain('min-height: 4.75rem;')
+  expect(css).toContain('font-size: clamp(0.76rem, 1vw, 0.88rem);')
+  expect(css).toContain('box-shadow: 0 0.8rem 1.8rem')
+})
+
+it('increases the primary navigation labels at tablet and compact desktop widths', () => {
+  const css = readFileSync(
+    join(process.cwd(), 'src/components/landing/landing-page.module.css'),
+    'utf8',
+  )
+
+  expect(css).toContain(
+    '.navigation a, .navigation button { font-size: clamp(0.68rem, 1vw, 0.76rem); }',
+  )
+  expect(css).toContain('.headerAction { font-size: 0.64rem; }')
+  expect(css).not.toContain('.navigation a, .headerAction { font-size: 0.6rem; }')
+})
+
+it('sizes the official brand marks for header, about and footer contexts', () => {
   const css = readFileSync(
     join(process.cwd(), 'src/components/landing/landing-page.module.css'),
     'utf8',
   )
 
   expect(css).toContain('.headerLogo')
-  expect(css).toContain('.heroSignature')
+  expect(css).toContain('.aboutSignature')
   expect(css).toContain('.footerLogo')
   expect(css).toContain('width: clamp(6.9rem, 10vw, 8.75rem);')
-  expect(css).toContain('width: clamp(7.5rem, 13vw, 10.5rem);')
+  expect(css).toContain('width: clamp(6.75rem, 10vw, 8.75rem);')
 })
 
 it('centers the mobile brand between the menu and highlighted schedule action', () => {
@@ -122,4 +147,58 @@ it('anchors the mobile navigation panel to the left edge', () => {
 
   expect(css).toContain('left: max(1rem, calc((100vw - 62rem) / 2));')
   expect(css).toContain('right: auto;\n    left: 1rem;')
+})
+
+it('keeps the branded WhatsApp shortcut fixed with a mobile safe-area offset', () => {
+  const css = readFileSync(
+    join(process.cwd(), 'src/components/landing/landing-page.module.css'),
+    'utf8',
+  )
+
+  expect(css).toContain('.floatingWhatsApp {')
+  expect(css).toContain('position: fixed;')
+  expect(css).toContain('background: var(--terracotta);')
+  expect(css).toContain('bottom: max(1rem, env(safe-area-inset-bottom));')
+})
+
+it('fits the final scheduling action to its label with a readable type size', () => {
+  const css = readFileSync(
+    join(process.cwd(), 'src/components/landing/landing-page.module.css'),
+    'utf8',
+  )
+
+  expect(css).toContain('.closing .actions {\n  width: fit-content;')
+  expect(css).toContain('.closing .primaryAction {\n  min-width: min(18rem, 100%);')
+  expect(css).toContain('font-size: clamp(0.76rem, 1.2vw, 0.88rem);')
+})
+
+it('removes the native mobile tap highlight from clickable recognition cards', () => {
+  const css = readFileSync(
+    join(process.cwd(), 'src/components/landing/landing-page.module.css'),
+    'utf8',
+  )
+
+  expect(css).toContain('-webkit-tap-highlight-color: transparent;')
+  expect(css).toContain('user-select: none;')
+})
+
+it('keeps the mobile hero compact while making its scheduling action prominent', () => {
+  const css = readFileSync(
+    join(process.cwd(), 'src/components/landing/landing-page.module.css'),
+    'utf8',
+  )
+
+  expect(css).toContain('margin: -4.35rem auto 0;')
+  expect(css).toContain('font-size: 0.82rem;')
+})
+
+it('gives headlines slightly more breathing room and prepares the editorial carousel for smooth transforms', () => {
+  const css = readFileSync(
+    join(process.cwd(), 'src/components/landing/landing-page.module.css'),
+    'utf8',
+  )
+
+  expect(css).toContain('letter-spacing: -0.062em;')
+  expect(css).toContain('.editorialCarouselTrack')
+  expect(css).toContain('will-change: transform;')
 })

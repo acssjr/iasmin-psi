@@ -40,3 +40,7 @@ it('rejects properties with an invalid shape', () => {
     'Invalid analytics step',
   )
 })
+
+it('accepts the floating WhatsApp conversion surface', () => {
+  expect(() => trackSafeEvent('cta_schedule_clicked', { surface: 'floating' })).not.toThrow()
+})

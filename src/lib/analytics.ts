@@ -6,7 +6,7 @@ import { journeyTopicIds } from './journey-content'
 import type { JourneyResultKey, JourneyTopicId } from './types'
 
 const eventNames = ['cta_schedule_clicked', 'journey_started', 'journey_contact_submitted', 'journey_step_completed', 'journey_completed', 'journey_reflection_viewed', 'whatsapp_opened'] as const
-export const analyticsSurfaces = ['header', 'hero', 'journey', 'journey-teaser', 'closing', 'result', 'minor-route'] as const
+export const analyticsSurfaces = ['header', 'hero', 'floating', 'journey', 'journey-teaser', 'editorial', 'closing', 'result', 'minor-route'] as const
 
 export type SafeEventName = (typeof eventNames)[number]
 export type AnalyticsSurface = (typeof analyticsSurfaces)[number]

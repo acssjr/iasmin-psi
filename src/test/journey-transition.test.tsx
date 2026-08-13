@@ -27,7 +27,12 @@ it('shows the calm transition before navigating', async () => {
   render(<JourneyTransitionProvider><JourneyTransitionLink className="cta" surface="hero">Começar</JourneyTransitionLink></JourneyTransitionProvider>)
 
   await user.click(screen.getByRole('link', { name: 'Começar' }))
-  expect(screen.getByRole('status')).toHaveTextContent('Uma pausa antes de começar.')
+  const transition = screen.getByRole('status')
+  expect(transition).toHaveTextContent('Uma pausa antes de começar.')
+  expect(transition.querySelector('[data-brand-variant="monogram"]')).toHaveAttribute(
+    'data-brand-tone',
+    'terracotta',
+  )
   expect(push).not.toHaveBeenCalled()
 
   await act(async () => { await vi.advanceTimersByTimeAsync(2000) })

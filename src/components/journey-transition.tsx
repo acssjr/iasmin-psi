@@ -8,6 +8,7 @@ import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 
 import { trackSafeEvent, type AnalyticsSurface } from '@/lib/analytics'
+import { BrandLogo } from '@/components/brand-logo'
 
 import styles from './journey-transition.module.css'
 
@@ -55,7 +56,12 @@ export function JourneyTransitionProvider({ children }: { children: ReactNode })
         <div className={styles.overlay} ref={overlay} role="status" aria-live="polite" aria-label="Abrindo o percurso">
           <div className={styles.halo} data-transition-halo />
           <div className={styles.copy} data-transition-copy>
-            <span aria-hidden="true" className={styles.mark}>℘</span>
+            <BrandLogo
+              className={styles.mark}
+              decorative
+              tone="terracotta"
+              variant="monogram"
+            />
             <strong>Uma pausa antes de começar.</strong>
             <p>Te levando para um espaço mais tranquilo.</p>
           </div>

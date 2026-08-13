@@ -28,10 +28,11 @@
 
 .mark {
   display: block;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-right: auto;
   margin-bottom: 1.6rem;
-  color: var(--terracotta);
-  font-size: 1.75rem;
-  font-weight: 700;
+  margin-left: auto;
 }
 
 .copy strong {

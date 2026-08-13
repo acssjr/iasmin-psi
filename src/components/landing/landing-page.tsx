@@ -8,6 +8,7 @@ import { getSchedulingWhatsAppHref } from '@/lib/whatsapp'
 
 import { ContextTrail } from './context-trail'
 import { CustomCursor } from './custom-cursor'
+import { EditorialContentSection } from './editorial-content-section'
 import { FaqAccordion } from './faq-accordion'
 import { LandingMotion } from './landing-motion'
 import { RecognitionCarousel } from './recognition-carousel'
@@ -50,18 +51,26 @@ function SiteHeader() {
   )
 }
 
+function FloatingWhatsAppAction() {
+  return (
+    <TrackedLink
+      className={styles.floatingWhatsApp}
+      eventName="cta_schedule_clicked"
+      href={getSchedulingWhatsAppHref()}
+      properties={{ surface: 'floating' }}
+    >
+      <BrandLogo decorative tone="cream" variant="monogram" />
+      <span className={styles.srOnly}>Agendar uma sessão pelo WhatsApp</span>
+    </TrackedLink>
+  )
+}
+
 function HeroSection() {
   const scheduleHref = getSchedulingWhatsAppHref()
 
   return (
     <section className={styles.hero} id="top" aria-labelledby="hero-title">
       <div className={styles.heroCopy}>
-        <BrandLogo
-          className={styles.heroSignature}
-          decorative
-          tone="terracotta"
-          variant="signature"
-        />
         <p className={styles.eyebrow} data-hero-eyebrow>
           Psicologia clínica on-line
         </p>
@@ -85,7 +94,7 @@ function HeroSection() {
             className={styles.secondaryAction}
             surface="hero"
           >
-            Iniciar meu percurso de autoconhecimento
+            5 perguntas para se conhecer melhor
           </JourneyTransitionLink>
         </div>
         <ol className={styles.trailLabels} aria-label="Uma trilha de cuidado">
@@ -146,7 +155,15 @@ function AboutIasminSection() {
         </figure>
       </div>
       <div className={styles.aboutCopy}>
-        <p className={styles.sectionKicker}>Quem sou eu?</p>
+        <div className={styles.aboutIdentity}>
+          <p className={styles.sectionKicker}>Sobre mim</p>
+          <BrandLogo
+            className={styles.aboutSignature}
+            decorative
+            tone="terracotta"
+            variant="signature"
+          />
+        </div>
         <h2 id="about-title">Um cuidado que olha para a sua história inteira.</h2>
         <p>
           Sou <strong>Iasmin Portugal</strong>, psicóloga clínica. No atendimento on-line,
@@ -155,7 +172,7 @@ function AboutIasminSection() {
         </p>
         <p>
           Meu olhar parte da sua realidade, das relações que você vive e dos
-          caminhos que já encontrou. A psicoterapia pode ser um lugar para
+          caminhos que já encontrou. A terapia pode ser um lugar para
           construir escolhas possíveis, respeitando o seu tempo.
         </p>
         <dl className={styles.credentials}>
@@ -173,6 +190,51 @@ function AboutIasminSection() {
           </div>
         </dl>
       </div>
+    </section>
+  )
+}
+
+const listeningThemes = [
+  {
+    title: 'Ansiedade e sobrecarga',
+    copy: 'Para compreender preocupações, cansaço, pressão e o que tem ocupado espaço demais nos seus dias.',
+  },
+  {
+    title: 'Relacionamentos e limites',
+    copy: 'Para olhar para sua voz, seus vínculos e os limites que ajudam a construir relações mais honestas.',
+  },
+  {
+    title: 'Luto, perdas e mudanças',
+    copy: 'Para acolher o que mudou, respeitar o seu tempo e encontrar formas possíveis de seguir sem apagar o que foi importante.',
+  },
+  {
+    title: 'Autoestima e autocrítica',
+    copy: 'Para perceber padrões de cobrança e desenvolver uma forma mais justa e cuidadosa de se relacionar consigo.',
+  },
+] as const
+
+function ListeningThemesSection() {
+  return (
+    <section className={styles.listeningThemes} aria-labelledby="listening-themes-title">
+      <div className={styles.listeningThemesIntro}>
+        <p className={styles.sectionKicker}>Temas de escuta</p>
+        <h2 id="listening-themes-title">Temas que podem encontrar espaço na terapia.</h2>
+        <p>
+          A abordagem clínica é a Análise do Comportamento. A partir dela, o
+          cuidado considera sua história, seus contextos e o que você vive hoje.
+        </p>
+      </div>
+      <ol className={styles.listeningThemesList}>
+        {listeningThemes.map((theme, index) => (
+          <li key={theme.title}>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <div>
+              <h3>{theme.title}</h3>
+              <p>{theme.copy}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
     </section>
   )
 }
@@ -246,7 +308,7 @@ function JourneyTeaserSection() {
           className={styles.primaryAction}
           surface="journey-teaser"
         >
-          Iniciar meu percurso de autoconhecimento
+          Iniciar o percurso
         </JourneyTransitionLink>
       </div>
     </section>
@@ -255,7 +317,7 @@ function JourneyTeaserSection() {
 
 const faqItems = [
   {
-    question: 'Como funciona a psicoterapia on-line?',
+    question: 'Como funciona a terapia on-line?',
     answer: 'As sessões acontecem por videochamada, em um ambiente reservado. No primeiro contato, você pode tirar dúvidas sobre disponibilidade, frequência e como começar.',
   },
   {
@@ -293,7 +355,7 @@ function ClosingSection() {
       <h2 id="closing-title">Você não precisa ter tudo resolvido para começar.</h2>
       <p>
         Podemos conversar sobre o que você está vivendo e entender, com calma,
-        se este é um bom momento para iniciar a psicoterapia.
+        se este é um bom momento para iniciar a terapia.
       </p>
       <div className={styles.actions}>
         <TrackedLink
@@ -304,12 +366,6 @@ function ClosingSection() {
         >
           Agendar uma sessão
         </TrackedLink>
-        <JourneyTransitionLink
-          className={styles.secondaryAction}
-          surface="closing"
-        >
-          Iniciar meu percurso de autoconhecimento
-        </JourneyTransitionLink>
       </div>
     </section>
   )
@@ -368,6 +424,8 @@ export default function LandingPage() {
             <RecognitionSection />
             <AboutIasminSection />
             <CarePillarsSection />
+            <ListeningThemesSection />
+            <EditorialContentSection />
             <JourneyTeaserSection />
             <FaqSection />
             <ClosingSection />
@@ -375,6 +433,7 @@ export default function LandingPage() {
           <SiteFooter />
         </div>
       </LandingMotion>
+      <FloatingWhatsAppAction />
     </div>
     </JourneyTransitionProvider>
   )

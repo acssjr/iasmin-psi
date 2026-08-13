@@ -153,6 +153,24 @@ export function LandingMotion({ children }: LandingMotionProps) {
             }
           }
 
+          const editorialSection = root.querySelector<HTMLElement>('[data-editorial-section]')
+          const editorialCovers = root.querySelectorAll<HTMLElement>('[data-editorial-cover]')
+
+          if (editorialSection && editorialCovers.length) {
+            gsap.from(editorialCovers, {
+              autoAlpha: 0,
+              duration: 0.72,
+              ease: 'power2.out',
+              stagger: 0.08,
+              scrollTrigger: {
+                once: true,
+                start: 'top 78%',
+                trigger: editorialSection,
+              },
+              y: 24,
+            })
+          }
+
           const revealSections = root.querySelectorAll<HTMLElement>(
             'main > section:not(:first-child)',
           )
