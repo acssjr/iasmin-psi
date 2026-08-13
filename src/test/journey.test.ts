@@ -1,72 +1,27 @@
 import { expect, it } from 'vitest'
 
-import { getReflectionKey, getReflectionTheme } from '@/lib/journey'
+import { getJourneyResult } from '@/lib/journey'
 
-it('uses question ten to resolve a score tie', () => {
+it('returns a simple topic-scoped result for a dominant direction', () => {
   expect(
-    getReflectionTheme([
-      'sobrecarrega',
-      'autocritica',
-      'reconexao',
-      'autocritica',
-      'sobrecarrega',
-      'reconexao',
-      'reconexao',
-      'sobrecarrega',
-      'autocritica',
-      'reconexao',
-    ]),
-  ).toBe('reconexao')
+    getJourneyResult('ansiedade-sobrecarga', ['ans-1-a', 'ans-2-a', 'ans-3-a', 'ans-4-a', 'ans-5-a']),
+  ).toBe('ansiedade-sobrecarga:pace')
 })
 
-it('never returns a clinical label', () => {
-  expect(['sobrecarrega', 'autocritica', 'reconexao']).toContain(
-    getReflectionTheme(['sobrecarrega']),
-  )
+it('combines two directions when both are present', () => {
+  expect(
+    getJourneyResult('ansiedade-sobrecarga', ['ans-1-a', 'ans-2-a', 'ans-3-c', 'ans-4-c', 'ans-5-a']),
+  ).toBe('ansiedade-sobrecarga:pace-step')
 })
 
-it('varies the reflection when the dominant answer pattern changes', () => {
+it('returns a broad reflection for a balanced pattern', () => {
   expect(
-    getReflectionKey([
-      'sobrecarrega',
-      'sobrecarrega',
-      'sobrecarrega',
-      'autocritica',
-      'reconexao',
-    ]),
-  ).toBe('sobrecarrega')
-
-  expect(
-    getReflectionKey([
-      'autocritica',
-      'autocritica',
-      'autocritica',
-      'sobrecarrega',
-      'reconexao',
-    ]),
-  ).toBe('autocritica')
+    getJourneyResult('ansiedade-sobrecarga', ['ans-1-a', 'ans-2-c', 'ans-3-d', 'ans-4-a', 'ans-5-c']),
+  ).toBe('ansiedade-sobrecarga:broad')
 })
 
-it('uses a combined reflection when two answer themes appear together', () => {
-  expect(
-    getReflectionKey([
-      'sobrecarrega',
-      'sobrecarrega',
-      'autocritica',
-      'autocritica',
-      'reconexao',
-    ]),
-  ).toBe('sobrecarrega-autocritica')
-})
-
-it('uses an integrated reflection for a balanced answer pattern', () => {
-  expect(
-    getReflectionKey([
-      'sobrecarrega',
-      'autocritica',
-      'reconexao',
-      'sobrecarrega',
-      'autocritica',
-    ]),
-  ).toBe('olhar-ampliado')
+it('rejects an answer that does not belong to the selected topic', () => {
+  expect(() =>
+    getJourneyResult('ansiedade-sobrecarga', ['rel-1-a', 'ans-2-a', 'ans-3-a', 'ans-4-a', 'ans-5-a']),
+  ).toThrow('Resposta incompatível com o tema selecionado.')
 })

@@ -5,18 +5,16 @@ import { journeySubmissionSchema } from '@/lib/schemas'
 const validBody = {
   adult: true,
   answers: [
-    'sobrecarrega',
-    'autocritica',
-    'reconexao',
-    'sobrecarrega',
-    'autocritica',
+    'ans-1-a', 'ans-2-a', 'ans-3-c', 'ans-4-c', 'ans-5-a',
   ],
+  contentVersion: '2026-08-13',
   contactPermission: false,
   email: 'ANA@EXAMPLE.COM',
   honeypot: '',
   name: 'Ana',
   purposeConsent: true,
   submissionId: '31d5fa8d-a11b-405e-8d33-7959ff021906',
+  topic: 'ansiedade-sobrecarga',
   utm: { campaign: 'acolhimento', source: 'instagram' },
   whatsapp: '(71) 99999-9999',
 }
@@ -27,6 +25,10 @@ it('normalizes the contact fields from a valid adult submission', () => {
   expect(parsed.email).toBe('ana@example.com')
   expect(parsed.whatsapp).toBe('71999999999')
   expect(parsed.answers).toHaveLength(5)
+})
+
+it('rejects an answer from another topic', () => {
+  expect(() => journeySubmissionSchema.parse({ ...validBody, answers: ['rel-1-a', ...validBody.answers.slice(1)] })).toThrow()
 })
 
 it('rejects a submission without required purpose consent', () => {

@@ -1,4 +1,5 @@
 import { createJourneySubmission } from '@/lib/data'
+import { getJourneyResult } from '@/lib/journey'
 import { journeySubmissionSchema } from '@/lib/schemas'
 
 export const runtime = 'nodejs'
@@ -22,7 +23,10 @@ export async function POST(request: Request) {
   }
 
   try {
-    await createJourneySubmission(parsed.data)
+    await createJourneySubmission({
+      ...parsed.data,
+      resultKey: getJourneyResult(parsed.data.topic, parsed.data.answers),
+    })
     return Response.json({ ok: true }, { status: 201 })
   } catch {
     return Response.json(

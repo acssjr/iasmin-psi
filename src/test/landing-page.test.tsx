@@ -1,8 +1,12 @@
 import { cleanup, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { afterEach, expect, it } from 'vitest'
+import { afterEach, expect, it, vi } from 'vitest'
 
 import LandingPage from '@/components/landing/landing-page'
+
+vi.mock('next/navigation', () => ({
+  useRouter: () => ({ prefetch: vi.fn(), push: vi.fn() }),
+}))
 
 afterEach(cleanup)
 

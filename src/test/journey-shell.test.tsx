@@ -25,6 +25,8 @@ it('marks the exact option chosen when two options share a reflection theme', as
   render(<JourneyShell />)
 
   await user.click(screen.getByRole('button', { name: 'Sou maior de 18 anos' }))
+  expect(screen.getByRole('heading', { name: 'Sobre o que você quer olhar hoje?' })).toBeVisible()
+  await user.click(screen.getByRole('button', { name: /Ansiedade e sobrecarga/i }))
   expect(
     screen.getByRole('heading', { name: 'Vamos preparar sua devolutiva?' }),
   ).toBeVisible()
@@ -52,6 +54,7 @@ it('shows the reflection locally when the persistence service is unavailable out
   render(<JourneyShell />)
 
   await user.click(screen.getByRole('button', { name: 'Sou maior de 18 anos' }))
+  await user.click(screen.getByRole('button', { name: /Ansiedade e sobrecarga/i }))
   await user.type(screen.getByLabelText('Seu nome'), 'Ana Silva')
   await user.type(screen.getByLabelText('E-mail'), 'ana@example.com')
   await user.type(screen.getByLabelText('WhatsApp'), '71999999999')
@@ -80,6 +83,7 @@ it('keeps client-side submission failures visible outside production', async () 
   render(<JourneyShell />)
 
   await user.click(screen.getByRole('button', { name: 'Sou maior de 18 anos' }))
+  await user.click(screen.getByRole('button', { name: /Ansiedade e sobrecarga/i }))
   await user.type(screen.getByLabelText('Seu nome'), 'Ana Silva')
   await user.type(screen.getByLabelText('E-mail'), 'ana@example.com')
   await user.type(screen.getByLabelText('WhatsApp'), '71999999999')

@@ -17,15 +17,15 @@ it('sends allowlisted analytics properties only', () => {
 
 it('tracks the non-clinical reflection variation without personal data', () => {
   trackSafeEvent('journey_reflection_viewed', {
-    reflection: 'sobrecarrega-autocritica',
+    reflection: 'ansiedade-sobrecarga:pace-step',
     surface: 'result',
-    theme: 'sobrecarrega',
+    theme: 'ansiedade-sobrecarga',
   })
 
   expect(mocks.track).toHaveBeenCalledWith('journey_reflection_viewed', {
-    reflection: 'sobrecarrega-autocritica',
+    reflection: 'ansiedade-sobrecarga:pace-step',
     surface: 'result',
-    theme: 'sobrecarrega',
+    theme: 'ansiedade-sobrecarga',
   })
 })
 

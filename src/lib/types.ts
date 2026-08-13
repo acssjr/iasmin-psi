@@ -1,16 +1,26 @@
-export type ReflectionTheme = 'sobrecarrega' | 'autocritica' | 'reconexao'
+export type JourneyTopicId =
+  | 'ansiedade-sobrecarga'
+  | 'relacionamentos-limites'
+  | 'luto-mudancas'
+  | 'autoestima-autocritica'
 
-export type ReflectionKey =
-  | ReflectionTheme
-  | 'sobrecarrega-autocritica'
-  | 'sobrecarrega-reconexao'
-  | 'autocritica-reconexao'
-  | 'olhar-ampliado'
+export type JourneyDirectionId =
+  | 'pace'
+  | 'step'
+  | 'support'
+  | 'voice'
+  | 'limits'
+  | 'reciprocity'
+  | 'time'
+  | 'rebuild'
+  | 'gentleness'
+  | 'recognition'
+  | 'autonomy'
 
 export type JourneyOption = {
   id: string
   label: string
-  theme: ReflectionTheme
+  direction: JourneyDirectionId
 }
 
 export type JourneyQuestion = {
@@ -28,3 +38,14 @@ export type ReflectionContent = {
     src: string
   }
 }
+
+export type JourneyTopic = {
+  id: JourneyTopicId
+  title: string
+  description: string
+  directions: readonly JourneyDirectionId[]
+  questions: readonly JourneyQuestion[]
+  reflections: Record<string, ReflectionContent>
+}
+
+export type JourneyResultKey = `${JourneyTopicId}:${string}`

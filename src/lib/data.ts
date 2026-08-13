@@ -1,6 +1,5 @@
 import { neon } from '@neondatabase/serverless'
 
-import { getReflectionTheme } from './journey'
 import type { JourneySubmission } from './schemas'
 
 const PURPOSE_CONSENT_VERSION = '2026-08-11'
@@ -40,12 +39,12 @@ function addRetentionWindow(now: Date) {
 }
 
 export async function createJourneySubmission(
-  submission: JourneySubmission,
+  submission: JourneySubmission & { resultKey: string },
 ): Promise<JourneyPersistenceResult> {
   const sql = getSqlClient()
   const now = new Date()
   const answersExpiresAt = addRetentionWindow(now)
-  const contactExpiresAt = submission.contactPermission ? null : answersExpiresAt
+  const contactExpiresAt = answersExpiresAt
   const result = await sql`
     INSERT INTO journey_submissions (
       id,
@@ -54,6 +53,9 @@ export async function createJourneySubmission(
       whatsapp,
       answers,
       reflection_theme,
+      journey_topic,
+      result_key,
+      content_version,
       purpose_consent_version,
       purpose_consented_at,
       contact_permission,
@@ -66,10 +68,13 @@ export async function createJourneySubmission(
       ${submission.email},
       ${submission.whatsapp},
       ${JSON.stringify(submission.answers)}::jsonb,
-      ${getReflectionTheme(submission.answers)},
+      ${null},
+      ${submission.topic},
+      ${submission.resultKey},
+      ${submission.contentVersion},
       ${PURPOSE_CONSENT_VERSION},
       ${now.toISOString()}::timestamptz,
-      ${submission.contactPermission},
+      ${false},
       ${contactExpiresAt?.toISOString() ?? null}::timestamptz,
       ${answersExpiresAt.toISOString()}::timestamptz,
       ${JSON.stringify(submission.utm)}::jsonb

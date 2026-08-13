@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { BrandLogo } from '@/components/brand-logo'
+import { JourneyTransitionLink, JourneyTransitionProvider } from '@/components/journey-transition'
 import { TrackedLink } from '@/components/tracked-link'
 import { getSchedulingWhatsAppHref } from '@/lib/whatsapp'
 
@@ -80,14 +81,12 @@ function HeroSection() {
           >
             Agendar uma sessão
           </TrackedLink>
-          <TrackedLink
+          <JourneyTransitionLink
             className={styles.secondaryAction}
-            eventName="journey_started"
-            href="/percurso"
-            properties={{ surface: 'hero' }}
+            surface="hero"
           >
             Iniciar meu percurso de autoconhecimento
-          </TrackedLink>
+          </JourneyTransitionLink>
         </div>
         <ol className={styles.trailLabels} aria-label="Uma trilha de cuidado">
           <li>Contexto</li>
@@ -243,14 +242,12 @@ function JourneyTeaserSection() {
           O percurso não é uma avaliação psicológica e não substitui a
           psicoterapia.
         </p>
-        <TrackedLink
+        <JourneyTransitionLink
           className={styles.primaryAction}
-          eventName="journey_started"
-          href="/percurso"
-          properties={{ surface: 'journey-teaser' }}
+          surface="journey-teaser"
         >
           Iniciar meu percurso de autoconhecimento
-        </TrackedLink>
+        </JourneyTransitionLink>
       </div>
     </section>
   )
@@ -307,14 +304,12 @@ function ClosingSection() {
         >
           Agendar uma sessão
         </TrackedLink>
-        <TrackedLink
+        <JourneyTransitionLink
           className={styles.secondaryAction}
-          eventName="journey_started"
-          href="/percurso"
-          properties={{ surface: 'closing' }}
+          surface="closing"
         >
           Iniciar meu percurso de autoconhecimento
-        </TrackedLink>
+        </JourneyTransitionLink>
       </div>
     </section>
   )
@@ -362,6 +357,7 @@ function SiteFooter() {
 
 export default function LandingPage() {
   return (
+    <JourneyTransitionProvider>
     <div className={styles.page}>
       <CustomCursor />
       <LandingMotion>
@@ -380,5 +376,6 @@ export default function LandingPage() {
         </div>
       </LandingMotion>
     </div>
+    </JourneyTransitionProvider>
   )
 }

@@ -42,6 +42,7 @@
 .intro,
 .contactForm,
 .question,
+.topicSelection,
 .result {
   width: 100%;
   padding: clamp(1.5rem, 5vw, 3.5rem);
@@ -49,6 +50,36 @@
   border-radius: 1.5rem 1.5rem 6rem 1.5rem;
   background: var(--cream);
 }
+
+.topicIntroduction {
+  max-width: 42rem;
+  margin: 1.25rem 0 2rem;
+  line-height: 1.65;
+}
+
+.topicGrid {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.topicCard {
+  display: grid;
+  gap: 0.45rem;
+  min-height: 8.5rem;
+  padding: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--espresso) 18%, transparent);
+  border-radius: 1rem 1rem 2.5rem 1rem;
+  background: var(--ivory);
+  color: var(--espresso);
+  cursor: pointer;
+  text-align: left;
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.topicCard strong { font-size: 1.1rem; }
+.topicCard span { line-height: 1.5; }
+.topicCard:hover, .topicCard:focus-visible { border-color: var(--terracotta); background: var(--sand); transform: translateY(-2px); }
+.topicCard:focus-visible { outline: 3px solid var(--olive); outline-offset: 3px; }
 
 .result {
   display: grid;
@@ -71,6 +102,7 @@
 .intro h1,
 .contactForm h1,
 .question h1,
+.topicSelection h1,
 .result h1 {
   max-width: 15ch;
   margin: 0;
@@ -404,6 +436,7 @@
 }
 
 @media (min-width: 42rem) {
+  .topicGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .ageActions,
   .resultActions {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -473,6 +506,7 @@
   .intro,
   .contactForm,
   .question,
+  .topicSelection,
   .result {
     padding: 1.35rem;
     border-radius: 1rem 1rem 3.75rem 1rem;

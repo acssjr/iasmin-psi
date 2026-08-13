@@ -13,18 +13,16 @@ import { POST } from '@/app/api/percursos/route'
 const validBody = {
   adult: true,
   answers: [
-    'sobrecarrega',
-    'autocritica',
-    'reconexao',
-    'sobrecarrega',
-    'autocritica',
+    'ans-1-a', 'ans-2-a', 'ans-3-c', 'ans-4-c', 'ans-5-a',
   ],
+  contentVersion: '2026-08-13',
   contactPermission: false,
   email: 'ana@example.com',
   honeypot: '',
   name: 'Ana',
   purposeConsent: true,
   submissionId: '31d5fa8d-a11b-405e-8d33-7959ff021906',
+  topic: 'ansiedade-sobrecarga',
   utm: {},
   whatsapp: '71999999999',
 }
@@ -48,8 +46,14 @@ it('persists a valid submission before reporting success', async () => {
   expect(response.status).toBe(201)
   await expect(response.json()).resolves.toEqual({ ok: true })
   expect(mocks.createJourneySubmission).toHaveBeenCalledWith(
-    expect.objectContaining({ email: 'ana@example.com', purposeConsent: true }),
+    expect.objectContaining({ email: 'ana@example.com', purposeConsent: true, resultKey: 'ansiedade-sobrecarga:pace-step' }),
   )
+})
+
+it('rejects answers that do not belong to the selected topic', async () => {
+  const response = await POST(requestFor({ ...validBody, answers: ['rel-1-a', ...validBody.answers.slice(1)] }))
+  expect(response.status).toBe(400)
+  expect(mocks.createJourneySubmission).not.toHaveBeenCalled()
 })
 
 it('rejects invalid consent and does not call the persistence boundary', async () => {

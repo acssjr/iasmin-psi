@@ -29,10 +29,20 @@ export default function PrivacyPage() {
         <section>
           <h2>O que é coletado</h2>
           <p>
-            No percurso, são solicitados nome, e-mail, WhatsApp, as cinco
-            respostas de reflexão, o registro de consentimento e parâmetros
-            de origem de campanha quando existirem. Esses dados são usados
-            para gerar a devolutiva e organizar o contato que você pedir.
+            No percurso, são solicitados nome, e-mail, WhatsApp, o tema escolhido,
+            os identificadores das cinco respostas de reflexão, o registro de
+            consentimento e parâmetros de origem de campanha quando existirem.
+            Esses dados são usados para gerar a devolutiva e organizar o contato
+            que você pedir.
+          </p>
+        </section>
+
+        <section>
+          <h2>Uma experiência de reflexão</h2>
+          <p>
+            O percurso apresenta perguntas de autoconhecimento e uma devolutiva
+            acolhedora. Ele não realiza diagnóstico nem avaliação psicológica e
+            não substitui a psicoterapia ou outro cuidado profissional.
           </p>
         </section>
 
