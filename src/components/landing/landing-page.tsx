@@ -10,6 +10,7 @@ import { ContextTrail } from './context-trail'
 import { CustomCursor } from './custom-cursor'
 import { EditorialContentSection } from './editorial-content-section'
 import { FaqAccordion } from './faq-accordion'
+import { FloatingWhatsAppAction } from './floating-whatsapp-action'
 import { LandingMotion } from './landing-motion'
 import { RecognitionCarousel } from './recognition-carousel'
 import { SiteNavigation, SmoothSectionLink } from './site-navigation'
@@ -48,20 +49,6 @@ function SiteHeader() {
         Agendar
       </TrackedLink>
     </header>
-  )
-}
-
-function FloatingWhatsAppAction() {
-  return (
-    <TrackedLink
-      className={styles.floatingWhatsApp}
-      eventName="cta_schedule_clicked"
-      href={getSchedulingWhatsAppHref()}
-      properties={{ surface: 'floating' }}
-    >
-      <BrandLogo decorative tone="cream" variant="monogram" />
-      <span className={styles.srOnly}>Agendar uma sessão pelo WhatsApp</span>
-    </TrackedLink>
   )
 }
 

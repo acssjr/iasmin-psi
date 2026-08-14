@@ -149,13 +149,13 @@ it('anchors the mobile navigation panel to the left edge', () => {
   expect(css).toContain('right: auto;\n    left: 1rem;')
 })
 
-it('keeps the branded WhatsApp shortcut fixed with a mobile safe-area offset', () => {
+it('keeps the branded WhatsApp shortcut dock fixed with a mobile safe-area offset', () => {
   const css = readFileSync(
     join(process.cwd(), 'src/components/landing/landing-page.module.css'),
     'utf8',
   )
 
-  expect(css).toContain('.floatingWhatsApp {')
+  expect(css).toContain('.floatingWhatsAppDock {')
   expect(css).toContain('position: fixed;')
   expect(css).toContain('background: var(--terracotta);')
   expect(css).toContain('bottom: max(1rem, env(safe-area-inset-bottom));')
@@ -201,4 +201,14 @@ it('gives headlines slightly more breathing room and prepares the editorial caro
   expect(css).toContain('letter-spacing: -0.062em;')
   expect(css).toContain('.editorialCarouselTrack')
   expect(css).toContain('will-change: transform;')
+})
+
+it('keeps the about signature close to its section label', () => {
+  const css = readFileSync(
+    join(process.cwd(), 'src/components/landing/landing-page.module.css'),
+    'utf8',
+  )
+
+  expect(css).toContain('.aboutIdentity {\n  display: flex;\n  align-items: center;\n  gap: 0.7rem;')
+  expect(css).toContain('margin-left: 0;')
 })
