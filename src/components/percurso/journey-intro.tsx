@@ -16,13 +16,7 @@ type ContactFormProps = {
   onContinue: () => void
 }
 
-export function AgeGate({
-  onAdult,
-  onMinor,
-}: {
-  onAdult: () => void
-  onMinor: () => void
-}) {
+export function JourneyIntro({ onStart }: { onStart: () => void }) {
   return (
     <div className={styles.intro}>
       <p className={styles.eyebrow}>Antes de começar</p>
@@ -31,12 +25,9 @@ export function AgeGate({
         Em cerca de cinco minutos, você percorre cinco perguntas de reflexão.
         Não há resposta certa e isso não substitui um atendimento psicológico.
       </p>
-      <div className={styles.ageActions}>
-        <button className={styles.primaryButton} type="button" onClick={onAdult}>
-          Sou maior de 18 anos
-        </button>
-        <button className={styles.secondaryButton} type="button" onClick={onMinor}>
-          Sou menor de 18 anos
+      <div className={styles.introActions}>
+        <button className={styles.primaryButton} type="button" onClick={onStart}>
+          Iniciar as perguntas
         </button>
       </div>
     </div>
@@ -110,28 +101,5 @@ export function ContactForm({ contact, onChange, onContinue }: ContactFormProps)
         Começar o percurso
       </button>
     </form>
-  )
-}
-
-export function MinorRoute({
-  onSchedule,
-  scheduleHref,
-}: {
-  onSchedule: () => void
-  scheduleHref: string
-}) {
-  return (
-    <div className={styles.intro}>
-      <p className={styles.eyebrow}>Um cuidado com responsabilidade</p>
-      <h1>Para seguir, peça que um responsável entre em contato.</h1>
-      <p>
-        Este percurso não coleta respostas de pessoas menores de 18 anos. Um
-        responsável pode conversar com Iasmin pelo WhatsApp para entender como
-        seguir.
-      </p>
-      <a className={styles.primaryButton} href={scheduleHref} onClick={onSchedule}>
-        Conversar com Iasmin pelo WhatsApp
-      </a>
-    </div>
   )
 }

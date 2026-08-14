@@ -5,18 +5,8 @@
   display: grid;
   overflow: hidden;
   place-items: center;
-  background: var(--cream);
-  color: var(--espresso);
-}
-
-.halo {
-  position: absolute;
-  width: min(58vw, 34rem);
-  aspect-ratio: 1;
-  border: 1px solid color-mix(in srgb, var(--terracotta) 45%, transparent);
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--terracotta) 10%, transparent);
-  box-shadow: 0 0 0 3.5rem color-mix(in srgb, var(--terracotta) 4%, transparent);
+  background: var(--terracotta);
+  color: var(--cream);
 }
 
 .copy {
@@ -44,6 +34,21 @@
 
 .copy p { margin: 1rem 0 0; font-size: clamp(0.95rem, 2vw, 1.15rem); }
 
+.loader {
+  display: inline-flex;
+  gap: 0.42rem;
+  align-items: center;
+  margin-top: 1.65rem;
+}
+
+.loader i {
+  width: 0.34rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.42;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .halo { display: none; }
+  .loader i { opacity: 0.72; }
 }

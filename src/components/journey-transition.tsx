@@ -37,16 +37,15 @@ export function JourneyTransitionProvider({ children }: { children: ReactNode })
     if (active) return
     setActive(true)
     const reduced = typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    timer.current = setTimeout(() => router.push('/percurso'), reduced ? 220 : 1900)
+    timer.current = setTimeout(() => router.push('/percurso'), reduced ? 220 : 3000)
   }, [active, router])
 
   useGSAP(() => {
     if (!active || !overlay.current || (typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) return
-    const timeline = gsap.timeline()
+    const timeline = gsap.timeline({ defaults: { ease: 'power2.out' } })
     timeline.fromTo(overlay.current, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35, ease: 'power2.out' })
-      .fromTo('[data-transition-halo]', { scale: 0.72, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, ease: 'sine.inOut' }, 0)
       .fromTo('[data-transition-copy]', { y: 12, opacity: 0 }, { y: 0, opacity: 1, duration: 0.65, ease: 'power2.out' }, 0.12)
-      .to('[data-transition-halo]', { scale: 1.08, duration: 0.7, ease: 'sine.inOut' })
+      .fromTo('[data-calm-loader] i', { opacity: 0.28, y: 0 }, { opacity: 1, y: -3, duration: 0.55, ease: 'sine.inOut', stagger: 0.14, repeat: 2, yoyo: true }, 0.65)
   }, { dependencies: [active], revertOnUpdate: true, scope: overlay })
 
   return (
@@ -54,16 +53,20 @@ export function JourneyTransitionProvider({ children }: { children: ReactNode })
       {children}
       {active ? (
         <div className={styles.overlay} ref={overlay} role="status" aria-live="polite" aria-label="Abrindo o percurso">
-          <div className={styles.halo} data-transition-halo />
           <div className={styles.copy} data-transition-copy>
             <BrandLogo
               className={styles.mark}
               decorative
-              tone="terracotta"
+              tone="cream"
               variant="monogram"
             />
             <strong>Uma pausa antes de começar.</strong>
             <p>Te levando para um espaço mais tranquilo.</p>
+            <span className={styles.loader} data-calm-loader aria-hidden="true">
+              <i />
+              <i />
+              <i />
+            </span>
           </div>
         </div>
       ) : null}
