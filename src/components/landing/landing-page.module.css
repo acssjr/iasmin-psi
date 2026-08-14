@@ -547,7 +547,7 @@
 
 .editorialCover {
   position: relative;
-  flex: 0 0 clamp(11rem, 15vw, 14.5rem);
+  flex: 0 0 clamp(15.5rem, 20vw, 19rem);
   aspect-ratio: 0.75;
   margin: 0;
   overflow: hidden;

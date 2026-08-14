@@ -212,3 +212,12 @@ it('keeps the about signature close to its section label', () => {
   expect(css).toContain('.aboutIdentity {\n  display: flex;\n  align-items: center;\n  gap: 0.7rem;')
   expect(css).toContain('margin-left: 0;')
 })
+
+it('gives the editorial reel covers stronger presence on desktop', () => {
+  const css = readFileSync(
+    join(process.cwd(), 'src/components/landing/landing-page.module.css'),
+    'utf8',
+  )
+
+  expect(css).toContain('flex: 0 0 clamp(15.5rem, 20vw, 19rem);')
+})
