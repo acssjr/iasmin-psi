@@ -5,6 +5,7 @@ import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 
 import styles from './landing-page.module.css'
+import { ContentText } from '@/components/cms/content'
 
 const items = [
   'Você parece estar sempre resolvendo algo, mesmo quando já está cansada.',
@@ -191,7 +192,7 @@ export function RecognitionCarousel() {
             tabIndex={index < items.length ? 0 : undefined}
           >
             <span>{String((index % items.length) + 1).padStart(2, '0')}</span>
-            <p>{copy}</p>
+            <p><ContentText fallback={copy} /></p>
           </li>
         ))}
       </ol>

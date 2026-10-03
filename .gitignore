@@ -2,6 +2,7 @@
 .worktrees/
 .next/
 node_modules/
+/.cms/
 test-results/
 playwright-report/
 .env
@@ -9,3 +10,7 @@ playwright-report/
 !.env.example
 .vercel
 .env*
+
+.tldr/
+.tldrignore
+*.tsbuildinfo

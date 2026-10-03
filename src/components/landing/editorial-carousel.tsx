@@ -1,5 +1,7 @@
 'use client'
 
+import { useContentValues } from '@/components/cms/content'
+
 import Image from 'next/image'
 import { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
@@ -16,7 +18,9 @@ type EditorialCarouselProps = {
   covers: readonly EditorialCover[]
 }
 
-export function EditorialCarousel({ covers }: EditorialCarouselProps) {
+export function EditorialCarousel({ covers: originalCovers }: EditorialCarouselProps) {
+  const values = useContentValues()
+  const covers = values.editorial_collection ? JSON.parse(values.editorial_collection) as EditorialCover[] : originalCovers
   const carousel = useRef<HTMLDivElement>(null)
 
   useGSAP(
@@ -77,11 +81,11 @@ export function EditorialCarousel({ covers }: EditorialCarouselProps) {
             className={styles.editorialCarouselGroup}
             key={isDuplicate ? 'duplicate' : 'original'}
           >
-            {covers.map((cover) => (
+            {covers.map((cover, index) => (
               <figure
                 className={styles.editorialCover}
                 data-editorial-cover={!isDuplicate ? '' : undefined}
-                key={cover.src}
+                key={`${index}-${cover.src}`}
                 role={!isDuplicate ? 'listitem' : undefined}
               >
                 <Image
@@ -89,6 +93,7 @@ export function EditorialCarousel({ covers }: EditorialCarouselProps) {
                   fill
                   sizes="(max-width: 560px) 68vw, (max-width: 1088px) 27vw, 15vw"
                   src={cover.src}
+                  unoptimized={cover.src.startsWith('/api/media/')}
                 />
               </figure>
             ))}

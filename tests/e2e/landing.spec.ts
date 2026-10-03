@@ -17,11 +17,11 @@ for (const viewport of [
 
     await expect(hero.getByRole('link', { name: 'Agendar uma sessão' })).toBeVisible()
     await expect(
-      hero.getByRole('link', { name: 'Iniciar meu percurso de autoconhecimento' }),
+      hero.getByRole('link', { name: '5 perguntas para se conhecer melhor' }),
     ).toBeVisible()
 
     if (viewport.name === 'mobile') {
-      const headerAction = page.getByRole('link', { name: 'Agendar sessão' })
+      const headerAction = page.getByRole('link', { name: 'Agendar', exact: true })
       const bounds = await headerAction.boundingBox()
       expect(bounds?.height).toBeGreaterThanOrEqual(44)
     }

@@ -138,7 +138,7 @@
 .navigation button,
 .headerAction,
 .footerLinks a {
-  font-size: 0.66rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -161,7 +161,7 @@
   color: var(--espresso);
   cursor: pointer;
   font: inherit;
-  font-size: 0.66rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -215,7 +215,7 @@
 .sectionKicker {
   margin: 0 0 1.5rem;
   color: color-mix(in srgb, var(--terracotta) 78%, var(--espresso));
-  font-size: clamp(0.74rem, 0.9vw, 0.8rem);
+  font-size: clamp(1rem, 0.9vw, 1rem);
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -232,7 +232,7 @@
   margin: 0;
   font-weight: 800;
   letter-spacing: -0.062em;
-  line-height: 0.96;
+  line-height: 1.08;
 }
 
 .hero h1 {
@@ -263,7 +263,7 @@
   padding: 0.95rem 1.35rem;
   border: 1px solid var(--terracotta);
   border-radius: 0.35rem 1.25rem 0.35rem 1.25rem;
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-align: center;
@@ -279,7 +279,7 @@
 .hero .primaryAction {
   min-height: 4.75rem;
   padding: 1.25rem 1.75rem;
-  font-size: clamp(0.76rem, 1vw, 0.88rem);
+  font-size: clamp(1rem, 1vw, 1rem);
   box-shadow: 0 0.8rem 1.8rem color-mix(in srgb, var(--terracotta) 20%, transparent);
 }
 
@@ -314,7 +314,7 @@
   padding: 0;
   margin: 2rem 0 0;
   color: var(--olive);
-  font-size: 0.65rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.09em;
   list-style: none;
@@ -363,7 +363,7 @@
   border-radius: 0.35rem;
   background: color-mix(in srgb, var(--espresso) 76%, transparent);
   color: var(--cream);
-  font-size: 0.61rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-align: center;
@@ -419,7 +419,7 @@
   font-size: clamp(2.3rem, 4.7vw, 4.85rem);
   font-weight: 800;
   letter-spacing: -0.075em;
-  line-height: 0.96;
+  line-height: 1.08;
 }
 
 .listeningThemesIntro > p:not(.sectionKicker) {
@@ -447,7 +447,7 @@
 .listeningThemesList li > span {
   padding-top: 0.28rem;
   color: var(--terracotta);
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.12em;
 }
@@ -510,7 +510,7 @@
   border-radius: 999px;
   background: var(--cream);
   color: var(--espresso);
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -608,7 +608,7 @@
 .pillarNumber,
 .journeyCount {
   color: var(--sand);
-  font-size: 0.66rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.12em;
 }
@@ -710,7 +710,7 @@
 .credentials dt {
   margin-bottom: 0.35rem;
   color: var(--terracotta);
-  font-size: 0.64rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -718,7 +718,7 @@
 
 .credentials dd {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .care {
@@ -797,7 +797,7 @@
   max-width: 31rem;
   margin: 0.8rem 0 0;
   color: var(--cream);
-  font-size: 0.96rem;
+  font-size: 1rem;
   line-height: 1.72;
 }
 
@@ -843,7 +843,7 @@
 .journeySurface .boundaryCopy {
   margin-top: 1rem;
   color: var(--olive);
-  font-size: clamp(0.94rem, 1.1vw, 1.02rem);
+  font-size: clamp(1rem, 1.1vw, 1.02rem);
   font-weight: 700;
 }
 
@@ -968,7 +968,7 @@
   border: 1px solid color-mix(in srgb, var(--cream) 22%, transparent);
   border-radius: 100vmax;
   color: color-mix(in srgb, var(--cream) 82%, transparent);
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1029,7 +1029,7 @@
   border-color: var(--sand);
   background: var(--sand);
   color: var(--espresso);
-  font-size: clamp(0.76rem, 1.2vw, 0.88rem);
+  font-size: clamp(1rem, 1.2vw, 1rem);
 }
 
 .closing .primaryAction:hover,
@@ -1075,7 +1075,7 @@
   max-width: 35rem;
   margin: 0;
   color: color-mix(in srgb, var(--cream) 68%, transparent);
-  font-size: 0.76rem;
+  font-size: 0.875rem;
   line-height: 1.65;
 }
 
@@ -1096,7 +1096,7 @@
 
 .copyright {
   margin-top: 1.5rem;
-  font-size: 0.66rem;
+  font-size: 0.875rem;
 }
 
 @media (min-width: 56.25rem) {
@@ -1198,7 +1198,7 @@
     padding: 0 0 0.85rem;
     border-bottom: 1px solid color-mix(in srgb, var(--espresso) 16%, transparent);
     color: var(--terracotta);
-    font-size: 0.7rem;
+    font-size: 0.875rem;
     font-weight: 800;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -1314,8 +1314,8 @@
   }
 
   .navigation { gap: 0.85rem; }
-  .navigation a, .navigation button { font-size: clamp(0.68rem, 1vw, 0.76rem); }
-  .headerAction { font-size: 0.64rem; }
+  .navigation a, .navigation button { font-size: clamp(1rem, 1vw, 1rem); }
+  .headerAction { font-size: 0.875rem; }
 
   .hero {
     grid-template-columns: minmax(0, 1fr) minmax(19rem, 0.82fr);
@@ -1410,7 +1410,7 @@
     border-color: color-mix(in srgb, var(--terracotta) 72%, transparent);
     background: var(--terracotta);
     color: var(--cream);
-    font-size: 0.62rem;
+    font-size: 0.875rem;
     line-height: 1;
   }
 
@@ -1487,7 +1487,7 @@
   .intro {
     margin-top: 1.25rem;
     color: var(--espresso);
-    font-size: 0.96rem;
+    font-size: 1rem;
     line-height: 1.62;
   }
 
@@ -1499,13 +1499,13 @@
   .primaryAction,
   .secondaryAction {
     min-height: 3.25rem;
-    font-size: 0.62rem;
+    font-size: 0.875rem;
   }
 
   .hero .primaryAction {
     min-height: 4.15rem;
     padding: 1.05rem 1.25rem;
-    font-size: 0.82rem;
+    font-size: 0.875rem;
   }
 
   .aboutIdentity {
@@ -1523,7 +1523,7 @@
   .trailLabels {
     gap: 0.75rem;
     justify-content: center;
-    font-size: 0.58rem;
+    font-size: 0.875rem;
   }
 
   .trailLabels li:not(:last-child)::after {
@@ -1650,7 +1650,7 @@
   }
 
   .editorialContentIntro > p:not(.sectionKicker) {
-    font-size: 0.98rem;
+    font-size: 1rem;
   }
 
   .editorialMosaic {

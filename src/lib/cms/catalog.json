@@ -1,0 +1,2445 @@
+[
+  {
+    "id": "3af74f72947b7983",
+    "group": "Conteúdos e reflexões",
+    "label": "Conteúdos para continuar a conversa",
+    "kind": "text",
+    "default": "Conteúdos para continuar a conversa"
+  },
+  {
+    "id": "916a0933fe157049",
+    "group": "Conteúdos e reflexões",
+    "label": "Reflexões para levar com você.",
+    "kind": "text",
+    "default": "Reflexões para levar com você."
+  },
+  {
+    "id": "9e472f3ded74b7ff",
+    "group": "Conteúdos e reflexões",
+    "label": "Texto de apresentação",
+    "kind": "text",
+    "default": "No Instagram, Iasmin também abre espaço para conversar sobre relações, mudanças, comunicação e amadurecimento com cuidado e proximidade."
+  },
+  {
+    "id": "2b720be0ad210506",
+    "group": "Conteúdos e reflexões",
+    "label": "Conversar com Iasmin",
+    "kind": "text",
+    "default": "Conversar com Iasmin"
+  },
+  {
+    "id": "4b690fe3f01ced97",
+    "group": "Abertura e transições",
+    "label": "Agendar uma sessão pelo WhatsApp",
+    "kind": "text",
+    "default": "Agendar uma sessão pelo WhatsApp"
+  },
+  {
+    "id": "427f3166122fcc36",
+    "group": "Abertura e transições",
+    "label": "Mensagem de boas-vindas",
+    "kind": "text",
+    "default": "Boas-vindas a um espaço de cuidado e calma."
+  },
+  {
+    "id": "aa0087d109a70f50",
+    "group": "Navegação e redes sociais",
+    "label": "Endereço do link",
+    "kind": "url",
+    "default": "https://www.instagram.com/iasminportugalpsi/"
+  },
+  {
+    "id": "6a0f578eb3c22cf5",
+    "group": "Navegação e redes sociais",
+    "label": "Texto",
+    "kind": "text",
+    "default": "Instagram de Iasmin Portugal"
+  },
+  {
+    "id": "31d9e011b5a0eede",
+    "group": "Navegação e redes sociais",
+    "label": "Endereço do link",
+    "kind": "url",
+    "default": "https://www.linkedin.com/"
+  },
+  {
+    "id": "cdc4e3d730cc4bde",
+    "group": "Navegação e redes sociais",
+    "label": "Texto",
+    "kind": "text",
+    "default": "LinkedIn de Iasmin Portugal"
+  },
+  {
+    "id": "8bb241e9ee6bc0f9",
+    "group": "Cabeçalho",
+    "label": "Agendar",
+    "kind": "text",
+    "default": "Agendar"
+  },
+  {
+    "id": "4e6fde885463afff",
+    "group": "Abertura",
+    "label": "Linha de apresentação",
+    "kind": "text",
+    "default": "Psicologia clínica on-line"
+  },
+  {
+    "id": "e17d058673a53ab9",
+    "group": "Abertura",
+    "label": "Título principal",
+    "kind": "text",
+    "default": "O cuidado que faz sentido começa no seu contexto."
+  },
+  {
+    "id": "e083d7cb83f634a7",
+    "group": "Abertura",
+    "label": "Texto de apresentação",
+    "kind": "text",
+    "default": "Um espaço de escuta para adolescentes e adultos que desejam olhar para a ansiedade, a autoestima e a aceitação com mais presença."
+  },
+  {
+    "id": "23f92a4e6fe09ab3",
+    "group": "Abertura",
+    "label": "Agendar uma sessão",
+    "kind": "text",
+    "default": "Agendar uma sessão"
+  },
+  {
+    "id": "164beab6d6781e47",
+    "group": "Abertura",
+    "label": "5 perguntas para se conhecer melhor",
+    "kind": "text",
+    "default": "5 perguntas para se conhecer melhor"
+  },
+  {
+    "id": "dbb654a486a5fc1f",
+    "group": "Abertura",
+    "label": "Contexto",
+    "kind": "text",
+    "default": "Contexto"
+  },
+  {
+    "id": "75bd494bd9c7bf36",
+    "group": "Abertura",
+    "label": "Escolhas",
+    "kind": "text",
+    "default": "Escolhas"
+  },
+  {
+    "id": "08882a9f3df9de79",
+    "group": "Abertura",
+    "label": "Cuidado",
+    "kind": "text",
+    "default": "Cuidado"
+  },
+  {
+    "id": "78bd6cf08d597565",
+    "group": "Abertura",
+    "label": "Descrição da imagem",
+    "kind": "text",
+    "default": "Iasmin Portugal em atendimento"
+  },
+  {
+    "id": "8f0e60d419325143",
+    "group": "Abertura",
+    "label": "Imagem",
+    "kind": "image",
+    "default": "/images/iasmin/hero-terracotta.jpg"
+  },
+  {
+    "id": "8f1466ca140b3508",
+    "group": "Abertura",
+    "label": "Psicóloga clínica · Análise do Comportamento",
+    "kind": "text",
+    "default": "Psicóloga clínica · Análise do Comportamento"
+  },
+  {
+    "id": "98de43f8fdeae223",
+    "group": "Identificação",
+    "label": "Pode ser que você se reconheça aqui",
+    "kind": "text",
+    "default": "Pode ser que você se reconheça aqui"
+  },
+  {
+    "id": "f7e576990749a49d",
+    "group": "Identificação",
+    "label": "Nem tudo o que pesa precisa ser carregado em silêncio.",
+    "kind": "text",
+    "default": "Nem tudo o que pesa precisa ser carregado em silêncio."
+  },
+  {
+    "id": "259fe556097d9376",
+    "group": "Sobre Iasmin",
+    "label": "Descrição da imagem",
+    "kind": "text",
+    "default": "Iasmin Portugal sentada ao ar livre com um livro sobre behaviorismo"
+  },
+  {
+    "id": "43157719b1ba3cb8",
+    "group": "Sobre Iasmin",
+    "label": "Imagem",
+    "kind": "image",
+    "default": "/images/iasmin/garden-reading.jpg"
+  },
+  {
+    "id": "39f66460110037f9",
+    "group": "Sobre Iasmin",
+    "label": "Descrição da imagem",
+    "kind": "text",
+    "default": "Retrato de Iasmin Portugal com um livro sobre behaviorismo"
+  },
+  {
+    "id": "b1d8457b9f77a747",
+    "group": "Sobre Iasmin",
+    "label": "Imagem",
+    "kind": "image",
+    "default": "/images/iasmin/garden-portrait.jpg"
+  },
+  {
+    "id": "4cadb7f9efaaa5ab",
+    "group": "Sobre Iasmin",
+    "label": "Sobre mim",
+    "kind": "text",
+    "default": "Sobre mim"
+  },
+  {
+    "id": "55d4dfc77a143c16",
+    "group": "Sobre Iasmin",
+    "label": "Um cuidado que olha para a sua história inteira.",
+    "kind": "text",
+    "default": "Um cuidado que olha para a sua história inteira."
+  },
+  {
+    "id": "4f665471e332d95a",
+    "group": "Sobre Iasmin",
+    "label": "Apresentação antes do nome",
+    "kind": "text",
+    "default": "Sou"
+  },
+  {
+    "id": "66424a11aae6db7c",
+    "group": "Sobre Iasmin",
+    "label": "Nome de exibição",
+    "kind": "text",
+    "default": "Iasmin Portugal"
+  },
+  {
+    "id": "3df92445d1643b6e",
+    "group": "Sobre Iasmin",
+    "label": "Texto de apresentação",
+    "kind": "text",
+    "default": ", psicóloga clínica. No atendimento on-line, trabalho com adolescentes e adultos a partir da Análise do Comportamento."
+  },
+  {
+    "id": "7971fd219992a658",
+    "group": "Sobre Iasmin",
+    "label": "Texto de apresentação",
+    "kind": "text",
+    "default": "Meu olhar parte da sua realidade, das relações que você vive e dos caminhos que já encontrou. A terapia pode ser um lugar para construir escolhas possíveis, respeitando o seu tempo."
+  },
+  {
+    "id": "11191907c846b796",
+    "group": "Sobre Iasmin",
+    "label": "Atendimento",
+    "kind": "text",
+    "default": "Atendimento"
+  },
+  {
+    "id": "0ea4742b821562cb",
+    "group": "Sobre Iasmin",
+    "label": "On-line para todo o Brasil",
+    "kind": "text",
+    "default": "On-line para todo o Brasil"
+  },
+  {
+    "id": "f70b786a119289c0",
+    "group": "Sobre Iasmin",
+    "label": "Temas de escuta",
+    "kind": "text",
+    "default": "Temas de escuta"
+  },
+  {
+    "id": "05d63e638c6832cb",
+    "group": "Sobre Iasmin",
+    "label": "Ansiedade, autoestima e aceitação",
+    "kind": "text",
+    "default": "Ansiedade, autoestima e aceitação"
+  },
+  {
+    "id": "2540336eae0f0b21",
+    "group": "Sobre Iasmin",
+    "label": "Formação em andamento",
+    "kind": "text",
+    "default": "Formação em andamento"
+  },
+  {
+    "id": "58e1ac9f75f83d4c",
+    "group": "Sobre Iasmin",
+    "label": "Pós-graduação em Neuropsicologia",
+    "kind": "text",
+    "default": "Pós-graduação em Neuropsicologia"
+  },
+  {
+    "id": "5dcbe5440072fde5",
+    "group": "Temas de escuta",
+    "label": "Nome do tema",
+    "kind": "text",
+    "default": "Ansiedade e sobrecarga"
+  },
+  {
+    "id": "552db1e5669239c7",
+    "group": "Temas de escuta",
+    "label": "Descrição",
+    "kind": "text",
+    "default": "Para compreender preocupações, cansaço, pressão e o que tem ocupado espaço demais nos seus dias."
+  },
+  {
+    "id": "a837f7f6353bb2da",
+    "group": "Temas de escuta",
+    "label": "Nome do tema",
+    "kind": "text",
+    "default": "Relacionamentos e limites"
+  },
+  {
+    "id": "ad195b6be8d384e0",
+    "group": "Temas de escuta",
+    "label": "Descrição",
+    "kind": "text",
+    "default": "Para olhar para sua voz, seus vínculos e os limites que ajudam a construir relações mais honestas."
+  },
+  {
+    "id": "309674cd4dd54d0a",
+    "group": "Temas de escuta",
+    "label": "Nome do tema",
+    "kind": "text",
+    "default": "Luto, perdas e mudanças"
+  },
+  {
+    "id": "68141688dd2a483e",
+    "group": "Temas de escuta",
+    "label": "Descrição",
+    "kind": "text",
+    "default": "Para acolher o que mudou, respeitar o seu tempo e encontrar formas possíveis de seguir sem apagar o que foi importante."
+  },
+  {
+    "id": "0fcac7ef00ff8ef5",
+    "group": "Temas de escuta",
+    "label": "Nome do tema",
+    "kind": "text",
+    "default": "Autoestima e autocrítica"
+  },
+  {
+    "id": "542b534b5d86cfbd",
+    "group": "Temas de escuta",
+    "label": "Descrição",
+    "kind": "text",
+    "default": "Para perceber padrões de cobrança e desenvolver uma forma mais justa e cuidadosa de se relacionar consigo."
+  },
+  {
+    "id": "d9bd313e86b59d56",
+    "group": "Temas de escuta",
+    "label": "Temas que podem encontrar espaço na terapia.",
+    "kind": "text",
+    "default": "Temas que podem encontrar espaço na terapia."
+  },
+  {
+    "id": "234104f77292213d",
+    "group": "Temas de escuta",
+    "label": "Texto de apresentação",
+    "kind": "text",
+    "default": "A abordagem clínica é a Análise do Comportamento. A partir dela, o cuidado considera sua história, seus contextos e o que você vive hoje."
+  },
+  {
+    "id": "b6a9320c8709b217",
+    "group": "Como funciona",
+    "label": "Título",
+    "kind": "text",
+    "default": "Compreender seus contextos"
+  },
+  {
+    "id": "938a0ca82a051c7e",
+    "group": "Como funciona",
+    "label": "Descrição",
+    "kind": "text",
+    "default": "Olhar para o que acontece ao redor, para as relações e para os aprendizados que fazem parte da sua experiência."
+  },
+  {
+    "id": "73e555e1b7916b6b",
+    "group": "Como funciona",
+    "label": "Título",
+    "kind": "text",
+    "default": "Construir caminhos possíveis"
+  },
+  {
+    "id": "7966bb084c4919e0",
+    "group": "Como funciona",
+    "label": "Descrição",
+    "kind": "text",
+    "default": "Explorar alternativas que façam sentido para a vida real, sem fórmulas prontas e sem promessas vazias."
+  },
+  {
+    "id": "248a880969608d99",
+    "group": "Como funciona",
+    "label": "Título",
+    "kind": "text",
+    "default": "Respeitar o seu ritmo"
+  },
+  {
+    "id": "8fb7b7f4a3526eea",
+    "group": "Como funciona",
+    "label": "Descrição",
+    "kind": "text",
+    "default": "Criar um espaço em que você possa se aproximar de si com mais cuidado e autonomia."
+  },
+  {
+    "id": "4df784054941271a",
+    "group": "Como funciona",
+    "label": "Uma escuta situada",
+    "kind": "text",
+    "default": "Uma escuta situada"
+  },
+  {
+    "id": "297bbdd9081169aa",
+    "group": "Como funciona",
+    "label": "Cuidar também é entender o que acontece antes, durante e depois.",
+    "kind": "text",
+    "default": "Cuidar também é entender o que acontece antes, durante e depois."
+  },
+  {
+    "id": "568f83175de5ab87",
+    "group": "Como funciona",
+    "label": "Texto de apresentação",
+    "kind": "text",
+    "default": "A Análise do Comportamento parte da ideia de que cada pessoa tem uma trajetória e um contexto. Na terapia, isso ajuda a criar caminhos mais possíveis para a sua vida."
+  },
+  {
+    "id": "348ac46963fed699",
+    "group": "Convite ao percurso",
+    "label": "Um primeiro passo possível",
+    "kind": "text",
+    "default": "Um primeiro passo possível"
+  },
+  {
+    "id": "5144c573981db14d",
+    "group": "Convite ao percurso",
+    "label": "Uma pausa guiada para olhar para você.",
+    "kind": "text",
+    "default": "Uma pausa guiada para olhar para você."
+  },
+  {
+    "id": "6eee6b7dc3cc2133",
+    "group": "Convite ao percurso",
+    "label": "5 perguntas",
+    "kind": "text",
+    "default": "5 perguntas"
+  },
+  {
+    "id": "0bfc558722115a00",
+    "group": "Convite ao percurso",
+    "label": "Texto de apresentação",
+    "kind": "text",
+    "default": "O percurso convida você a observar algumas situações do cotidiano e recebe uma devolutiva de reflexão ao final."
+  },
+  {
+    "id": "461971408be5d075",
+    "group": "Convite ao percurso",
+    "label": "O percurso não é uma avaliação psicológica e não substitui a psicoterapia.",
+    "kind": "text",
+    "default": "O percurso não é uma avaliação psicológica e não substitui a psicoterapia."
+  },
+  {
+    "id": "afb3412870344ce7",
+    "group": "Convite ao percurso",
+    "label": "Iniciar o percurso",
+    "kind": "text",
+    "default": "Iniciar o percurso"
+  },
+  {
+    "id": "b84ecc76deafd97d",
+    "group": "Perguntas frequentes",
+    "label": "Perguntas frequentes",
+    "kind": "text",
+    "default": "Perguntas frequentes"
+  },
+  {
+    "id": "866f5b05a3f889f4",
+    "group": "Perguntas frequentes",
+    "label": "Talvez você queira saber.",
+    "kind": "text",
+    "default": "Talvez você queira saber."
+  },
+  {
+    "id": "f79e84d27f8e440e",
+    "group": "Contato",
+    "label": "Quando fizer sentido",
+    "kind": "text",
+    "default": "Quando fizer sentido"
+  },
+  {
+    "id": "d54d61440ce44c9a",
+    "group": "Contato",
+    "label": "Você não precisa ter tudo resolvido para começar.",
+    "kind": "text",
+    "default": "Você não precisa ter tudo resolvido para começar."
+  },
+  {
+    "id": "50cba44b2093e80d",
+    "group": "Contato",
+    "label": "Texto de apresentação",
+    "kind": "text",
+    "default": "Podemos conversar sobre o que você está vivendo e entender, com calma, se este é um bom momento para iniciar a terapia."
+  },
+  {
+    "id": "f7846e9678d7c2e0",
+    "group": "Rodapé",
+    "label": "Iasmin Portugal de Souza Costa · Psicóloga Clínica · CRP 03/33160",
+    "kind": "text",
+    "default": "Iasmin Portugal de Souza Costa · Psicóloga Clínica · CRP 03/33160"
+  },
+  {
+    "id": "f3935827c93ca574",
+    "group": "Rodapé",
+    "label": "Conheça Iasmin",
+    "kind": "text",
+    "default": "Conheça Iasmin"
+  },
+  {
+    "id": "991f80d4356d46fd",
+    "group": "Rodapé",
+    "label": "Como funciona",
+    "kind": "text",
+    "default": "Como funciona"
+  },
+  {
+    "id": "41c496de4dd99fcc",
+    "group": "Rodapé",
+    "label": "Percurso",
+    "kind": "text",
+    "default": "Percurso"
+  },
+  {
+    "id": "2bb2d8436a5c0668",
+    "group": "Rodapé",
+    "label": "Privacidade",
+    "kind": "text",
+    "default": "Privacidade"
+  },
+  {
+    "id": "1d759ab4a62bc595",
+    "group": "Rodapé",
+    "label": "Texto de apresentação",
+    "kind": "text",
+    "default": "Este site não é um canal de emergência. Em risco imediato, ligue 192 para o SAMU ou 188 para o CVV."
+  },
+  {
+    "id": "cb403df8ae0f36c5",
+    "group": "Rodapé",
+    "label": " Iasmin Portugal. Todos os direitos reservados.",
+    "kind": "text",
+    "default": "Iasmin Portugal. Todos os direitos reservados."
+  },
+  {
+    "id": "536976970b6c729c",
+    "group": "Identificação",
+    "label": "Mensagem do carrossel",
+    "kind": "text",
+    "default": "Você parece estar sempre resolvendo algo, mesmo quando já está cansada."
+  },
+  {
+    "id": "b0d00394d227261f",
+    "group": "Identificação",
+    "label": "Mensagem do carrossel",
+    "kind": "text",
+    "default": "A ansiedade ocupa espaço e torna as pequenas escolhas mais difíceis."
+  },
+  {
+    "id": "0c1a5326a4c88323",
+    "group": "Identificação",
+    "label": "Mensagem do carrossel",
+    "kind": "text",
+    "default": "Você se cobra tanto que às vezes perde de vista o que também precisa."
+  },
+  {
+    "id": "7ff31408d36adf67",
+    "group": "Navegação e redes sociais",
+    "label": "Texto do botão",
+    "kind": "text",
+    "default": "Fechar menu"
+  },
+  {
+    "id": "7db0b2e89b4c1bfc",
+    "group": "Navegação e redes sociais",
+    "label": "Texto do botão",
+    "kind": "text",
+    "default": "Abrir menu"
+  },
+  {
+    "id": "d71f944dac513370",
+    "group": "Navegação e redes sociais",
+    "label": "Navegue pela página",
+    "kind": "text",
+    "default": "Navegue pela página"
+  },
+  {
+    "id": "27e0a97bf59de26d",
+    "group": "Percurso · telas",
+    "label": "Antes de começar",
+    "kind": "text",
+    "default": "Antes de começar"
+  },
+  {
+    "id": "a9c05548ac32fbd5",
+    "group": "Percurso · telas",
+    "label": "Este espaço foi pensado para você se escutar com calma.",
+    "kind": "text",
+    "default": "Este espaço foi pensado para você se escutar com calma."
+  },
+  {
+    "id": "59558a23ce60f714",
+    "group": "Percurso · telas",
+    "label": "Texto de apresentação",
+    "kind": "text",
+    "default": "Em cerca de cinco minutos, você percorre cinco perguntas de reflexão. Não há resposta certa e isso não substitui um atendimento psicológico."
+  },
+  {
+    "id": "afca220d3e6b32f7",
+    "group": "Percurso · telas",
+    "label": "Iniciar as perguntas",
+    "kind": "text",
+    "default": "Iniciar as perguntas"
+  },
+  {
+    "id": "e45289bcbb0e2240",
+    "group": "Percurso · telas",
+    "label": "Antes das perguntas",
+    "kind": "text",
+    "default": "Antes das perguntas"
+  },
+  {
+    "id": "4f335274e61ce86d",
+    "group": "Percurso · telas",
+    "label": "Vamos preparar sua devolutiva?",
+    "kind": "text",
+    "default": "Vamos preparar sua devolutiva?"
+  },
+  {
+    "id": "bc847dff22fa4be9",
+    "group": "Percurso · telas",
+    "label": "Texto de apresentação",
+    "kind": "text",
+    "default": "Seus dados são usados para gerar esta devolutiva e, se você decidir conversar com Iasmin, facilitar o contato que solicitar."
+  },
+  {
+    "id": "70272dd575106b04",
+    "group": "Percurso · telas",
+    "label": "Seu nome",
+    "kind": "text",
+    "default": "Seu nome"
+  },
+  {
+    "id": "2414af6bf99b2226",
+    "group": "Percurso · telas",
+    "label": "Exemplo no campo",
+    "kind": "text",
+    "default": "Como posso te chamar?"
+  },
+  {
+    "id": "2550d962e536e7c0",
+    "group": "Percurso · telas",
+    "label": "E-mail",
+    "kind": "text",
+    "default": "E-mail"
+  },
+  {
+    "id": "573adb1b5ddf59a5",
+    "group": "Percurso · telas",
+    "label": "Exemplo no campo",
+    "kind": "text",
+    "default": "voce@email.com"
+  },
+  {
+    "id": "6a40edf1fc87a29f",
+    "group": "Percurso · telas",
+    "label": "WhatsApp",
+    "kind": "text",
+    "default": "WhatsApp"
+  },
+  {
+    "id": "fd94f237f51defcd",
+    "group": "Percurso · telas",
+    "label": "Exemplo no campo",
+    "kind": "text",
+    "default": "(00) 00000-0000"
+  },
+  {
+    "id": "de31e6c5b8c2d8fe",
+    "group": "Percurso · telas",
+    "label": "Texto de apresentação",
+    "kind": "text",
+    "default": "Ao continuar, você concorda com o uso dos seus dados para gerar esta devolutiva e viabilizar o contato que solicitar."
+  },
+  {
+    "id": "d0094ced6d086db9",
+    "group": "Percurso · telas",
+    "label": "Saiba como seus dados são tratados.",
+    "kind": "text",
+    "default": "Saiba como seus dados são tratados."
+  },
+  {
+    "id": "437ff64a7982b8dc",
+    "group": "Percurso · telas",
+    "label": "Começar o percurso",
+    "kind": "text",
+    "default": "Começar o percurso"
+  },
+  {
+    "id": "e56b850ab10ee078",
+    "group": "Percurso · telas",
+    "label": "Um instante para acolher o que você compartilhou.",
+    "kind": "text",
+    "default": "Um instante para acolher o que você compartilhou."
+  },
+  {
+    "id": "2763efef25cecaa5",
+    "group": "Percurso · telas",
+    "label": "Estamos preparando uma devolutiva para você olhar com calma.",
+    "kind": "text",
+    "default": "Estamos preparando uma devolutiva para você olhar com calma."
+  },
+  {
+    "id": "dafe57019df9a4cd",
+    "group": "Percurso · telas",
+    "label": " · Pergunta ",
+    "kind": "text",
+    "default": "· Pergunta"
+  },
+  {
+    "id": "b5dd1abeaffb66b4",
+    "group": "Percurso · telas",
+    "label": "Escolha a alternativa que mais se aproxima do que você vive.",
+    "kind": "text",
+    "default": "Escolha a alternativa que mais se aproxima do que você vive."
+  },
+  {
+    "id": "5c0b8b2773107551",
+    "group": "Percurso · telas",
+    "label": "Alternativas para a pergunta ",
+    "kind": "text",
+    "default": "Alternativas para a pergunta"
+  },
+  {
+    "id": "59dc926760d04aea",
+    "group": "Percurso · telas",
+    "label": "Voltar",
+    "kind": "text",
+    "default": "Voltar"
+  },
+  {
+    "id": "b6d8226f87865eba",
+    "group": "Percurso · telas",
+    "label": "Texto de apresentação",
+    "kind": "text",
+    "default": "Obrigada por se permitir essa pausa. Suas respostas não definem você, mas podem ser um convite para olhar com mais cuidado para o que está vivendo."
+  },
+  {
+    "id": "412325ca760a66aa",
+    "group": "Percurso · telas",
+    "label": "Texto de apresentação",
+    "kind": "text",
+    "default": "Esta devolutiva é um convite à reflexão. Ela não é diagnóstico nem avaliação psicológica."
+  },
+  {
+    "id": "79c482682c8e63db",
+    "group": "Percurso · telas",
+    "label": "Conversar com Iasmin pelo WhatsApp",
+    "kind": "text",
+    "default": "Conversar com Iasmin pelo WhatsApp"
+  },
+  {
+    "id": "24893e14287be9ee",
+    "group": "Percurso · telas",
+    "label": "Voltar para a página",
+    "kind": "text",
+    "default": "Voltar para a página"
+  },
+  {
+    "id": "8e64d6a9588088a5",
+    "group": "Percurso · telas",
+    "label": "Não foi possível concluir agora",
+    "kind": "text",
+    "default": "Não foi possível concluir agora"
+  },
+  {
+    "id": "74c368fa8418b7f6",
+    "group": "Percurso · telas",
+    "label": "Suas respostas continuam neste dispositivo enquanto esta página estiver aberta.",
+    "kind": "text",
+    "default": "Suas respostas continuam neste dispositivo enquanto esta página estiver aberta."
+  },
+  {
+    "id": "bdeae7be48f13ef4",
+    "group": "Percurso · telas",
+    "label": "Tente novamente em alguns instantes ou converse com Iasmin pelo WhatsApp.",
+    "kind": "text",
+    "default": "Tente novamente em alguns instantes ou converse com Iasmin pelo WhatsApp."
+  },
+  {
+    "id": "b9e10688be012d8b",
+    "group": "Percurso · telas",
+    "label": "Tentar novamente",
+    "kind": "text",
+    "default": "Tentar novamente"
+  },
+  {
+    "id": "4821f01d6dad39a5",
+    "group": "Percurso · telas",
+    "label": "Psicologia clínica",
+    "kind": "text",
+    "default": "Psicologia clínica"
+  },
+  {
+    "id": "426a345f481cc153",
+    "group": "Percurso · telas",
+    "label": "Escolha seu ponto de partida",
+    "kind": "text",
+    "default": "Escolha seu ponto de partida"
+  },
+  {
+    "id": "f994f73e3de34f8c",
+    "group": "Percurso · telas",
+    "label": "Sobre o que você quer olhar hoje?",
+    "kind": "text",
+    "default": "Sobre o que você quer olhar hoje?"
+  },
+  {
+    "id": "01a497ce815f6777",
+    "group": "Percurso · telas",
+    "label": "Texto de apresentação",
+    "kind": "text",
+    "default": "Escolha o tema que mais se aproxima do seu momento. Você poderá voltar antes de responder."
+  },
+  {
+    "id": "e29f300aa5067e5c",
+    "group": "Abertura e transições",
+    "label": "Uma pausa antes de começar.",
+    "kind": "text",
+    "default": "Uma pausa antes de começar."
+  },
+  {
+    "id": "af58cb49ca7b75a7",
+    "group": "Abertura e transições",
+    "label": "Te levando para um espaço mais tranquilo.",
+    "kind": "text",
+    "default": "Te levando para um espaço mais tranquilo."
+  },
+  {
+    "id": "e5f2c5e7b2131cea",
+    "group": "Busca e compartilhamento",
+    "label": "Privacidade · título nos resultados de busca",
+    "kind": "text",
+    "default": "Privacidade | Iasmin Portugal"
+  },
+  {
+    "id": "c2784164ddfdeb01",
+    "group": "Busca e compartilhamento",
+    "label": "Privacidade · descrição nos resultados de busca",
+    "kind": "text",
+    "default": "Como Iasmin Portugal trata os dados do percurso de autoconhecimento."
+  },
+  {
+    "id": "07072bfe95d9ad92",
+    "group": "Privacidade",
+    "label": "Privacidade e transparência",
+    "kind": "text",
+    "default": "Privacidade e transparência"
+  },
+  {
+    "id": "e207c45dcf1049b7",
+    "group": "Privacidade",
+    "label": "Seus dados merecem o mesmo cuidado que a sua história.",
+    "kind": "text",
+    "default": "Seus dados merecem o mesmo cuidado que a sua história."
+  },
+  {
+    "id": "126a83309c96bf08",
+    "group": "Privacidade",
+    "label": "Texto de apresentação",
+    "kind": "text",
+    "default": "Esta página explica de forma direta o que é coletado no percurso de autoconhecimento e como essas informações são tratadas."
+  },
+  {
+    "id": "37c0975540808f85",
+    "group": "Privacidade",
+    "label": "O que é coletado",
+    "kind": "text",
+    "default": "O que é coletado"
+  },
+  {
+    "id": "3eb199f68d30494b",
+    "group": "Privacidade",
+    "label": "Texto de apresentação",
+    "kind": "text",
+    "default": "No percurso, são solicitados nome, e-mail, WhatsApp, o tema escolhido, os identificadores das cinco respostas de reflexão, o registro de consentimento e parâmetros de origem de campanha quando existirem. Esses dados são usados para gerar a devolutiva e organizar o contato que você pedir."
+  },
+  {
+    "id": "2a219c6e239ed993",
+    "group": "Privacidade",
+    "label": "Uma experiência de reflexão",
+    "kind": "text",
+    "default": "Uma experiência de reflexão"
+  },
+  {
+    "id": "2bf6e9144b6e02eb",
+    "group": "Privacidade",
+    "label": "Texto de apresentação",
+    "kind": "text",
+    "default": "O percurso apresenta perguntas de autoconhecimento e uma devolutiva acolhedora. Ele não realiza diagnóstico nem avaliação psicológica e não substitui a psicoterapia ou outro cuidado profissional."
+  },
+  {
+    "id": "5001e810f48a5b38",
+    "group": "Privacidade",
+    "label": "Como funciona o consentimento",
+    "kind": "text",
+    "default": "Como funciona o consentimento"
+  },
+  {
+    "id": "4dae63fedd84a4b2",
+    "group": "Privacidade",
+    "label": "Texto de apresentação",
+    "kind": "text",
+    "default": "Ao iniciar o percurso, você concorda com o uso dos dados para gerar a devolutiva, viabilizar o contato solicitado e registrar essa manifestação. O site não solicita autorização para comunicações futuras."
+  },
+  {
+    "id": "899832996394d356",
+    "group": "Privacidade",
+    "label": "Por quanto tempo os dados ficam guardados",
+    "kind": "text",
+    "default": "Por quanto tempo os dados ficam guardados"
+  },
+  {
+    "id": "6141f9e1c537f2b9",
+    "group": "Privacidade",
+    "label": "Texto de apresentação",
+    "kind": "text",
+    "default": "As respostas brutas do percurso ficam disponíveis por 180 dias. Depois desse período, elas são anonimizadas. Nome, e-mail e WhatsApp também são excluídos ao fim dos 180 dias, ou antes, se você pedir a exclusão."
+  },
+  {
+    "id": "c6677ac71e1b0b36",
+    "group": "Privacidade",
+    "label": "Web Analytics sem informações sensíveis",
+    "kind": "text",
+    "default": "Web Analytics sem informações sensíveis"
+  },
+  {
+    "id": "ef8dabd4664311a7",
+    "group": "Privacidade",
+    "label": "Texto de apresentação",
+    "kind": "text",
+    "default": "O site usa eventos de navegação e de interação, como o início ou a conclusão do percurso. Respostas, nome, e-mail, WhatsApp e conteúdos digitados não são enviados ao Web Analytics."
+  },
+  {
+    "id": "a5e12c6db17d2d34",
+    "group": "Privacidade",
+    "label": "Como pedir exclusão",
+    "kind": "text",
+    "default": "Como pedir exclusão"
+  },
+  {
+    "id": "d605ce0062a1ae01",
+    "group": "Privacidade",
+    "label": "Texto de apresentação",
+    "kind": "text",
+    "default": "Para pedir acesso, correção ou exclusão dos seus dados, entre em contato diretamente pelo WhatsApp. A solicitação será tratada com cuidado e confirmação de identidade."
+  },
+  {
+    "id": "2e20c61f2641c015",
+    "group": "Privacidade",
+    "label": "Falar sobre privacidade pelo WhatsApp",
+    "kind": "text",
+    "default": "Falar sobre privacidade pelo WhatsApp"
+  },
+  {
+    "id": "84f6403bba9710c5",
+    "group": "Privacidade",
+    "label": "Responsável pelo atendimento",
+    "kind": "text",
+    "default": "Responsável pelo atendimento"
+  },
+  {
+    "id": "31a62dcf759b5445",
+    "group": "Privacidade",
+    "label": "Iasmin Portugal de Souza Costa · Psicóloga Clínica · CRP 03/33160.",
+    "kind": "text",
+    "default": "Iasmin Portugal de Souza Costa · Psicóloga Clínica · CRP 03/33160."
+  },
+  {
+    "id": "45625e4c6119f3b5",
+    "group": "Privacidade",
+    "label": "Em uma urgência",
+    "kind": "text",
+    "default": "Em uma urgência"
+  },
+  {
+    "id": "72eac03b3f38a2b0",
+    "group": "Percurso · perguntas e resultados",
+    "label": "Ilustração abstrata de uma pausa e um ramo delicado.",
+    "kind": "text",
+    "default": "Ilustração abstrata de uma pausa e um ramo delicado."
+  },
+  {
+    "id": "bc99de3024782d8f",
+    "group": "Percurso · perguntas e resultados",
+    "label": "Ilustração",
+    "kind": "image",
+    "default": "/images/reflections/sobrecarrega.png"
+  },
+  {
+    "id": "8a9a99b38536d1bb",
+    "group": "Percurso · perguntas e resultados",
+    "label": "Ilustração abstrata de uma forma acolhida com cuidado.",
+    "kind": "text",
+    "default": "Ilustração abstrata de uma forma acolhida com cuidado."
+  },
+  {
+    "id": "d197609a0b042740",
+    "group": "Percurso · perguntas e resultados",
+    "label": "Ilustração",
+    "kind": "image",
+    "default": "/images/reflections/autocritica.png"
+  },
+  {
+    "id": "00eba23a6a75d99e",
+    "group": "Percurso · perguntas e resultados",
+    "label": "Ilustração abstrata de passos em um caminho tranquilo.",
+    "kind": "text",
+    "default": "Ilustração abstrata de passos em um caminho tranquilo."
+  },
+  {
+    "id": "e74fb63810311273",
+    "group": "Percurso · perguntas e resultados",
+    "label": "Ilustração",
+    "kind": "image",
+    "default": "/images/reflections/reconexao.png"
+  },
+  {
+    "id": "e0e13dc86e0cc1e8",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Apresentação do tema",
+    "kind": "text",
+    "default": "Para olhar com calma para a pressão, o cansaço e o que tem pedido espaço."
+  },
+  {
+    "id": "d494b0b67b4d0119",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Pergunta 1 · enunciado",
+    "kind": "text",
+    "default": "Quando você percebe que o dia ficou mais pesado do que esperava, o que costuma acontecer primeiro?"
+  },
+  {
+    "id": "02dcc321aa75188e",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Pergunta 1 · alternativa A",
+    "kind": "text",
+    "default": "Tento resolver tudo de uma vez."
+  },
+  {
+    "id": "fcd10f80d3df2fbf",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Pergunta 1 · alternativa B",
+    "kind": "text",
+    "default": "Adio algumas coisas porque não sei por onde começar."
+  },
+  {
+    "id": "058642991d51fc6a",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Pergunta 1 · alternativa C",
+    "kind": "text",
+    "default": "Continuo fazendo o que precisa ser feito, mesmo já estando cansada."
+  },
+  {
+    "id": "1b5e63b9a35606f9",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Pergunta 1 · alternativa D",
+    "kind": "text",
+    "default": "Procuro diminuir o ritmo e entender o que está me atravessando."
+  },
+  {
+    "id": "182175f22073209a",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Pergunta 2 · enunciado",
+    "kind": "text",
+    "default": "Quando uma preocupação aparece e continua voltando, como você costuma lidar com ela?"
+  },
+  {
+    "id": "dd4cd9314cf77fbb",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Pergunta 2 · alternativa A",
+    "kind": "text",
+    "default": "Repasso a situação várias vezes, tentando prever o que pode acontecer."
+  },
+  {
+    "id": "0e1ff8de00b63907",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Pergunta 2 · alternativa B",
+    "kind": "text",
+    "default": "Procuro me ocupar para não pensar nisso."
+  },
+  {
+    "id": "58f691f1510957d3",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Pergunta 2 · alternativa C",
+    "kind": "text",
+    "default": "Converso com alguém em quem confio."
+  },
+  {
+    "id": "9bbe61411df87b84",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Pergunta 2 · alternativa D",
+    "kind": "text",
+    "default": "Tento perceber o que está ao meu alcance naquele momento."
+  },
+  {
+    "id": "0ee639bcd7856eb2",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Pergunta 3 · enunciado",
+    "kind": "text",
+    "default": "Nos momentos em que a ansiedade aumenta, o que você percebe no seu cotidiano?"
+  },
+  {
+    "id": "1e48651e2ecb8cb8",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Pergunta 3 · alternativa A",
+    "kind": "text",
+    "default": "Fico mais impaciente ou em estado de alerta."
+  },
+  {
+    "id": "70f3e345bd9d69c7",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Pergunta 3 · alternativa B",
+    "kind": "text",
+    "default": "Tenho dificuldade para descansar, mesmo quando há tempo."
+  },
+  {
+    "id": "6f456b9a4d450573",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Pergunta 3 · alternativa C",
+    "kind": "text",
+    "default": "Evito decisões ou situações que parecem difíceis demais."
+  },
+  {
+    "id": "fccd3da68a064f3f",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Pergunta 3 · alternativa D",
+    "kind": "text",
+    "default": "Sinto que preciso de apoio, mas nem sempre consigo pedir."
+  },
+  {
+    "id": "5fed7de02bf9472e",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Pergunta 4 · enunciado",
+    "kind": "text",
+    "default": "Quando você sente que não vai conseguir dar conta de tudo, qual reação mais se aproxima da sua?"
+  },
+  {
+    "id": "953700290f14e1ef",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Pergunta 4 · alternativa A",
+    "kind": "text",
+    "default": "Aumento ainda mais a cobrança sobre mim."
+  },
+  {
+    "id": "d6b8dc32d3b6abe3",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Pergunta 4 · alternativa B",
+    "kind": "text",
+    "default": "Tento esconder que estou cansada."
+  },
+  {
+    "id": "427b86c163a72719",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Pergunta 4 · alternativa C",
+    "kind": "text",
+    "default": "Abro mão de alguma coisa para conseguir respirar."
+  },
+  {
+    "id": "873df59fe8550f7f",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Pergunta 4 · alternativa D",
+    "kind": "text",
+    "default": "Busco ajuda ou reorganizo o que é prioridade."
+  },
+  {
+    "id": "283ae6ad7b7e8041",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 5 · enunciado",
+    "kind": "text",
+    "default": "O que parece estar fazendo mais falta neste momento?"
+  },
+  {
+    "id": "fc86c227a70600ae",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Pergunta 5 · alternativa A",
+    "kind": "text",
+    "default": "Um pouco menos de pressão."
+  },
+  {
+    "id": "ae18efa84adbe14f",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Pergunta 5 · alternativa B",
+    "kind": "text",
+    "default": "Um espaço para descansar sem culpa."
+  },
+  {
+    "id": "4f36fbd724bd5bb8",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Pergunta 5 · alternativa C",
+    "kind": "text",
+    "default": "Clareza para escolher o que realmente precisa da minha atenção."
+  },
+  {
+    "id": "a89e6dfb1adeeee5",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Pergunta 5 · alternativa D",
+    "kind": "text",
+    "default": "Apoio para não precisar sustentar tudo sozinha."
+  },
+  {
+    "id": "4e58fe8ecbb89819",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Devolutiva 1 · título",
+    "kind": "text",
+    "default": "Talvez seu corpo esteja pedindo um pouco menos de pressa."
+  },
+  {
+    "id": "f9c68ec9edeb6d53",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Devolutiva 1 · reflexão",
+    "kind": "text",
+    "default": "Pode ser que você esteja tentando acompanhar muitas exigências ao mesmo tempo, mesmo quando o cansaço já aparece. Isso não diz que há algo errado com você. Talvez mostre apenas o quanto tem sido necessário sustentar."
+  },
+  {
+    "id": "cc2d25f22119f173",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Devolutiva 1 · convite",
+    "kind": "text",
+    "default": "Uma pausa pequena também pode ser uma forma de cuidado."
+  },
+  {
+    "id": "190789f74a66eccb",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Devolutiva 2 · título",
+    "kind": "text",
+    "default": "Nem tudo precisa ser resolvido no mesmo instante."
+  },
+  {
+    "id": "55b8596ceb24c99a",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Devolutiva 2 · reflexão",
+    "kind": "text",
+    "default": "Quando as preocupações se misturam, até o próximo passo pode parecer distante. Suas respostas sugerem que separar o que é urgente do que pode esperar talvez traga um pouco mais de espaço."
+  },
+  {
+    "id": "811e13125a837173",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Devolutiva 2 · convite",
+    "kind": "text",
+    "default": "Você pode começar pelo que cabe no momento de agora."
+  },
+  {
+    "id": "b0cb51cebf62d1d5",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Devolutiva 3 · título",
+    "kind": "text",
+    "default": "Você não precisa sustentar tudo sozinha."
+  },
+  {
+    "id": "d67fd6ca09b18d08",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Devolutiva 3 · reflexão",
+    "kind": "text",
+    "default": "Talvez pedir apoio ainda pareça difícil, sobretudo quando você se acostumou a continuar mesmo cansada. Dividir o peso não diminui sua força nem apaga tudo o que você já fez."
+  },
+  {
+    "id": "5f39e0888451af73",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Devolutiva 3 · convite",
+    "kind": "text",
+    "default": "Cuidado também pode ser permitir que alguém se aproxime."
+  },
+  {
+    "id": "d67fd834fe8b1d06",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Devolutiva 4 · título",
+    "kind": "text",
+    "default": "Menos pressa pode deixar o próximo passo mais visível."
+  },
+  {
+    "id": "672daa2549eca4d7",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Devolutiva 4 · reflexão",
+    "kind": "text",
+    "default": "A sensação de ter muito para resolver pode tornar qualquer escolha maior do que ela realmente é. Talvez desacelerar um pouco ajude você a perceber o que pede atenção agora e o que pode esperar."
+  },
+  {
+    "id": "48349d5619e79a60",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Devolutiva 4 · convite",
+    "kind": "text",
+    "default": "Um caminho possível não precisa começar com todas as respostas."
+  },
+  {
+    "id": "87683369cd41aedf",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Devolutiva 5 · título",
+    "kind": "text",
+    "default": "Descansar e dividir o peso podem caminhar juntos."
+  },
+  {
+    "id": "adc23e8c0de3d492",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Devolutiva 5 · reflexão",
+    "kind": "text",
+    "default": "Pode ser que a pressão para continuar esteja deixando pouco espaço para perceber o próprio limite e para aceitar ajuda. Você não precisa chegar ao esgotamento para reconhecer que algo está pesado."
+  },
+  {
+    "id": "2b69fbcaeea605d1",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Devolutiva 5 · convite",
+    "kind": "text",
+    "default": "Talvez cuidado, agora, seja respirar e não precisar fazer tudo só."
+  },
+  {
+    "id": "7ead82fbd77e8bb5",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Devolutiva 6 · título",
+    "kind": "text",
+    "default": "Clareza também pode nascer em companhia."
+  },
+  {
+    "id": "1196890f3bbe1850",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Devolutiva 6 · reflexão",
+    "kind": "text",
+    "default": "Quando tudo parece importante ao mesmo tempo, conversar com alguém pode ajudar a organizar o que ainda está confuso. Isso não significa entregar suas escolhas, mas criar espaço para enxergá-las com mais calma."
+  },
+  {
+    "id": "f9c27056db0a4d43",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Devolutiva 6 · convite",
+    "kind": "text",
+    "default": "Você pode construir o próximo passo sem se deixar sozinha nele."
+  },
+  {
+    "id": "6b6ca4969018940e",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Devolutiva 7 · título",
+    "kind": "text",
+    "default": "Seu momento pode estar pedindo mais de um tipo de cuidado."
+  },
+  {
+    "id": "9eae8d93534b0c09",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Devolutiva 7 · reflexão",
+    "kind": "text",
+    "default": "Suas respostas mostram aspectos diferentes da sua experiência. Em alguns contextos pode existir pressa, em outros falta de clareza ou vontade de ter apoio. Talvez não seja preciso resumir tudo a uma única direção."
+  },
+  {
+    "id": "41b4774a40f107b4",
+    "group": "Percurso · Ansiedade e sobrecarga",
+    "label": "Devolutiva 7 · convite",
+    "kind": "text",
+    "default": "Vale observar, com curiosidade, o que ganha mais espaço em cada dia."
+  },
+  {
+    "id": "fb2258012620075c",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Apresentação do tema",
+    "kind": "text",
+    "default": "Para perceber sua voz, seus limites e o espaço que você ocupa nas relações."
+  },
+  {
+    "id": "0426a4a426884442",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 1 · enunciado",
+    "kind": "text",
+    "default": "Quando algo em uma relação te incomoda, o que costuma acontecer?"
+  },
+  {
+    "id": "dba07708ad2d2ce4",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 1 · alternativa A",
+    "kind": "text",
+    "default": "Evito falar para não criar um conflito."
+  },
+  {
+    "id": "02b2c6d3318ca7ee",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 1 · alternativa B",
+    "kind": "text",
+    "default": "Tento explicar, mas acabo falando quando já estou no limite."
+  },
+  {
+    "id": "6cef6bc650cc6295",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 1 · alternativa C",
+    "kind": "text",
+    "default": "Digo o que preciso, mesmo com receio da reação da outra pessoa."
+  },
+  {
+    "id": "77ed7a9e21b3c245",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 1 · alternativa D",
+    "kind": "text",
+    "default": "Fico em dúvida se o que estou sentindo é motivo suficiente para conversar."
+  },
+  {
+    "id": "a82e6e1a805a3760",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 2 · enunciado",
+    "kind": "text",
+    "default": "Quando alguém importante para você precisa de ajuda, como você costuma responder?"
+  },
+  {
+    "id": "5d8e8d1d041c6e57",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 2 · alternativa A",
+    "kind": "text",
+    "default": "Tento estar disponível, mesmo quando isso me sobrecarrega."
+  },
+  {
+    "id": "8e389c2f04c710b2",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 2 · alternativa B",
+    "kind": "text",
+    "default": "Ajudo até onde consigo e aviso quando preciso parar."
+  },
+  {
+    "id": "c6366160ad472104",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 2 · alternativa C",
+    "kind": "text",
+    "default": "Sinto culpa quando não consigo fazer o que a pessoa espera."
+  },
+  {
+    "id": "cf24e3d4ff10d714",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 2 · alternativa D",
+    "kind": "text",
+    "default": "Espero que a pessoa perceba sozinha quando eu também preciso de cuidado."
+  },
+  {
+    "id": "2a2c81687bc6349d",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 3 · enunciado",
+    "kind": "text",
+    "default": "Em uma conversa difícil, o que mais pesa para você?"
+  },
+  {
+    "id": "08fb02e2c93c86ec",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 3 · alternativa A",
+    "kind": "text",
+    "default": "O medo de decepcionar ou perder a pessoa."
+  },
+  {
+    "id": "d9da6c6b0772cefb",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 3 · alternativa B",
+    "kind": "text",
+    "default": "A sensação de não conseguir ser compreendida."
+  },
+  {
+    "id": "69d11a4dbd75cc69",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 3 · alternativa C",
+    "kind": "text",
+    "default": "A vontade de encerrar logo o assunto para diminuir o desconforto."
+  },
+  {
+    "id": "12c1f741a350bcc9",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 3 · alternativa D",
+    "kind": "text",
+    "default": "Encontrar um jeito de falar sem me abandonar nem desrespeitar o outro."
+  },
+  {
+    "id": "afc102d810e3a2ea",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 4 · enunciado",
+    "kind": "text",
+    "default": "Quando você diz “sim” querendo dizer “não”, o que geralmente está por trás disso?"
+  },
+  {
+    "id": "60df8fc2235443e7",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 4 · alternativa A",
+    "kind": "text",
+    "default": "O receio de parecer egoísta."
+  },
+  {
+    "id": "8fe652781edde196",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 4 · alternativa B",
+    "kind": "text",
+    "default": "A tentativa de evitar uma discussão."
+  },
+  {
+    "id": "afff95d7aa7a4d6f",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 4 · alternativa C",
+    "kind": "text",
+    "default": "O costume de colocar as necessidades dos outros primeiro."
+  },
+  {
+    "id": "14bb11c1a964df4a",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 4 · alternativa D",
+    "kind": "text",
+    "default": "A dificuldade de perceber meu limite antes de ultrapassá-lo."
+  },
+  {
+    "id": "ebf5167478f178a7",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 5 · enunciado",
+    "kind": "text",
+    "default": "O que parece estar fazendo mais falta nas suas relações neste momento?"
+  },
+  {
+    "id": "766b633110aa9a2f",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 5 · alternativa A",
+    "kind": "text",
+    "default": "Sentir que também posso ser cuidada."
+  },
+  {
+    "id": "003e1a16c35d83e5",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 5 · alternativa B",
+    "kind": "text",
+    "default": "Conseguir dizer o que preciso com mais clareza."
+  },
+  {
+    "id": "2e4ba5f09b6201ec",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 5 · alternativa C",
+    "kind": "text",
+    "default": "Ter espaço para ser quem sou sem tanta cobrança."
+  },
+  {
+    "id": "1bf7133794f2660c",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Pergunta 5 · alternativa D",
+    "kind": "text",
+    "default": "Reconhecer quais relações me fazem bem e quais têm me desgastado."
+  },
+  {
+    "id": "d539f5285cedf68c",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Devolutiva 1 · título",
+    "kind": "text",
+    "default": "Sua voz também merece espaço nas relações."
+  },
+  {
+    "id": "a1f08d0ca3afc37e",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Devolutiva 1 · reflexão",
+    "kind": "text",
+    "default": "Talvez você tenha aprendido a medir muito o que diz para evitar conflitos ou decepcionar alguém. Falar do que sente não precisa ser um confronto. Pode ser uma forma de estar inteira na relação."
+  },
+  {
+    "id": "400c00dfb8e0931e",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Devolutiva 1 · convite",
+    "kind": "text",
+    "default": "Você pode experimentar dizer um pouco mais de si, no seu ritmo."
+  },
+  {
+    "id": "5b029811ac78bc53",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Devolutiva 2 · título",
+    "kind": "text",
+    "default": "Seu limite não precisa aparecer só quando tudo transborda."
+  },
+  {
+    "id": "15418c8de0307e69",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Devolutiva 2 · reflexão",
+    "kind": "text",
+    "default": "Pode ser que você perceba o próprio cansaço apenas depois de ter ido além do que cabia. Limites não são afastamentos automáticos. Muitas vezes, eles ajudam a tornar os encontros mais honestos."
+  },
+  {
+    "id": "c7aaf365d4148e70",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Devolutiva 2 · convite",
+    "kind": "text",
+    "default": "Perceber o seu “até aqui” já é um começo possível."
+  },
+  {
+    "id": "087571d6a3a1afad",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Devolutiva 3 · título",
+    "kind": "text",
+    "default": "Cuidar do outro não precisa significar se deixar por último."
+  },
+  {
+    "id": "120595bab22f8e10",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Devolutiva 3 · reflexão",
+    "kind": "text",
+    "default": "Suas respostas talvez apontem para um desejo de relações em que o cuidado possa circular. Reconhecer o que você oferece e também o que precisa receber pode abrir conversas importantes."
+  },
+  {
+    "id": "a05a007be00e2877",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Devolutiva 3 · convite",
+    "kind": "text",
+    "default": "Você também pode ocupar o lugar de quem é cuidada."
+  },
+  {
+    "id": "d4e50cc8075f7ffe",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Devolutiva 4 · título",
+    "kind": "text",
+    "default": "Dizer o que você precisa pode ajudar a proteger seus limites."
+  },
+  {
+    "id": "fddd0aa011f6f2b6",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Devolutiva 4 · reflexão",
+    "kind": "text",
+    "default": "Talvez o silêncio dure até o momento em que já não é possível sustentar mais. Dar nome ao incômodo antes de chegar ao limite pode criar uma conversa menos pesada para você."
+  },
+  {
+    "id": "06189a565d9a6330",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Devolutiva 4 · convite",
+    "kind": "text",
+    "default": "Sua voz pode ser cuidadosa sem precisar desaparecer."
+  },
+  {
+    "id": "a875b7e1b7dc1a10",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Devolutiva 5 · título",
+    "kind": "text",
+    "default": "Relações mais recíprocas também precisam conhecer a sua voz."
+  },
+  {
+    "id": "306eca07ce6d446f",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Devolutiva 5 · reflexão",
+    "kind": "text",
+    "default": "Esperar que a outra pessoa perceba tudo sozinha pode deixar necessidades importantes sem lugar. Talvez falar de si seja uma forma de permitir que o cuidado encontre você."
+  },
+  {
+    "id": "5818340070de2234",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Devolutiva 5 · convite",
+    "kind": "text",
+    "default": "Você não precisa adivinhar nem ser adivinhada o tempo todo."
+  },
+  {
+    "id": "4e301ab732c7e75c",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Devolutiva 6 · título",
+    "kind": "text",
+    "default": "O cuidado pode circular sem ultrapassar você."
+  },
+  {
+    "id": "8b995d70669bd293",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Devolutiva 6 · reflexão",
+    "kind": "text",
+    "default": "Estar disponível para alguém não precisa exigir que você ignore o próprio limite. Talvez seja possível continuar presente e, ao mesmo tempo, reconhecer quando precisa parar, descansar ou pedir algo em troca."
+  },
+  {
+    "id": "3249c79585fe6d1c",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Devolutiva 6 · convite",
+    "kind": "text",
+    "default": "Reciprocidade também se constrói com limites visíveis."
+  },
+  {
+    "id": "4910377dbf39b627",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Devolutiva 7 · título",
+    "kind": "text",
+    "default": "Cada relação pode pedir um jeito diferente de se cuidar."
+  },
+  {
+    "id": "a1c7ab938d92f687",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Devolutiva 7 · reflexão",
+    "kind": "text",
+    "default": "Suas respostas mostram que voz, limites e reciprocidade podem mudar conforme o vínculo e o contexto. Talvez não exista uma única resposta, mas pistas sobre onde você se sente mais livre e onde acaba se deixando de lado."
+  },
+  {
+    "id": "87100470e321140a",
+    "group": "Percurso · Relacionamentos e limites",
+    "label": "Devolutiva 7 · convite",
+    "kind": "text",
+    "default": "Observar essas diferenças já pode aproximar você do que deseja viver."
+  },
+  {
+    "id": "ab463a042a7051c3",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Apresentação do tema",
+    "kind": "text",
+    "default": "Para acolher o que mudou, respeitando seu tempo e os vínculos importantes."
+  },
+  {
+    "id": "34c6dd61cf0a7e0c",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 1 · enunciado",
+    "kind": "text",
+    "default": "Quando algo lembra a pessoa, relação ou fase que você perdeu, o que costuma acontecer?"
+  },
+  {
+    "id": "9cda95289af8e96a",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 1 · alternativa A",
+    "kind": "text",
+    "default": "A lembrança chega com força e muda o ritmo do meu dia."
+  },
+  {
+    "id": "e66c1d704595f585",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 1 · alternativa B",
+    "kind": "text",
+    "default": "Tento afastar o pensamento para conseguir continuar."
+  },
+  {
+    "id": "d03565bee88fa6e6",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 1 · alternativa C",
+    "kind": "text",
+    "default": "Sinto vontade de falar sobre isso, mas nem sempre encontro espaço."
+  },
+  {
+    "id": "52d66f0a88ab60af",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 1 · alternativa D",
+    "kind": "text",
+    "default": "A lembrança traz sentimentos diferentes ao mesmo tempo."
+  },
+  {
+    "id": "4c7a4cb956011245",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 2 · enunciado",
+    "kind": "text",
+    "default": "Desde que essa mudança aconteceu, o que mais se transformou no seu cotidiano?"
+  },
+  {
+    "id": "1a251d23ad493003",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 2 · alternativa A",
+    "kind": "text",
+    "default": "Atividades simples passaram a exigir mais de mim."
+  },
+  {
+    "id": "679bd06f4925fc5f",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 2 · alternativa B",
+    "kind": "text",
+    "default": "Alguns lugares, datas ou situações ficaram difíceis."
+  },
+  {
+    "id": "e46e598529cccb18",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 2 · alternativa C",
+    "kind": "text",
+    "default": "Minhas relações mudaram, inclusive a forma como peço companhia."
+  },
+  {
+    "id": "ede1bf79dcb1cfee",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 2 · alternativa D",
+    "kind": "text",
+    "default": "Ainda estou descobrindo o que permanece e o que precisa ser reconstruído."
+  },
+  {
+    "id": "205680ee83a1b051",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 3 · enunciado",
+    "kind": "text",
+    "default": "Quando as pessoas esperam que você esteja melhor, como isso chega até você?"
+  },
+  {
+    "id": "4253d995f8d07ffe",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 3 · alternativa A",
+    "kind": "text",
+    "default": "Sinto que preciso esconder parte do que estou vivendo."
+  },
+  {
+    "id": "e04916eb99aead99",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 3 · alternativa B",
+    "kind": "text",
+    "default": "Fico em dúvida se meu tempo está demorando demais."
+  },
+  {
+    "id": "d047d1bcf75763f9",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 3 · alternativa C",
+    "kind": "text",
+    "default": "Tento seguir como antes, mesmo quando não me sinto pronta."
+  },
+  {
+    "id": "1c54bde872940a22",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 3 · alternativa D",
+    "kind": "text",
+    "default": "Procuro respeitar meu ritmo, ainda que outras pessoas não compreendam."
+  },
+  {
+    "id": "d6ae1f8f82e811b1",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 4 · enunciado",
+    "kind": "text",
+    "default": "Nos dias mais difíceis, o que você costuma fazer com o que sente?"
+  },
+  {
+    "id": "1d72ae771c8abcbe",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 4 · alternativa A",
+    "kind": "text",
+    "default": "Fico mais recolhida e evito contato."
+  },
+  {
+    "id": "600ac3187b73435d",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 4 · alternativa B",
+    "kind": "text",
+    "default": "Procuro alguém com quem eu possa estar sem precisar explicar tudo."
+  },
+  {
+    "id": "098ff4eb78342340",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 4 · alternativa C",
+    "kind": "text",
+    "default": "Mantenho a rotina para não entrar em contato com a dor."
+  },
+  {
+    "id": "d5befeb2c3d5fdff",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 4 · alternativa D",
+    "kind": "text",
+    "default": "Tento acolher o que aparece, mesmo sem saber o que fazer com isso."
+  },
+  {
+    "id": "81bf8823ea9892e1",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 5 · alternativa A",
+    "kind": "text",
+    "default": "Ter espaço para lembrar sem precisar me apressar."
+  },
+  {
+    "id": "1d0fea2f64138799",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 5 · alternativa B",
+    "kind": "text",
+    "default": "Encontrar apoio para atravessar os dias mais difíceis."
+  },
+  {
+    "id": "37c76c607eb82570",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 5 · alternativa C",
+    "kind": "text",
+    "default": "Reconstruir uma rotina que leve essa mudança em consideração."
+  },
+  {
+    "id": "191fdcd9ec747257",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Pergunta 5 · alternativa D",
+    "kind": "text",
+    "default": "Descobrir como seguir sem apagar o que foi importante."
+  },
+  {
+    "id": "911a4016d6e2cdea",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Devolutiva 1 · título",
+    "kind": "text",
+    "default": "O seu tempo não precisa obedecer à pressa de ninguém."
+  },
+  {
+    "id": "0e58a8b7e3da0687",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Devolutiva 1 · reflexão",
+    "kind": "text",
+    "default": "Talvez algumas lembranças ainda mudem o ritmo dos seus dias. O luto e as mudanças não seguem uma linha reta, e sentir de formas diferentes ao longo do tempo não significa voltar ao começo."
+  },
+  {
+    "id": "a5b4484b929492db",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Devolutiva 1 · convite",
+    "kind": "text",
+    "default": "Você pode atravessar esse momento sem exigir de si uma data para estar melhor."
+  },
+  {
+    "id": "44850da30a22233e",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Devolutiva 2 · título",
+    "kind": "text",
+    "default": "Você merece companhia também nos dias em que faltam palavras."
+  },
+  {
+    "id": "7a5c11b47daee14f",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Devolutiva 2 · reflexão",
+    "kind": "text",
+    "default": "Pode ser que exista vontade de dividir o que vive, mesmo sem saber explicar tudo. Apoio não precisa vir de uma conversa perfeita. Às vezes, começa na presença de alguém que não tenta apressar o seu processo."
+  },
+  {
+    "id": "53dbcbca278dc42c",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Devolutiva 2 · convite",
+    "kind": "text",
+    "default": "Você não precisa atravessar todos os dias difíceis sozinha."
+  },
+  {
+    "id": "4ccf023538fc87a1",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Devolutiva 3 · título",
+    "kind": "text",
+    "default": "Seguir não precisa significar deixar para trás."
+  },
+  {
+    "id": "e3e5fb787a94d36a",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Devolutiva 3 · reflexão",
+    "kind": "text",
+    "default": "Quando algo importante muda, a rotina também pode precisar encontrar uma nova forma. Reconstruir não apaga o vínculo nem diminui o que existiu. Pode ser um jeito de levar essa história com você."
+  },
+  {
+    "id": "aee1fca73623e322",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Devolutiva 3 · convite",
+    "kind": "text",
+    "default": "Talvez um pequeno gesto cotidiano já seja parte desse caminho."
+  },
+  {
+    "id": "85bb8fb24bdbc765",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Devolutiva 4 · título",
+    "kind": "text",
+    "default": "Seu tempo pode ser mais acolhedor quando encontra companhia."
+  },
+  {
+    "id": "e57a0feae982c5de",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Devolutiva 4 · reflexão",
+    "kind": "text",
+    "default": "Talvez você precise de espaço para sentir sem ser apressada e de alguém que permaneça por perto. Essas duas necessidades podem coexistir, mesmo quando você ainda não sabe exatamente o que pedir."
+  },
+  {
+    "id": "06593b60e8396672",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Devolutiva 4 · convite",
+    "kind": "text",
+    "default": "Apoio também pode ser respeitar o silêncio e o ritmo de agora."
+  },
+  {
+    "id": "207be1b30a1f8dce",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Devolutiva 5 · título",
+    "kind": "text",
+    "default": "Reconstruir também pede respeito ao seu tempo."
+  },
+  {
+    "id": "1452c602fa47c375",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Devolutiva 5 · reflexão",
+    "kind": "text",
+    "default": "Pode existir uma tensão entre continuar e ainda precisar parar diante do que mudou. Você não precisa escolher entre lembrar e reorganizar a vida. Talvez seja possível fazer as duas coisas pouco a pouco."
+  },
+  {
+    "id": "abf12ef7e7fe8117",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Devolutiva 5 · convite",
+    "kind": "text",
+    "default": "O seu ritmo pode fazer parte do novo caminho."
+  },
+  {
+    "id": "b6f9c3d114806e54",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Devolutiva 6 · título",
+    "kind": "text",
+    "default": "Um novo cotidiano não precisa ser construído em solidão."
+  },
+  {
+    "id": "25c6b2222abefe13",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Devolutiva 6 · reflexão",
+    "kind": "text",
+    "default": "Talvez algumas mudanças práticas estejam pedindo energia justamente quando ela parece menor. Permitir companhia pode tornar essa reorganização um pouco mais possível, sem retirar de você a autoria do caminho."
+  },
+  {
+    "id": "973cb1e1b5b98efc",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Devolutiva 6 · convite",
+    "kind": "text",
+    "default": "Seguir com apoio continua sendo seguir do seu jeito."
+  },
+  {
+    "id": "6de1c1ef52405dd4",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Devolutiva 7 · título",
+    "kind": "text",
+    "default": "O que mudou pode tocar diferentes partes da sua vida."
+  },
+  {
+    "id": "9c6b4069fd5e2428",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Devolutiva 7 · reflexão",
+    "kind": "text",
+    "default": "Suas respostas sugerem necessidades que podem variar entre tempo, companhia e reconstrução do cotidiano. Não é preciso escolher apenas uma delas nem fazer tudo ao mesmo tempo."
+  },
+  {
+    "id": "a57c4e575fd975c1",
+    "group": "Percurso · Luto, perdas e mudanças",
+    "label": "Devolutiva 7 · convite",
+    "kind": "text",
+    "default": "Talvez o cuidado esteja em perceber o que cabe em cada dia."
+  },
+  {
+    "id": "8d4d3a67078b616d",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Apresentação do tema",
+    "kind": "text",
+    "default": "Para observar a cobrança e construir uma forma mais justa de olhar para si."
+  },
+  {
+    "id": "9b3a2111eb85662e",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 1 · enunciado",
+    "kind": "text",
+    "default": "Quando algo não sai como você esperava, como costuma falar consigo?"
+  },
+  {
+    "id": "1f2feeedca124bdf",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 1 · alternativa A",
+    "kind": "text",
+    "default": "Penso que deveria ter feito melhor."
+  },
+  {
+    "id": "9702539e7cc6b2f4",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 1 · alternativa B",
+    "kind": "text",
+    "default": "Comparo meu resultado com o de outras pessoas."
+  },
+  {
+    "id": "1683b4b3a0665c6a",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 1 · alternativa C",
+    "kind": "text",
+    "default": "Tento entender o que aconteceu sem reduzir tudo a uma falha minha."
+  },
+  {
+    "id": "3676f2c843f4efeb",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 1 · alternativa D",
+    "kind": "text",
+    "default": "Repasso meus erros por muito tempo, mesmo depois de a situação passar."
+  },
+  {
+    "id": "609ec9409038504e",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 2 · enunciado",
+    "kind": "text",
+    "default": "Quando alguém reconhece algo bom em você, como costuma receber?"
+  },
+  {
+    "id": "83f31ac83f4a00c8",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 2 · alternativa A",
+    "kind": "text",
+    "default": "Agradeço, mas por dentro acho que não foi tudo isso."
+  },
+  {
+    "id": "67684b743fb47d5c",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 2 · alternativa B",
+    "kind": "text",
+    "default": "Fico desconfortável e tento mudar de assunto."
+  },
+  {
+    "id": "df82012466d9ca4e",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 2 · alternativa C",
+    "kind": "text",
+    "default": "Consigo receber, mesmo que uma parte minha ainda duvide."
+  },
+  {
+    "id": "fc3d01f88aba4067",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 2 · alternativa D",
+    "kind": "text",
+    "default": "Penso que a pessoa só não conhece meus defeitos direito."
+  },
+  {
+    "id": "de8f99d77f457e25",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 3 · enunciado",
+    "kind": "text",
+    "default": "Em quais momentos você sente que precisa provar seu valor?"
+  },
+  {
+    "id": "7f7a2d30274ea382",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 3 · alternativa A",
+    "kind": "text",
+    "default": "Quando estou trabalhando ou estudando."
+  },
+  {
+    "id": "4ad9e7cf91b27b86",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 3 · alternativa B",
+    "kind": "text",
+    "default": "Quando percebo que alguém pode se decepcionar comigo."
+  },
+  {
+    "id": "b841c659725c48d9",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 3 · alternativa C",
+    "kind": "text",
+    "default": "Quando me comparo com pessoas que parecem estar mais adiante."
+  },
+  {
+    "id": "840f66fc2442fe43",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 3 · alternativa D",
+    "kind": "text",
+    "default": "Quando descanso ou faço algo apenas porque me faz bem."
+  },
+  {
+    "id": "7fd6d9bfda6aa755",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 4 · enunciado",
+    "kind": "text",
+    "default": "Quando precisa escolher algo importante para você, o que mais pesa?"
+  },
+  {
+    "id": "779d37dc1fc70190",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 4 · alternativa A",
+    "kind": "text",
+    "default": "O medo de escolher errado e me arrepender."
+  },
+  {
+    "id": "1e9dfb1c53c3c53c",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 4 · alternativa B",
+    "kind": "text",
+    "default": "A opinião de pessoas importantes."
+  },
+  {
+    "id": "7fbed476f837d61e",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 4 · alternativa C",
+    "kind": "text",
+    "default": "A dúvida sobre se o que eu quero é válido."
+  },
+  {
+    "id": "2d33b9bb662afdd2",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 4 · alternativa D",
+    "kind": "text",
+    "default": "A tentativa de conciliar o que desejo com o contexto em que vivo."
+  },
+  {
+    "id": "f25db440f780c936",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 5 · enunciado",
+    "kind": "text",
+    "default": "O que parece estar fazendo mais falta na forma como você se trata?"
+  },
+  {
+    "id": "aaa9c42e93d22a16",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 5 · alternativa A",
+    "kind": "text",
+    "default": "Reconhecer o que faço sem diminuir minhas conquistas."
+  },
+  {
+    "id": "4f329fbf4b75ddc5",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 5 · alternativa B",
+    "kind": "text",
+    "default": "Conseguir errar sem transformar isso em uma definição sobre mim."
+  },
+  {
+    "id": "149c5e4fcc4d22d5",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 5 · alternativa C",
+    "kind": "text",
+    "default": "Perceber minhas necessidades sem julgá-las."
+  },
+  {
+    "id": "0dd0a303cccd564a",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Pergunta 5 · alternativa D",
+    "kind": "text",
+    "default": "Construir uma fala interna mais justa e cuidadosa."
+  },
+  {
+    "id": "c58366468f21c156",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Devolutiva 1 · título",
+    "kind": "text",
+    "default": "Sua voz também merece um pouco mais de gentileza."
+  },
+  {
+    "id": "2e6faf07de5fa415",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Devolutiva 1 · reflexão",
+    "kind": "text",
+    "default": "Talvez a cobrança apareça como uma tentativa de garantir que tudo dê certo. Ainda assim, ela pode acabar ocupando mais espaço do que o reconhecimento pelo que você já atravessou."
+  },
+  {
+    "id": "e5abb351df9dec0e",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Devolutiva 1 · convite",
+    "kind": "text",
+    "default": "Você pode se responsabilizar sem transformar cada erro em uma definição sobre si."
+  },
+  {
+    "id": "f21698c54b4c064b",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Devolutiva 2 · título",
+    "kind": "text",
+    "default": "Reconhecer o que você faz não é exagerar o próprio valor."
+  },
+  {
+    "id": "46c5d01ad202f00c",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Devolutiva 2 · reflexão",
+    "kind": "text",
+    "default": "Pode ser que elogios e conquistas encontrem rapidamente um “mas” dentro de você. Receber o que foi bom não apaga o que ainda deseja construir. Apenas permite que sua história fique um pouco mais inteira."
+  },
+  {
+    "id": "b45b91ddea54b812",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Devolutiva 2 · convite",
+    "kind": "text",
+    "default": "Talvez você possa deixar uma conquista permanecer sem diminuí-la."
+  },
+  {
+    "id": "7c24a880f2a972b0",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Devolutiva 3 · título",
+    "kind": "text",
+    "default": "O que você deseja também merece entrar nas suas escolhas."
+  },
+  {
+    "id": "c95f82fb97131032",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Devolutiva 3 · reflexão",
+    "kind": "text",
+    "default": "Suas respostas talvez mostrem o quanto opiniões, expectativas e receios participam das decisões. Escutar a si não significa ignorar o contexto, mas incluir sua experiência entre as coisas que importam."
+  },
+  {
+    "id": "789f98508f41958e",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Devolutiva 3 · convite",
+    "kind": "text",
+    "default": "Você pode construir escolhas que façam sentido para a vida que vive."
+  },
+  {
+    "id": "1cb4172cb0548d8a",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Devolutiva 4 · título",
+    "kind": "text",
+    "default": "Uma fala mais gentil pode ajudar você a reconhecer o próprio caminho."
+  },
+  {
+    "id": "4de59d4da53e1195",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Devolutiva 4 · reflexão",
+    "kind": "text",
+    "default": "Talvez você veja com facilidade o que faltou e passe rápido demais pelo que conseguiu. Gentileza não é fingir que tudo está bem. Pode ser olhar para a experiência sem apagar suas tentativas e conquistas."
+  },
+  {
+    "id": "0832d67a259661e8",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Devolutiva 4 · convite",
+    "kind": "text",
+    "default": "Você merece uma leitura mais justa da própria história."
+  },
+  {
+    "id": "0d379e5b00322455",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Devolutiva 5 · título",
+    "kind": "text",
+    "default": "Escolher por si pode ficar mais possível com menos cobrança."
+  },
+  {
+    "id": "e6d5323ee7b75304",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Devolutiva 5 · reflexão",
+    "kind": "text",
+    "default": "O medo de errar pode tornar decisões importantes muito pesadas. Talvez uma voz interna mais cuidadosa ajude você a escolher sem exigir garantias impossíveis ou perfeição."
+  },
+  {
+    "id": "5144369d2aea4f04",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Devolutiva 5 · convite",
+    "kind": "text",
+    "default": "Sua escolha pode ser válida mesmo quando ainda existe dúvida."
+  },
+  {
+    "id": "106cd04728ab952a",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Devolutiva 6 · título",
+    "kind": "text",
+    "default": "Reconhecer a si também pode fortalecer suas escolhas."
+  },
+  {
+    "id": "2f2954db1d6b41a6",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Devolutiva 6 · reflexão",
+    "kind": "text",
+    "default": "Quando seu valor depende muito do olhar de fora, pode ficar difícil perceber o que você realmente deseja. Dar espaço ao que já sabe, sente e construiu talvez torne sua voz mais presente nas decisões."
+  },
+  {
+    "id": "49088115cae64dee",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Devolutiva 6 · convite",
+    "kind": "text",
+    "default": "Você não precisa ter certeza absoluta para se levar em consideração."
+  },
+  {
+    "id": "d617d270e6b01e36",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Devolutiva 7 · título",
+    "kind": "text",
+    "default": "A forma como você se olha pode mudar conforme o contexto."
+  },
+  {
+    "id": "d593403a0b43b98f",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Devolutiva 7 · reflexão",
+    "kind": "text",
+    "default": "Suas respostas mostram aspectos diferentes entre cobrança, reconhecimento e escolhas. Talvez nenhuma palavra sozinha resuma o que acontece. Observar quando cada movimento aparece pode ser mais cuidadoso do que procurar uma definição."
+  },
+  {
+    "id": "7775558ee1c58392",
+    "group": "Percurso · Autoestima e autocrítica",
+    "label": "Devolutiva 7 · convite",
+    "kind": "text",
+    "default": "Sua experiência merece curiosidade, não um rótulo."
+  },
+  {
+    "id": "8b3fbc8bf15db5b7",
+    "group": "Contatos",
+    "label": "WhatsApp para agendamento",
+    "kind": "url",
+    "default": "https://wa.me/5575981234176?text=Ol%C3%A1%2C%20Iasmin.%20Gostaria%20de%20agendar%20uma%20sess%C3%A3o%20de%20psicoterapia."
+  },
+  {
+    "id": "fd53be4e44a8b8f6",
+    "group": "Contatos",
+    "label": "WhatsApp para privacidade",
+    "kind": "url",
+    "default": "https://wa.me/5575981234176?text=Ol%C3%A1%2C%20Iasmin.%20Gostaria%20de%20falar%20sobre%20meus%20dados%20pessoais."
+  },
+  {
+    "id": "71a22dffad65455f",
+    "group": "Busca e compartilhamento",
+    "label": "Página inicial · título nos resultados de busca",
+    "kind": "text",
+    "default": "Iasmin Portugal | Psicóloga Clínica"
+  },
+  {
+    "id": "76be885d3ffd8435",
+    "group": "Busca e compartilhamento",
+    "label": "Descrição nos resultados de busca",
+    "kind": "text",
+    "default": "Psicologia clínica on-line para adolescentes e adultos."
+  },
+  {
+    "id": "51a75d515686da7f",
+    "group": "Identidade visual",
+    "label": "Logo do cabeçalho",
+    "kind": "image",
+    "default": "/brand/iasmin-portugal-horizontal.svg"
+  },
+  {
+    "id": "9e2bb39e7f08b2fb",
+    "group": "Identidade visual",
+    "label": "Logo completa do rodapé",
+    "kind": "image",
+    "default": "/brand/iasmin-portugal-full.svg"
+  },
+  {
+    "id": "e8a577bff81cd584",
+    "group": "Identidade visual",
+    "label": "Assinatura da apresentação",
+    "kind": "image",
+    "default": "/brand/iasmin-psi-signature.svg"
+  },
+  {
+    "id": "01f57fe9dee233a3",
+    "group": "Identidade visual",
+    "label": "Símbolo das telas de transição",
+    "kind": "image",
+    "default": "/brand/iasmin-portugal-monogram.svg"
+  },
+  {
+    "id": "a1fcded3ea62fb81",
+    "group": "Busca e compartilhamento",
+    "label": "Percurso · título nos resultados de busca",
+    "kind": "text",
+    "default": "Percurso de autoconhecimento | Iasmin Portugal"
+  },
+  {
+    "id": "c0ecbd329428453c",
+    "group": "Busca e compartilhamento",
+    "label": "Percurso · descrição nos resultados de busca",
+    "kind": "text",
+    "default": "Um percurso de reflexão com cinco perguntas."
+  },
+  {
+    "id": "8f0e60d419325143-position",
+    "group": "Abertura",
+    "label": "Enquadramento da foto · hero-terracotta.jpg",
+    "kind": "position",
+    "default": "center center"
+  },
+  {
+    "id": "43157719b1ba3cb8-position",
+    "group": "Sobre Iasmin",
+    "label": "Enquadramento da foto · garden-reading.jpg",
+    "kind": "position",
+    "default": "center center"
+  },
+  {
+    "id": "b1d8457b9f77a747-position",
+    "group": "Sobre Iasmin",
+    "label": "Enquadramento da foto · garden-portrait.jpg",
+    "kind": "position",
+    "default": "center center"
+  },
+  {
+    "id": "faq_collection",
+    "group": "Perguntas frequentes",
+    "label": "Perguntas e respostas",
+    "kind": "faq",
+    "default": "[{\"question\":\"Como funciona a terapia on-line?\",\"answer\":\"As sessões acontecem por videochamada, em um ambiente reservado. No primeiro contato, você pode tirar dúvidas sobre disponibilidade, frequência e como começar.\"},{\"question\":\"Iasmin atende quais públicos?\",\"answer\":\"Realizo atendimentos para adolescentes e adultos em todo o Brasil.\"},{\"question\":\"O que é o percurso de autoconhecimento?\",\"answer\":\"É uma experiência breve de reflexão com cinco perguntas. Ele não faz diagnóstico e não substitui um atendimento psicológico.\"},{\"question\":\"Como posso agendar uma sessão?\",\"answer\":\"Você pode clicar em “Agendar uma sessão” para falar comigo pelo WhatsApp e entender os próximos passos.\"}]"
+  },
+  {
+    "id": "editorial_collection",
+    "group": "Conteúdos e reflexões",
+    "label": "Galeria de reflexões",
+    "kind": "gallery",
+    "default": "[{\"alt\":\"Reflexão de Iasmin Portugal sobre como amadurecer pode ser difícil\",\"src\":\"/images/editorial/amadurecer.png\"},{\"alt\":\"Reflexão de Iasmin Portugal sobre sentimentos que não são besteira\",\"src\":\"/images/editorial/nao-e-besteira.png\"},{\"alt\":\"Reflexão de Iasmin Portugal sobre a importância da comunicação\",\"src\":\"/images/editorial/comunicacao.png\"},{\"alt\":\"Reflexão de Iasmin Portugal sobre o direito de sair e encerrar ciclos\",\"src\":\"/images/editorial/sair.png\"}]"
+  },
+  {
+    "id": "d181468ee1f23753",
+    "group": "Identidade visual",
+    "label": "Descrição da marca para acessibilidade",
+    "kind": "text",
+    "default": "Iasmin Portugal, Psicóloga Clínica"
+  }
+]

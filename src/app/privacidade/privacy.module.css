@@ -10,14 +10,14 @@
   justify-content: space-between;
   padding: 1.5rem clamp(1.25rem, 4vw, 4rem);
   border-bottom: 1px solid color-mix(in srgb, var(--espresso) 15%, transparent);
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .header a {
   color: inherit;
-  font-size: 0.86rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.02em;
   text-decoration: none;
@@ -37,7 +37,7 @@
 .eyebrow {
   margin: 0 0 1rem;
   color: var(--terracotta);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;

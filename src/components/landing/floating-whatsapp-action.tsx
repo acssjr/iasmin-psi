@@ -1,5 +1,7 @@
 'use client'
 
+import { ContentText } from '@/components/cms/content'
+
 import { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
@@ -68,7 +70,7 @@ export function FloatingWhatsAppAction() {
         properties={{ surface: 'floating' }}
       >
         <BrandLogo decorative tone="cream" variant="monogram" />
-        <span className={styles.srOnly}>Agendar uma sessão pelo WhatsApp</span>
+        <span className={styles.srOnly}><ContentText fallback="Agendar uma sessão pelo WhatsApp" /></span>
       </TrackedLink>
     </div>
   )

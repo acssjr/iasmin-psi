@@ -108,3 +108,7 @@ repositório privado no GitHub.
 Mudanças de conteúdo, dados ou integrações devem ser revisadas pela pessoa
 responsável pelo projeto antes da publicação. Para dúvidas técnicas, utilize os
 canais definidos pelo responsável pelo repositório.
+
+## Painel de conteúdo
+
+O painel administrativo está em `/admin`. O guia de uso, cobertura, acesso local, proteção e configuração de armazenamento na Vercel está em [docs/PAINEL-ADMINISTRATIVO.md](docs/PAINEL-ADMINISTRATIVO.md).

@@ -49,6 +49,56 @@
   opacity: 0.42;
 }
 
+.introOverlay {
+  pointer-events: none;
+  animation: introExit 200ms var(--ease-out) 1300ms both;
+}
+
+.introCopy .mark {
+  animation: introEnter 250ms var(--ease-out) both;
+}
+
+.introCopy strong {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  animation: introEnter 250ms var(--ease-out) 60ms both;
+}
+
+.introCopy .loader {
+  animation: introEnter 250ms var(--ease-out) 120ms both;
+}
+
+.introCopy .loader i {
+  animation: introPulse 500ms var(--ease-in-out) 180ms both;
+}
+
+.introCopy .loader i:nth-child(2) { animation-delay: 240ms; }
+.introCopy .loader i:nth-child(3) { animation-delay: 300ms; }
+
+@keyframes introEnter {
+  from { opacity: 0; transform: translateY(8px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes introPulse {
+  0%, 100% { opacity: 0.42; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-3px); }
+}
+
+@keyframes introExit {
+  from { opacity: 1; visibility: visible; }
+  to { opacity: 0; visibility: hidden; }
+}
+
+@keyframes introFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .loader i { opacity: 0.72; }
+  .introOverlay { animation: introExit 200ms var(--ease-out) both; }
+  .introCopy .mark,
+  .introCopy strong,
+  .introCopy .loader { animation: introFade 125ms var(--ease-out) both; }
+  .introCopy .loader i { animation: none; }
 }

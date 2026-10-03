@@ -1,5 +1,7 @@
 'use client'
 
+import { ContentText } from '@/components/cms/content'
+
 import type { ChangeEvent } from 'react'
 import { useRef, useState } from 'react'
 import Link from 'next/link'
@@ -111,8 +113,8 @@ export function JourneyShell() {
     const topic = journeyTopics[topicId]
     content = <JourneyQuestion onBack={() => { if (view.index === 0) { setAnswers([]); setView({ kind: 'topic-selection' }) } else setView({ kind: 'question', index: view.index - 1 }) }} onSelect={(optionId) => setAnswers((current) => { const next = [...current]; next[view.index] = optionId; return next })} onSubmit={continueQuestion} question={topic.questions[view.index]} selectedOptionId={answers[view.index]} topicTitle={topic.title} total={topic.questions.length} />
   } else if (view.kind === 'result' && topicId) content = <JourneyResult reflectionKey={view.reflectionKey} scheduleHref={scheduleHref} topicId={topicId} />
-  else if (view.kind === 'submission-error') content = <div className={styles.intro}><p className={styles.eyebrow}>Não foi possível concluir agora</p><h1>Suas respostas continuam neste dispositivo enquanto esta página estiver aberta.</h1><p>Tente novamente em alguns instantes ou converse com Iasmin pelo WhatsApp.</p><button className={styles.primaryButton} type="button" onClick={() => void submitJourney()}>Tentar novamente</button></div>
+  else if (view.kind === 'submission-error') content = <div className={styles.intro}><p className={styles.eyebrow}><ContentText fallback="Não foi possível concluir agora" /></p><h1><ContentText fallback="Suas respostas continuam neste dispositivo enquanto esta página estiver aberta." /></h1><p><ContentText fallback="Tente novamente em alguns instantes ou converse com Iasmin pelo WhatsApp." /></p><button className={styles.primaryButton} type="button" onClick={() => void submitJourney()}><ContentText fallback="Tentar novamente" /></button></div>
   else content = <JourneyPreparing />
 
-  return <main className={styles.page} ref={scope}><header className={styles.header}><Link aria-label="Voltar para a página inicial" href="/"><BrandLogo className={styles.headerLogo} label="Iasmin psi" tone="terracotta" variant="signature" /></Link><span>Psicologia clínica</span></header><section className={styles.shell} data-journey-step>{content}</section></main>
+  return <main className={styles.page} ref={scope}><header className={styles.header}><Link aria-label="Voltar para a página inicial" href="/"><BrandLogo className={styles.headerLogo} label="Iasmin psi" tone="terracotta" variant="signature" /></Link><span><ContentText fallback="Psicologia clínica" /></span></header><section className={styles.shell} data-journey-step>{content}</section></main>
 }

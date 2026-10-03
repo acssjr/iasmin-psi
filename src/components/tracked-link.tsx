@@ -2,6 +2,7 @@
 
 import type { ReactNode } from 'react'
 import Link from 'next/link'
+import { useContentValue } from '@/components/cms/content'
 
 import { trackSafeEvent, type SafeAnalyticsProperties, type SafeEventName } from '@/lib/analytics'
 
@@ -20,6 +21,8 @@ export function TrackedLink({
   href,
   properties,
 }: TrackedLinkProps) {
+  const text = useContentValue()
+  href = text(href)
   const onClick = () => trackSafeEvent(eventName, properties)
 
   if (href.startsWith('http') || href.startsWith('#')) {

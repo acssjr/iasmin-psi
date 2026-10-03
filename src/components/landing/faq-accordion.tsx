@@ -1,5 +1,7 @@
 'use client'
 
+import { useContentValues } from '@/components/cms/content'
+
 import { useRef, useState } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
@@ -15,7 +17,9 @@ type FaqItem = {
   question: string
 }
 
-export function FaqAccordion({ items }: { items: readonly FaqItem[] }) {
+export function FaqAccordion({ items: originalItems }: { items: readonly FaqItem[] }) {
+  const values = useContentValues()
+  const items = values.faq_collection ? JSON.parse(values.faq_collection) as FaqItem[] : originalItems
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   const scope = useRef<HTMLDivElement>(null)
 
@@ -69,7 +73,7 @@ export function FaqAccordion({ items }: { items: readonly FaqItem[] }) {
         const panelId = `faq-panel-${index}`
 
         return (
-          <div className={styles.faqItem} key={item.question}>
+          <div className={styles.faqItem} key={index}>
             <button
               aria-controls={panelId}
               aria-expanded={isOpen}

@@ -1,5 +1,7 @@
 'use client'
 
+import { ContentText } from '@/components/cms/content'
+
 import { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
@@ -39,8 +41,8 @@ export function JourneyPreparing() {
         <path d="M80 37C72 21 61 15 47 17C53 29 64 36 80 37Z" />
       </svg>
       <div className={styles.preparingCopy} data-preparing-copy>
-        <strong>Um instante para acolher o que você compartilhou.</strong>
-        <p>Estamos preparando uma devolutiva para você olhar com calma.</p>
+        <strong><ContentText fallback="Um instante para acolher o que você compartilhou." /></strong>
+        <p><ContentText fallback="Estamos preparando uma devolutiva para você olhar com calma." /></p>
         <span className={styles.preparingLoader} data-preparing-loader aria-hidden="true">
           <i />
           <i />

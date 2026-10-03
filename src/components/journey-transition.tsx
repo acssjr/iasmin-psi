@@ -1,5 +1,7 @@
 'use client'
 
+import { ContentText } from '@/components/cms/content'
+
 import type { MouseEvent, ReactNode } from 'react'
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
@@ -60,8 +62,8 @@ export function JourneyTransitionProvider({ children }: { children: ReactNode })
               tone="cream"
               variant="monogram"
             />
-            <strong>Uma pausa antes de começar.</strong>
-            <p>Te levando para um espaço mais tranquilo.</p>
+            <strong><ContentText fallback="Uma pausa antes de começar." /></strong>
+            <p><ContentText fallback="Te levando para um espaço mais tranquilo." /></p>
             <span className={styles.loader} data-calm-loader aria-hidden="true">
               <i />
               <i />

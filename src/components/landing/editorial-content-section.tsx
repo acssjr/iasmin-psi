@@ -1,3 +1,5 @@
+
+import { ContentText } from '@/components/cms/content'
 import { TrackedLink } from '@/components/tracked-link'
 import { getSchedulingWhatsAppHref } from '@/lib/whatsapp'
 
@@ -31,20 +33,15 @@ export function EditorialContentSection() {
       data-editorial-section
     >
       <div className={styles.editorialContentIntro}>
-        <p className={styles.sectionKicker}>Conteúdos para continuar a conversa</p>
-        <h2 id="editorial-content-title">Reflexões para levar com você.</h2>
-        <p>
-          No Instagram, Iasmin também abre espaço para conversar sobre relações,
-          mudanças, comunicação e amadurecimento com cuidado e proximidade.
-        </p>
+        <p className={styles.sectionKicker}><ContentText fallback="Conteúdos para continuar a conversa" /></p>
+        <h2 id="editorial-content-title"><ContentText fallback="Reflexões para levar com você." /></h2>
+        <p><ContentText fallback="No Instagram, Iasmin também abre espaço para conversar sobre relações, mudanças, comunicação e amadurecimento com cuidado e proximidade." /></p>
         <TrackedLink
           className={styles.editorialContentAction}
           eventName="cta_schedule_clicked"
           href={getSchedulingWhatsAppHref()}
           properties={{ surface: 'editorial' }}
-        >
-          Conversar com Iasmin
-        </TrackedLink>
+        ><ContentText fallback="Conversar com Iasmin" /></TrackedLink>
       </div>
       <EditorialCarousel covers={editorialCovers} />
     </section>

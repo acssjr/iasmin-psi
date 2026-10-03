@@ -73,7 +73,7 @@ it('gives the hero WhatsApp action stronger conversion hierarchy', () => {
 
   expect(css).toContain('.hero .primaryAction {')
   expect(css).toContain('min-height: 4.75rem;')
-  expect(css).toContain('font-size: clamp(0.76rem, 1vw, 0.88rem);')
+  expect(css).toContain('font-size: clamp(1rem, 1vw, 1rem);')
   expect(css).toContain('box-shadow: 0 0.8rem 1.8rem')
 })
 
@@ -84,9 +84,9 @@ it('increases the primary navigation labels at tablet and compact desktop widths
   )
 
   expect(css).toContain(
-    '.navigation a, .navigation button { font-size: clamp(0.68rem, 1vw, 0.76rem); }',
+    '.navigation a, .navigation button { font-size: clamp(1rem, 1vw, 1rem); }',
   )
-  expect(css).toContain('.headerAction { font-size: 0.64rem; }')
+  expect(css).toContain('.headerAction { font-size: 0.875rem; }')
   expect(css).not.toContain('.navigation a, .headerAction { font-size: 0.6rem; }')
 })
 
@@ -169,7 +169,7 @@ it('fits the final scheduling action to its label with a readable type size', ()
 
   expect(css).toContain('.closing .actions {\n  width: fit-content;')
   expect(css).toContain('.closing .primaryAction {\n  min-width: min(18rem, 100%);')
-  expect(css).toContain('font-size: clamp(0.76rem, 1.2vw, 0.88rem);')
+  expect(css).toContain('font-size: clamp(1rem, 1.2vw, 1rem);')
 })
 
 it('removes the native mobile tap highlight from clickable recognition cards', () => {
@@ -189,7 +189,7 @@ it('keeps the mobile hero compact while making its scheduling action prominent',
   )
 
   expect(css).toContain('margin: -4.35rem auto 0;')
-  expect(css).toContain('font-size: 0.82rem;')
+  expect(css).toContain('font-size: 0.875rem;')
 })
 
 it('gives headlines slightly more breathing room and prepares the editorial carousel for smooth transforms', () => {

@@ -1,4 +1,6 @@
-import Image from 'next/image'
+
+import { ContentText, ContentAnchor } from '@/components/cms/content'
+import { ContentImage as Image } from '@/components/cms/content'
 import Link from 'next/link'
 
 import { BrandLogo } from '@/components/brand-logo'
@@ -12,6 +14,7 @@ import { EditorialContentSection } from './editorial-content-section'
 import { FaqAccordion } from './faq-accordion'
 import { FloatingWhatsAppAction } from './floating-whatsapp-action'
 import { LandingMotion } from './landing-motion'
+import { LandingIntro } from './landing-intro'
 import { RecognitionCarousel } from './recognition-carousel'
 import { SiteNavigation, SmoothSectionLink } from './site-navigation'
 import styles from './landing-page.module.css'
@@ -45,9 +48,7 @@ function SiteHeader() {
         eventName="cta_schedule_clicked"
         href={scheduleHref}
         properties={{ surface: 'header' }}
-      >
-        Agendar
-      </TrackedLink>
+      ><ContentText fallback="Agendar" /></TrackedLink>
     </header>
   )
 }
@@ -58,36 +59,25 @@ function HeroSection() {
   return (
     <section className={styles.hero} id="top" aria-labelledby="hero-title">
       <div className={styles.heroCopy}>
-        <p className={styles.eyebrow} data-hero-eyebrow>
-          Psicologia clínica on-line
-        </p>
-        <h1 id="hero-title" data-hero-title>
-          O cuidado que faz sentido começa no seu contexto.
-        </h1>
-        <p className={styles.intro} data-hero-copy>
-          Um espaço de escuta para adolescentes e adultos que desejam olhar
-          para a ansiedade, a autoestima e a aceitação com mais presença.
-        </p>
+        <p className={styles.eyebrow} data-hero-eyebrow><ContentText fallback="Psicologia clínica on-line" /></p>
+        <h1 id="hero-title" data-hero-title><ContentText fallback="O cuidado que faz sentido começa no seu contexto." /></h1>
+        <p className={styles.intro} data-hero-copy><ContentText fallback="Um espaço de escuta para adolescentes e adultos que desejam olhar para a ansiedade, a autoestima e a aceitação com mais presença." /></p>
         <div className={styles.actions} data-hero-actions>
           <TrackedLink
             className={styles.primaryAction}
             eventName="cta_schedule_clicked"
             href={scheduleHref}
             properties={{ surface: 'hero' }}
-          >
-            Agendar uma sessão
-          </TrackedLink>
+          ><ContentText fallback="Agendar uma sessão" /></TrackedLink>
           <JourneyTransitionLink
             className={styles.secondaryAction}
             surface="hero"
-          >
-            5 perguntas para se conhecer melhor
-          </JourneyTransitionLink>
+          ><ContentText fallback="5 perguntas para se conhecer melhor" /></JourneyTransitionLink>
         </div>
         <ol className={styles.trailLabels} aria-label="Uma trilha de cuidado">
-          <li>Contexto</li>
-          <li>Escolhas</li>
-          <li>Cuidado</li>
+          <li><ContentText fallback="Contexto" /></li>
+          <li><ContentText fallback="Escolhas" /></li>
+          <li><ContentText fallback="Cuidado" /></li>
         </ol>
       </div>
 
@@ -100,7 +90,7 @@ function HeroSection() {
           src="/images/iasmin/hero-terracotta.jpg"
         />
         <ContextTrail className={styles.heroTrail} motionTarget="hero" />
-        <figcaption>Psicóloga clínica · Análise do Comportamento</figcaption>
+        <figcaption><ContentText fallback="Psicóloga clínica · Análise do Comportamento" /></figcaption>
       </figure>
     </section>
   )
@@ -110,10 +100,8 @@ function RecognitionSection() {
   return (
     <section className={styles.recognition} aria-labelledby="recognition-title">
       <div>
-        <p className={styles.sectionKicker}>Pode ser que você se reconheça aqui</p>
-        <h2 id="recognition-title">
-          Nem tudo o que pesa precisa ser carregado em silêncio.
-        </h2>
+        <p className={styles.sectionKicker}><ContentText fallback="Pode ser que você se reconheça aqui" /></p>
+        <h2 id="recognition-title"><ContentText fallback="Nem tudo o que pesa precisa ser carregado em silêncio." /></h2>
       </div>
       <RecognitionCarousel />
     </section>
@@ -143,7 +131,7 @@ function AboutIasminSection() {
       </div>
       <div className={styles.aboutCopy}>
         <div className={styles.aboutIdentity}>
-          <p className={styles.sectionKicker}>Sobre mim</p>
+          <p className={styles.sectionKicker}><ContentText fallback="Sobre mim" /></p>
           <BrandLogo
             className={styles.aboutSignature}
             decorative
@@ -151,29 +139,21 @@ function AboutIasminSection() {
             variant="signature"
           />
         </div>
-        <h2 id="about-title">Um cuidado que olha para a sua história inteira.</h2>
-        <p>
-          Sou <strong>Iasmin Portugal</strong>, psicóloga clínica. No atendimento on-line,
-          trabalho com adolescentes e adultos a partir da Análise do
-          Comportamento.
-        </p>
-        <p>
-          Meu olhar parte da sua realidade, das relações que você vive e dos
-          caminhos que já encontrou. A terapia pode ser um lugar para
-          construir escolhas possíveis, respeitando o seu tempo.
-        </p>
+        <h2 id="about-title"><ContentText fallback="Um cuidado que olha para a sua história inteira." /></h2>
+        <p><ContentText fallback="Sou " /><strong><ContentText fallback="Iasmin Portugal" /></strong><ContentText fallback=", psicóloga clínica. No atendimento on-line, trabalho com adolescentes e adultos a partir da Análise do Comportamento." /></p>
+        <p><ContentText fallback="Meu olhar parte da sua realidade, das relações que você vive e dos caminhos que já encontrou. A terapia pode ser um lugar para construir escolhas possíveis, respeitando o seu tempo." /></p>
         <dl className={styles.credentials}>
           <div>
-            <dt>Atendimento</dt>
-            <dd>On-line para todo o Brasil</dd>
+            <dt><ContentText fallback="Atendimento" /></dt>
+            <dd><ContentText fallback="On-line para todo o Brasil" /></dd>
           </div>
           <div>
-            <dt>Temas de escuta</dt>
-            <dd>Ansiedade, autoestima e aceitação</dd>
+            <dt><ContentText fallback="Temas de escuta" /></dt>
+            <dd><ContentText fallback="Ansiedade, autoestima e aceitação" /></dd>
           </div>
           <div>
-            <dt>Formação em andamento</dt>
-            <dd>Pós-graduação em Neuropsicologia</dd>
+            <dt><ContentText fallback="Formação em andamento" /></dt>
+            <dd><ContentText fallback="Pós-graduação em Neuropsicologia" /></dd>
           </div>
         </dl>
       </div>
@@ -204,20 +184,17 @@ function ListeningThemesSection() {
   return (
     <section className={styles.listeningThemes} aria-labelledby="listening-themes-title">
       <div className={styles.listeningThemesIntro}>
-        <p className={styles.sectionKicker}>Temas de escuta</p>
-        <h2 id="listening-themes-title">Temas que podem encontrar espaço na terapia.</h2>
-        <p>
-          A abordagem clínica é a Análise do Comportamento. A partir dela, o
-          cuidado considera sua história, seus contextos e o que você vive hoje.
-        </p>
+        <p className={styles.sectionKicker}><ContentText fallback="Temas de escuta" /></p>
+        <h2 id="listening-themes-title"><ContentText fallback="Temas que podem encontrar espaço na terapia." /></h2>
+        <p><ContentText fallback="A abordagem clínica é a Análise do Comportamento. A partir dela, o cuidado considera sua história, seus contextos e o que você vive hoje." /></p>
       </div>
       <ol className={styles.listeningThemesList}>
         {listeningThemes.map((theme, index) => (
           <li key={theme.title}>
             <span>{String(index + 1).padStart(2, '0')}</span>
             <div>
-              <h3>{theme.title}</h3>
-              <p>{theme.copy}</p>
+              <h3><ContentText fallback={theme.title} /></h3>
+              <p><ContentText fallback={theme.copy} /></p>
             </div>
           </li>
         ))}
@@ -248,13 +225,9 @@ function CarePillarsSection() {
   return (
     <section className={styles.care} id="como-funciona" data-care-section aria-labelledby="care-title">
       <div className={styles.careIntro}>
-        <p className={styles.sectionKicker}>Uma escuta situada</p>
-        <h2 id="care-title">Cuidar também é entender o que acontece antes, durante e depois.</h2>
-        <p>
-          A Análise do Comportamento parte da ideia de que cada pessoa tem uma
-          trajetória e um contexto. Na terapia, isso ajuda a criar caminhos
-          mais possíveis para a sua vida.
-        </p>
+        <p className={styles.sectionKicker}><ContentText fallback="Uma escuta situada" /></p>
+        <h2 id="care-title"><ContentText fallback="Cuidar também é entender o que acontece antes, durante e depois." /></h2>
+        <p><ContentText fallback="A Análise do Comportamento parte da ideia de que cada pessoa tem uma trajetória e um contexto. Na terapia, isso ajuda a criar caminhos mais possíveis para a sua vida." /></p>
       </div>
       <div className={styles.carePath}>
         <ContextTrail className={styles.careTrail} motionTarget="care" />
@@ -263,8 +236,8 @@ function CarePillarsSection() {
             <li key={pillar.number} className={styles.carePillar} data-care-pillar>
               <span className={styles.pillarNumber}>{pillar.number}</span>
               <div>
-                <h3>{pillar.title}</h3>
-                <p>{pillar.copy}</p>
+                <h3><ContentText fallback={pillar.title} /></h3>
+                <p><ContentText fallback={pillar.copy} /></p>
               </div>
             </li>
           ))}
@@ -278,25 +251,17 @@ function JourneyTeaserSection() {
   return (
     <section className={styles.journeyTeaser} id="percurso" aria-labelledby="journey-title">
       <div>
-        <p className={styles.sectionKicker}>Um primeiro passo possível</p>
-        <h2 id="journey-title">Uma pausa guiada para olhar para você.</h2>
+        <p className={styles.sectionKicker}><ContentText fallback="Um primeiro passo possível" /></p>
+        <h2 id="journey-title"><ContentText fallback="Uma pausa guiada para olhar para você." /></h2>
       </div>
       <div className={styles.journeySurface}>
-        <span className={styles.journeyCount}>5 perguntas</span>
-        <p>
-          O percurso convida você a observar algumas situações do cotidiano e
-          recebe uma devolutiva de reflexão ao final.
-        </p>
-        <p className={styles.boundaryCopy}>
-          O percurso não é uma avaliação psicológica e não substitui a
-          psicoterapia.
-        </p>
+        <span className={styles.journeyCount}><ContentText fallback="5 perguntas" /></span>
+        <p><ContentText fallback="O percurso convida você a observar algumas situações do cotidiano e recebe uma devolutiva de reflexão ao final." /></p>
+        <p className={styles.boundaryCopy}><ContentText fallback="O percurso não é uma avaliação psicológica e não substitui a psicoterapia." /></p>
         <JourneyTransitionLink
           className={styles.primaryAction}
           surface="journey-teaser"
-        >
-          Iniciar o percurso
-        </JourneyTransitionLink>
+        ><ContentText fallback="Iniciar o percurso" /></JourneyTransitionLink>
       </div>
     </section>
   )
@@ -325,8 +290,8 @@ function FaqSection() {
   return (
     <section className={styles.faq} aria-labelledby="faq-title">
       <div>
-        <p className={styles.sectionKicker}>Perguntas frequentes</p>
-        <h2 id="faq-title">Talvez você queira saber.</h2>
+        <p className={styles.sectionKicker}><ContentText fallback="Perguntas frequentes" /></p>
+        <h2 id="faq-title"><ContentText fallback="Talvez você queira saber." /></h2>
       </div>
       <FaqAccordion items={faqItems} />
     </section>
@@ -338,21 +303,16 @@ function ClosingSection() {
 
   return (
     <section className={styles.closing} id="agendar" aria-labelledby="closing-title">
-      <p className={styles.sectionKicker}>Quando fizer sentido</p>
-      <h2 id="closing-title">Você não precisa ter tudo resolvido para começar.</h2>
-      <p>
-        Podemos conversar sobre o que você está vivendo e entender, com calma,
-        se este é um bom momento para iniciar a terapia.
-      </p>
+      <p className={styles.sectionKicker}><ContentText fallback="Quando fizer sentido" /></p>
+      <h2 id="closing-title"><ContentText fallback="Você não precisa ter tudo resolvido para começar." /></h2>
+      <p><ContentText fallback="Podemos conversar sobre o que você está vivendo e entender, com calma, se este é um bom momento para iniciar a terapia." /></p>
       <div className={styles.actions}>
         <TrackedLink
           className={styles.primaryAction}
           eventName="cta_schedule_clicked"
           href={scheduleHref}
           properties={{ surface: 'closing' }}
-        >
-          Agendar uma sessão
-        </TrackedLink>
+        ><ContentText fallback="Agendar uma sessão" /></TrackedLink>
       </div>
     </section>
   )
@@ -363,19 +323,17 @@ function SiteFooter() {
     <footer className={styles.footer}>
       <div className={styles.footerTop}>
         <BrandLogo className={styles.footerLogo} tone="cream" variant="full" />
-        <p>
-          Iasmin Portugal de Souza Costa · Psicóloga Clínica · CRP 03/33160
-        </p>
+        <p><ContentText fallback="Iasmin Portugal de Souza Costa · Psicóloga Clínica · CRP 03/33160" /></p>
       </div>
       <div className={styles.footerLinks}>
-        <SmoothSectionLink target="conheca-iasmin">Conheça Iasmin</SmoothSectionLink>
-        <SmoothSectionLink target="como-funciona">Como funciona</SmoothSectionLink>
-        <SmoothSectionLink target="percurso">Percurso</SmoothSectionLink>
-        <Link href="/privacidade">Privacidade</Link>
+        <SmoothSectionLink target="conheca-iasmin"><ContentText fallback="Conheça Iasmin" /></SmoothSectionLink>
+        <SmoothSectionLink target="como-funciona"><ContentText fallback="Como funciona" /></SmoothSectionLink>
+        <SmoothSectionLink target="percurso"><ContentText fallback="Percurso" /></SmoothSectionLink>
+        <Link href="/privacidade"><ContentText fallback="Privacidade" /></Link>
       </div>
       <div className={styles.socialLinks} aria-label="Redes sociais">
         {socialLinks.map((social) => (
-          <a
+          <ContentAnchor
             aria-label={social.label}
             href={social.href}
             key={social.name}
@@ -386,20 +344,19 @@ function SiteFooter() {
               <path d={social.path} />
             </svg>
             <span>{social.name}</span>
-          </a>
+          </ContentAnchor>
         ))}
       </div>
-      <p className={styles.emergencyNotice}>
-        Este site não é um canal de emergência. Em risco imediato, ligue 192
-        para o SAMU ou 188 para o CVV.
-      </p>
-      <p className={styles.copyright}>© {new Date().getFullYear()} Iasmin Portugal. Todos os direitos reservados.</p>
+      <p className={styles.emergencyNotice}><ContentText fallback="Este site não é um canal de emergência. Em risco imediato, ligue 192 para o SAMU ou 188 para o CVV." /></p>
+      <p className={styles.copyright}><ContentText fallback="© " />{new Date().getFullYear()}<ContentText fallback=" Iasmin Portugal. Todos os direitos reservados." /></p>
     </footer>
   )
 }
 
 export default function LandingPage() {
   return (
+    <>
+    <LandingIntro />
     <JourneyTransitionProvider>
     <div className={styles.page}>
       <CustomCursor />
@@ -423,5 +380,6 @@ export default function LandingPage() {
       <FloatingWhatsAppAction />
     </div>
     </JourneyTransitionProvider>
+    </>
   )
 }

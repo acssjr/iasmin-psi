@@ -61,11 +61,6 @@ export function LandingMotion({ children }: LandingMotionProps) {
             }
           }
 
-          const eyebrow = root.querySelector('[data-hero-eyebrow]')
-          const title = root.querySelector('[data-hero-title]')
-          const copy = root.querySelector('[data-hero-copy]')
-          const actions = root.querySelector('[data-hero-actions]')
-          const portrait = root.querySelector('[data-hero-portrait]')
           const heroTrailPaths = root.querySelectorAll(
             '[data-motion-target="hero"] .contextTrailPath',
           )
@@ -76,38 +71,18 @@ export function LandingMotion({ children }: LandingMotionProps) {
             '[data-care-trail-node]',
           )
 
-          gsap.set(heroTrailPaths, {
-            strokeDasharray: 1,
-            strokeDashoffset: 1,
-          })
+          // The hero is already visible in the server HTML. Never hide or
+          // reposition it during hydration; animate only the decorative trail.
+          if (heroTrailPaths.length) {
+            gsap.fromTo(heroTrailPaths,
+              { strokeDasharray: 1, strokeDashoffset: 1 },
+              { duration: 1.15, ease: 'power3.out', strokeDashoffset: 0 },
+            )
+          }
           careTrailSegments.forEach((segment) => {
             const length = segment.getTotalLength()
             gsap.set(segment, { strokeDasharray: length, strokeDashoffset: length })
           })
-
-          const heroTimeline = gsap.timeline({ defaults: { duration: 0.72, ease: 'power3.out' } })
-
-          if (mobile) {
-            heroTimeline
-              .from(portrait, { autoAlpha: 0, y: 14 }, 0)
-              .from(eyebrow, { autoAlpha: 0, y: 10 }, 0.08)
-              .from(title, { autoAlpha: 0, y: 18 }, 0.12)
-              .from(copy, { autoAlpha: 0, y: 12 }, 0.18)
-              .from(actions, { autoAlpha: 0, y: 12 }, 0.24)
-          } else {
-            heroTimeline
-              .from(eyebrow, { autoAlpha: 0, y: 16 })
-              .from(title, { autoAlpha: 0, y: 32 }, '-=0.44')
-              .from(copy, { autoAlpha: 0, y: 18 }, '-=0.4')
-              .from(actions, { autoAlpha: 0, y: 18 }, '-=0.46')
-              .from(
-                portrait,
-                { autoAlpha: 0, clipPath: 'inset(12% 12% 12% 12%)' },
-                '-=0.9',
-              )
-          }
-
-          heroTimeline.to(heroTrailPaths, { duration: 1.15, strokeDashoffset: 0 }, '-=0.55')
 
           const careSection = root.querySelector<HTMLElement>('[data-care-section]')
           const carePillars = root.querySelectorAll<HTMLElement>('[data-care-pillar]')

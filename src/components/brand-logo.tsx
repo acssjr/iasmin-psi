@@ -1,3 +1,6 @@
+'use client'
+import Image from 'next/image'
+import { useContentValue } from '@/components/cms/content'
 import styles from './brand-logo.module.css'
 
 type BrandLogoVariant = 'horizontal' | 'full' | 'signature' | 'monogram'
@@ -18,6 +21,9 @@ export function BrandLogo({
   tone = 'espresso',
   variant,
 }: BrandLogoProps) {
+  const text = useContentValue()
+  const original = variant === 'signature' ? '/brand/iasmin-psi-signature.svg' : `/brand/iasmin-portugal-${variant}.svg`
+  const source = text(original)
   const classNames = [styles.logo, styles[variant], styles[tone], className]
     .filter(Boolean)
     .join(' ')
@@ -25,11 +31,14 @@ export function BrandLogo({
   return (
     <span
       aria-hidden={decorative ? 'true' : undefined}
-      aria-label={decorative ? undefined : label}
+      aria-label={decorative ? undefined : text(label)}
       className={classNames}
       data-brand-tone={tone}
       data-brand-variant={variant}
       role={decorative ? undefined : 'img'}
-    />
+      style={source !== original ? { mask: 'none', WebkitMask: 'none', background: 'transparent', position: 'relative' } : undefined}
+    >
+      {source !== original && <Image src={source} alt="" fill unoptimized style={{ objectFit: 'contain' }} />}
+    </span>
   )
 }

@@ -1,5 +1,7 @@
 'use client'
 
+import { ContentText, ContentAnchor } from '@/components/cms/content'
+
 import { useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useGSAP } from '@gsap/react'
@@ -69,7 +71,7 @@ export function SmoothSectionLink({
   target: string
 }) {
   return (
-    <a
+    <ContentAnchor
       className={className}
       href={`#${target}`}
       onClick={(event) => {
@@ -78,7 +80,7 @@ export function SmoothSectionLink({
       }}
     >
       {children}
-    </a>
+    </ContentAnchor>
   )
 }
 
@@ -192,7 +194,7 @@ export function SiteNavigation() {
       <nav className={styles.navigation} aria-label="Navegação principal">
         {navigationItems.map((item) => (
           <span className={styles.navigationItem} key={item.target}>
-            <a
+            <ContentAnchor
               aria-label={item.label}
               href={item.href}
               onClick={(event) => {
@@ -200,8 +202,8 @@ export function SiteNavigation() {
                 navigate(item.target)
               }}
             >
-              {item.label}
-            </a>
+              <ContentText fallback={item.label} />
+            </ContentAnchor>
           </span>
         ))}
       </nav>
@@ -228,7 +230,7 @@ export function SiteNavigation() {
           />
           <div aria-label="Navegação principal" className={styles.mobileMenu} ref={menu} role="dialog">
             <div className={styles.mobileMenuHeader} data-mobile-menu-item>
-              <span>Navegue pela página</span>
+              <span><ContentText fallback="Navegue pela página" /></span>
               <BrandLogo
                 className={styles.mobileMenuMonogram}
                 label="Iasmin Portugal"
@@ -239,13 +241,13 @@ export function SiteNavigation() {
             <div className={styles.mobileMenuLinks}>
               {navigationItems.map((item) => (
                 <button data-mobile-menu-item key={item.target} onClick={() => navigate(item.target)} type="button">
-                  <span>{item.label}</span>
+                  <span><ContentText fallback={item.label} /></span>
                 </button>
               ))}
             </div>
             <div aria-label="Redes sociais" className={styles.mobileMenuSocials}>
               {socialItems.map((item) => (
-                <a
+                <ContentAnchor
                   aria-label={item.label}
                   data-mobile-menu-item
                   href={item.href}
@@ -255,7 +257,7 @@ export function SiteNavigation() {
                   target="_blank"
                 >
                   <SocialIcon name={item.name} />
-                </a>
+                </ContentAnchor>
               ))}
             </div>
           </div>

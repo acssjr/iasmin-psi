@@ -15,7 +15,7 @@
 
 .header a,
 .header span {
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -95,7 +95,7 @@
 .eyebrow {
   margin: 0 0 1.5rem;
   color: color-mix(in srgb, var(--terracotta) 78%, var(--espresso));
-  font-size: 0.74rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -112,7 +112,7 @@
   font-size: clamp(2rem, 5.4vw, 4.25rem);
   font-weight: 800;
   letter-spacing: -0.075em;
-  line-height: 0.98;
+  line-height: 1.08;
 }
 
 .intro > p:not(.eyebrow),
@@ -142,7 +142,7 @@
   border: 1px solid var(--terracotta);
   border-radius: 0.4rem 1.2rem 0.4rem 1.2rem;
   cursor: pointer;
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-align: center;
@@ -211,7 +211,7 @@
 
 .field > span {
   color: var(--terracotta);
-  font-size: 0.65rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -236,7 +236,7 @@
   padding: 0.85rem 0 0;
   border-top: 1px solid color-mix(in srgb, var(--espresso) 14%, transparent);
   color: color-mix(in srgb, var(--espresso) 78%, transparent);
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   line-height: 1.55;
 }
 
@@ -267,7 +267,7 @@
 .progressHeader p {
   margin: 0;
   color: var(--terracotta);
-  font-size: 0.67rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -414,7 +414,7 @@
   padding-top: 1.25rem;
   border-top: 1px solid color-mix(in srgb, var(--espresso) 18%, transparent);
   color: var(--olive) !important;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   font-weight: 700;
 }
 
@@ -470,7 +470,7 @@
 
 .preparingCopy p {
   margin: 1rem auto 0;
-  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  font-size: clamp(1rem, 2vw, 1.15rem);
   line-height: 1.6;
 }
 
@@ -563,7 +563,7 @@
   }
 
   .header span {
-    font-size: 0.58rem;
+    font-size: 0.875rem;
   }
 
   .intro,

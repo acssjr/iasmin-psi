@@ -1,6 +1,8 @@
 'use client'
 
-import Image from 'next/image'
+import { ContentText, ContentAnchor } from '@/components/cms/content'
+
+import { ContentImage as Image } from '@/components/cms/content'
 import Link from 'next/link'
 
 import { trackSafeEvent } from '@/lib/analytics'
@@ -14,15 +16,15 @@ export function JourneyResult({ reflectionKey, scheduleHref, topicId }: { reflec
   return (
     <section className={styles.result} aria-labelledby="result-title" data-testid="journey-result-layout">
       <div className={styles.resultCopy}>
-        <p className={styles.eyebrow}>{journeyTopics[topicId].title}</p>
-        <h1 id="result-title">{reflection.title}</h1>
-        <p>Obrigada por se permitir essa pausa. Suas respostas não definem você, mas podem ser um convite para olhar com mais cuidado para o que está vivendo.</p>
-        <p>{reflection.body}</p>
-        <p>{reflection.invitation}</p>
-        <p className={styles.boundaryNote}>Esta devolutiva é um convite à reflexão. Ela não é diagnóstico nem avaliação psicológica.</p>
+        <p className={styles.eyebrow}><ContentText fallback={journeyTopics[topicId].title} /></p>
+        <h1 id="result-title"><ContentText fallback={reflection.title} /></h1>
+        <p><ContentText fallback="Obrigada por se permitir essa pausa. Suas respostas não definem você, mas podem ser um convite para olhar com mais cuidado para o que está vivendo." /></p>
+        <p><ContentText fallback={reflection.body} /></p>
+        <p><ContentText fallback={reflection.invitation} /></p>
+        <p className={styles.boundaryNote}><ContentText fallback="Esta devolutiva é um convite à reflexão. Ela não é diagnóstico nem avaliação psicológica." /></p>
         <div className={styles.resultActions}>
-          <a className={styles.primaryButton} href={scheduleHref} onClick={() => trackSafeEvent('whatsapp_opened', { surface: 'result', theme: topicId })}>Conversar com Iasmin pelo WhatsApp</a>
-          <Link className={styles.secondaryButton} href="/">Voltar para a página</Link>
+          <ContentAnchor className={styles.primaryButton} href={scheduleHref} onClick={() => trackSafeEvent('whatsapp_opened', { surface: 'result', theme: topicId })}><ContentText fallback="Conversar com Iasmin pelo WhatsApp" /></ContentAnchor>
+          <Link className={styles.secondaryButton} href="/"><ContentText fallback="Voltar para a página" /></Link>
         </div>
       </div>
       <figure className={styles.resultArtwork}>
