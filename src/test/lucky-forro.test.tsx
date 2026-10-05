@@ -2,6 +2,7 @@ import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, expect, it, vi } from 'vitest'
 import { drawForro, forroTracks } from '@/lib/cms/lucky-forro'
 import { LuckyForro } from '@/components/cms/lucky-forro'
+vi.mock('@/components/cms/modal', () => ({ Modal: ({ children }: { children: React.ReactNode }) => <div>{children}</div> }))
 
 afterEach(() => { cleanup(); vi.restoreAllMocks() })
 it('draws all 37 verified tracks without repetition and then begins a new round', () => {

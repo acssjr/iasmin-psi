@@ -5,7 +5,6 @@ import { editorSections, fieldsForSection, subsectionForField } from '@/lib/cms/
 import { journeyTopics, journeyTopicIds } from '@/lib/journey-content'
 import { readEditorChange } from '@/lib/cms/editor-messages'
 import { FieldControl } from './field-control'
-import { LuckyForro } from './lucky-forro'
 import styles from './visual-editor.module.css'
 
 export function VisualEditor({values,onChange,onChoose,onSave,busy,dirty}:{values:ContentValues;onChange:(id:string,value:string)=>void;onChoose:(id:string)=>void;onSave:()=>void;busy:boolean;dirty:boolean}) {
@@ -106,7 +105,6 @@ export function VisualEditor({values,onChange,onChoose,onSave,busy,dirty}:{value
       <label>Visualização<select value={width} onChange={e=>setWidth(e.target.value)}><option value="desktop">Computador</option><option value="mobile">Celular</option></select></label>
       <label>Zoom<select value={zoom} onChange={e=>setZoom(e.target.value)}><option value="fit">Ajustar à tela</option><option value="actual">100% · tamanho real</option></select></label>
       <button aria-pressed={enabled} onClick={()=>setEnabled(v=>!v)}>{enabled?'✎ Editar conteúdo':'↗ Explorar prévia'}</button><button aria-expanded={inspector} onClick={()=>setInspector(v=>!v)}>Seções e controles</button>
-      <LuckyForro />
       {page==='percurso'&&<><label>Tema<select value={topic} onChange={e=>{setTopic(e.target.value as typeof topic);setSelected(null);setReady(false)}}>{journeyTopicIds.map(id=><option key={id} value={id}>{journeyTopics[id].title}</option>)}</select></label><label>Tela<select value={screen} onChange={e=>{setScreen(e.target.value);setSelected(null);setReady(false)}}><option value="intro">Boas-vindas</option><option value="themes">Escolha de tema</option><option value="contact">Cadastro</option>{[1,2,3,4,5].map(n=><option key={n} value={`question-${n}`}>Pergunta {n}</option>)}<option value="preparing">Carregamento</option>{journeyTopics[topic].directions.map((_,i)=><option key={i} value={`result-${i}`}>Devolutiva {i+1}</option>)}</select></label></>}
     </div>
     <div className={`${styles.layout} ${!inspector?styles.canvasOnly:''}`}>

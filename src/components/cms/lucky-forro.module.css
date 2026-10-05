@@ -1,6 +1,6 @@
 .container { min-width:0; }
 .draw { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:44px; white-space:nowrap; }
-.draw span { font-size:19px; }
+.draw>span:first-child { font-size:19px; }
 .result { margin-top:12px; padding:14px 16px; border:1px solid #e6d9c9; border-radius:12px; background:#fffaf3; }
 .result p { margin:0; font-size:14px; line-height:1.5; }
 .result strong,.result p span { display:block; overflow-wrap:anywhere; }
