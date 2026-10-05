@@ -1,0 +1,12 @@
+.container { min-width:0; }
+.draw { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:44px; white-space:nowrap; }
+.draw span { font-size:19px; }
+.result { margin-top:12px; padding:14px 16px; border:1px solid #e6d9c9; border-radius:12px; background:#fffaf3; }
+.result p { margin:0; font-size:14px; line-height:1.5; }
+.result strong,.result p span { display:block; overflow-wrap:anywhere; }
+.result p span,.result small { color:#786252; }
+.links { display:flex; flex-wrap:wrap; gap:4px 18px; margin:6px 0; }
+.links a { display:inline-flex; align-items:center; min-height:44px; font-size:14px; color:#a65134; text-decoration:underline; text-underline-offset:3px; }
+.links a:focus-visible { outline:2px solid #a65134; outline-offset:3px; }
+.result small { display:block; font-size:13px; line-height:1.6; }
+@media(max-width:600px) { .container { width:100%; } .draw { width:100%; } .links { flex-direction:column; gap:0; } }
