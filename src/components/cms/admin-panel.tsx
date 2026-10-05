@@ -18,6 +18,7 @@ import { Modal } from './modal'
 import { AdminSidebar, AdminIcon, useAdminSidebar } from './admin-sidebar'
 import { useJourneyNotifications } from './use-journey-notifications'
 import { AccessLoading } from './access-loading'
+import { PublicationDialog, type PublicationReceipt } from './publication-dialog'
 import styles from './admin-panel.module.css'
 
 type Snapshot = { revision: number; draft: ContentValues; published: ContentValues; publishedAt: string | null; history: Version[]; media: Media[]; user: PublicUser; storage?: 'local' | 'database' }
@@ -47,6 +48,9 @@ export function AdminPanel({ mode, initial }: { mode: Mode; initial?: Snapshot }
   const [notice, setNotice] = useState('')
   const [error, setError] = useState('')
   const [publishing, setPublishing] = useState(false)
+  const [publicationPending, setPublicationPending] = useState(false)
+  const [publicationReceipt, setPublicationReceipt] = useState<PublicationReceipt | null>(null)
+  const publicationLock = useRef(false)
   const [mediaField, setMediaField] = useState<string | null>(null)
   const [preview, setPreview] = useState(false)
   const [previewPage, setPreviewPage] = useState('inicio')
@@ -75,17 +79,31 @@ export function AdminPanel({ mode, initial }: { mode: Mode; initial?: Snapshot }
     return () => window.removeEventListener('beforeunload', handler)
   }, [dirty])
   async function call(action: string, extra: Record<string, unknown> = {}) {
-    setError(''); setNotice(''); setBusy(true)
+    setError(''); setNotice(action === 'publish' ? 'Publicando alterações. Aguardando confirmação do servidor.' : ''); setBusy(true)
     try {
       const response = await fetch('/api/admin', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action, revision: snapshot?.revision, ...extra }) })
       const result = await response.json()
       if (!response.ok) throw new Error(result.error)
       if (result.draft) { setSnapshot(result); setValues(result.draft) }
       return result
-    } catch (failure) { setError(failure instanceof Error ? failure.message : 'Não foi possível concluir.'); return null }
+    } catch (failure) { setNotice(''); setError(failure instanceof Error ? failure.message : 'Não foi possível concluir.'); return null }
     finally { setBusy(false) }
   }
   async function save() { const result = await call('save', { values }); if (result) { setNotice('Rascunho salvo. O site publicado continua como estava.'); setPreviewKey(key => key + 1) } return result }
+  async function publish() {
+    if (publicationLock.current) return
+    publicationLock.current = true
+    setPublicationPending(true)
+    const count = changes.length
+    const result = await call('publish', { values, label: `Publicação de ${new Date().toLocaleDateString('pt-BR')}` })
+    setPublicationPending(false); publicationLock.current = false
+    if (result) {
+      setPublicationReceipt({ publishedAt: result.publishedAt, local: result.storage === 'local', count })
+      setPublishing(false)
+      setNotice(result.storage === 'local' ? 'Publicado no site local. O domínio oficial continua como estava.' : 'Conteúdo publicado no site.')
+      setPreviewKey(key => key + 1)
+    } else setPublishing(true)
+  }
   async function upload(file: File) {
     if (file.size > 3_000_000) { setError('A imagem deve ter até 3 MB. Escolha uma versão menor.'); return }
     setBusy(true); setError('')
@@ -187,7 +205,7 @@ export function AdminPanel({ mode, initial }: { mode: Mode; initial?: Snapshot }
       </div>
       {confirmation && <Modal title="Confirmar alteração" onClose={()=>setConfirmation(null)}><p>{confirmation.message}</p><div className={styles.modalActions}><button onClick={()=>setConfirmation(null)}>Cancelar</button><button className={styles.primary} onClick={()=>{confirmation.run();setConfirmation(null)}}>Continuar</button></div></Modal>}
       <input hidden ref={fileInput} type="file" accept="image/jpeg,image/png,image/webp" onChange={event => { const file = event.target.files?.[0]; if (file) void upload(file) }} />
-      {publishing && <Modal title="Confirmar publicação" onClose={() => setPublishing(false)}><p>{snapshot?.storage === 'local' ? 'A publicação será aplicada apenas neste site local.' : 'A publicação será aplicada ao site deste ambiente.'} São {changes.length} alterações.</p><div className={styles.changeList}>{[...new Set(changes.map(field => field.group))].map(name => <p key={name}>{name}<span>{changes.filter(field => field.group === name).length} campos</span></p>)}</div><p className={styles.hint}>Uma cópia da versão atual será guardada no histórico.</p><div className={styles.modalActions}><button onClick={() => setPublishing(false)}>Continuar revisando</button><button className={styles.primary} disabled={busy} onClick={async () => { if (await call('publish', { values, label: `Publicação de ${new Date().toLocaleDateString('pt-BR')}` })) { setPublishing(false); setNotice(snapshot?.storage === 'local' ? 'Publicado no site local. O domínio oficial continua como estava.' : 'Conteúdo publicado. Abra ou recarregue o site para conferir.'); setPreviewKey(key => key+1) } }}>{busy ? 'Publicando…' : 'Publicar alterações'}</button></div>{error && <p role="alert" className={styles.error}>{error}</p>}</Modal>}
+      {(publishing || publicationReceipt) && <PublicationDialog stage={publicationReceipt ? 'success' : publicationPending ? 'publishing' : 'confirm'} receipt={publicationReceipt} groups={[...new Set(changes.map(field => field.group))].map(name => ({ name, count: changes.filter(field => field.group === name).length }))} local={snapshot?.storage === 'local'} error={error} onClose={() => { setPublishing(false); setPublicationReceipt(null) }} onPublish={() => void publish()} />}
       {mediaField && <Modal title="Escolha uma imagem" onClose={() => setMediaField(null)}><p>Envie uma nova imagem ou escolha uma da biblioteca.</p><button className={styles.primary} disabled={busy} onClick={() => fileInput.current?.click()}>{busy ? 'Enviando…' : '+ Enviar imagem'}</button><div className={styles.mediaGrid}>{[...(snapshot?.media || []).map(media => ({src:`/api/media/${media.id}`,name:media.name})),...originalImages].map(image => <button key={image.src} onClick={() => { selectImage(mediaField,image.src) }}><img src={image.src} alt={image.name}/><span>{image.name}</span></button>)}</div>{error&&<p className={styles.error} role="alert">{error}</p>}</Modal>}
       {preview && <Modal wide title="Prévia do rascunho" onClose={()=>setPreview(false)}><div className={styles.previewToolbar}><label>Página<select value={previewPage} onChange={event=>setPreviewPage(event.target.value)}><option value="inicio">Página inicial</option><option value="percurso">Percurso</option><option value="privacidade">Privacidade</option></select></label><label>Tela<select value={previewWidth} onChange={event=>setPreviewWidth(event.target.value)}><option value="desktop">Computador</option><option value="mobile">Celular</option></select></label><button onClick={()=>setPreviewKey(key=>key+1)}>Atualizar prévia</button><a href={`/admin/preview?page=${previewPage}`} target="_blank" rel="noreferrer">Abrir em outra aba ↗</a></div><iframe key={previewKey} title="Prévia do site" className={previewWidth==='mobile'?styles.mobilePreview:styles.previewFrame} src={`/admin/preview?page=${previewPage}`} /><p className={styles.hint}>Esta prévia mostra o rascunho salvo. Os links abrem a versão pública das outras páginas.</p></Modal>}
     </div>
