@@ -3,7 +3,7 @@
 ## Usar no computador de desenvolvimento
 
 O painel fica em `http://localhost:3000/admin`. O servidor é iniciado com `npm run dev`.
-O acesso local foi gerado em `.cms/ACESSO-LOCAL.md`. Esse arquivo e `.env.local` são privados e não devem ser publicados. O e-mail do acesso local é apenas um identificador; não cria uma caixa de e-mail.
+O acesso local foi gerado em `.cms/ACESSO-LOCAL.md`. Esse arquivo e `.env.local` são privados e não devem ser publicados. O login usa usuário e senha; não é necessário cadastrar e-mail.
 
 1. Entre no painel.
 2. Abra **Conteúdo do site** e escolha a seção. A busca encontra textos entre todas as seções.
@@ -18,9 +18,41 @@ O histórico guarda as 30 versões publicadas anteriores. **Restaurar rascunho**
 
 Textos repetidos entre páginas são compartilhados. Os nomes dos temas também aparecem na página inicial. As perguntas e alternativas do percurso podem mudar de redação, mas seus identificadores, cinco perguntas por tema e lógica de pontuação permanecem fixos. Assim, as respostas enviadas ao servidor continuam sendo validadas pelo mesmo modelo. Mudanças clínicas na lógica precisam de uma atualização técnica específica. Revise a política de privacidade de acordo com a operação real; a retenção dos dados do percurso continua sendo de 180 dias.
 
-## Configurar na Vercel
+## Gestão de usuários
+
+Administradores encontram **Usuários** na navegação do painel. Clique em **Adicionar usuário**, informe o nome, um usuário único e uma senha de 8 a 128 caracteres. Compartilhe o acesso por um canal privado. O painel não envia convites por e-mail.
+
+- **Editor:** pode editar, salvar, publicar, restaurar versões e enviar imagens.
+- **Administrador:** possui os mesmos recursos e também cria usuários, altera permissões, redefine senhas e revoga ou reativa acessos.
+- **Último acesso:** mostra o último login bem-sucedido, no horário da Bahia. Novas contas aparecem com “Nenhum login registrado” até a primeira entrada.
+- Não é possível revogar o próprio acesso ou mudar a própria permissão. Sempre deve existir pelo menos um administrador ativo. A revogação preserva o histórico de acesso e pode ser revertida.
+- A alteração de usuário, permissão ou senha invalida as sessões dessa pessoa. A pessoa pode alterar sua própria senha em **Minha conta**.
+
+Contas antigas são migradas automaticamente para administradores, mantendo a senha e os conteúdos. O usuário é a parte anterior ao `@` do e-mail, em minúsculas, restrita a letras sem acento, números, ponto, hífen e sublinhado, com até 32 caracteres; se ficar com menos de 3 caracteres, usa `admin`. A migração não inventa datas de acessos anteriores. Sessões do modelo antigo precisam entrar novamente. Os dados continuam no mesmo arquivo ou registro do banco, sem apagar conteúdo. O painel permite até 50 usuários.
+
+## Respostas da jornada
+
+O sino na barra superior mostra os envios ainda não vistos pelo administrador conectado. Ele consulta novos envios a cada 45 segundos enquanto a página está visível e ao voltar para a aba. Abrir a lista não marca tudo como visto: a leitura é registrada somente ao abrir os detalhes de um envio. Cada administrador tem seu próprio contador. A falha de consulta é indicada no sino; não é tratada como ausência de respostas.
+
+Administradores encontram **Respostas da jornada** no menu. A lista permite buscar por nome, e-mail ou WhatsApp, filtrar por tema e navegar por páginas de 25 envios. **Ver respostas** abre os contatos, a data do envio no horário da Bahia, as cinco escolhas, a devolutiva e o registro do consentimento. **Atualizar respostas** consulta os novos envios; a tela não faz atualização automática. Editores de conteúdo não têm acesso a esses dados, inclusive pela API.
+
+Novos envios guardam uma cópia das perguntas, das alternativas escolhidas e da devolutiva, usando o conteúdo publicado no momento do recebimento. Editar a jornada depois não muda essa cópia. Envios anteriores sem essa cópia são identificados: os códigos das escolhas permanecem, e a redação exibida é a original do sistema quando ainda reconhecida.
+
+As respostas são consultadas na mesma tabela `journey_submissions` usada pelo formulário público; não há importação manual. O painel não exibe envios excluídos ou fora do prazo de retenção, mesmo antes da execução do cron. A anonimização também elimina a cópia dos textos. O consentimento para a jornada não autoriza contato promocional.
+
+Sem `DATABASE_URL`, somente em desenvolvimento, o formulário público salva os envios em `.cms/journey-submissions.json`; o painel mostra um aviso de ambiente local. Esses dados não são enviados para o site oficial. Em produção, o banco é obrigatório e a gravação em arquivo permanece bloqueada.
+
+## Publicação e produção
 
 Esta entrega está implementada e validada localmente. A instalação em produção precisa das variáveis abaixo no ambiente do projeto e de um novo deploy. O painel não usa o disco temporário da Vercel para salvar conteúdo.
+
+Ao iniciar com `DATABASE_URL`, o servidor aplica automaticamente as migrações aditivas da jornada até a versão 004. `src/lib/journey-schema.ts` usa uma transação com bloqueio entre instâncias, registra a versão em `site_schema_migrations` e preserva os dados existentes. Em caso de falha, a inicialização pode ser repetida. A conexão deve permitir criar e alterar essas tabelas. Os arquivos `sql/001` a `sql/004` continuam disponíveis para aplicação manual por um operador; não execute a criação inicial sobre uma tabela já existente. Configure também `CRON_SECRET` para a rotina de retenção já definida em `vercel.json`. Use bancos separados entre produção e ambientes de teste.
+
+O editor envia as alterações para `/api/admin`. **Salvar rascunho** grava `draft`; **Publicar** guarda a versão anterior e atualiza `published` no banco. As páginas públicas leem `published` dinamicamente. Após o sucesso, novos carregamentos recebem a versão publicada, sem commit, push ou novo deploy. Uma aba já aberta precisa ser recarregada. No armazenamento local, a confirmação informa que a publicação vale somente para este computador.
+
+## Navegação e iPad
+
+O botão de recolher alterna entre a barra completa e uma coluna de ícones com o monograma. A escolha é lembrada neste navegador. Entre 768 e 1199 pixels, a barra começa compacta quando ainda não existe uma preferência; o editor apresenta a prévia acima dos controles. O painel é validado em 810 × 1080 e 1080 × 810 pixels para o iPad de 9ª geração. Abaixo de 768 pixels, o menu funciona como um painel sobreposto. A animação GSAP dura 260 ms, usa transformação e opacidade e respeita movimento reduzido; ações por teclado são imediatas.
 
 - `DATABASE_URL`: conexão PostgreSQL/Neon com permissão para criar `site_cms` e `site_media`. As tabelas são criadas na primeira conexão. Não há alteração da tabela de respostas do percurso.
 - `ADMIN_SESSION_SECRET`: segredo aleatório com pelo menos 32 caracteres. Use um valor diferente em cada ambiente.
@@ -28,7 +60,7 @@ Esta entrega está implementada e validada localmente. A instalação em produç
 
 Gere valores independentes com `node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"`. Nunca copie os segredos locais para um repositório ou para uma mensagem pública.
 
-Após o deploy, abra `https://iasminportugal.com.br/admin`, informe o código de ativação e crie o e-mail e a senha definitiva do cliente. A ativação só funciona antes da primeira conta. Remova ou rotacione `ADMIN_SETUP_TOKEN` depois da ativação. A senha local não é importada automaticamente para produção.
+Após o deploy, o responsável pela entrega deve abrir `https://iasminportugal.com.br/admin/ativar`, informar o código de ativação e criar o usuário e a senha definitiva do cliente. A ativação só funciona antes da primeira conta; depois disso, essa rota redireciona para `/admin`. O login em `/admin` exibe apenas usuário e senha. Remova ou rotacione `ADMIN_SETUP_TOKEN` depois da ativação. A senha local não é importada automaticamente para produção.
 
 Em produção, textos, versões, hash da senha e metadados de mídia ficam em PostgreSQL; os arquivos de imagem ficam na tabela `site_media`. Verifique a capacidade e o backup do banco contratado. Configure backups do banco para recuperar também as imagens; o histórico do painel e o arquivo JSON não substituem um backup completo. As imagens antigas são mantidas para não quebrar versões anteriores.
 
@@ -38,9 +70,9 @@ No desenvolvimento, sem `DATABASE_URL`, os dados ficam em `.cms/state.json` e `.
 
 - Senhas com scrypt e salt aleatório; nenhuma senha fica no conteúdo enviado ao navegador.
 - Sessões de até 8 horas com assinatura HMAC; cookie HttpOnly, SameSite Strict e Secure em produção.
-- Alterar senha ou sair invalida as sessões anteriores.
+- Alterar senha ou sair invalida as sessões anteriores apenas daquela pessoa. Revogar acesso também encerra suas sessões.
 - Leitura de rascunho, edição, publicação, restauração e upload exigem autenticação no servidor.
-- Mutações verificam a origem da requisição. Cinco tentativas incorretas bloqueiam o login por 15 minutos.
+- Mutações verificam a origem da requisição. Cinco tentativas incorretas bloqueiam o login daquele usuário por 15 minutos; isso não bloqueia as outras contas.
 - Validação dos campos e URLs; textos são renderizados como texto, sem HTML executável.
 - Imagens têm assinatura de arquivo verificada; uploads SVG não são aceitos. URLs de mídia são públicas porque servem as fotos do site; não envie documentos pessoais ou arquivos privados para essa biblioteca.
 - Gravação com controle de revisão impede que uma janela sobrescreva silenciosamente outra. Se aparecer o aviso de conflito, copie seus textos recentes e atualize o painel antes de continuar.

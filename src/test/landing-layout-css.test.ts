@@ -1,7 +1,10 @@
-import { readFileSync } from 'node:fs'
+import { readFileSync as readSource } from 'node:fs'
 import { join } from 'node:path'
 
 import { expect, it } from 'vitest'
+
+// Source assertions must behave the same on Windows and Linux checkouts.
+const readFileSync = (file: string, encoding: 'utf8') => readSource(file, encoding).replace(/\r\n/g, '\n')
 
 it('centers the journey teaser columns on the same vertical axis', () => {
   const css = readFileSync(

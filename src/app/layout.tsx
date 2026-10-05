@@ -8,6 +8,8 @@ import { publicContent } from '@/lib/cms/store'
 import { resolveContent } from '@/lib/cms/catalog'
 
 import './globals.css'
+import 'overlayscrollbars/overlayscrollbars.css'
+import { OverlayScrollbarSetup } from '@/components/overlay-scrollbars'
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -36,10 +38,11 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   const values = await publicContent()
   return (
-    <html lang="pt-BR">
-      <body className={plusJakarta.variable}>
+    <html lang="pt-BR" data-overlayscrollbars-initialize="">
+      <body className={plusJakarta.variable} data-overlayscrollbars-initialize="">
         <ContentProvider values={values}>{children}</ContentProvider>
         <SafeAnalytics />
+        <OverlayScrollbarSetup key="scroll-activity" />
       </body>
     </html>
   )

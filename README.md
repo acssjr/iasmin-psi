@@ -82,9 +82,9 @@ exclusão recebidos pelo WhatsApp. A explicação destinada ao público está em
 
 ## Deploy na Vercel
 
-1. Crie o banco Neon e aplique [sql/001_create_journey_submissions.sql](sql/001_create_journey_submissions.sql).
+1. Crie o banco Neon e aplique as migrações [001](sql/001_create_journey_submissions.sql), [002](sql/002_add_themed_journey.sql) e [003](sql/003_journey_answer_snapshot.sql), nessa ordem. Em um banco existente, execute apenas as migrações pendentes.
 2. Importe este repositório em um projeto Vercel.
-3. Configure `DATABASE_URL`, `CRON_SECRET` e, se necessário, `NEXT_PUBLIC_WHATSAPP_NUMBER` em Preview e Production.
+3. Configure `DATABASE_URL`, `CRON_SECRET`, `ADMIN_SESSION_SECRET`, `ADMIN_SETUP_TOKEN` e, se necessário, `NEXT_PUBLIC_WHATSAPP_NUMBER`. Use bancos e segredos separados entre Preview e Production; consulte [a documentação do painel](docs/PAINEL-ADMINISTRATIVO.md).
 4. Confirme o cron de [vercel.json](vercel.json), que executa `/api/retencao` diariamente.
 5. Faça um deploy de Preview, valide a jornada e execute a suíte de qualidade.
 6. Publique em Production somente após revisar textos, privacidade, WhatsApp e variáveis de ambiente.

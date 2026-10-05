@@ -3,22 +3,42 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { randomUUID } from 'node:crypto'
 import { defaults, type ContentValues } from './catalog'
+import { ensureJourneySchema } from '../journey-schema'
 
 export type Version = { id: string; date: string; label: string; values: ContentValues }
 export type Media = { id: string; name: string; type: string; size: number; date: string }
+export type CmsUser = {
+  id: string; username: string; name: string; password: string; version: number
+  role: 'admin' | 'editor'; active: boolean; createdAt: string | null; lastLoginAt: string | null
+}
+export type PublicUser = Omit<CmsUser, 'password' | 'version'>
+export function publicUser({ id, username, name, role, active, createdAt, lastLoginAt }: CmsUser): PublicUser {
+  return { id, username, name, role, active, createdAt, lastLoginAt }
+}
+export function migrateUsers(state: CmsState & { account?: { email: string; password: string; version: number } | null }) {
+  if (!state.users) {
+    const account = state.account
+    const username = account?.email.split('@')[0].toLowerCase().replace(/[^a-z0-9._-]/g, '').slice(0, 32) || 'admin'
+    state.users = account ? [{ id: 'legacy-admin', username: username.length >= 3 ? username : 'admin', name: 'Administrador', password: account.password, version: account.version, role: 'admin', active: true, createdAt: null, lastLoginAt: null }] : []
+  }
+  delete state.account
+  state.contentRevision ??= state.revision
+  return state
+}
 export type CmsState = {
-  revision: number; draft: ContentValues; published: ContentValues; publishedAt: string | null
+  revision: number; contentRevision: number; draft: ContentValues; published: ContentValues; publishedAt: string | null
   history: Version[]; media: Media[]
-  account: { email: string; password: string; version: number } | null
+  users: CmsUser[]
   attempts: Record<string, { count: number; until: number }>
 }
 const directory = process.env.CMS_DATA_DIRECTORY || path.join(process.cwd(), '.cms')
-const initial = (): CmsState => ({ revision: 0, draft: { ...defaults }, published: { ...defaults }, publishedAt: null, history: [], media: [], account: null, attempts: {} })
+const initial = (): CmsState => ({ revision: 0, contentRevision: 0, draft: { ...defaults }, published: { ...defaults }, publishedAt: null, history: [], media: [], users: [], attempts: {} })
 let initialized: Promise<void> | undefined
 function database() { return process.env.DATABASE_URL ? neon(process.env.DATABASE_URL) : null }
 async function init() {
   const sql = database()
   if (sql) {
+    await ensureJourneySchema()
     await sql`CREATE TABLE IF NOT EXISTS site_cms (id integer PRIMARY KEY, revision integer NOT NULL, state jsonb NOT NULL)`
     await sql`CREATE TABLE IF NOT EXISTS site_media (id uuid PRIMARY KEY, mime text NOT NULL, bytes bytea NOT NULL)`
     await sql`INSERT INTO site_cms (id,revision,state) VALUES (1,0,${JSON.stringify(initial())}::jsonb) ON CONFLICT DO NOTHING`
@@ -33,15 +53,17 @@ export async function readState(): Promise<CmsState> {
   await ready()
   const sql = database()
   const state = sql ? (await sql`SELECT state FROM site_cms WHERE id=1`)[0].state as CmsState : JSON.parse(await fs.readFile(path.join(directory, 'state.json'), 'utf8')) as CmsState
+  migrateUsers(state)
   state.draft = { ...defaults, ...state.draft }; state.published = { ...defaults, ...state.published }
   return state
 }
 let queue: Promise<unknown> = Promise.resolve()
-export function mutateState<T>(change: (state: CmsState) => T): Promise<T> {
+export function mutateState<T>(change: (state: CmsState) => T, contentChange = true): Promise<T> {
   const operation = queue.then(async () => {
     const state = await readState(), oldRevision = state.revision
     const result = change(state)
     state.revision++
+    if (contentChange) state.contentRevision++
     const sql = database()
     if (sql) {
       const rows = await sql`UPDATE site_cms SET state=${JSON.stringify(state)}::jsonb,revision=${state.revision} WHERE id=1 AND revision=${oldRevision} RETURNING id`

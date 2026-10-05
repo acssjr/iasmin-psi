@@ -50,3 +50,11 @@
   .inspector[data-selected="true"] .context,.inspector[data-selected="true"] .sectionSelect,.inspector[data-selected="true"] .block,.inspector[data-selected="true"] .hint { display:none; }
   .inspector[data-selected="true"] .selection { margin:12px; }
 }
+@media(min-width:768px) and (max-width:1199px) {
+  .layout { grid-template-columns:1fr; }
+  .inspector { height:auto; min-height:0; max-height:620px; border-left:0; border-top:1px solid #e6d9c9; }
+  .frameViewport { height:58vh; min-height:400px; }
+  .heading { align-items:flex-start; flex-wrap:wrap; }
+  .toolbar { flex-wrap:wrap; }
+  .inspector[data-selected="true"] { position:static; max-height:620px; box-shadow:none; border-radius:0; margin:0; }
+}

@@ -18,6 +18,27 @@
   box-sizing: border-box;
 }
 
+/* No scrollbar gutters, including before enhancement and inside preview frames. */
+* { scrollbar-width:none!important; scrollbar-gutter:auto!important; }
+*::-webkit-scrollbar { display:none; width:0; height:0; }
+html:has(dialog[open]),body:has(dialog[open]) { overflow:hidden!important; overscroll-behavior:none; }
+.os-scrollbar.os-theme-iasmin {
+  opacity:0!important;
+  --os-size:8px;
+  --os-padding-perpendicular:2px;
+  --os-padding-axis:4px;
+  --os-track-bg:transparent;
+  --os-handle-bg:#79655566;
+  --os-handle-bg-hover:#79655599;
+  --os-handle-bg-active:#796555bb;
+  --os-handle-border-radius:8px;
+  --os-handle-min-size:32px;
+}
+.os-scrollbar.os-theme-iasmin,.os-scrollbar.os-theme-iasmin * { pointer-events:none!important; }
+[data-scroll-active] > .os-scrollbar.os-theme-iasmin { opacity:1!important; }
+[data-scroll-active] > .os-scrollbar.os-theme-iasmin,
+[data-scroll-active] > .os-scrollbar.os-theme-iasmin * { pointer-events:auto!important; }
+
 html {
   min-width: 320px;
 }

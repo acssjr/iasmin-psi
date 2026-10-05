@@ -99,7 +99,7 @@ export function VisualEditor({values,onChange,onChoose,onSave,busy,dirty}:{value
   useEffect(()=>{if(ready)send({type:'scale',value:scale})},[scale,ready,send])
   const changeField=(id:string,value:string)=>onChange(id,value)
   return <div className={styles.editor}>
-    <div className={styles.heading}><div><p>EDIÇÃO VISUAL</p><h1>Veja, clique e personalize.</h1><span>Clique em um texto para escrever no próprio site. Fotos e perguntas abrem seus controles ao lado.</span></div><button disabled={busy||!dirty} onClick={onSave}>{busy?'Salvando…':'Salvar rascunho'}</button></div>
+    <div className={styles.heading}><div><h1>Edição visual</h1><span>Clique em um texto para escrever no próprio site. Fotos e perguntas abrem seus controles ao lado.</span></div><button disabled={busy||!dirty} onClick={onSave}>{busy?'Salvando…':'Salvar rascunho'}</button></div>
     <div className={styles.toolbar}>
       <label>Página<select value={page} onChange={e=>{const next=e.target.value;setPage(next);setSection(next==='inicio'?'hero':next==='percurso'?'journey':'privacy');setSelected(null);setReady(false);setFailed(false)}}><option value="inicio">Página inicial</option><option value="percurso">Percurso</option><option value="privacidade">Privacidade</option></select></label>
       <label>Visualização<select value={width} onChange={e=>setWidth(e.target.value)}><option value="desktop">Computador</option><option value="mobile">Celular</option></select></label>

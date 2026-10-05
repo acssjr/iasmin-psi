@@ -1,13 +1,14 @@
 import { randomUUID } from 'node:crypto'
 import { NextResponse } from 'next/server'
-import { authenticated, sameOrigin } from '@/lib/cms/auth'
-import { mutateState, saveMedia } from '@/lib/cms/store'
+import { currentUser, assertUser, sameOrigin } from '@/lib/cms/auth'
+import { mutateState, saveMedia, publicUser } from '@/lib/cms/store'
 
 export const runtime = 'nodejs'
 export async function POST(request: Request) {
   try {
     sameOrigin(request)
-    if (!await authenticated()) return NextResponse.json({ error: 'Sua sessão expirou. Entre novamente.' }, { status: 401 })
+    const actor = await currentUser()
+    if (!actor) return NextResponse.json({ error: 'Sua sessão expirou. Entre novamente.' }, { status: 401 })
     if (Number(request.headers.get('content-length') || 0) > 3_200_000) throw new Error('A imagem deve ter até 3 MB.')
     const form = await request.formData(), file = form.get('file')
     const expectedRevision = Number(form.get('revision'))
@@ -20,9 +21,10 @@ export async function POST(request: Request) {
     const id = randomUUID(), media = { id, name: file.name.slice(0, 120), type: mime, size: bytes.length, date: new Date().toISOString() }
     await saveMedia(id, mime, bytes)
     const snapshot = await mutateState(state => {
-      if (expectedRevision !== state.revision) throw new Error('O conteúdo mudou em outra janela. Atualize o painel antes de enviar a imagem.')
+      const user = assertUser(state, actor)
+      if (expectedRevision !== state.contentRevision) throw new Error('O conteúdo mudou em outra janela. Atualize o painel antes de enviar a imagem.')
       state.media.unshift(media)
-      return { revision: state.revision + 1, draft: state.draft, published: state.published, publishedAt: state.publishedAt, history: state.history, media: state.media, email: state.account?.email }
+      return { revision: state.contentRevision + 1, draft: state.draft, published: state.published, publishedAt: state.publishedAt, history: state.history, media: state.media, user: publicUser(user) }
     })
     return NextResponse.json({ media, snapshot }, { status: 201 })
   } catch (error) { return NextResponse.json({ error: error instanceof Error ? error.message : 'Falha ao enviar imagem.' }, { status: 400 }) }

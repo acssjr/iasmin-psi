@@ -6,6 +6,7 @@ const mocks = vi.hoisted(() => ({
 }))
 
 vi.mock('@neondatabase/serverless', () => ({ neon: mocks.neon }))
+vi.mock('@/lib/journey-schema', () => ({ ensureJourneySchema: async () => {} }))
 
 import { createJourneySubmission } from '@/lib/data'
 import { journeySubmissionSchema } from '@/lib/schemas'

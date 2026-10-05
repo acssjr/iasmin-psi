@@ -1,6 +1,8 @@
 import { createJourneySubmission } from '@/lib/data'
 import { getJourneyResult } from '@/lib/journey'
 import { journeySubmissionSchema } from '@/lib/schemas'
+import { publicContent } from '@/lib/cms/store'
+import { snapshotJourney } from '@/lib/journey-records'
 
 export const runtime = 'nodejs'
 
@@ -23,9 +25,11 @@ export async function POST(request: Request) {
   }
 
   try {
+    const resultKey = getJourneyResult(parsed.data.topic, parsed.data.answers)
     await createJourneySubmission({
       ...parsed.data,
-      resultKey: getJourneyResult(parsed.data.topic, parsed.data.answers),
+      resultKey,
+      answerSnapshot: snapshotJourney(parsed.data.topic, parsed.data.answers, resultKey, await publicContent()),
     })
     return Response.json({ ok: true }, { status: 201 })
   } catch {

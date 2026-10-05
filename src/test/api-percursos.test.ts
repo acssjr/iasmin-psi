@@ -7,6 +7,7 @@ const mocks = vi.hoisted(() => ({
 vi.mock('@/lib/data', () => ({
   createJourneySubmission: mocks.createJourneySubmission,
 }))
+vi.mock('@/lib/cms/store', () => ({ publicContent: async () => ({}) }))
 
 import { POST } from '@/app/api/percursos/route'
 

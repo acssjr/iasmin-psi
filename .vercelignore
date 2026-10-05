@@ -1,0 +1,10 @@
+.cms/
+.env*
+.worktrees/
+.superpowers/
+.Codex/
+node_modules/
+.next/
+test-results/
+playwright-report/
+*.tsbuildinfo
