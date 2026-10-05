@@ -17,6 +17,7 @@ import { JourneyResponsesPanel } from './journey-responses-panel'
 import { Modal } from './modal'
 import { AdminSidebar, AdminIcon, useAdminSidebar } from './admin-sidebar'
 import { useJourneyNotifications } from './use-journey-notifications'
+import { AccessLoading } from './access-loading'
 import styles from './admin-panel.module.css'
 
 type Snapshot = { revision: number; draft: ContentValues; published: ContentValues; publishedAt: string | null; history: Version[]; media: Media[]; user: PublicUser; storage?: 'local' | 'database' }
@@ -37,6 +38,8 @@ export function AdminPanel({ mode, initial }: { mode: Mode; initial?: Snapshot }
   const [group, setGroup] = useState('hero')
   const [search, setSearch] = useState('')
   const [busy, setBusy] = useState(false)
+  const [accessStage, setAccessStage] = useState<'authenticating' | 'opening' | null>(null)
+  const accessPending = useRef(false)
   const [notice, setNotice] = useState('')
   const [error, setError] = useState('')
   const [publishing, setPublishing] = useState(false)
@@ -93,11 +96,21 @@ export function AdminPanel({ mode, initial }: { mode: Mode; initial?: Snapshot }
     finally { setBusy(false); if (fileInput.current) fileInput.current.value = '' }
   }
   async function access(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault(); const form = new FormData(event.currentTarget)
-    const result = await call(mode, Object.fromEntries(form))
-    if (result) {
+    event.preventDefault()
+    if (accessPending.current) return
+    accessPending.current = true
+    const form = new FormData(event.currentTarget)
+    setError(''); setBusy(true); setAccessStage('authenticating')
+    try {
+      const response = await fetch('/api/admin', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: mode, ...Object.fromEntries(form) }), signal: AbortSignal.timeout(30_000) })
+      const result = await response.json()
+      if (!response.ok) throw new Error(result.error || 'Não foi possível entrar. Tente novamente.')
+      setAccessStage('opening')
       if (mode === 'setup') router.replace('/admin')
       router.refresh()
+    } catch (failure) {
+      setError(failure instanceof Error && failure.name !== 'TimeoutError' ? failure.message : 'O acesso demorou mais que o esperado. Verifique sua conexão e tente novamente.')
+      setAccessStage(null); setBusy(false); accessPending.current = false
     }
   }
   function downloadBackup() {
@@ -105,7 +118,9 @@ export function AdminPanel({ mode, initial }: { mode: Mode; initial?: Snapshot }
     const link = document.createElement('a'); link.href = url; link.download = 'iasmin-conteudo.json'; link.click(); URL.revokeObjectURL(url)
   }
   if (mode !== 'editor') return (
-    <main className={styles.access}>
+    <>
+    {accessStage && <AccessLoading stage={accessStage} />}
+    <main className={styles.access} inert={Boolean(accessStage)} aria-hidden={accessStage ? true : undefined}>
       <div className={styles.accessStory}><BrandLogo variant="full" /><span>PAINEL ADMINISTRATIVO</span><h1>Gestão do site</h1><p>Edite conteúdo, publique alterações e gerencie acessos.</p><div className={styles.orbit} aria-hidden="true" /></div>
       <div className={styles.accessForm}>
         <Link href="/">← Voltar ao site</Link><p className={styles.eyebrow}>PAINEL ADMINISTRATIVO</p>
@@ -120,6 +135,7 @@ export function AdminPanel({ mode, initial }: { mode: Mode; initial?: Snapshot }
         {error && <p className={styles.error} role="alert">{error}</p>}
       </div>
     </main>
+    </>
   )
   const activeSection = editorSections.find(section=>section.id===group||section.groups.includes(group)) || editorSections[1]
   const matchingFields = search ? fields.filter(field=>`${field.group} ${field.label} ${values[field.id]}`.toLowerCase().includes(search.toLowerCase())) : fieldsForSection(activeSection.id)
