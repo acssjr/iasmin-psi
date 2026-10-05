@@ -18,7 +18,7 @@ it('shows both first-step actions in the hero', () => {
   })
 
   expect(brandMarks).toHaveLength(2)
-  expect(brandMarks[0]).toHaveAttribute('data-brand-variant', 'horizontal')
+  expect(brandMarks[0]).toHaveAttribute('data-brand-variant', 'vertical')
   expect(brandMarks[1]).toHaveAttribute('data-brand-variant', 'full')
   const hero = screen.getByRole('region', {
     name: 'O cuidado que faz sentido começa no seu contexto.',
@@ -143,10 +143,7 @@ it('provides external social links in the footer', () => {
     'href',
     'https://www.instagram.com/iasminportugalpsi/',
   )
-  expect(screen.getByRole('link', { name: /LinkedIn de Iasmin Portugal/i })).toHaveAttribute(
-    'target',
-    '_blank',
-  )
+  expect(screen.queryByRole('link', { name: /LinkedIn de Iasmin Portugal/i })).not.toBeInTheDocument()
 })
 
 it('keeps landing sections clean and exposes the recognition carousel', () => {

@@ -1,6 +1,7 @@
 'use client'
 
 import { useContentValues } from '@/components/cms/content'
+import { useVisualEditing } from '@/components/cms/edit-context'
 
 import Image from 'next/image'
 import { useRef } from 'react'
@@ -20,6 +21,7 @@ type EditorialCarouselProps = {
 
 export function EditorialCarousel({ covers: originalCovers }: EditorialCarouselProps) {
   const values = useContentValues()
+  const editing = useVisualEditing()
   const covers = values.editorial_collection ? JSON.parse(values.editorial_collection) as EditorialCover[] : originalCovers
   const carousel = useRef<HTMLDivElement>(null)
 
@@ -29,6 +31,7 @@ export function EditorialCarousel({ covers: originalCovers }: EditorialCarouselP
       const track = viewport?.querySelector<HTMLElement>('[data-editorial-carousel-track]')
 
       if (
+        editing ||
         !viewport ||
         !track ||
         (typeof window.matchMedia === 'function' &&
@@ -71,6 +74,7 @@ export function EditorialCarousel({ covers: originalCovers }: EditorialCarouselP
     <div
       aria-label="Reflexões recentes de Iasmin Portugal"
       className={styles.editorialMosaic}
+      data-cms-field={editing?.enabled ? 'editorial_collection' : undefined}
       ref={carousel}
       role="list"
     >
@@ -89,6 +93,7 @@ export function EditorialCarousel({ covers: originalCovers }: EditorialCarouselP
                 role={!isDuplicate ? 'listitem' : undefined}
               >
                 <Image
+                  data-cms-photo-id={editing?.enabled&&!isDuplicate?`editorial_collection:${index}`:undefined}
                   alt={isDuplicate ? '' : cover.alt}
                   fill
                   sizes="(max-width: 560px) 68vw, (max-width: 1088px) 27vw, 15vw"

@@ -10,6 +10,7 @@ import { gsap } from 'gsap'
 import { BrandLogo } from '@/components/brand-logo'
 
 import styles from './landing-page.module.css'
+import { useHeaderDocked } from './sticky-site-header'
 
 const navigationItems = [
   { href: '#conheca-iasmin', label: 'Conheça Iasmin', target: 'conheca-iasmin' },
@@ -23,27 +24,14 @@ const socialItems = [
     label: 'Instagram de Iasmin Portugal',
     name: 'instagram',
   },
-  {
-    href: 'https://www.linkedin.com/',
-    label: 'LinkedIn de Iasmin Portugal',
-    name: 'linkedin',
-  },
 ] as const
 
-function SocialIcon({ name }: { name: (typeof socialItems)[number]['name'] }) {
-  if (name === 'instagram') {
-    return (
-      <svg aria-hidden="true" viewBox="0 0 24 24">
-        <rect height="17" rx="5" width="17" x="3.5" y="3.5" />
-        <circle cx="12" cy="12" r="4" />
-        <circle className={styles.socialIconDot} cx="17.4" cy="6.7" r="1" />
-      </svg>
-    )
-  }
-
+function SocialIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24">
-      <path d="M6.7 8.6v9.2M6.7 5.6v.1M11 17.8v-5.2c0-2.1 4.7-2.4 4.7.5v4.7M11 8.6v9.2" />
+      <rect height="17" rx="5" width="17" x="3.5" y="3.5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle className={styles.socialIconDot} cx="17.4" cy="6.7" r="1" />
     </svg>
   )
 }
@@ -55,7 +43,8 @@ function scrollToSection(targetId: string) {
   window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}`)
   const smoother = window.__iasminScrollSmoother
   if (smoother) {
-    smoother.scrollTo(target, true, 'top top')
+    const clearance = (document.querySelector('header')?.getBoundingClientRect().height ?? 80) + 48
+    smoother.scrollTo(target, true, `top ${Math.ceil(clearance)}px`)
     return
   }
   target.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -65,14 +54,17 @@ export function SmoothSectionLink({
   children,
   className,
   target,
+  'data-landing-brand': landingBrand,
 }: {
   children: React.ReactNode
   className?: string
   target: string
+  'data-landing-brand'?: boolean
 }) {
   return (
     <ContentAnchor
       className={className}
+      data-landing-brand={landingBrand}
       href={`#${target}`}
       onClick={(event) => {
         event.preventDefault()
@@ -85,6 +77,7 @@ export function SmoothSectionLink({
 }
 
 export function SiteNavigation() {
+  const docked = useHeaderDocked()
   const [open, setOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const menu = useRef<HTMLDivElement>(null)
@@ -111,7 +104,7 @@ export function SiteNavigation() {
             autoAlpha: 0,
             scaleX: reduceMotion ? 1 : 0.72,
             scaleY: reduceMotion ? 1 : 0.58,
-            transformOrigin: 'top left',
+            transformOrigin: docked ? 'top right' : 'top left',
             x: reduceMotion ? 0 : -8,
             y: reduceMotion ? 0 : -8,
           },
@@ -164,7 +157,7 @@ export function SiteNavigation() {
         ease: 'power3.in',
         scaleX: reduceMotion ? 1 : 0.9,
         scaleY: reduceMotion ? 1 : 0.86,
-        transformOrigin: 'top left',
+        transformOrigin: docked ? 'top right' : 'top left',
         x: reduceMotion ? 0 : -5,
         y: reduceMotion ? 0 : -5,
       })
@@ -212,6 +205,7 @@ export function SiteNavigation() {
         aria-expanded={open}
         aria-label={open ? 'Fechar menu' : 'Abrir menu'}
         className={styles.menuTrigger}
+        data-menu-trigger
         onClick={toggleMenu}
         type="button"
       >
@@ -228,7 +222,7 @@ export function SiteNavigation() {
             ref={backdrop}
             type="button"
           />
-          <div aria-label="Navegação principal" className={styles.mobileMenu} ref={menu} role="dialog">
+          <div aria-label="Navegação principal" className={styles.mobileMenu} data-docked={docked} ref={menu} role="dialog">
             <div className={styles.mobileMenuHeader} data-mobile-menu-item>
               <span><ContentText fallback="Navegue pela página" /></span>
               <BrandLogo
@@ -256,7 +250,7 @@ export function SiteNavigation() {
                   rel="noreferrer"
                   target="_blank"
                 >
-                  <SocialIcon name={item.name} />
+                  <SocialIcon />
                 </ContentAnchor>
               ))}
             </div>

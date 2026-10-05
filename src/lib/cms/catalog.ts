@@ -27,7 +27,7 @@ export function validateContent(input: unknown): ContentValues {
       try { url = new URL(value) } catch { throw new Error('Informe um endereço completo com https://.') }
       if (url.protocol !== 'https:' || url.username || url.password) throw new Error('Use um endereço seguro com https://.')
     }
-    if (field.kind === 'position' && !/^(left|center|right) (top|center|bottom)$/.test(value)) throw new Error('Escolha um enquadramento válido.')
+    if (field.kind === 'position' && !/^(left|center|right) (top|center|bottom)$/.test(value) && !/^(100|[0-9]{1,2})% (100|[0-9]{1,2})%$/.test(value)) throw new Error('Escolha um enquadramento válido.')
     if (field.kind === 'faq') {
       let items: { question: string; answer: string }[]
       try { items = JSON.parse(value) } catch { throw new Error('Revise as perguntas frequentes.') }

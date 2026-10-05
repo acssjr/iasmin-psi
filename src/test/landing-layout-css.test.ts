@@ -99,11 +99,12 @@ it('sizes the official brand marks for header, about and footer contexts', () =>
   expect(css).toContain('.headerLogo')
   expect(css).toContain('.aboutSignature')
   expect(css).toContain('.footerLogo')
-  expect(css).toContain('width: clamp(6.9rem, 10vw, 8.75rem);')
+  expect(css).toContain('width: var(--brand-header-width);')
+  expect(readFileSync(join(process.cwd(),'src/app/globals.css'),'utf8')).toContain('--brand-header-width: clamp(8.5rem, 12vw, 10.5rem);')
   expect(css).toContain('width: clamp(6.75rem, 10vw, 8.75rem);')
 })
 
-it('centers the mobile brand between the menu and highlighted schedule action', () => {
+it('keeps the mobile brand on the left with menu and scheduling on the right', () => {
   const css = readFileSync(
     join(process.cwd(), 'src/components/landing/landing-page.module.css'),
     'utf8',
@@ -111,9 +112,8 @@ it('centers the mobile brand between the menu and highlighted schedule action', 
 
   expect(css).toContain('grid-template-columns: minmax(0, 1fr) auto auto;')
   expect(css).toContain('grid-column: 1;\n    grid-row: 1;')
-  expect(css).toContain('left: 50%;')
   expect(css).toContain('justify-self: auto;')
-  expect(css).toContain('transform: translateX(-50%);')
+  expect(css).toContain('transform: translateX(var(--menu-dock-shift, 0px));')
   expect(css).toContain('grid-column: 3;\n    grid-row: 1;')
   expect(css).toContain('background: var(--terracotta);\n    color: var(--cream);')
 })

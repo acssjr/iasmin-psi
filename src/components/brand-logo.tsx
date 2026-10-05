@@ -2,8 +2,10 @@
 import Image from 'next/image'
 import { useContentValue } from '@/components/cms/content'
 import styles from './brand-logo.module.css'
+import { fieldByDefault } from '@/lib/cms/catalog'
+import { useVisualEditing } from '@/components/cms/edit-context'
 
-type BrandLogoVariant = 'horizontal' | 'full' | 'signature' | 'monogram'
+type BrandLogoVariant = 'horizontal' | 'vertical' | 'full' | 'signature' | 'monogram'
 type BrandLogoTone = 'espresso' | 'cream' | 'terracotta'
 
 type BrandLogoProps = {
@@ -22,8 +24,12 @@ export function BrandLogo({
   variant,
 }: BrandLogoProps) {
   const text = useContentValue()
+  const editing = useVisualEditing()
   const original = variant === 'signature' ? '/brand/iasmin-psi-signature.svg' : `/brand/iasmin-portugal-${variant}.svg`
-  const source = text(original)
+  const configuredSource = text(original)
+  // Existing sites used the horizontal asset for this same editable header slot.
+  const source = variant === 'vertical' && configuredSource === '/brand/iasmin-portugal-horizontal.svg'
+    ? original : configuredSource
   const classNames = [styles.logo, styles[variant], styles[tone], className]
     .filter(Boolean)
     .join(' ')
@@ -35,6 +41,7 @@ export function BrandLogo({
       className={classNames}
       data-brand-tone={tone}
       data-brand-variant={variant}
+      data-cms-field={editing?.enabled ? fieldByDefault.get(original)?.id : undefined}
       role={decorative ? undefined : 'img'}
       style={source !== original ? { mask: 'none', WebkitMask: 'none', background: 'transparent', position: 'relative' } : undefined}
     >

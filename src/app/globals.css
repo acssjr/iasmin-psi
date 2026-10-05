@@ -8,6 +8,10 @@
   --cream: #fff9f1;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --brand-header-width: clamp(8.5rem, 12vw, 10.5rem);
+  --brand-header-left: max(1.25rem, calc((100vw - 77.5rem) / 2));
+  --brand-header-top: 1.5rem;
+  --landing-intro-duration: 1500ms;
 }
 
 * {
@@ -16,6 +20,44 @@
 
 html {
   min-width: 320px;
+}
+
+/* Match the welcome's lifetime and release scrolling without JavaScript. */
+html:has([data-landing-intro]) {
+  animation: landingIntroScrollLock var(--landing-intro-duration) step-end;
+}
+
+html:has([data-landing-intro]) [data-landing-brand] {
+  animation: landingBrandHandoff var(--landing-intro-duration) step-end;
+}
+
+@keyframes landingIntroScrollLock {
+  from, to { overflow: hidden; }
+}
+
+@keyframes landingBrandHandoff {
+  from, to { opacity: 0; }
+}
+
+@media (min-width: 35.0625rem) and (max-width: 68rem) {
+  :root {
+    --brand-header-left: max(1.5rem, calc((100vw - 62rem) / 2));
+    --brand-header-top: 1.35rem;
+  }
+}
+
+@media (max-width: 35rem) {
+  :root {
+    --brand-header-width: clamp(8rem, 38vw, 9rem);
+    --brand-header-left: 0.85rem;
+    --brand-header-top: calc((5.4rem - var(--brand-header-width) * 0.5) / 2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --landing-intro-duration: 200ms;
+  }
 }
 
 body {

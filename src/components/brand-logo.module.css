@@ -43,3 +43,8 @@
 .terracotta {
   color: var(--terracotta);
 }
+
+.vertical {
+  --brand-logo-source: url('/brand/iasmin-portugal-vertical.svg');
+  aspect-ratio: 2 / 1;
+}

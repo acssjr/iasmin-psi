@@ -6,6 +6,7 @@ import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ScrollSmoother } from 'gsap/ScrollSmoother'
+import { useVisualEditing } from '@/components/cms/edit-context'
 
 if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
   gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother)
@@ -16,11 +17,12 @@ type LandingMotionProps = {
 }
 
 export function LandingMotion({ children }: LandingMotionProps) {
+  const visualEditing = useVisualEditing()
   const scope = useRef<HTMLDivElement>(null)
 
   useGSAP(
     () => {
-      if (!scope.current || typeof window === 'undefined' || !window.matchMedia) {
+      if (visualEditing || !scope.current || typeof window === 'undefined' || !window.matchMedia) {
         return
       }
 

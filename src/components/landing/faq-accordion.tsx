@@ -1,6 +1,7 @@
 'use client'
 
-import { useContentValues } from '@/components/cms/content'
+import { ContentCollectionText, useContentValues } from '@/components/cms/content'
+import { useVisualEditing } from '@/components/cms/edit-context'
 
 import { useRef, useState } from 'react'
 import { useGSAP } from '@gsap/react'
@@ -19,6 +20,7 @@ type FaqItem = {
 
 export function FaqAccordion({ items: originalItems }: { items: readonly FaqItem[] }) {
   const values = useContentValues()
+  const editing = useVisualEditing()
   const items = values.faq_collection ? JSON.parse(values.faq_collection) as FaqItem[] : originalItems
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   const scope = useRef<HTMLDivElement>(null)
@@ -67,7 +69,7 @@ export function FaqAccordion({ items: originalItems }: { items: readonly FaqItem
   )
 
   return (
-    <div className={styles.faqList} ref={scope}>
+    <div className={styles.faqList} data-cms-field={editing?.enabled ? 'faq_collection' : undefined} ref={scope}>
       {items.map((item, index) => {
         const isOpen = openIndex === index
         const panelId = `faq-panel-${index}`
@@ -81,7 +83,7 @@ export function FaqAccordion({ items: originalItems }: { items: readonly FaqItem
               onClick={() => setOpenIndex(isOpen ? null : index)}
               type="button"
             >
-              <span>{item.question}</span>
+              <span><ContentCollectionText id="faq_collection" index={index} property="question" value={item.question}/></span>
               <span aria-hidden="true" className={styles.faqToggle} />
             </button>
             <div
@@ -90,7 +92,7 @@ export function FaqAccordion({ items: originalItems }: { items: readonly FaqItem
               data-faq-panel
               id={panelId}
             >
-              <p>{item.answer}</p>
+              <p><ContentCollectionText id="faq_collection" index={index} property="answer" value={item.answer}/></p>
             </div>
           </div>
         )

@@ -86,8 +86,8 @@
 }
 
 .siteHeader {
-  position: absolute;
-  z-index: 2;
+  position: fixed;
+  z-index: 9500;
   top: 0;
   right: 0;
   left: 0;
@@ -98,7 +98,31 @@
   width: min(100% - 2.5rem, 77.5rem);
   margin: 0 auto;
   padding: 1.5rem 0;
+  isolation: isolate;
+  transition: transform 600ms var(--ease-out);
 }
+
+.siteHeader[data-docked="true"] {
+  transform: translateY(0.75rem);
+}
+
+.headerBackdrop {
+  position: absolute;
+  z-index: -1;
+  inset: 0 -0.8rem;
+  border: 1px solid color-mix(in srgb, var(--cream) 65%, transparent);
+  border-radius: 1.75rem;
+  background: color-mix(in srgb, var(--ivory) 88%, transparent);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 0.5rem 2rem color-mix(in srgb, var(--espresso) 12%, transparent);
+  opacity: 0;
+  transition: opacity 200ms var(--ease-out);
+  pointer-events: none;
+}
+
+.siteHeader[data-docked="true"] .headerBackdrop { opacity: 1; }
+.headerActionSlot { justify-self: end; }
+.page main > section { scroll-margin-top: 7rem; }
 
 .brandLink {
   display: inline-flex;
@@ -107,7 +131,7 @@
 }
 
 .headerLogo {
-  width: clamp(6.9rem, 10vw, 8.75rem);
+  width: var(--brand-header-width);
 }
 
 .aboutIdentity {
@@ -1114,7 +1138,10 @@
       transparent
     );
     content: '';
+    transition: opacity 200ms var(--ease-out);
   }
+
+  .siteHeader[data-docked="true"]::after { opacity: 0; }
 
   .hero {
     grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.9fr);
@@ -1143,10 +1170,25 @@
     width: 2.65rem;
     height: 2.65rem;
     padding: 0.65rem;
-    border: 1px solid color-mix(in srgb, var(--espresso) 24%, transparent);
-    border-radius: 50%;
-    background: var(--ivory);
+    border: 0;
+    border-radius: 0;
+    background: transparent;
     cursor: pointer;
+    transition: transform 600ms var(--ease-out);
+  }
+
+  .siteHeader[data-docked="true"] .menuTrigger {
+    transform: translateX(var(--menu-dock-shift, 0px));
+  }
+
+  .headerActionSlot {
+    transition: opacity 160ms var(--ease-out), visibility 160ms;
+  }
+
+  .siteHeader[data-docked="true"] .headerActionSlot {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
   }
 
   .menuTrigger span {
@@ -1157,7 +1199,7 @@
 
   .mobileMenuBackdrop {
     position: fixed;
-    z-index: 9998;
+    z-index: 9400;
     inset: 0;
     display: block;
     width: 100%;
@@ -1170,7 +1212,7 @@
 
   .mobileMenu {
     position: fixed;
-    z-index: 9999;
+    z-index: 9600;
     top: 5.35rem;
     right: auto;
     left: max(1rem, calc((100vw - 62rem) / 2));
@@ -1189,6 +1231,13 @@
       0 1.5rem 3.5rem color-mix(in srgb, var(--espresso) 24%, transparent);
     color: var(--espresso);
     will-change: transform, opacity;
+  }
+
+  .mobileMenu[data-docked="true"] {
+    top: 7rem;
+    right: max(1rem, calc((100vw - 62rem) / 2));
+    left: auto;
+    max-height: calc(100svh - 8rem);
   }
 
   .mobileMenuHeader {
@@ -1370,6 +1419,8 @@
   .customCursor {
     display: none;
   }
+  .siteHeader, .menuTrigger { transition: none; }
+  .headerBackdrop, .headerActionSlot { transition-duration: 125ms; }
 }
 
 @media (max-width: 35rem) {
@@ -1389,16 +1440,29 @@
   }
 
   .siteHeader {
-    position: absolute;
+    position: fixed;
     top: 0;
     align-items: center;
-    width: 100%;
-    min-height: 4.9rem;
-    grid-template-columns: 1fr 1fr;
+    width: calc(100% - 1.5rem);
+    min-height: 5.4rem;
+    grid-template-columns: 1fr auto auto;
     gap: 0.5rem;
-    padding: 0.9rem 0.85rem;
-    background: var(--ivory);
+    padding: 0.4rem 0.1rem;
+    background: transparent;
   }
+
+  .siteHeader::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0 -0.75rem;
+    background: var(--ivory);
+    content: '';
+    transition: opacity 200ms var(--ease-out);
+  }
+
+  .siteHeader[data-docked="true"]::before { opacity: 0; }
+  .headerBackdrop { inset: 0 -0.3rem; }
+  .headerActionSlot { grid-column: 3; grid-row: 1; }
 
   .headerAction {
     grid-column: 3;
@@ -1415,7 +1479,7 @@
   }
 
   .menuTrigger {
-    grid-column: 1;
+    grid-column: 2;
     grid-row: 1;
     justify-self: start;
     width: 2.55rem;
@@ -1429,25 +1493,26 @@
     width: min(20rem, calc(100vw - 2rem));
   }
 
+  .mobileMenu[data-docked="true"] { top: 6rem; right: 1rem; left: auto; max-height: calc(100svh - 7rem); }
+
   .hero {
     position: relative;
     display: flex;
     flex-direction: column;
     gap: 0;
     width: 100%;
-    padding: 4.9rem 0 0;
+    padding: 5.4rem 0 0;
   }
 
   .siteHeader .brandLink {
-    position: absolute;
-    left: 50%;
+    grid-column: 1;
+    grid-row: 1;
     display: inline-flex;
     justify-self: auto;
-    transform: translateX(-50%);
   }
 
   .headerLogo {
-    width: clamp(6.4rem, 29vw, 7.6rem);
+    width: var(--brand-header-width);
   }
 
   .heroPortrait {

@@ -12,6 +12,9 @@
 .shell h3 { font-size:18px; font-weight:600; letter-spacing:-.5px; }
 .shell p { color:#796555; line-height:1.8; }
 .primary { background:#a65134!important; color:#fffaf3!important; border-color:#a65134!important; }
+.visualMain { padding:24px!important; }
+.visualMain .panelFooter { display:none; }
+.fieldBlockHeading { margin:0 -10px 24px; padding:14px 10px; background:#f2eadf; border-bottom:1px solid #e6d9c9; font-size:17px!important; }
 .primary:hover { background:#864129!important; }
 .sidebar { position:fixed; left:0; top:0; bottom:0; width:248px; background:#f2eadf; padding:38px 24px 24px; border-right:1px solid var(--line); z-index:30; display:flex; flex-direction:column; }
 .sidebar>a { display:block; margin:0 9px 24px; }

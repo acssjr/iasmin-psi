@@ -35,13 +35,6 @@
     "default": "Agendar uma sessão pelo WhatsApp"
   },
   {
-    "id": "427f3166122fcc36",
-    "group": "Abertura e transições",
-    "label": "Mensagem de boas-vindas",
-    "kind": "text",
-    "default": "Boas-vindas a um espaço de cuidado e calma."
-  },
-  {
     "id": "aa0087d109a70f50",
     "group": "Navegação e redes sociais",
     "label": "Endereço do link",
@@ -54,20 +47,6 @@
     "label": "Texto",
     "kind": "text",
     "default": "Instagram de Iasmin Portugal"
-  },
-  {
-    "id": "31d9e011b5a0eede",
-    "group": "Navegação e redes sociais",
-    "label": "Endereço do link",
-    "kind": "url",
-    "default": "https://www.linkedin.com/"
-  },
-  {
-    "id": "cdc4e3d730cc4bde",
-    "group": "Navegação e redes sociais",
-    "label": "Texto",
-    "kind": "text",
-    "default": "LinkedIn de Iasmin Portugal"
   },
   {
     "id": "8bb241e9ee6bc0f9",
@@ -2363,7 +2342,7 @@
     "group": "Identidade visual",
     "label": "Logo do cabeçalho",
     "kind": "image",
-    "default": "/brand/iasmin-portugal-horizontal.svg"
+    "default": "/brand/iasmin-portugal-vertical.svg"
   },
   {
     "id": "9e2bb39e7f08b2fb",

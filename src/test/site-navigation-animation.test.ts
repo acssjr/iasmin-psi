@@ -3,13 +3,13 @@ import { join } from 'node:path'
 
 import { expect, it } from 'vitest'
 
-it('grows the mobile navigation organically from its top-left origin', () => {
+it('grows the mobile navigation from the button side before and after docking', () => {
   const source = readFileSync(
     join(process.cwd(), 'src/components/landing/site-navigation.tsx'),
     'utf8',
   )
 
-  expect(source).toContain("transformOrigin: 'top left'")
+  expect(source).toContain("transformOrigin: docked ? 'top right' : 'top left'")
   expect(source).toContain('scaleX: reduceMotion ? 1 : 0.72')
   expect(source).toContain('scaleY: reduceMotion ? 1 : 0.58')
   expect(source).toContain("ease: 'power4.out'")
