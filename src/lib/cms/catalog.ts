@@ -4,6 +4,8 @@ export type ContentValues = Record<string, string>
 export const fields = definitions as { id: string; group: string; label: string; kind: string; default: string }[]
 export const fieldByDefault = new Map(fields.map(field => [field.default, field]))
 export const defaults: ContentValues = Object.fromEntries(fields.map(field => [field.id, field.default]))
+// Still bundled and used by CMS records created before the full-logo migration.
+export const legacyOriginalImages = ['/brand/iasmin-portugal-horizontal.svg']
 export function resolveContent(values: ContentValues, fallback: string): string {
   const field = fieldByDefault.get(fallback.trim().replace(/\s+/g, ' '))
     || (fallback.startsWith('https://wa.me/') ? fields.find(item => item.kind === 'url' && item.default.startsWith('https://wa.me/') && item.default.split('?')[1] === fallback.split('?')[1]) : undefined)
@@ -43,7 +45,7 @@ export function validateContent(input: unknown): ContentValues {
   return output
 }
 export function validateMediaReferences(values: ContentValues, mediaIds: Set<string>) {
-  const originals = new Set(fields.filter(field=>field.kind==='image').map(field=>field.default))
+  const originals = new Set([...legacyOriginalImages, ...fields.filter(field=>field.kind==='image').map(field=>field.default)])
   for (const field of fields.filter(field=>field.kind==='gallery')) {
     for (const item of JSON.parse(field.default) as {src:string}[]) originals.add(item.src)
   }

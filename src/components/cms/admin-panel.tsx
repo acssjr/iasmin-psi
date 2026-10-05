@@ -5,7 +5,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState, type FormEvent } from 'react'
-import { fields, defaults, type ContentValues } from '@/lib/cms/catalog'
+import { fields, defaults, legacyOriginalImages, type ContentValues } from '@/lib/cms/catalog'
 import type { Media, Version, PublicUser } from '@/lib/cms/store'
 import { BrandLogo } from '@/components/brand-logo'
 import { VisualEditor } from './visual-editor'
@@ -22,6 +22,7 @@ import styles from './admin-panel.module.css'
 type Snapshot = { revision: number; draft: ContentValues; published: ContentValues; publishedAt: string | null; history: Version[]; media: Media[]; user: PublicUser; storage?: 'local' | 'database' }
 type Mode = 'editor' | 'login' | 'setup' | 'unavailable'
 const originalImages = [
+  ...legacyOriginalImages.map(src => ({ src, name: src.split('/').pop() || 'Imagem original' })),
   ...fields.filter(field=>field.kind==='image').map(field=>({src:field.default,name:field.default.split('/').pop() || 'Imagem original'})),
   ...fields.filter(field=>field.kind==='gallery').flatMap(field=>(JSON.parse(field.default) as {src:string;alt:string}[]).map(item=>({src:item.src,name:item.src.split('/').pop() || 'Imagem original'}))),
 ]
