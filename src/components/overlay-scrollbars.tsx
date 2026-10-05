@@ -25,7 +25,8 @@ export function OverlayScrollbarSetup() {
       }
       const candidates = [document.body, ...document.querySelectorAll<HTMLElement>('body *')]
       for (const element of candidates) {
-        if (instances.has(element) || element.closest('.os-scrollbar') || element.tagName === 'TEXTAREA' || element.tagName === 'INPUT' || element.tagName === 'SELECT') continue
+        // Streamed admin content must hydrate before a library adds DOM children.
+        if (instances.has(element) || element.closest('[data-scroll-ready="false"], .os-scrollbar') || element.tagName === 'TEXTAREA' || element.tagName === 'INPUT' || element.tagName === 'SELECT') continue
         const style = getComputedStyle(element)
         if (element !== document.body && !/auto|scroll/.test(`${style.overflowX} ${style.overflowY}`)) continue
         const instance = OverlayScrollbars({ target: element, elements: { viewport: element } }, {
@@ -39,10 +40,10 @@ export function OverlayScrollbarSetup() {
     }
     const schedule = () => { if (!frame) frame = requestAnimationFrame(scan) }
     const observer = new MutationObserver(records => {
-      if (records.some(record => [...record.addedNodes, ...record.removedNodes].some(node => node instanceof HTMLElement && !node.matches('.os-scrollbar, .os-scrollbar *')))) schedule()
+      if (records.some(record => record.type === 'attributes' || [...record.addedNodes, ...record.removedNodes].some(node => node instanceof HTMLElement && !node.matches('.os-scrollbar, .os-scrollbar *')))) schedule()
     })
     scan()
-    observer.observe(document.body, { childList: true, subtree: true })
+    observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['data-scroll-ready'] })
     window.addEventListener('resize', schedule)
     window.addEventListener('scroll', onScroll, { capture: true, passive: true })
     return () => {

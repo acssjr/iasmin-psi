@@ -4,7 +4,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { useEffect, useRef, useState, type FormEvent } from 'react'
+import { useEffect, useRef, useState, useSyncExternalStore, type FormEvent } from 'react'
 import { fields, defaults, legacyOriginalImages, type ContentValues } from '@/lib/cms/catalog'
 import type { Media, Version, PublicUser } from '@/lib/cms/store'
 import { BrandLogo } from '@/components/brand-logo'
@@ -28,7 +28,11 @@ const originalImages = [
   ...fields.filter(field=>field.kind==='gallery').flatMap(field=>(JSON.parse(field.default) as {src:string;alt:string}[]).map(item=>({src:item.src,name:item.src.split('/').pop() || 'Imagem original'}))),
 ]
 const date = (value: string | null) => value ? new Date(value).toLocaleString('pt-BR', { dateStyle: 'medium', timeStyle: 'short' }) : 'Ainda não publicada pelo painel'
+const subscribeHydration = () => () => {}
+const clientHydrated = () => true
+const serverHydrated = () => false
 export function AdminPanel({ mode, initial }: { mode: Mode; initial?: Snapshot }) {
+  const hydrated = useSyncExternalStore(subscribeHydration, clientHydrated, serverHydrated)
   const router = useRouter()
   const { shell: navigationShell, compact: navigationCompact, toggle: toggleNavigation } = useAdminSidebar()
   const [snapshot, setSnapshot] = useState(initial)
@@ -120,7 +124,7 @@ export function AdminPanel({ mode, initial }: { mode: Mode; initial?: Snapshot }
   if (mode !== 'editor') return (
     <>
     {accessStage && <AccessLoading stage={accessStage} />}
-    <main className={styles.access} inert={Boolean(accessStage)} aria-hidden={accessStage ? true : undefined}>
+    <main data-scroll-ready={hydrated} className={styles.access} inert={Boolean(accessStage)} aria-hidden={accessStage ? true : undefined}>
       <div className={styles.accessStory}><BrandLogo variant="full" /><span>PAINEL ADMINISTRATIVO</span><h1>Gestão do site</h1><p>Edite conteúdo, publique alterações e gerencie acessos.</p><div className={styles.orbit} aria-hidden="true" /></div>
       <div className={styles.accessForm}>
         <Link href="/">← Voltar ao site</Link><p className={styles.eyebrow}>PAINEL ADMINISTRATIVO</p>
@@ -143,7 +147,7 @@ export function AdminPanel({ mode, initial }: { mode: Mode; initial?: Snapshot }
   const visibleFields = [...matchingFields].sort((a,b)=>fieldBlocks.indexOf(subsectionForField(a))-fieldBlocks.indexOf(subsectionForField(b)))
   const navigate = (next: string) => { setView(next); setMenu(false); setSearch('') }
   return (
-    <div ref={navigationShell} data-admin-shell="" data-compact={navigationCompact} className={styles.shell}>
+    <div ref={navigationShell} data-scroll-ready={hydrated} data-admin-shell="" data-compact={navigationCompact} className={styles.shell}>
       <AdminSidebar compact={navigationCompact} toggle={toggleNavigation} mobileOpen={menu} onClose={() => setMenu(false)} view={view} navigate={navigate} admin={snapshot?.user.role === 'admin'} busy={busy} onLogout={() => { const leave = async () => { if (await call('logout')) router.refresh() }; if (dirty) setConfirmation({message:'Há alterações sem salvar. Sair e descartá-las?',run:leave}); else void leave() }} />
       {menu && <button className={styles.navScrim} aria-label="Fechar navegação ao tocar fora" onClick={()=>setMenu(false)} />}
       <div data-admin-workspace="" className={styles.workspace}>
