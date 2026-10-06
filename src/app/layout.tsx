@@ -25,9 +25,14 @@ const defaultIcons = {
 export const dynamic = 'force-dynamic'
 export async function generateMetadata(): Promise<Metadata> {
   const values = await publicContent()
+  const title = resolveContent(values, 'Iasmin Portugal | Psicóloga Clínica')
+  const description = resolveContent(values, 'Psicologia clínica on-line para adolescentes e adultos.')
   return {
-  title: resolveContent(values, 'Iasmin Portugal | Psicóloga Clínica'),
-  description: resolveContent(values, 'Psicologia clínica on-line para adolescentes e adultos.'),
+  metadataBase: new URL('https://iasminportugal.com.br'),
+  title,
+  description,
+  openGraph: { type: 'website', locale: 'pt_BR', siteName: 'Iasmin Portugal', title, description },
+  twitter: { card: 'summary_large_image', title, description, images: ['/opengraph-image'] },
   icons: {
     icon: resolveContent(values, defaultIcons.icon),
     shortcut: resolveContent(values, defaultIcons.shortcut),
